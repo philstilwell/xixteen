@@ -1,0 +1,12 @@
+{
+  "name": "xixteen",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-question-bank.mjs && node scripts/build-daily-quizzes.mjs",
+    "validate": "node scripts/validate-question-bank.mjs",
+    "export:d1": "node scripts/export-d1-seed.mjs",
+    "check": "npm run generate && npm run validate"
+  }
+}

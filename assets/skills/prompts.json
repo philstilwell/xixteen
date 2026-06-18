@@ -1,0 +1,98 @@
+[
+  {
+    "skill": "clarify_claim",
+    "label": "What's the Claim?",
+    "file": "assets/skills/clarify_claim.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a bright spotlight isolating one central statement card from surrounding notes."
+  },
+  {
+    "skill": "define_terms",
+    "label": "What Do the Words Mean?",
+    "file": "assets/skills/define_terms.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a magnifying glass over ambiguous word blocks, with crisp definition tags emerging."
+  },
+  {
+    "skill": "find_argument",
+    "label": "What's the Argument?",
+    "file": "assets/skills/find_argument.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: connected cards showing reasons flowing toward one conclusion."
+  },
+  {
+    "skill": "hidden_assumptions",
+    "label": "What's Assumed?",
+    "file": "assets/skills/hidden_assumptions.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a visible bridge supported by subtle hidden beams underneath."
+  },
+  {
+    "skill": "relevance",
+    "label": "Does That Matter?",
+    "file": "assets/skills/relevance.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a clean signal path through scattered irrelevant objects."
+  },
+  {
+    "skill": "evidence_quality",
+    "label": "How Good Is the Evidence?",
+    "file": "assets/skills/evidence_quality.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: evidence samples on a scale, with stronger evidence visibly outweighing anecdotes."
+  },
+  {
+    "skill": "source_reliability",
+    "label": "Can We Trust the Source?",
+    "file": "assets/skills/source_reliability.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a source document passing through a transparency filter that reveals incentives and credentials."
+  },
+  {
+    "skill": "logical_gaps",
+    "label": "Does the Logic Follow?",
+    "file": "assets/skills/logical_gaps.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: stepping stones across a gap, with one missing stone highlighted."
+  },
+  {
+    "skill": "fallacies",
+    "label": "What's the Fallacy?",
+    "file": "assets/skills/fallacies.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a polished argument path bending into a trapdoor shape."
+  },
+  {
+    "skill": "probability",
+    "label": "How Likely Is It?",
+    "file": "assets/skills/probability.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: probability beads or dots distributed across a transparent grid."
+  },
+  {
+    "skill": "statistical_sense",
+    "label": "What Do the Numbers Say?",
+    "file": "assets/skills/statistical_sense.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: clean charts with denominators and scales visibly aligned."
+  },
+  {
+    "skill": "causation",
+    "label": "Cause or Coincidence?",
+    "file": "assets/skills/causation.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: two events connected by a question-mark shaped thread, with a third hidden factor nearby."
+  },
+  {
+    "skill": "alternative_explanations",
+    "label": "What Else Could Explain It?",
+    "file": "assets/skills/alternative_explanations.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: multiple plausible paths leading to the same observed result."
+  },
+  {
+    "skill": "cognitive_biases",
+    "label": "What Bias Is Showing?",
+    "file": "assets/skills/cognitive_biases.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a mind-shaped lens subtly tinting identical evidence cards."
+  },
+  {
+    "skill": "tradeoffs",
+    "label": "What Are the Tradeoffs?",
+    "file": "assets/skills/tradeoffs.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: balanced choices on a scale, with visible gains and costs on opposite sides."
+  },
+  {
+    "skill": "belief_update",
+    "label": "How Should Belief Change?",
+    "file": "assets/skills/belief_update.png",
+    "geminiPrompt": "Square editorial illustration for a critical thinking learning site. Cohesive series style: warm off-white paper texture, deep ink outlines, restrained teal, coral, graphite, and gold accents, soft natural shadows, subtle collage geometry, no text. Visual metaphor: a confidence dial moving carefully after new evidence arrives."
+  }
+]

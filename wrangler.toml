@@ -1,0 +1,8 @@
+name = "xixteen"
+compatibility_date = "2026-06-18"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "xixteen"
+database_id = "REPLACE_WITH_CLOUDFLARE_D1_DATABASE_ID"
