@@ -1,13 +1,10 @@
 # Skill Image Assets
 
-XiXteen's landing page expects one square image per skill at the paths listed in `prompts.json`.
+XiXteen's landing page uses one square image per skill at the paths listed in `prompts.json`.
 
-The user instruction for this project requires Google Gemini for image generation. No Gemini image tool or CLI is currently available in this workspace, so this folder contains the art-direction manifest but not generated bitmap files.
+The current set was generated with the native OpenAI image generator after explicit user approval. Each image follows the same editorial collage direction:
 
-Recommended output:
-
-- 16 square PNG files
-- 1200 x 1200 px
-- cohesive editorial illustration style
+- square WebP files
+- cohesive warm paper, ink, teal, coral, graphite, and gold palette
 - no embedded text in the images
 - clear conceptual symbolism for each reasoning skill
