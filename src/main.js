@@ -121,9 +121,12 @@ function renderGallery() {
       <button class="skill-card" type="button" data-skill="${skill.id}" style="--accent: ${accent}">
         <span class="skill-image">
           ${image ? `<img src="${image}" alt="" loading="lazy" />` : ""}
-          <span class="fallback-mark">${index + 1}</span>
+          <span class="fallback-mark" aria-hidden="true">${skillCode(skill)}</span>
         </span>
-        <span class="skill-card-label">${escapeHtml(skill.publicLabel)}</span>
+        <span class="skill-card-meta">
+          <span class="skill-code">${skillCode(skill)}</span>
+          <span class="skill-card-label">${escapeHtml(skill.publicLabel)}</span>
+        </span>
       </button>
     `;
   }).join("");
@@ -233,7 +236,7 @@ function renderQuiz() {
   els.quizPanel.innerHTML = `
     <div class="question-meta">
       <span class="pill">${state.currentIndex + 1} of ${quiz.items.length}</span>
-      <span class="pill">${escapeHtml(skill.publicLabel)}</span>
+      <span class="pill">${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</span>
       <span class="pill">Level ${item.difficulty}</span>
     </div>
     <p class="question-text">${escapeHtml(item.prompt)}</p>
@@ -308,7 +311,7 @@ function renderResults(results, score, durationMs) {
         const skill = state.skillById.get(result.item.skill);
         return `
           <div class="result-cell">
-            <strong>${escapeHtml(skill.publicLabel)}</strong>
+            <strong>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</strong>
             <span>${result.correct ? "Correct" : "Missed"} / Level ${result.item.difficulty}</span>
           </div>
         `;
@@ -410,7 +413,7 @@ function renderProfile() {
     return `
       <div class="skill-row" style="--accent: ${accent}">
         <div>
-          <strong>${escapeHtml(skill.publicLabel)}</strong>
+          <strong>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</strong>
           <span>${accuracyText} / ${level}</span>
         </div>
         <span class="mastery-dot" aria-hidden="true"></span>
@@ -571,10 +574,14 @@ function weakestSkillLabel() {
 }
 
 function resultMessage(score, total) {
-  if (score === total) return "Clean sweep. All sixteen skills landed.";
-  if (score >= Math.ceil(total * 0.8)) return "Strong run. The misses point to good practice targets.";
-  if (score >= Math.ceil(total * 0.55)) return "Solid work. Your map is starting to show where practice will pay off.";
-  return "Useful baseline. The next practice set will lean into the weaker spots.";
+  if (score === total) return "Perfect run. You got all sixteen.";
+  if (score >= Math.ceil(total * 0.8)) return "Strong run. The misses show what to practice next.";
+  if (score >= Math.ceil(total * 0.55)) return "Solid work. Your skill map is starting to show useful patterns.";
+  return "Good baseline. The next practice set will focus on the rough spots.";
+}
+
+function skillCode(skill) {
+  return skill?.code || String(skill?.ordinal || "").padStart(2, "0");
 }
 
 function loadProfile() {

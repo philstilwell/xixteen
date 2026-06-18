@@ -12,7 +12,7 @@ const lines = [
 ];
 
 for (const skill of skills) {
-  lines.push(`INSERT OR REPLACE INTO skills (id, ordinal, name, public_label, testable_task, description) VALUES (${sql(skill.id)}, ${skill.ordinal}, ${sql(skill.name)}, ${sql(skill.publicLabel)}, ${sql(skill.testableTask)}, ${sql(skill.description)});`);
+  lines.push(`INSERT OR REPLACE INTO skills (id, code, ordinal, name, public_label, testable_task, description) VALUES (${sql(skill.id)}, ${sql(skill.code)}, ${skill.ordinal}, ${sql(skill.name)}, ${sql(skill.publicLabel)}, ${sql(skill.testableTask)}, ${sql(skill.description)});`);
 }
 
 for (const item of items) {

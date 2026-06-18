@@ -1,26 +1,26 @@
 # XiXteen Content Model
 
-Every quiz item is objective by construction:
+Every quiz item is built to have one clearly best answer:
 
-- the prompt contains all necessary information;
-- the correct choice is defensibly unique;
-- the explanation names the reasoning move;
-- each item belongs to exactly one of the 16 skills;
-- every skill has 160 unique generated items, distributed across five difficulty levels.
+- the prompt gives all the information needed;
+- the correct choice is unique;
+- the explanation names the thinking move;
+- each item belongs to exactly one numbered skill;
+- every skill has 160 unique generated items across five difficulty levels.
 
-Daily quizzes use the same 16 item IDs for every visitor on the same date. Practice sessions choose from the whole corpus and emphasize weaker skills based on recent local performance.
+Daily quizzes use the same 16 item IDs for every visitor on the same date. Practice sessions choose from the whole bank and lean toward weaker skills based on recent local performance.
 
 ## The 16 Skills
 
-1. What's the Claim?
-2. What Do the Words Mean?
-3. What's the Argument?
-4. What's Assumed?
-5. Does That Matter?
-6. How Good Is the Evidence?
-7. Can We Trust the Source?
-8. Does the Logic Follow?
-9. What's the Fallacy?
+01. What's the Claim?
+02. What Do the Words Mean?
+03. What's the Argument?
+04. What's Assumed?
+05. Does That Matter?
+06. How Good Is the Evidence?
+07. Can We Trust the Source?
+08. Does the Logic Follow?
+09. What's the Fallacy?
 10. How Likely Is It?
 11. What Do the Numbers Say?
 12. Cause or Coincidence?
@@ -31,4 +31,4 @@ Daily quizzes use the same 16 item IDs for every visitor on the same date. Pract
 
 ## Fairness Rule
 
-Public competition should use `daily_quizzes`. Randomized or adaptive pulls should be limited to practice and personal learning.
+Public competition should use `daily_quizzes`. Random or adaptive pulls should be limited to practice and personal learning.

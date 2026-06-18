@@ -2,6 +2,7 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS skills (
   id TEXT PRIMARY KEY,
+  code TEXT NOT NULL UNIQUE,
   ordinal INTEGER NOT NULL UNIQUE,
   name TEXT NOT NULL,
   public_label TEXT NOT NULL,

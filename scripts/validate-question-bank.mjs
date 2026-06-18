@@ -12,6 +12,7 @@ const quizzes = JSON.parse(await readFile(new URL("daily-quizzes.json", DATA_DIR
 
 const errors = [];
 const skillIds = new Set(skills.map((skill) => skill.id));
+const skillCodes = new Set();
 const itemIds = new Set();
 const prompts = new Set();
 const bySkill = new Map();
@@ -19,6 +20,17 @@ const bySkillDifficulty = new Map();
 
 if (skills.length !== EXPECTED_SKILLS) {
   errors.push(`Expected ${EXPECTED_SKILLS} skills, found ${skills.length}.`);
+}
+
+for (const skill of skills) {
+  const expectedCode = String(skill.ordinal).padStart(2, "0");
+  if (skill.code !== expectedCode) {
+    errors.push(`${skill.id} expected code ${expectedCode}, found ${skill.code}.`);
+  }
+  if (skillCodes.has(skill.code)) {
+    errors.push(`Duplicate skill code: ${skill.code}`);
+  }
+  skillCodes.add(skill.code);
 }
 
 for (const item of items) {

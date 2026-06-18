@@ -1,6 +1,6 @@
 # XiXteen
 
-XiXteen is a daily critical-thinking quiz built around 16 objective reasoning skills.
+XiXteen is a daily thinking quiz built around 16 clear reasoning skills.
 
 The first corpus target is intentionally large:
 
@@ -8,7 +8,7 @@ The first corpus target is intentionally large:
 16 skills x 160 unique items = 2,560 items
 ```
 
-Daily competition uses one fixed item from each skill for a given date. Practice mode can use the wider bank adaptively without affecting the public leaderboard.
+Daily competition uses one fixed item from each skill for a given date. Practice mode can use the wider bank without affecting the public leaderboard.
 
 ## Local Checks
 
@@ -20,7 +20,7 @@ This regenerates the skill file, the question bank, and daily quiz schedule, the
 
 ## Data Model
 
-- `data/skills.json` is the canonical skill taxonomy.
+- `data/skills.json` is the canonical numbered skill list.
 - `data/question-bank.json` contains objective multiple-choice items.
 - `data/daily-quizzes.json` contains the shared daily quiz schedule.
 - `database/schema.sql` is designed for Cloudflare D1 or SQLite-compatible review.

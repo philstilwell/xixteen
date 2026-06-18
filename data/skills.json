@@ -1,130 +1,146 @@
 [
   {
     "id": "clarify_claim",
+    "code": "01",
     "ordinal": 1,
     "name": "Clarify the Claim",
     "publicLabel": "What's the Claim?",
-    "testableTask": "Identify the exact claim being asserted.",
-    "description": "Separate the main assertion from context, evidence, examples, and stronger claims not actually made."
+    "testableTask": "Find the exact claim being made.",
+    "description": "Tell the main point apart from background, examples, and claims that go too far."
   },
   {
     "id": "define_terms",
+    "code": "02",
     "ordinal": 2,
     "name": "Define Key Terms",
     "publicLabel": "What Do the Words Mean?",
-    "testableTask": "Pick the vague, ambiguous, or shifting term that must be clarified.",
-    "description": "Notice language that needs a measurable or stable definition before an argument can be evaluated."
+    "testableTask": "Find the word or phrase that needs a clearer meaning.",
+    "description": "Spot vague or slippery words before they blur the argument."
   },
   {
     "id": "find_argument",
+    "code": "03",
     "ordinal": 3,
     "name": "Find the Argument",
     "publicLabel": "What's the Argument?",
-    "testableTask": "Identify a conclusion, premise, evidence, example, objection, or rhetorical flourish.",
-    "description": "Map the parts of an argument so the reasoning can be tested."
+    "testableTask": "Find the conclusion, reason, evidence, example, or side comment.",
+    "description": "Name the parts of an argument so you can test how they fit."
   },
   {
     "id": "hidden_assumptions",
+    "code": "04",
     "ordinal": 4,
     "name": "Spot Hidden Assumptions",
     "publicLabel": "What's Assumed?",
-    "testableTask": "Choose the unstated premise the argument depends on.",
-    "description": "Surface the missing bridge between stated reasons and the conclusion."
+    "testableTask": "Find the unstated idea the argument needs.",
+    "description": "Spot the missing bridge between the reason and the conclusion."
   },
   {
     "id": "relevance",
+    "code": "05",
     "ordinal": 5,
     "name": "Test Relevance",
     "publicLabel": "Does That Matter?",
-    "testableTask": "Decide whether information actually supports or weakens the conclusion.",
-    "description": "Distinguish evidence that bears on the claim from facts that merely sound related."
+    "testableTask": "Decide whether a fact actually matters for the claim.",
+    "description": "Tell useful evidence apart from details that only sound related."
   },
   {
     "id": "evidence_quality",
+    "code": "06",
     "ordinal": 6,
     "name": "Evaluate Evidence Quality",
     "publicLabel": "How Good Is the Evidence?",
-    "testableTask": "Identify the strongest evidence from explicit methodological details.",
-    "description": "Compare anecdotes, samples, experiments, measurements, and expert testimony."
+    "testableTask": "Pick the strongest evidence from the details given.",
+    "description": "Compare stories, surveys, tests, measurements, and expert claims."
   },
   {
     "id": "source_reliability",
+    "code": "07",
     "ordinal": 7,
     "name": "Check Source Reliability",
     "publicLabel": "Can We Trust the Source?",
-    "testableTask": "Assess source credibility using expertise, incentives, method, and transparency.",
-    "description": "Recognize source features that strengthen or weaken a claim."
+    "testableTask": "Judge a source using expertise, motives, method, and openness.",
+    "description": "Notice what makes a source more or less trustworthy."
   },
   {
     "id": "logical_gaps",
+    "code": "08",
     "ordinal": 8,
     "name": "Detect Logical Gaps",
     "publicLabel": "Does the Logic Follow?",
-    "testableTask": "Identify the invalid or unsupported inference.",
-    "description": "Catch overgeneralization, missing comparisons, circularity, and conclusions that outrun the premises."
+    "testableTask": "Find the step that does not follow.",
+    "description": "Catch jumps, missing comparisons, circular thinking, and overclaims."
   },
   {
     "id": "fallacies",
+    "code": "09",
     "ordinal": 9,
     "name": "Recognize Common Fallacies",
     "publicLabel": "What's the Fallacy?",
-    "testableTask": "Match a flawed argument to the reasoning error it commits.",
-    "description": "Recognize recurring argument patterns such as straw man, false dilemma, and ad hominem."
+    "testableTask": "Match a bad argument to its mistake.",
+    "description": "Recognize common moves like straw man, false choice, and personal attack."
   },
   {
     "id": "probability",
+    "code": "10",
     "ordinal": 10,
     "name": "Think Probabilistically",
     "publicLabel": "How Likely Is It?",
-    "testableTask": "Choose the answer that best reflects uncertainty, likelihood, base rates, or confidence.",
-    "description": "Reason with partial information instead of treating possibilities as certainties."
+    "testableTask": "Choose the answer that handles chance and uncertainty well.",
+    "description": "Think in likely, unlikely, and not-yet-sure instead of all-or-nothing."
   },
   {
     "id": "statistical_sense",
+    "code": "11",
     "ordinal": 11,
     "name": "Use Statistical Sense",
     "publicLabel": "What Do the Numbers Say?",
-    "testableTask": "Interpret percentages, denominators, averages, rates, sample sizes, or cherry-picked data.",
-    "description": "Read numbers in context and avoid common statistical traps."
+    "testableTask": "Read numbers with the right context.",
+    "description": "Watch percentages, group sizes, averages, rates, and cherry-picked data."
   },
   {
     "id": "causation",
+    "code": "12",
     "ordinal": 12,
     "name": "Separate Correlation and Causation",
     "publicLabel": "Cause or Coincidence?",
-    "testableTask": "Identify why a causal conclusion is not yet justified.",
-    "description": "Look for confounders, reverse causation, and missing comparison groups."
+    "testableTask": "Explain why a cause claim is not proven yet.",
+    "description": "Look for other causes, backwards cause, and missing comparison groups."
   },
   {
     "id": "alternative_explanations",
+    "code": "13",
     "ordinal": 13,
     "name": "Consider Alternative Explanations",
     "publicLabel": "What Else Could Explain It?",
-    "testableTask": "Pick another explanation that fits the given facts.",
-    "description": "Generate and compare plausible accounts before settling on one conclusion."
+    "testableTask": "Pick another explanation that also fits the facts.",
+    "description": "Try more than one possible answer before settling."
   },
   {
     "id": "cognitive_biases",
+    "code": "14",
     "ordinal": 14,
     "name": "Recognize Cognitive Biases",
     "publicLabel": "What Bias Is Showing?",
-    "testableTask": "Identify the cognitive bias illustrated by a decision or interpretation.",
-    "description": "Notice predictable mental shortcuts that can distort judgment."
+    "testableTask": "Name the thinking bias shown in a choice.",
+    "description": "Notice mental shortcuts that can pull judgment off course."
   },
   {
     "id": "tradeoffs",
+    "code": "15",
     "ordinal": 15,
     "name": "Weigh Tradeoffs and Consequences",
     "publicLabel": "What Are the Tradeoffs?",
-    "testableTask": "Identify the clearest cost, benefit, opportunity cost, or second-order effect.",
-    "description": "Compare what a choice gains, sacrifices, risks, and changes downstream."
+    "testableTask": "Find the clearest cost, benefit, risk, or second effect.",
+    "description": "See what a choice gains and what it gives up."
   },
   {
     "id": "belief_update",
+    "code": "16",
     "ordinal": 16,
     "name": "Update Beliefs Responsibly",
     "publicLabel": "How Should Belief Change?",
-    "testableTask": "Choose the belief revision that is proportional to the new evidence.",
-    "description": "Calibrate confidence instead of ignoring evidence or overreacting to it."
+    "testableTask": "Change confidence by the right amount.",
+    "description": "Do not ignore new evidence, and do not overreact to it."
   }
 ]
