@@ -4,6 +4,7 @@ const DATA_DIR = new URL("../data/", import.meta.url);
 const EXPECTED_SKILLS = 16;
 const EXPECTED_PER_SKILL = 160;
 const EXPECTED_PER_DIFFICULTY = 32;
+const MIN_PROMPT_CHARS = 250;
 const LABELS = new Set(["A", "B", "C", "D"]);
 
 const skills = JSON.parse(await readFile(new URL("skills.json", DATA_DIR), "utf8"));
@@ -46,6 +47,12 @@ for (const item of items) {
 
   if (!skillIds.has(item.skill)) {
     errors.push(`${item.id} references unknown skill ${item.skill}.`);
+  }
+  if (!item.prompt.includes("Scene:")) {
+    errors.push(`${item.id} is missing scenario context.`);
+  }
+  if (item.prompt.length < MIN_PROMPT_CHARS) {
+    errors.push(`${item.id} prompt is too thin: ${item.prompt.length} chars, expected at least ${MIN_PROMPT_CHARS}.`);
   }
   if (!Number.isInteger(item.difficulty) || item.difficulty < 1 || item.difficulty > 5) {
     errors.push(`${item.id} has invalid difficulty ${item.difficulty}.`);

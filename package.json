@@ -6,7 +6,8 @@
   "scripts": {
     "generate": "node scripts/generate-question-bank.mjs && node scripts/build-daily-quizzes.mjs",
     "validate": "node scripts/validate-question-bank.mjs",
+    "audit": "node scripts/audit-question-bank.mjs",
     "export:d1": "node scripts/export-d1-seed.mjs",
-    "check": "npm run generate && npm run validate"
+    "check": "npm run generate && npm run validate && npm run audit"
   }
 }

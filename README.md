@@ -16,7 +16,7 @@ Daily competition uses one fixed item from each skill for a given date. Practice
 npm run check
 ```
 
-This regenerates the skill file, the question bank, and daily quiz schedule, then validates the corpus.
+This regenerates the skill file, the question bank, and daily quiz schedule, then validates and audits the corpus. The audit checks that every item includes scenario context and enough prompt detail.
 
 ## Data Model
 
@@ -25,6 +25,7 @@ This regenerates the skill file, the question bank, and daily quiz schedule, the
 - `data/daily-quizzes.json` contains the shared daily quiz schedule.
 - `database/schema.sql` is designed for Cloudflare D1 or SQLite-compatible review.
 - `npm run export:d1` writes `database/seed.sql` for D1 import.
+- `npm run audit` reports clarity coverage and prompt-depth stats by skill.
 
 ## Leaderboards
 

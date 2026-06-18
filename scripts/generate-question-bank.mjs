@@ -11,6 +11,20 @@ const difficultyFrames = [
   "Careful version:",
   "Challenge version:"
 ];
+const sceneBits = [
+  "with a whiteboard full of sticky notes",
+  "after a busy hallway conversation",
+  "while a small team reviews a simple chart",
+  "with a few confused people asking what changed",
+  "after a local story starts getting shared online",
+  "while someone is trying to make a fair decision",
+  "with a short report open on a laptop",
+  "after a new rule is announced",
+  "while a group compares before-and-after numbers",
+  "with a flyer, a spreadsheet, and a few worried questions on the table",
+  "after a short trial run gets everyone's attention",
+  "while people are arguing about what the numbers really show"
+];
 
 const skills = [
   {
@@ -316,6 +330,7 @@ const biasTypes = [
 ];
 
 function topic(domain, actor, action, metric, outcome, alternative, irrelevant, group, field) {
+  const sceneBit = sceneBits[hashString(`${domain}:${actor}:${action}`) % sceneBits.length];
   return {
     domain,
     actor,
@@ -323,10 +338,12 @@ function topic(domain, actor, action, metric, outcome, alternative, irrelevant, 
     actionGerund: gerundize(action),
     metric,
     outcome,
+    outcomeAmount: outcome.replace(/^(fell|rose) by /, ""),
     alternative,
     irrelevant,
     group,
     field,
+    sceneBit,
     evidence: `${metric} ${outcome} in a small test`,
     interestedParty: `a company that would make money if ${actor} chose to ${action}`,
     expert: `a ${field} expert who has studied similar programs`
@@ -409,7 +426,7 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
     id,
     skill: skillId,
     difficulty,
-    prompt: `${difficultyFrames[difficulty - 1]} ${prompt}`.replace(/\s+/g, " ").trim(),
+    prompt: prompt.replace(/\s+/g, " ").trim(),
     choices: shuffled.map((text, choiceIndex) => ({
       id: LABELS[choiceIndex],
       text
@@ -418,6 +435,17 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
     explanation,
     tags
   };
+}
+
+function contextualPrompt(t, difficulty, prompt) {
+  const context = [
+    difficultyFrames[difficulty - 1],
+    `Scene: In a ${t.domain} situation ${t.sceneBit}, ${t.actor} is considering whether to ${t.action}.`,
+    `The change is supposed to help ${t.group}, and the result being watched is ${t.metric}.`,
+    "Use only the facts in this question; no outside knowledge is needed.",
+    prompt
+  ];
+  return context.join(" ");
 }
 
 function buildSkill(skillId, builder) {
@@ -441,7 +469,7 @@ function claimItems() {
       "clarify_claim",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       `${cap(t.actor)} should ${t.action}.`,
       [
         `${cap(t.evidence)}.`,
@@ -463,7 +491,7 @@ function termItems() {
       "define_terms",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       `"${term}"`,
       [
         `"${t.actor.replace(/^the /, "")}"`,
@@ -479,16 +507,17 @@ function termItems() {
 
 function argumentItems() {
   return buildSkill("find_argument", (t, difficulty, offset, index) => {
-    const conclusion = `${cap(t.actor)} should ${t.action}.`;
+    const conclusionText = `${t.actor} should ${t.action}.`;
+    const conclusion = cap(conclusionText);
     const premise = `${cap(t.evidence)}.`;
     const background = `${cap(t.irrelevant)}.`;
     const extra = `${cap(t.group)} were included in the report.`;
-    const prompt = `Read this: "${background} ${premise} So ${conclusion} ${extra}" Which sentence is the conclusion?`;
+    const prompt = `Read this: "${background} ${premise} So ${conclusionText} ${extra}" Which sentence is the conclusion?`;
     return makeItem(
       "find_argument",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       conclusion,
       [premise, background, extra, `${cap(t.metric)} was mentioned as context.`],
       "The conclusion is the point the other sentences are trying to support.",
@@ -504,10 +533,10 @@ function assumptionItems() {
       "hidden_assumptions",
       index,
       difficulty,
-      prompt,
-      `The small test is likely to work the same way when ${t.action} is used more widely.`,
+      contextualPrompt(t, difficulty, prompt),
+      `The small test is likely to work the same way when the idea is used more widely.`,
       [
-        `${cap(phrase(t.irrelevant))} is the most important fact about the idea.`,
+        `${cap(phrase(t.irrelevant))}, so that detail is the most important fact about the idea.`,
         `${cap(t.metric)} can never be measured reliably.`,
         `${cap(t.actor)} should reject every alternative to the idea.`,
         `${cap(t.group)} caused the test result by themselves.`
@@ -525,7 +554,7 @@ function relevanceItems() {
       "relevance",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       `A similar group tried the same action, and results for ${t.metric} improved in similar conditions.`,
       [
         `${cap(t.irrelevant)}.`,
@@ -550,7 +579,7 @@ function evidenceItems() {
       "evidence_quality",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       strongest,
       [
         `One supporter says the idea feels promising.`,
@@ -571,7 +600,7 @@ function sourceItems() {
       "source_reliability",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       `The report was produced by ${t.interestedParty}.`,
       [
         `The report lists where its data came from.`,
@@ -614,7 +643,7 @@ function logicalGapItems() {
       "logical_gaps",
       index,
       difficulty,
-      pattern.prompt,
+      contextualPrompt(t, difficulty, pattern.prompt),
       pattern.correct,
       [
         "It gives too many definitions of the same term.",
@@ -638,7 +667,7 @@ function fallacyItems() {
       "fallacies",
       index,
       difficulty,
-      `Which fallacy shows up here? ${fallacy.line(t)}`,
+      contextualPrompt(t, difficulty, `Which fallacy shows up here? ${fallacy.line(t)}`),
       fallacy.name,
       stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3),
       fallacy.explanation,
@@ -663,7 +692,7 @@ function probabilityItems() {
       "probability",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       correct,
       difficulty <= 3
         ? [
@@ -707,7 +736,7 @@ function statsItems() {
       "statistical_sense",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       correct,
       difficulty <= 3
         ? [
@@ -735,12 +764,12 @@ function causationItems() {
       "causation",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       `${cap(t.alternative)}.`,
       [
         `${cap(t.irrelevant)}.`,
         `No event can ever have more than one possible cause.`,
-        `A change of ${t.outcome} is always too small to measure.`,
+        `A change of ${t.outcomeAmount} is always too small to measure.`,
         `${cap(t.actor)} is mentioned before ${t.metric} in the sentence.`
       ],
       "To prove cause, you need to rule out other likely causes or compare similar groups.",
@@ -751,12 +780,12 @@ function causationItems() {
 
 function alternativeItems() {
   return buildSkill("alternative_explanations", (t, difficulty, offset, index) => {
-    const prompt = `${cap(t.actor)} says ${t.action} caused the change because ${t.metric} ${t.outcome}. Which other explanation also fits?`;
+    const prompt = `${cap(t.actor)} says ${t.actionGerund} caused the change because ${t.metric} ${t.outcome}. Which other explanation also fits?`;
     return makeItem(
       "alternative_explanations",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       `${cap(t.alternative)}.`,
       [
         `${cap(t.irrelevant)}.`,
@@ -780,7 +809,7 @@ function biasItems() {
       "cognitive_biases",
       index,
       difficulty,
-      `Which thinking bias is shown here? ${bias.line(t)}`,
+      contextualPrompt(t, difficulty, `Which thinking bias is shown here? ${bias.line(t)}`),
       bias.name,
       stableShuffle(otherNames, `${bias.name}:${index}`).slice(0, 3),
       bias.explanation,
@@ -799,12 +828,12 @@ function tradeoffItems() {
       "tradeoffs",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       `The plan may improve results for ${t.metric} while also using resources that could serve another need.`,
       [
         `The plan has benefits, so it cannot have costs.`,
         `The plan has costs, so it cannot have benefits.`,
-        `The detail that ${lowerFirst(phrase(t.irrelevant))} is the main tradeoff.`,
+        `The main tradeoff is the unrelated detail: ${lowerFirst(phrase(t.irrelevant))}.`,
         `A tradeoff exists only when every option is equally bad.`
       ],
       "A tradeoff compares what you gain with what you give up or risk.",
@@ -828,7 +857,7 @@ function beliefUpdateItems() {
       "belief_update",
       index,
       difficulty,
-      prompt,
+      contextualPrompt(t, difficulty, prompt),
       correct,
       [
         "Become completely certain the action works in every setting.",
