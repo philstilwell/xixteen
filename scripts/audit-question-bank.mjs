@@ -1,7 +1,17 @@
 import { readFile } from "node:fs/promises";
 
 const DATA_DIR = new URL("../data/", import.meta.url);
-const MIN_PROMPT_CHARS = 250;
+const MIN_PROMPT_CHARS = 120;
+const MAX_PROMPT_CHARS = 520;
+const CLUNKY_PROMPT_PATTERNS = [
+  ["Scene label", /Scene:/],
+  ["generic situation wrapper", /\bsituation\b/i],
+  ["result-being-watched wrapper", /result being watched/i],
+  ["supposed-to-help wrapper", /The change is supposed to help/i],
+  ["outside-knowledge warning", /outside knowledge/i],
+  ["use-only-facts warning", /Use only the facts/i],
+  ["bureaucratic considering phrase", /is considering whether to/i]
+];
 
 const skills = JSON.parse(await readFile(new URL("skills.json", DATA_DIR), "utf8"));
 const items = JSON.parse(await readFile(new URL("question-bank.json", DATA_DIR), "utf8"));
@@ -14,17 +24,22 @@ for (const item of items) {
   list.push(item);
   bySkill.set(item.skill, list);
 
-  if (!item.prompt.includes("Scene:")) {
-    issues.push(`${item.id} missing Scene context`);
-  }
   if (item.prompt.length < MIN_PROMPT_CHARS) {
     issues.push(`${item.id} prompt below ${MIN_PROMPT_CHARS} chars`);
   }
-  if (!item.prompt.includes("The change is supposed to help")) {
-    issues.push(`${item.id} missing purpose/result context`);
+  if (item.prompt.length > MAX_PROMPT_CHARS) {
+    issues.push(`${item.id} prompt above ${MAX_PROMPT_CHARS} chars`);
   }
-  if ((item.prompt.match(/[.!?]/g) || []).length < 4) {
+  if (!item.prompt.includes("?")) {
+    issues.push(`${item.id} prompt does not ask a direct question`);
+  }
+  if ((item.prompt.match(/[.!?]/g) || []).length < 2) {
     issues.push(`${item.id} has too few sentence breaks`);
+  }
+  for (const [label, pattern] of CLUNKY_PROMPT_PATTERNS) {
+    if (pattern.test(item.prompt)) {
+      issues.push(`${item.id} still uses clunky prompt boilerplate: ${label}`);
+    }
   }
 }
 

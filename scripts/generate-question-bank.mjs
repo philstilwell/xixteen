@@ -11,20 +11,6 @@ const difficultyFrames = [
   "Careful version:",
   "Challenge version:"
 ];
-const sceneBits = [
-  "with a whiteboard full of sticky notes",
-  "after a busy hallway conversation",
-  "while a small team reviews a simple chart",
-  "with a few confused people asking what changed",
-  "after a local story starts getting shared online",
-  "while someone is trying to make a fair decision",
-  "with a short report open on a laptop",
-  "after a new rule is announced",
-  "while a group compares before-and-after numbers",
-  "with a flyer, a spreadsheet, and a few worried questions on the table",
-  "after a short trial run gets everyone's attention",
-  "while people are arguing about what the numbers really show"
-];
 
 const skills = [
   {
@@ -231,7 +217,7 @@ const fallacyTypes = [
   {
     name: "Ad hominem",
     tag: "ad-hominem",
-    line: (t) => `Someone rejects the idea to ${t.action} because the presenter once made a budgeting mistake.`,
+    line: (t) => `Someone rejects the idea of ${t.actionGerund} because the presenter once made a budgeting mistake.`,
     explanation: "The response attacks the person instead of the argument."
   },
   {
@@ -261,7 +247,7 @@ const fallacyTypes = [
   {
     name: "Red herring",
     tag: "red-herring",
-    line: (t) => `Asked whether ${t.action} would affect ${t.metric}, a speaker talks instead about the building's new paint color.`,
+    line: (t) => `Asked whether ${t.actionGerund} would affect ${t.metric}, a speaker talks instead about the building's new paint color.`,
     explanation: "The response shifts attention to an irrelevant issue."
   },
   {
@@ -306,7 +292,7 @@ const biasTypes = [
   {
     name: "Overconfidence bias",
     tag: "overconfidence",
-    line: (t) => `A director predicts exact results from ${t.action} even though no similar test has been run.`,
+    line: (t) => `A director predicts exact results from ${t.actionGerund} even though no similar test has been run.`,
     explanation: "The person shows more certainty than the evidence supports."
   },
   {
@@ -318,19 +304,18 @@ const biasTypes = [
   {
     name: "Motivated reasoning",
     tag: "motivated-reasoning",
-    line: (t) => `A sponsor praises weak evidence for ${t.action} because the result would help its preferred plan.`,
+    line: (t) => `A sponsor praises weak evidence supporting ${t.actionGerund} because the result would help its preferred plan.`,
     explanation: "The evaluation is shaped by the desired conclusion."
   },
   {
     name: "Bandwagon effect",
     tag: "bandwagon",
-    line: (t) => `A reviewer supports ${t.action} after seeing that most classmates or coworkers support it, without checking the evidence.`,
+    line: (t) => `A reviewer supports ${t.actionGerund} after seeing that most classmates or coworkers support it, without checking the evidence.`,
     explanation: "The person follows the crowd rather than the reasons."
   }
 ];
 
 function topic(domain, actor, action, metric, outcome, alternative, irrelevant, group, field) {
-  const sceneBit = sceneBits[hashString(`${domain}:${actor}:${action}`) % sceneBits.length];
   return {
     domain,
     actor,
@@ -343,7 +328,6 @@ function topic(domain, actor, action, metric, outcome, alternative, irrelevant, 
     irrelevant,
     group,
     field,
-    sceneBit,
     evidence: `${metric} ${outcome} in a small test`,
     interestedParty: `a company that would make money if ${actor} chose to ${action}`,
     expert: `a ${field} expert who has studied similar programs`
@@ -437,15 +421,32 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
   };
 }
 
-function contextualPrompt(t, difficulty, prompt) {
-  const context = [
-    difficultyFrames[difficulty - 1],
-    `Scene: In a ${t.domain} situation ${t.sceneBit}, ${t.actor} is considering whether to ${t.action}.`,
-    `The change is supposed to help ${t.group}, and the result being watched is ${t.metric}.`,
-    "Use only the facts in this question; no outside knowledge is needed.",
-    prompt
-  ];
-  return context.join(" ");
+function withFrame(difficulty, prompt) {
+  return `${difficultyFrames[difficulty - 1]} ${prompt}`;
+}
+
+function decisionSetup(t) {
+  return `${cap(t.actor)} is deciding whether to ${t.action} to help ${t.group}.`;
+}
+
+function trialResult(t) {
+  return `In a small test, ${t.metric} ${t.outcome}.`;
+}
+
+function resultAction(t) {
+  return t.outcome.startsWith("fell") ? "reduce" : "increase";
+}
+
+function resultFuture(t) {
+  return t.outcome.startsWith("fell") ? "fall" : "rise";
+}
+
+function resultGoal(t) {
+  return `${resultAction(t)} ${t.metric}`;
+}
+
+function resultGerund(t) {
+  return t.outcome.startsWith("fell") ? "reducing" : "increasing";
 }
 
 function buildSkill(skillId, builder) {
@@ -464,12 +465,12 @@ function buildSkill(skillId, builder) {
 
 function claimItems() {
   return buildSkill("clarify_claim", (t, difficulty, offset, index) => {
-    const prompt = `Read this argument: "${cap(t.evidence)}. So ${t.actor} should ${t.action}." What is the main claim?`;
+    const prompt = `${decisionSetup(t)} ${trialResult(t)} A supporter argues, "That result shows this plan should go forward." What is the main claim?`;
     return makeItem(
       "clarify_claim",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       `${cap(t.actor)} should ${t.action}.`,
       [
         `${cap(t.evidence)}.`,
@@ -486,12 +487,12 @@ function claimItems() {
 function termItems() {
   return buildSkill("define_terms", (t, difficulty, offset, index) => {
     const term = vagueTerms[offset];
-    const prompt = `${cap(t.actor)} says it will ${t.action} when the change is "${term}" for ${t.group}. Which word most needs a clearer meaning?`;
+    const prompt = `${decisionSetup(t)} The plan will move ahead only if it is "${term}". Which word most needs a clearer meaning?`;
     return makeItem(
       "define_terms",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       `"${term}"`,
       [
         `"${t.actor.replace(/^the /, "")}"`,
@@ -512,12 +513,12 @@ function argumentItems() {
     const premise = `${cap(t.evidence)}.`;
     const background = `${cap(t.irrelevant)}.`;
     const extra = `${cap(t.group)} were included in the report.`;
-    const prompt = `Read this: "${background} ${premise} So ${conclusionText} ${extra}" Which sentence is the conclusion?`;
+    const prompt = `At a meeting about whether ${t.actor} should ${t.action}, someone says: "${background} ${premise} So ${conclusionText} ${extra}" Which sentence is the conclusion?`;
     return makeItem(
       "find_argument",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       conclusion,
       [premise, background, extra, `${cap(t.metric)} was mentioned as context.`],
       "The conclusion is the point the other sentences are trying to support.",
@@ -528,12 +529,12 @@ function argumentItems() {
 
 function assumptionItems() {
   return buildSkill("hidden_assumptions", (t, difficulty, offset, index) => {
-    const prompt = `Argument: "${cap(t.evidence)}. So ${t.actor} should ${t.action} everywhere it can." Which hidden assumption does the argument need?`;
+    const prompt = `${trialResult(t)} On that evidence alone, ${t.actor} argues it should ${t.action} everywhere it can. Which hidden assumption does the argument need?`;
     return makeItem(
       "hidden_assumptions",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       `The small test is likely to work the same way when the idea is used more widely.`,
       [
         `${cap(phrase(t.irrelevant))}, so that detail is the most important fact about the idea.`,
@@ -549,12 +550,12 @@ function assumptionItems() {
 
 function relevanceItems() {
   return buildSkill("relevance", (t, difficulty, offset, index) => {
-    const prompt = `${cap(t.actor)} claims that choosing to ${t.action} will help with ${t.metric}. Which fact matters most for checking that claim?`;
+    const prompt = `${cap(t.actor)} claims that ${t.actionGerund} will ${resultGoal(t)} among ${t.group}. Which fact matters most for checking that claim?`;
     return makeItem(
       "relevance",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       `A similar group tried the same action, and results for ${t.metric} improved in similar conditions.`,
       [
         `${cap(t.irrelevant)}.`,
@@ -574,12 +575,12 @@ function evidenceItems() {
       difficulty <= 2
         ? `A large, fair survey of ${t.group} measured ${t.metric} before and after the change.`
         : `A random test compared similar groups with and without the change, then measured ${t.metric}.`;
-    const prompt = `Which evidence would best support the claim that ${t.actionGerund} helps with ${t.metric}?`;
+    const prompt = `${cap(t.actor)} wants to know whether ${t.actionGerund} actually helps ${t.group} by ${resultGerund(t)} ${t.metric}. Which evidence would be strongest?`;
     return makeItem(
       "evidence_quality",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       strongest,
       [
         `One supporter says the idea feels promising.`,
@@ -595,12 +596,12 @@ function evidenceItems() {
 
 function sourceItems() {
   return buildSkill("source_reliability", (t, difficulty, offset, index) => {
-    const prompt = `A report says ${t.actor} should ${t.action}. Which detail makes the report less trustworthy?`;
+    const prompt = `A report recommends that ${t.actor} ${t.action}. It also claims the plan would ${resultGoal(t)}. Which detail makes the report less trustworthy?`;
     return makeItem(
       "source_reliability",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       `The report was produced by ${t.interestedParty}.`,
       [
         `The report lists where its data came from.`,
@@ -617,12 +618,12 @@ function sourceItems() {
 function logicalGapItems() {
   const patterns = [
     (t) => ({
-      prompt: `Argument: "One group saw results for ${t.metric} improve after ${t.actionGerund}. So the same action will work in every ${t.domain} setting." What is the logical gap?`,
+      prompt: `Argument: "In one group, ${t.metric} ${t.outcome} after ${t.actionGerund}. So the same action will work in every ${t.domain} setting." What is the logical gap?`,
       correct: "It generalizes from one case to every case without enough support.",
       explanation: "One case does not prove the same thing will happen everywhere."
     }),
     (t) => ({
-      prompt: `Argument: "Results for ${t.metric} improved after ${t.actionGerund}. So the action caused the improvement." What is the logical gap?`,
+      prompt: `Argument: "${cap(t.metric)} ${t.outcome} after ${t.actionGerund}. So the action caused the change." What is the logical gap?`,
       correct: "It assumes timing alone proves causation.",
       explanation: "Something happening first does not, by itself, prove it caused what came next."
     }),
@@ -643,7 +644,7 @@ function logicalGapItems() {
       "logical_gaps",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, pattern.prompt),
+      withFrame(difficulty, pattern.prompt),
       pattern.correct,
       [
         "It gives too many definitions of the same term.",
@@ -667,7 +668,7 @@ function fallacyItems() {
       "fallacies",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, `Which fallacy shows up here? ${fallacy.line(t)}`),
+      withFrame(difficulty, `In a debate about a proposed ${t.domain} change, this happens: ${fallacy.line(t)} Which fallacy is showing up?`),
       fallacy.name,
       stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3),
       fallacy.explanation,
@@ -682,8 +683,8 @@ function probabilityItems() {
     const percent = percentages[(offset + difficulty) % percentages.length];
     const prompt =
       difficulty <= 3
-        ? `A forecast for ${t.domain} says there is a ${percent}% chance that ${t.metric} will get better next month. What does that mean?`
-        : `A warning signal for ${t.domain} is useful but not perfect, and the problem it flags is uncommon. What is the best way to treat a positive signal?`;
+        ? `A forecast about ${t.domain} says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)} next month. What does that mean?`
+        : `A warning signal in ${t.domain} can catch a real problem, but it also gives false alarms. The problem it flags is uncommon. What is the best way to treat a positive signal?`;
     const correct =
       difficulty <= 3
         ? `In many similar cases, improvement would happen about ${percent} out of 100 times.`
@@ -692,7 +693,7 @@ function probabilityItems() {
       "probability",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       correct,
       difficulty <= 3
         ? [
@@ -725,7 +726,7 @@ function statsItems() {
     const prompt =
       difficulty <= 3
         ? `In one ${t.domain} comparison, Group A had ${aEvents} cases out of ${aTotal}. Group B had ${bEvents} cases out of ${bTotal}. Which group had the higher rate?`
-        : `A report says ${t.metric} rose from ${aEvents}% to ${aEvents + 5}%. What is the clearest way to describe the change?`;
+        : `A report about ${t.domain} says ${t.metric} rose from ${aEvents}% to ${aEvents + 5}% after a pilot program. What is the clearest way to describe the change?`;
     const correct =
       difficulty <= 3
         ? aHigher
@@ -736,7 +737,7 @@ function statsItems() {
       "statistical_sense",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       correct,
       difficulty <= 3
         ? [
@@ -759,12 +760,12 @@ function statsItems() {
 
 function causationItems() {
   return buildSkill("causation", (t, difficulty, offset, index) => {
-    const prompt = `${cap(t.metric)} ${t.outcome} after ${t.actor} chose to ${t.action}. Why does this not prove cause yet?`;
+    const prompt = `${cap(t.actor)} tried a plan to ${t.action}. Afterward, ${t.metric} ${t.outcome}. Which fact would show why this does not prove the plan caused the change?`;
     return makeItem(
       "causation",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       `${cap(t.alternative)}.`,
       [
         `${cap(t.irrelevant)}.`,
@@ -780,12 +781,12 @@ function causationItems() {
 
 function alternativeItems() {
   return buildSkill("alternative_explanations", (t, difficulty, offset, index) => {
-    const prompt = `${cap(t.actor)} says ${t.actionGerund} caused the change because ${t.metric} ${t.outcome}. Which other explanation also fits?`;
+    const prompt = `${cap(t.actor)} tried ${t.actionGerund}. Afterward, ${t.metric} ${t.outcome}. A supporter says the plan caused the change. Which other explanation also fits?`;
     return makeItem(
       "alternative_explanations",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       `${cap(t.alternative)}.`,
       [
         `${cap(t.irrelevant)}.`,
@@ -809,7 +810,7 @@ function biasItems() {
       "cognitive_biases",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, `Which thinking bias is shown here? ${bias.line(t)}`),
+      withFrame(difficulty, `In a discussion about ${t.domain}, ${lowerFirst(bias.line(t))} Which thinking bias is shown?`),
       bias.name,
       stableShuffle(otherNames, `${bias.name}:${index}`).slice(0, 3),
       bias.explanation,
@@ -823,13 +824,13 @@ function tradeoffItems() {
     const cost = difficulty <= 2
       ? `requires staff time that could be used for other ${t.field} work`
       : `may move resources away from a smaller group that was not included in the test`;
-    const prompt = `${cap(t.actor)} can ${t.action}. The likely benefit is better results for ${t.metric}, but the plan ${cost}. Which statement best names the tradeoff?`;
+    const prompt = `${cap(t.actor)} can ${t.action}, which may ${resultGoal(t)} among ${t.group}. But the plan ${cost}. Which statement best names the tradeoff?`;
     return makeItem(
       "tradeoffs",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
-      `The plan may improve results for ${t.metric} while also using resources that could serve another need.`,
+      withFrame(difficulty, prompt),
+      `The plan may ${resultGoal(t)} while also using resources that could serve another need.`,
       [
         `The plan has benefits, so it cannot have costs.`,
         `The plan has costs, so it cannot have benefits.`,
@@ -848,7 +849,7 @@ function beliefUpdateItems() {
       difficulty <= 2
         ? `one small test where ${t.metric} ${t.outcome}`
         : `a random comparison where similar groups with and without the change were measured`;
-    const prompt = `You were unsure whether ${t.actionGerund} would improve results for ${t.metric}. You now learn about ${evidence}. How should your confidence change?`;
+    const prompt = `You are unsure whether ${t.actionGerund} would ${resultGoal(t)} among ${t.group}. Then you learn about ${evidence}. How should your confidence change?`;
     const correct =
       difficulty <= 2
         ? "Increase confidence somewhat, while staying open to better evidence."
@@ -857,7 +858,7 @@ function beliefUpdateItems() {
       "belief_update",
       index,
       difficulty,
-      contextualPrompt(t, difficulty, prompt),
+      withFrame(difficulty, prompt),
       correct,
       [
         "Become completely certain the action works in every setting.",
