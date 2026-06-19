@@ -161,38 +161,38 @@ const skills = [
 ];
 
 const topics = [
-  topic("city transit", "the city council", "extend evening bus service", "late-shift commute complaints", "fell by 22%", "a large employer started a shuttle the same month", "the buses were repainted blue", "late-shift workers", "transportation"),
-  topic("school phones", "the school board", "require phone lockers during class", "classroom disruption reports", "fell by 31%", "a new hall monitor schedule began at the same time", "the lockers are installed near the gym", "ninth-grade teachers", "education"),
-  topic("medication reminders", "the hospital", "send medication reminder texts", "missed-dose reports", "fell by 18%", "pharmacists also began follow-up calls", "the text messages use a green icon", "patients over 60", "health"),
-  topic("four-day workweek", "the company", "test a four-day workweek", "voluntary turnover", "fell by 15%", "the company also raised salaries that quarter", "the test calendar starts on a Monday", "software engineers", "workplace"),
-  topic("unit pricing", "the grocery chain", "add larger unit-price labels", "shopper overpayment complaints", "fell by 27%", "a local consumer group ran a price-literacy campaign", "the labels use bold numbers", "weekly shoppers", "retail"),
-  topic("library fines", "the library", "waive late fines for children's books", "library card renewals", "rose by 19%", "the library also opened on Sundays", "the checkout desk moved six feet", "families with children", "public services"),
-  topic("login security", "the platform", "require two-factor login for admins", "account takeover incidents", "fell by 44%", "some high-risk accounts were removed earlier", "the login button changed color", "site administrators", "technology"),
-  topic("street lighting", "the neighborhood association", "add brighter streetlights", "reported thefts", "fell by 12%", "police patrols increased during the same period", "the poles are made of aluminum", "residents on Maple Street", "public safety"),
-  topic("peer tutoring", "the university", "expand peer tutoring in statistics", "course pass rates", "rose by 11%", "the final exam was also shortened", "the tutoring room has new chairs", "first-year students", "education"),
-  topic("menu labels", "the restaurant group", "show calorie labels on menus", "dessert orders", "fell by 16%", "dessert prices increased at the same time", "the menus are printed on thicker paper", "lunch customers", "nutrition"),
-  topic("overdraft warnings", "the bank", "send overdraft warning texts", "overdraft fees", "fell by 24%", "the bank also changed its fee grace period", "the texts arrive from a short code", "checking-account customers", "finance"),
-  topic("park entry", "the park service", "use timed-entry passes", "trail crowding complaints", "fell by 33%", "a nearby trail reopened that month", "the passes include a small map", "weekend hikers", "environment"),
-  topic("museum access", "the museum", "offer free admission on Fridays", "family visits", "rose by 29%", "a new children's exhibit opened the same week", "the tickets are scanned at the east door", "local families", "culture"),
-  topic("concussion checks", "the sports league", "add mandatory concussion checks", "repeat head injuries", "fell by 21%", "the league also shortened the season", "the checklist is printed on yellow paper", "youth soccer players", "sports"),
-  topic("donor receipts", "the nonprofit", "send donation receipts within one day", "donor retention", "rose by 14%", "the nonprofit also launched a matching campaign", "the receipt subject line changed", "first-time donors", "nonprofit"),
-  topic("ergonomic training", "the warehouse", "offer monthly ergonomic training", "back-injury claims", "fell by 20%", "new lifting equipment arrived that quarter", "the training room has a projector", "warehouse staff", "workplace safety"),
-  topic("compost bins", "the city sanitation office", "place compost bins in apartment lobbies", "landfill waste from participating buildings", "fell by 17%", "trash pickup schedules also changed", "the bins have foot pedals", "apartment residents", "environment"),
-  topic("privacy defaults", "the app maker", "make profiles private by default", "public profile exposure", "fell by 48%", "the app also deleted inactive accounts", "the privacy screen uses a shield icon", "new users", "technology"),
-  topic("same-day appointments", "the clinic", "reserve same-day appointment slots", "patient no-show rates", "fell by 13%", "the clinic also began reminder calls", "the appointment cards are white", "primary-care patients", "health"),
-  topic("boarding zones", "the airline", "board passengers by seat zone", "average boarding time", "fell by 9%", "the airline also reduced carry-on size limits", "the gate signs are backlit", "domestic passengers", "travel"),
-  topic("repair portal", "the landlord", "launch an online repair portal", "unresolved repair requests", "fell by 26%", "the landlord hired two additional technicians", "the portal uses a house logo", "tenants", "housing"),
-  topic("cafeteria layout", "the cafeteria", "move fruit to the front of the line", "fruit purchases", "rose by 23%", "a fruit discount started that week", "the fruit bowls are ceramic", "middle-school students", "food"),
-  topic("call coaching", "the call center", "give agents weekly script coaching", "customer complaint rates", "fell by 18%", "the call queue was also shortened", "the coaching slides use blue headers", "support agents", "customer support"),
-  topic("leak alerts", "the water utility", "send household leak alerts", "average household water use", "fell by 10%", "a rainy season began during the study", "the alerts include a droplet icon", "homeowners", "utilities"),
-  topic("camera reminders", "the police department", "send body-camera activation reminders", "missing-camera-footage reports", "fell by 35%", "the department also updated supervisor reviews", "the reminder tone is two beeps", "patrol officers", "governance"),
-  topic("ballot tracking", "the election office", "offer mail-ballot tracking", "voter status calls", "fell by 42%", "the office also expanded its phone staff", "the tracking page uses county colors", "mail voters", "election administration"),
-  topic("spaced review", "the tutoring app", "send spaced-review prompts", "quiz retention scores", "rose by 12%", "the app also changed the quiz format", "the prompts use a bell icon", "language learners", "learning"),
-  topic("gym orientation", "the gym", "offer a beginner orientation", "new-member cancellations", "fell by 19%", "the gym also discounted annual plans", "the orientation mats are black", "new gym members", "fitness"),
-  topic("driving feedback", "the insurer", "send safe-driving feedback", "minor crash claims", "fell by 8%", "fuel prices changed driving patterns that month", "the feedback dashboard uses stars", "policyholders", "insurance"),
-  topic("correction box", "the newsroom", "place corrections at the top of articles", "reader trust ratings", "rose by 7%", "the newsroom also hired a public editor", "the correction box has a gray border", "newsletter readers", "media"),
-  topic("price signs", "the farmers market", "require clearer price signs", "price disputes", "fell by 28%", "the market also added a help desk", "the signs are laminated", "weekend shoppers", "local commerce"),
-  topic("quiet-hours texts", "the hotel", "send quiet-hours texts to guests", "noise complaints", "fell by 30%", "the hotel also changed room assignments", "the texts are sent at 8 p.m.", "hotel guests", "hospitality")
+  topic("evening bus service for late-shift workers", "the city council", "extend evening bus service until midnight", "late-shift commute complaints", "fell by 22%", "a large employer started a private shuttle the same month", "the new buses were repainted blue", "late-shift workers", "transportation"),
+  topic("classroom phone lockers", "the school board", "require phone lockers during class", "classroom disruption reports", "fell by 31%", "a new hall monitor schedule began at the same time", "the lockers are installed near the gym", "ninth-grade classrooms", "education"),
+  topic("medication reminder texts for older patients", "the hospital", "send medication reminder texts before evening doses", "missed-dose reports", "fell by 18%", "pharmacists also began follow-up calls", "the text messages use a green pill icon", "patients over 60", "health"),
+  topic("four-day workweek test for software engineers", "the company", "test a Monday-through-Thursday workweek", "staff quitting", "fell by 15%", "the company also raised salaries that quarter", "the test calendar starts on a Monday", "software engineers", "workplace"),
+  topic("larger grocery unit-price labels", "the grocery chain", "add larger unit-price labels on shelf tags", "shopper overpayment complaints", "fell by 27%", "a local consumer group ran a price-literacy campaign", "the shelf labels use bold black numbers", "weekly grocery shoppers", "retail"),
+  topic("late fines on children's books", "the library", "waive late fines for children's books", "library card renewals", "rose by 19%", "the library also opened on Sundays", "the children's-book checkout desk moved six feet", "families checking out children's books", "public services"),
+  topic("two-factor login for site administrators", "the platform", "require two-factor login for site administrators", "admin account takeovers", "fell by 44%", "some high-risk admin accounts were removed earlier", "the login button changed from green to blue", "site administrators", "technology"),
+  topic("brighter streetlights on Maple Street", "the neighborhood association", "add brighter LED streetlights on Maple Street", "reported thefts", "fell by 12%", "police patrols increased during the same period", "the new light poles are made of aluminum", "residents on Maple Street", "public safety"),
+  topic("peer tutoring for first-year statistics students", "the university", "expand peer tutoring in statistics", "course pass rates", "rose by 11%", "the final exam was also shortened", "the tutoring room has new chairs", "first-year statistics students", "education"),
+  topic("calorie labels on restaurant menus", "the restaurant group", "show calorie labels on printed lunch menus", "dessert orders", "fell by 16%", "dessert prices increased at the same time", "the lunch menus are printed on thicker paper", "lunch customers", "nutrition"),
+  topic("bank overdraft warning texts", "the bank", "send overdraft warning texts before fees post", "overdraft fees", "fell by 24%", "the bank also changed its fee grace period", "the warning texts arrive from a short code", "checking-account customers", "finance"),
+  topic("timed-entry passes for weekend park trails", "the park service", "use timed-entry passes for weekend trail visits", "trail crowding complaints", "fell by 33%", "a nearby trail reopened that month", "the digital passes include a small trail map", "weekend trail hikers", "environment"),
+  topic("free Friday museum admission", "the museum", "offer free admission on Fridays", "family visits", "rose by 29%", "a new children's exhibit opened the same week", "the Friday tickets are scanned at the east door", "local families", "culture"),
+  topic("youth soccer concussion checks", "the sports league", "add mandatory sideline concussion checks", "repeat head injuries", "fell by 21%", "the league also shortened the season", "the concussion checklist is printed on yellow paper", "youth soccer players", "sports"),
+  topic("same-day donation receipts", "the nonprofit", "send donation receipts within one day", "donor retention", "rose by 14%", "the nonprofit also launched a matching campaign", "the receipt email subject line changed", "first-time donors", "nonprofit"),
+  topic("warehouse ergonomic training", "the warehouse", "offer monthly lifting-safety and ergonomic training", "back-injury claims", "fell by 20%", "new lifting equipment arrived that quarter", "the training room has a ceiling-mounted projector", "warehouse staff", "workplace safety"),
+  topic("apartment-lobby compost bins", "the city sanitation office", "place compost bins in apartment lobbies", "landfill waste from participating buildings", "fell by 17%", "trash pickup schedules also changed", "the lobby compost bins have foot pedals", "apartment residents", "environment"),
+  topic("private-by-default app profiles", "the app maker", "make new user profiles private by default", "publicly visible profiles", "fell by 48%", "the app also deleted inactive accounts", "the privacy screen uses a shield icon", "new app users", "technology"),
+  topic("same-day clinic appointment slots", "the clinic", "reserve same-day appointment slots", "patient no-show rates", "fell by 13%", "the clinic also began reminder calls", "the appointment cards are white", "primary-care patients", "health"),
+  topic("seat-zone airline boarding", "the airline", "board passengers by seat zone", "average boarding time", "fell by 9%", "the airline also reduced carry-on size limits", "the gate signs are backlit", "domestic flight passengers", "travel"),
+  topic("online apartment repair portal", "the landlord", "launch an online apartment repair portal", "unresolved repair requests", "fell by 26%", "the landlord hired two additional repair technicians", "the repair portal uses a house logo", "apartment tenants", "housing"),
+  topic("fruit placement in a school cafeteria line", "the cafeteria", "move fruit bowls to the front of the cafeteria line", "fruit purchases", "rose by 23%", "a fruit discount started that week", "the fruit bowls are ceramic", "middle-school students", "food"),
+  topic("weekly call-center script coaching", "the call center", "give support agents weekly script coaching", "customer complaint rates", "fell by 18%", "the call queue was also shortened", "the coaching slides use blue headers", "support agents", "customer support"),
+  topic("household water-leak alerts", "the water utility", "send automatic household water-leak alerts", "average household water use", "fell by 10%", "a rainy season began during the study", "the water-leak alert screen includes a blue droplet icon", "local homeowners", "utilities"),
+  topic("body-camera activation reminders", "the police department", "send body-camera activation reminders before patrol shifts", "missing-camera-footage reports", "fell by 35%", "the department also updated supervisor reviews", "the reminder tone is two beeps", "patrol officers", "governance"),
+  topic("county mail-ballot tracking", "the election office", "offer online mail-ballot tracking", "phone calls asking ballot status", "fell by 42%", "the office also expanded its phone staff", "the ballot-tracking page uses county colors", "mail voters", "election administration"),
+  topic("language-learning spaced-review prompts", "the tutoring app", "send spaced-review prompts for language vocabulary", "vocabulary retention quiz scores", "rose by 12%", "the app also changed the quiz format", "the review prompts use a bell icon", "language learners", "learning"),
+  topic("beginner gym orientation", "the gym", "offer a beginner gym orientation", "new-member cancellations", "fell by 19%", "the gym also discounted annual plans", "the orientation mats are black", "new gym members", "fitness"),
+  topic("safe-driving feedback for policyholders", "the insurer", "send weekly safe-driving feedback", "reported minor crashes", "fell by 8%", "fuel prices changed driving patterns that month", "the feedback dashboard uses star ratings", "auto-insurance policyholders", "insurance"),
+  topic("top-of-article correction boxes", "the newsroom", "place corrections at the top of articles", "reader trust ratings", "rose by 7%", "the newsroom also hired a public editor", "the correction box has a gray border", "newsletter readers", "media"),
+  topic("clearer farmers market price signs", "the farmers market", "require clearer price signs at vendor stalls", "price disputes", "fell by 28%", "the market also added a weekend help desk", "the stall price signs are laminated", "weekend farmers market shoppers", "local commerce"),
+  topic("hotel quiet-hours text reminders", "the hotel", "send quiet-hours text reminders to hotel guests", "noise complaints from guest rooms", "fell by 30%", "the hotel also changed room assignments", "the quiet-hours text reminder uses a small moon icon", "overnight hotel guests", "hospitality")
 ];
 
 const vagueTerms = [
@@ -329,7 +329,7 @@ function topic(domain, actor, action, metric, outcome, alternative, irrelevant, 
     irrelevant,
     group,
     field,
-    evidence: `a small test found that ${metric} ${outcome}`,
+    evidence: `a small test with ${group} found that ${metric} ${outcome}`,
     interestedParty: `a company that would make money if ${actor} chose to ${action}`,
     expert: `a ${field} expert who has studied similar programs`
   };
@@ -344,10 +344,12 @@ function lowerFirst(text) {
 }
 
 function phrase(text) {
-  if (/[ap]\.m\.$/.test(text)) {
-    return text;
-  }
   return text.replace(/[.!?]+$/, "");
+}
+
+function asSentence(text) {
+  const clean = text.trim();
+  return /[.!?]$/.test(clean) ? cap(clean) : `${cap(clean)}.`;
 }
 
 function gerundize(action) {
@@ -431,11 +433,11 @@ function withFrame(difficulty, prompt) {
 }
 
 function decisionSetup(t) {
-  return `${cap(t.actor)} is weighing a proposal for ${t.group}: ${t.action}.`;
+  return `${cap(t.actor)} is weighing a proposal aimed at ${t.group}: ${t.action}.`;
 }
 
 function trialResult(t) {
-  return `${cap(t.evidence)}.`;
+  return asSentence(t.evidence);
 }
 
 function resultAction(t) {
@@ -479,9 +481,9 @@ function claimItems() {
       withFrame(difficulty, prompt),
       `${cap(t.actor)} should ${t.action}.`,
       [
-        `${cap(t.evidence)}.`,
+        asSentence(t.evidence),
         `${cap(t.actor)} has proven the idea will work everywhere.`,
-        `${cap(t.irrelevant)}.`,
+        asSentence(t.irrelevant),
         `${cap(t.group)} are the only people affected.`
       ],
       `${speaker}'s main claim is the recommendation. The test result is a reason offered for that claim, not the claim itself.`,
@@ -518,9 +520,9 @@ function argumentItems() {
     const speaker = speakerName(offset, difficulty);
     const conclusionText = `${t.actor} should ${t.action}.`;
     const conclusion = cap(conclusionText);
-    const premise = `${cap(t.evidence)}.`;
-    const background = `${cap(t.irrelevant)}.`;
-    const extra = `${cap(t.group)} are the group the proposal is meant to help.`;
+    const premise = asSentence(t.evidence);
+    const background = asSentence(t.irrelevant);
+    const extra = `The proposal is meant mainly for ${t.group}.`;
     const prompt = `At a meeting about ${t.domain}, ${speaker} says, "${background} ${premise} Therefore, ${conclusionText} ${extra}" Which sentence is ${speaker}'s conclusion?`;
     return makeItem(
       "find_argument",
@@ -546,7 +548,7 @@ function assumptionItems() {
       withFrame(difficulty, prompt),
       `The small test is likely to work the same way when the idea is used more widely.`,
       [
-        `${cap(phrase(t.irrelevant))}, so that detail is the most important fact about the idea.`,
+        `${asSentence(t.irrelevant)} That side detail is the most important fact about the idea.`,
         `${cap(t.metric)} can never be measured reliably.`,
         `${cap(t.actor)} should reject every alternative to the idea.`,
         `${cap(t.group)} caused the test result by themselves.`
@@ -560,17 +562,17 @@ function assumptionItems() {
 function relevanceItems() {
   return buildSkill("relevance", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const prompt = `${speaker} claims the proposal to ${t.action} will ${resultGoal(t)} among ${t.group}. Which fact matters most for checking ${speaker}'s claim?`;
+    const prompt = `${speaker} claims the proposal to ${t.action} will ${resultGoal(t)}. Which fact matters most for checking that claim?`;
     return makeItem(
       "relevance",
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      `A similar group tried the same action, and results for ${t.metric} improved in similar conditions.`,
+      `A similar group tried ${t.actionGerund}, and ${t.metric} moved in the hoped-for direction under similar conditions.`,
       [
-        `${cap(t.irrelevant)}.`,
+        asSentence(t.irrelevant),
         `The idea was discussed on a Tuesday afternoon.`,
-        `The report includes a photograph of ${t.group}.`,
+        `The report includes a photograph of ${t.group} in the setting where the plan would be used.`,
         `The office uses a newer font in this year's documents.`
       ],
       `Relevant evidence directly helps check whether the proposed action affects the result ${speaker} claimed.`,
@@ -608,7 +610,7 @@ function evidenceItems() {
 function sourceItems() {
   return buildSkill("source_reliability", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const prompt = `${speaker} reads a report that recommends ${t.actor} ${t.action}. The report also claims the plan would ${resultGoal(t)}. Which detail would make ${speaker} trust the report less?`;
+    const prompt = `${speaker} reads a report about ${t.domain}. The report recommends that ${t.actor} ${t.action}, and it claims the plan would ${resultGoal(t)}. Which detail would make ${speaker} trust the report less?`;
     return makeItem(
       "source_reliability",
       index,
@@ -630,7 +632,7 @@ function sourceItems() {
 function logicalGapItems() {
   const patterns = [
     (t, speaker) => ({
-      prompt: `At a planning meeting, ${speaker} says, "In one group, ${t.metric} ${t.outcome} after ${t.actionGerund}. So the same action will work in every ${t.domain} setting." What is the logical gap in ${speaker}'s reasoning?`,
+      prompt: `At a planning meeting about ${t.domain}, ${speaker} says, "In one group, ${t.metric} ${t.outcome} after ${t.actionGerund}. So this plan will work in every similar setting." What is the logical gap in ${speaker}'s reasoning?`,
       correct: "It generalizes from one case to every case without enough support.",
       explanation: "The logical gap is the jump from one case to every case. One success does not prove the same thing will happen everywhere."
     }),
@@ -683,7 +685,7 @@ function fallacyItems() {
       "fallacies",
       index,
       difficulty,
-      withFrame(difficulty, `During a debate about ${t.actor}'s proposal, ${fallacy.line(t, speaker, otherSpeaker)} Which fallacy is showing up?`),
+      withFrame(difficulty, `During a debate about the ${t.domain} proposal, ${fallacy.line(t, speaker, otherSpeaker)} Which fallacy is showing up?`),
       fallacy.name,
       stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3),
       `${fallacy.name}: ${fallacy.explanation}`,
@@ -698,8 +700,8 @@ function probabilityItems() {
     const percent = percentages[(offset + difficulty) % percentages.length];
     const prompt =
       difficulty <= 3
-        ? `A month-ahead forecast for the ${t.domain} proposal says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)}. What does that percentage mean?`
-        : `A screening tool for the ${t.domain} proposal flags possible problems. It catches many real problems, but it also gives false alarms, and the problem is uncommon. What is the best way to treat a positive signal?`;
+        ? `A month-ahead forecast for ${t.domain} says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)}. What does that percentage mean?`
+        : `A screening tool connected to ${t.domain} flags possible problems. It catches many real problems, but it also gives false alarms, and the problem is uncommon. What is the best way to treat a positive signal?`;
     const correct =
       difficulty <= 3
         ? `In many similar cases, improvement would happen about ${percent} out of 100 times.`
@@ -782,9 +784,9 @@ function causationItems() {
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      `${cap(t.alternative)}.`,
+      asSentence(t.alternative),
       [
-        `${cap(t.irrelevant)}.`,
+        asSentence(t.irrelevant),
         `No event can ever have more than one possible cause.`,
         `A change of ${t.outcomeAmount} is always too small to measure.`,
         `${cap(t.actor)} is mentioned before ${t.metric} in the sentence.`
@@ -804,9 +806,9 @@ function alternativeItems() {
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      `${cap(t.alternative)}.`,
+      asSentence(t.alternative),
       [
-        `${cap(t.irrelevant)}.`,
+        asSentence(t.irrelevant),
         `${cap(t.metric)} cannot change under any circumstances.`,
         `The result must be false because it includes a percentage.`,
         `${cap(t.group)} were not mentioned in the policy name.`
@@ -842,7 +844,7 @@ function tradeoffItems() {
     const cost = difficulty <= 2
       ? `requires staff time that could be used for other ${t.field} work`
       : `may move resources away from a smaller group that was not included in the test`;
-    const prompt = `${cap(t.actor)} can ${t.action}, which may ${resultGoal(t)} among ${t.group}. But the plan ${cost}. Which statement best names the tradeoff?`;
+    const prompt = `${cap(t.actor)} can ${t.action}, which may ${resultGoal(t)}. But the plan ${cost}. Which statement best names the tradeoff?`;
     return makeItem(
       "tradeoffs",
       index,
@@ -867,7 +869,7 @@ function beliefUpdateItems() {
       difficulty <= 2
         ? `one small test where ${t.metric} ${t.outcome}`
         : `a random comparison where similar groups with and without the change were measured`;
-    const prompt = `You are unsure whether ${t.actionGerund} would ${resultGoal(t)} among ${t.group}. Then you learn about ${evidence}. How should your confidence change?`;
+    const prompt = `You are unsure whether ${t.actionGerund} would ${resultGoal(t)}. Then you learn about ${evidence}. How should your confidence change?`;
     const correct =
       difficulty <= 2
         ? "Increase confidence somewhat, while staying open to better evidence."

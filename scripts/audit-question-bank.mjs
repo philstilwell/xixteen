@@ -23,7 +23,19 @@ const CLUNKY_PROMPT_PATTERNS = [
   ["raw grammar artifact", /\b(whether|for|supports) (require|extend|send|test|add|waive|show|use|offer|reserve|launch|move|give|place|make|board)\b/i],
   ["bad result verb", /(complaints|reports|incidents|claims|fees|orders|requests|rates) will reduce/i],
   ["double helper phrasing", /helps by helping/i],
-  ["old result phrasing", /improve results for/i]
+  ["old result phrasing", /improve results for/i],
+  ["underspecified leak-alert topic", /\babout leak alerts\b/i],
+  ["underspecified household leak alerts", /\bsend household leak alerts\b/i],
+  ["underspecified quiet-hours texts", /\bquiet-hours texts\b/i],
+  ["bare hotel guests wording", /\bquiet-hours text reminders? to guests\b/i],
+  ["generic same-action wording", /\bsame action\b/i],
+  ["double p.m. punctuation", /\bp\.m\.\./i]
+];
+const CLUNKY_CHOICE_PATTERNS = [
+  ["underspecified household leak alerts", /\bsend household leak alerts\b/i],
+  ["underspecified quiet-hours texts", /\bquiet-hours texts\b/i],
+  ["generic same-action wording", /\bsame action\b/i],
+  ["double p.m. punctuation", /\bp\.m\.\./i]
 ];
 const RUBRIC_BY_SKILL = {
   clarify_claim: {
@@ -229,6 +241,11 @@ function checkCoherence(item, skill, issues, choiceTexts, answer) {
     }
     if (/undefined|\bNaN\b/.test(choice.text)) {
       addIssue(issues, "coherence", `choice ${choice.id} contains a generated artifact`);
+    }
+    for (const [label, pattern] of CLUNKY_CHOICE_PATTERNS) {
+      if (pattern.test(choice.text)) {
+        addIssue(issues, "coherence", `choice ${choice.id} uses unclear wording: ${label}`);
+      }
     }
   }
   if (/undefined|\bNaN\b/.test(item.prompt + item.explanation)) {
