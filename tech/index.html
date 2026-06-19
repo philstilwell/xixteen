@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive,noimageindex" />
+    <meta name="googlebot" content="noindex,nofollow,noarchive,noimageindex" />
+    <title>XiXteen Technical Notes</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <meta name="theme-color" content="#1f2a2e" />
+    <link rel="stylesheet" href="../src/styles.css" />
+  </head>
+  <body class="tech-page">
+    <header class="topbar tech-topbar">
+      <div class="brand-lockup">
+        <p class="eyebrow">Noindex technical page</p>
+        <h1>XiXteen Tech</h1>
+      </div>
+      <div class="topbar-actions">
+        <a class="secondary-link" href="../" rel="nofollow">Back to XiXteen</a>
+      </div>
+    </header>
+
+    <main class="tech-main">
+      <section class="tech-hero" aria-labelledby="tech-title">
+        <div class="tech-hero-copy">
+          <p class="eyebrow">Production flow</p>
+          <h2 id="tech-title">How the site moves from code to visitors.</h2>
+          <p>
+            XiXteen is a static learning app with a small Cloudflare backend for scoring,
+            profiles, and leaderboards. The quiz content is committed as data files; no paid
+            AI API is needed at runtime.
+          </p>
+        </div>
+        <figure class="tech-diagram">
+          <img
+            src="../assets/tech-flow.png"
+            alt="Infographic showing GitHub repository files flowing through GitHub Actions, Cloudflare Pages, Functions, D1, DNS, and visitors."
+          />
+          <figcaption>Current production path for code, data, scoring, and DNS.</figcaption>
+        </figure>
+      </section>
+
+      <section class="tech-grid" aria-label="Technical overview">
+        <article class="tech-card">
+          <h2>01 Source</h2>
+          <p>
+            The GitHub repo stores the public site, the generated quiz corpus, daily quiz
+            schedules, skill images, favicon, Pages Functions, D1 schema, and seed exporter.
+          </p>
+          <ul>
+            <li><code>index.html</code> starts the public app.</li>
+            <li><code>data/question-bank.json</code> holds 2,560 objective items.</li>
+            <li><code>data/daily-quizzes.json</code> assigns one item per skill per day.</li>
+          </ul>
+        </article>
+
+        <article class="tech-card">
+          <h2>02 Deploys</h2>
+          <p>
+            GitHub Actions deploys a static backup to GitHub Pages. Cloudflare Pages is the
+            production host because it can run the scoring Functions and bind to D1.
+          </p>
+          <ul>
+            <li>GitHub Actions runs the static Pages workflow on pushes to <code>main</code>.</li>
+            <li>Cloudflare Pages deploys from a clean commit with Wrangler.</li>
+            <li><code>xixteen.pages.dev</code> remains the stable Cloudflare project URL.</li>
+          </ul>
+        </article>
+
+        <article class="tech-card">
+          <h2>03 Runtime</h2>
+          <p>
+            Visitors load static HTML, CSS, JavaScript, images, and JSON. When a public score is
+            submitted, the browser calls Cloudflare Pages Functions under <code>/api</code>.
+          </p>
+          <ul>
+            <li><code>/api/score</code> validates and records a completed daily quiz.</li>
+            <li><code>/api/leaderboard</code> returns daily or weekly public rankings.</li>
+            <li><code>/api/profile</code> returns per-skill stats for the local participant.</li>
+          </ul>
+        </article>
+
+        <article class="tech-card">
+          <h2>04 Database</h2>
+          <p>
+            Cloudflare D1 stores normalized skills, items, choices, daily quizzes, participants,
+            score submissions, attempts, and skill stats.
+          </p>
+          <ul>
+            <li>The app scores against server-side correct answers.</li>
+            <li>Fast or duplicate submissions can be held out of public boards.</li>
+            <li>Skill stats update after accepted daily submissions.</li>
+          </ul>
+        </article>
+
+        <article class="tech-card">
+          <h2>05 DNS</h2>
+          <p>
+            Cloudflare is authoritative for <code>xixteen.com</code>. The apex and <code>www</code>
+            hostnames point to the Cloudflare Pages project.
+          </p>
+          <ul>
+            <li>Namecheap nameservers: <code>jack.ns.cloudflare.com</code> and <code>tia.ns.cloudflare.com</code>.</li>
+            <li><code>xixteen.com</code> is active with SSL enabled.</li>
+            <li><code>www.xixteen.com</code> is also attached to the Pages project.</li>
+          </ul>
+        </article>
+
+        <article class="tech-card">
+          <h2>06 Privacy</h2>
+          <p>
+            The app avoids account creation. It keeps a local participant id in the browser and
+            only asks for a display name when someone wants a public leaderboard score.
+          </p>
+          <ul>
+            <li>Leaderboard entries show display name, score, total, time, and submission time.</li>
+            <li>Profile stats are tied to the local participant id.</li>
+            <li>No runtime AI prompt or user answer is sent to an AI provider.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="tech-notes" aria-labelledby="ops-title">
+        <div>
+          <p class="eyebrow">Operations</p>
+          <h2 id="ops-title">What to remember when changing the site.</h2>
+        </div>
+        <div class="tech-note-list">
+          <p>
+            Run <code>npm run check</code> before shipping corpus or UI changes. It regenerates,
+            validates, and audits the 16-skill quiz set.
+          </p>
+          <p>
+            If the D1 seed format changes, run <code>npm run db:seed</code>, then apply the
+            resulting SQL with Wrangler. Remote D1 rejects SQL transaction wrappers.
+          </p>
+          <p>
+            After a Cloudflare Pages deploy, test both the homepage and an API route. DNS caches
+            may briefly show old GitHub records even after authoritative Cloudflare DNS is right.
+          </p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

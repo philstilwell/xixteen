@@ -984,10 +984,141 @@ main {
   text-decoration: none;
 }
 
+.tech-page {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, 0.94), rgba(247, 243, 234, 0.99)),
+    repeating-linear-gradient(90deg, rgba(31, 42, 46, 0.03) 0 1px, transparent 1px 30px);
+}
+
+.tech-topbar {
+  align-items: flex-start;
+}
+
+.tech-main {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.tech-hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.34fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 22px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.tech-hero-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.tech-hero-copy h2,
+.tech-notes h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.tech-hero-copy h2 {
+  font-size: 30px;
+  line-height: 1.08;
+}
+
+.tech-hero-copy p,
+.tech-card p,
+.tech-note-list p,
+.tech-diagram figcaption {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.tech-diagram {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.tech-diagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.tech-diagram figcaption {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tech-card,
+.tech-notes {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.82);
+  box-shadow: var(--shadow);
+}
+
+.tech-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 16px;
+}
+
+.tech-card h2 {
+  margin: 0;
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.tech-card ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.42;
+}
+
+.tech-card code,
+.tech-note-list code {
+  padding: 1px 4px;
+  border-radius: 5px;
+  background: rgba(31, 42, 46, 0.08);
+  color: var(--ink);
+  font-size: 0.92em;
+}
+
+.tech-notes {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.28fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px;
+}
+
+.tech-note-list {
+  display: grid;
+  gap: 10px;
+}
+
 @media (max-width: 1100px) {
   .gallery-shell,
   .workbench,
-  .teacher-section {
+  .teacher-section,
+  .tech-hero,
+  .tech-notes {
     grid-template-columns: 1fr;
   }
 
@@ -1000,6 +1131,10 @@ main {
       "quiz"
       "profile"
       "leaderboard";
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1048,7 +1183,8 @@ main {
   }
 
   .practice-dock,
-  .teacher-grid {
+  .teacher-grid,
+  .tech-grid {
     grid-template-columns: 1fr;
   }
 
