@@ -13,7 +13,7 @@ export async function onRequestPost({ request, env }) {
   const participantId = cleanId(body.participantId);
   const displayName = cleanDisplayName(body.displayName);
   const quizDate = cleanDate(body.quizDate);
-  const durationMs = Math.max(0, Math.min(Number.parseInt(body.durationMs || "0", 10), 60 * 60 * 1000));
+  const durationMs = cleanDuration(body.durationMs, 60 * 60 * 1000);
   const answers = body.answers && typeof body.answers === "object" ? body.answers : null;
 
   if (!participantId || !displayName || !quizDate || !answers) {
@@ -47,11 +47,13 @@ export async function onRequestPost({ request, env }) {
   }
 
   const scored = rows.map((row) => {
-    const selectedKey = cleanChoiceKey(answers[row.item_id]);
+    const answer = normalizeAnswer(answers[row.item_id]);
+    const selectedKey = cleanChoiceKey(answer.choiceId);
     return {
       itemId: row.item_id,
       skillId: row.skill_id,
       selectedKey,
+      responseMs: answer.responseMs,
       correct: selectedKey === row.correct_choice_key
     };
   });
@@ -90,9 +92,9 @@ export async function onRequestPost({ request, env }) {
           .prepare(`
             INSERT INTO attempts
               (id, participant_id, quiz_id, item_id, selected_choice_id, correct, response_ms, context)
-            VALUES (?, ?, ?, ?, ?, ?, 0, 'daily')
+            VALUES (?, ?, ?, ?, ?, ?, ?, 'daily')
           `)
-          .bind(crypto.randomUUID(), participantId, quiz.id, row.itemId, selectedChoiceId, row.correct ? 1 : 0)
+          .bind(crypto.randomUUID(), participantId, quiz.id, row.itemId, selectedChoiceId, row.correct ? 1 : 0, row.responseMs)
       );
       statements.push(
         env.DB
@@ -113,13 +115,58 @@ export async function onRequestPost({ request, env }) {
     await env.DB.batch(statements);
   }
 
+  const saved = await env.DB
+    .prepare(`
+      SELECT score, total_items AS totalItems, duration_ms AS durationMs, submitted_at AS submittedAt
+      FROM score_submissions
+      WHERE participant_id = ? AND quiz_id = ?
+    `)
+    .bind(participantId, quiz.id)
+    .first();
+
+  const rank = saved
+    ? await dailyRank(env.DB, quiz.id, saved.score, saved.durationMs, saved.submittedAt)
+    : null;
+
   return json({
     accepted,
     quizDate,
-    score,
-    totalItems: 16,
-    durationMs
+    score: saved?.score ?? score,
+    totalItems: saved?.totalItems ?? 16,
+    durationMs: saved?.durationMs ?? durationMs,
+    submittedAt: saved?.submittedAt || null,
+    rank
   });
+}
+
+async function dailyRank(db, quizId, score, durationMs, submittedAt) {
+  const row = await db
+    .prepare(`
+      SELECT COUNT(*) + 1 AS rank
+      FROM score_submissions
+      WHERE quiz_id = ?
+        AND (
+          score > ?
+          OR (score = ? AND duration_ms < ?)
+          OR (score = ? AND duration_ms = ? AND submitted_at < ?)
+        )
+    `)
+    .bind(quizId, score, score, durationMs, score, durationMs, submittedAt)
+    .first();
+  return row?.rank || 1;
+}
+
+function normalizeAnswer(value) {
+  if (value && typeof value === "object") {
+    return {
+      choiceId: value.choiceId,
+      responseMs: cleanDuration(value.responseMs, 10 * 60 * 1000)
+    };
+  }
+  return {
+    choiceId: value,
+    responseMs: 0
+  };
 }
 
 function cleanId(value) {
@@ -140,6 +187,14 @@ function cleanDate(value) {
 function cleanChoiceKey(value) {
   const text = String(value || "").trim().toUpperCase();
   return /^[ABCD]$/.test(text) ? text : null;
+}
+
+function cleanDuration(value, max) {
+  const parsed = Number.parseInt(value || "0", 10);
+  if (!Number.isFinite(parsed)) {
+    return 0;
+  }
+  return Math.max(0, Math.min(parsed, max));
 }
 
 function json(payload, status = 200) {

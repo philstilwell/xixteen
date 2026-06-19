@@ -76,6 +76,7 @@ button {
 .primary-action,
 .secondary-action,
 .mode-button,
+.leaderboard-tab,
 .next-button,
 .choice-button,
 .icon-button,
@@ -109,6 +110,7 @@ button {
 .primary-action:hover,
 .secondary-action:hover,
 .mode-button:hover,
+.leaderboard-tab:hover,
 .next-button:hover,
 .choice-button:hover,
 .icon-button:hover,
@@ -213,6 +215,7 @@ main {
 .skill-card:focus-visible,
 .choice-button:focus-visible,
 .mode-button:focus-visible,
+.leaderboard-tab:focus-visible,
 .primary-action:focus-visible,
 .secondary-action:focus-visible,
 .next-button:focus-visible,
@@ -347,13 +350,34 @@ main {
   background: rgba(247, 243, 234, 0.78);
 }
 
+.leaderboard-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(247, 243, 234, 0.78);
+}
+
 .mode-button {
   padding: 0 12px;
   min-height: 32px;
   font-weight: 800;
 }
 
-.mode-button.is-active {
+.leaderboard-tab {
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.mode-button.is-active,
+.leaderboard-tab.is-active {
   background: var(--ink);
   color: var(--panel);
   border-color: var(--ink);
@@ -554,14 +578,48 @@ main {
   display: grid;
   gap: 8px;
   margin: 0;
-  padding-left: 22px;
+  padding: 0;
+  list-style: none;
 }
 
 .leaderboard-list li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
+}
+
+.leaderboard-list strong,
+.leaderboard-list span {
+  display: block;
+}
+
+.leaderboard-list span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.rank {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(31, 42, 46, 0.08);
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.leaderboard-note {
+  min-height: 18px;
+  margin: -6px 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .empty-state {
@@ -576,12 +634,113 @@ main {
   gap: 10px;
 }
 
+.score-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.score-card {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.score-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.score-card strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.submission-note {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 8px;
+  background: var(--panel);
+  line-height: 1.4;
+}
+
+.submission-note.is-submitted {
+  border-left-color: var(--green);
+}
+
+.submission-note.is-duplicate {
+  border-left-color: var(--gold);
+}
+
+.submission-note.is-local,
+.submission-note.is-submitting {
+  border-left-color: var(--blue);
+}
+
+.focus-panel,
+.review-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.focus-panel h3,
+.review-panel h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.focus-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.focus-chip {
+  display: grid;
+  gap: 4px;
+  min-height: 64px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  text-align: left;
+}
+
+.focus-chip strong {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.focus-chip span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .result-cell {
   min-height: 68px;
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
+}
+
+.result-cell.is-correct {
+  border-color: color-mix(in srgb, var(--green) 50%, var(--line));
+  background: rgba(92, 127, 81, 0.1);
+}
+
+.result-cell.is-missed {
+  border-color: color-mix(in srgb, var(--coral) 50%, var(--line));
+  background: rgba(217, 93, 71, 0.1);
 }
 
 .result-cell strong {
@@ -593,6 +752,30 @@ main {
 .result-cell span {
   color: var(--muted);
   font-size: 12px;
+}
+
+.review-list {
+  display: grid;
+  gap: 8px;
+}
+
+.review-list details {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.review-list summary {
+  cursor: pointer;
+  padding: 10px 12px;
+  font-weight: 850;
+}
+
+.review-list p {
+  margin: 0;
+  padding: 0 12px 10px;
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 @media (max-width: 1100px) {
@@ -630,7 +813,9 @@ main {
   }
 
   .skill-gallery,
-  .results-grid {
+  .results-grid,
+  .score-summary,
+  .focus-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -644,6 +829,14 @@ main {
   .section-head {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .leaderboard-tabs {
+    width: 100%;
+  }
+
+  .leaderboard-tab {
+    flex: 1;
   }
 }
 
@@ -663,5 +856,10 @@ main {
 
   .choice-button {
     grid-template-columns: 28px minmax(0, 1fr);
+  }
+
+  .score-summary,
+  .focus-list {
+    grid-template-columns: 1fr;
   }
 }

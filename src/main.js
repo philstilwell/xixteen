@@ -19,7 +19,10 @@ const state = {
   currentIndex: 0,
   answers: new Map(),
   startedAt: 0,
-  itemStartedAt: 0
+  itemStartedAt: 0,
+  leaderboardRange: "daily",
+  lastScoreSubmission: null,
+  apiAvailable: null
 };
 
 const els = {
@@ -31,6 +34,8 @@ const els = {
   profileSummary: document.querySelector("#profile-summary"),
   skillList: document.querySelector("#skill-list"),
   leaderboard: document.querySelector("#leaderboard-list"),
+  leaderboardTitle: document.querySelector("#leaderboard-title"),
+  leaderboardNote: document.querySelector("#leaderboard-note"),
   workbench: document.querySelector("#workbench")
 };
 
@@ -87,6 +92,13 @@ function bindEvents() {
     saveProfile();
     renderProfile();
     renderLeaderboard();
+  });
+
+  document.querySelectorAll("[data-leaderboard-range]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.leaderboardRange = button.dataset.leaderboardRange;
+      renderLeaderboard();
+    });
   });
 
   document.querySelectorAll(".mode-button").forEach((button) => {
@@ -191,6 +203,7 @@ function startQuiz(quiz, options = {}) {
   state.answers = new Map();
   state.startedAt = performance.now();
   state.itemStartedAt = performance.now();
+  state.lastScoreSubmission = null;
   renderQuiz();
   if (options.scroll !== false) {
     els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -284,7 +297,7 @@ function goNext() {
   finishQuiz();
 }
 
-function finishQuiz() {
+async function finishQuiz() {
   const durationMs = Math.round(performance.now() - state.startedAt);
   const results = state.quiz.items.map((item) => {
     const answer = state.answers.get(item.id);
@@ -299,7 +312,14 @@ function finishQuiz() {
   renderResults(results, score, durationMs);
   renderProfile();
   if (state.quiz.mode === "daily") {
-    submitScore(results, score, durationMs).finally(() => renderLeaderboard());
+    state.lastScoreSubmission = {
+      state: "submitting",
+      message: "Submitting your daily score..."
+    };
+    renderResults(results, score, durationMs);
+    state.lastScoreSubmission = await submitScore(results, score, durationMs);
+    renderResults(results, score, durationMs);
+    await renderLeaderboard();
   } else {
     renderLeaderboard();
   }
@@ -308,29 +328,80 @@ function finishQuiz() {
 function renderResults(results, score, durationMs) {
   els.quizProgress.style.width = "100%";
   const total = results.length;
+  const focusSkills = focusSkillsFromResults(results);
+  const missed = results.filter((result) => !result.correct);
+  const submission = state.lastScoreSubmission;
   els.quizPanel.innerHTML = `
-    <div class="question-meta">
-      <span class="pill">${score} of ${total}</span>
-      <span class="pill">${formatDuration(durationMs)}</span>
+    <div class="score-summary">
+      <div class="score-card">
+        <span>Score</span>
+        <strong>${score}/${total}</strong>
+      </div>
+      <div class="score-card">
+        <span>Time</span>
+        <strong>${formatDuration(durationMs)}</strong>
+      </div>
+      <div class="score-card">
+        <span>Mode</span>
+        <strong>${state.quiz.mode === "daily" ? "Daily" : "Practice"}</strong>
+      </div>
     </div>
     <p class="question-text">${resultMessage(score, total)}</p>
+    ${submission ? `<p class="submission-note is-${escapeAttribute(submission.state)}">${escapeHtml(submission.message)}</p>` : ""}
+    ${focusSkills.length > 0 ? `
+      <div class="focus-panel">
+        <h3>Practice next</h3>
+        <div class="focus-list">
+          ${focusSkills.map((entry) => `
+            <button class="focus-chip" type="button" data-focus-skill="${entry.skill.id}">
+              <strong>${skillCode(entry.skill)} ${escapeHtml(entry.skill.publicLabel)}</strong>
+              <span>${entry.correct}/${entry.total} on this run</span>
+            </button>
+          `).join("")}
+        </div>
+      </div>
+    ` : ""}
     <div class="results-grid">
       ${results.map((result) => {
         const skill = state.skillById.get(result.item.skill);
         return `
-          <div class="result-cell">
+          <div class="result-cell ${result.correct ? "is-correct" : "is-missed"}">
             <strong>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</strong>
             <span>${result.correct ? "Correct" : "Missed"} / Level ${result.item.difficulty}</span>
           </div>
         `;
       }).join("")}
     </div>
+    ${missed.length > 0 ? `
+      <div class="review-panel">
+        <h3>Review the misses</h3>
+        <div class="review-list">
+          ${missed.slice(0, 6).map((result) => {
+            const skill = state.skillById.get(result.item.skill);
+            const selected = result.item.choices.find((choice) => choice.id === result.answer?.choiceId);
+            const correct = result.item.choices.find((choice) => choice.id === result.item.answer);
+            return `
+              <details>
+                <summary>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</summary>
+                <p>${escapeHtml(result.item.prompt)}</p>
+                <p><strong>Your answer:</strong> ${escapeHtml(selected?.text || "No answer")}</p>
+                <p><strong>Best answer:</strong> ${escapeHtml(correct?.text || result.item.answer)}</p>
+                <p>${escapeHtml(result.item.explanation)}</p>
+              </details>
+            `;
+          }).join("")}
+        </div>
+      </div>
+    ` : ""}
     <div class="question-actions">
       <button class="secondary-action" type="button" data-scroll-grid>Skill Grid</button>
       <button class="next-button" type="button" data-next-practice>Practice Again</button>
     </div>
   `;
   els.quizPanel.querySelector("[data-next-practice]").addEventListener("click", () => startAdaptivePractice());
+  els.quizPanel.querySelectorAll("[data-focus-skill]").forEach((button) => {
+    button.addEventListener("click", () => startSkillPractice(button.dataset.focusSkill));
+  });
 }
 
 function recordResults(results, durationMs) {
@@ -432,54 +503,81 @@ function renderProfile() {
 
 async function renderLeaderboard() {
   const date = todayIso();
+  const range = state.leaderboardRange === "weekly" ? "weekly" : "daily";
   let entries = [];
-  if (apiEnabled()) {
+  let meta = { range, date };
+
+  document.querySelectorAll("[data-leaderboard-range]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.leaderboardRange === range);
+  });
+  els.leaderboardTitle.textContent = range === "weekly" ? "Weekly Board" : "Daily Board";
+  els.leaderboardNote.textContent = "";
+
+  if (apiEnabled() && state.apiAvailable !== false) {
     try {
-      const response = await fetch(`/api/leaderboard?date=${encodeURIComponent(date)}`);
+      const response = await fetch(`/api/leaderboard?date=${encodeURIComponent(date)}&range=${range}`);
       if (response.ok) {
         const payload = await response.json();
         entries = payload.entries || [];
+        meta = payload;
+        state.apiAvailable = true;
+      } else if (response.status === 404 || response.status === 501) {
+        state.apiAvailable = false;
       }
     } catch {
+      state.apiAvailable = false;
       entries = [];
     }
   }
 
   if (entries.length === 0) {
-    const local = state.profile?.dailyScores?.[date];
-    if (local) {
-      entries = [{
-        displayName: state.profile.displayName,
-        score: local.score,
-        totalItems: local.total,
-        durationMs: local.durationMs
-      }];
-    }
+    entries = localLeaderboardEntries(range, date);
+    meta.source = "local";
   }
 
   if (entries.length === 0) {
-    els.leaderboard.innerHTML = `<li><p class="empty-state">No score recorded today.</p></li>`;
+    els.leaderboardNote.textContent = range === "weekly"
+      ? "No weekly scores yet."
+      : "No score recorded today.";
+    els.leaderboard.innerHTML = "";
     return;
   }
 
-  els.leaderboard.innerHTML = entries.slice(0, 10).map((entry) => `
+  if (meta.source === "local" || state.apiAvailable === false) {
+    els.leaderboardNote.textContent = "Showing local scores. Public winners appear when the hosted API and D1 database are connected.";
+  } else if (range === "weekly" && meta.start && meta.end) {
+    els.leaderboardNote.textContent = `${formatShortDate(meta.start)} to ${formatShortDate(meta.end)}`;
+  } else {
+    els.leaderboardNote.textContent = formatDate(meta.date || date);
+  }
+
+  els.leaderboard.innerHTML = entries.slice(0, 10).map((entry, index) => `
     <li>
-      <strong>${escapeHtml(entry.displayName)}</strong>
-      <div>${entry.score}/${entry.totalItems || 16} / ${formatDuration(entry.durationMs || 0)}</div>
+      <span class="rank">${index + 1}</span>
+      <div>
+        <strong>${escapeHtml(entry.displayName)}</strong>
+        <span>${entry.score}/${entry.totalItems || 16} / ${formatDuration(entry.durationMs || 0)}</span>
+      </div>
     </li>
   `).join("");
 }
 
 async function submitScore(results, score, durationMs) {
   if (!apiEnabled()) {
-    return;
+    return {
+      state: "local",
+      message: "Saved on this device. Public ranking is unavailable in this local preview."
+    };
   }
   const answers = {};
   for (const result of results) {
-    answers[result.item.id] = result.answer?.choiceId || null;
+    answers[result.item.id] = {
+      choiceId: result.answer?.choiceId || null,
+      responseMs: result.answer?.responseMs || 0
+    };
   }
   try {
-    await fetch("/api/score", {
+    const response = await fetch("/api/score", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -491,9 +589,64 @@ async function submitScore(results, score, durationMs) {
         clientScore: score
       })
     });
+    if (!response.ok) {
+      state.apiAvailable = response.status === 404 || response.status === 501 ? false : state.apiAvailable;
+      return {
+        state: "local",
+        message: "Saved on this device. The public leaderboard API is not available yet."
+      };
+    }
+    const payload = await response.json();
+    state.apiAvailable = true;
+    if (payload.accepted) {
+      return {
+        state: "submitted",
+        message: payload.rank
+          ? `Submitted to the daily board. Current rank: #${payload.rank}.`
+          : "Submitted to the daily board."
+      };
+    }
+    return {
+      state: "duplicate",
+      message: payload.rank
+        ? `Today's public score was already recorded. Current rank: #${payload.rank}.`
+        : "Today's public score was already recorded."
+    };
   } catch {
-    // Local-only use is fine; the public leaderboard appears once the D1 API is deployed.
+    state.apiAvailable = false;
+    return {
+      state: "local",
+      message: "Saved on this device. The public leaderboard API could not be reached."
+    };
   }
+}
+
+function localLeaderboardEntries(range, date) {
+  if (range === "weekly") {
+    const scores = state.profile?.dailyScores || {};
+    const start = startOfWeek(date);
+    const end = addDays(start, 6);
+    const weekScores = Object.entries(scores)
+      .filter(([scoreDate]) => scoreDate >= start && scoreDate <= end)
+      .map(([, value]) => value);
+    if (weekScores.length === 0) {
+      return [];
+    }
+    return [{
+      displayName: state.profile.displayName,
+      score: weekScores.reduce((sum, value) => sum + (value.score || 0), 0),
+      totalItems: weekScores.reduce((sum, value) => sum + (value.total || 16), 0),
+      durationMs: weekScores.reduce((sum, value) => sum + (value.durationMs || 0), 0)
+    }];
+  }
+
+  const local = state.profile?.dailyScores?.[date];
+  return local ? [{
+    displayName: state.profile.displayName,
+    score: local.score,
+    totalItems: local.total,
+    durationMs: local.durationMs
+  }] : [];
 }
 
 function apiEnabled() {
@@ -503,6 +656,25 @@ function apiEnabled() {
     return false;
   }
   return true;
+}
+
+function focusSkillsFromResults(results) {
+  const bySkill = new Map();
+  for (const result of results) {
+    const entry = bySkill.get(result.item.skill) || { total: 0, correct: 0 };
+    entry.total += 1;
+    entry.correct += result.correct ? 1 : 0;
+    bySkill.set(result.item.skill, entry);
+  }
+
+  return [...bySkill.entries()]
+    .map(([skillId, entry]) => ({
+      skill: state.skillById.get(skillId),
+      ...entry
+    }))
+    .filter((entry) => entry.skill && entry.correct < entry.total)
+    .sort((a, b) => (a.correct / a.total) - (b.correct / b.total) || masteryScore(a.skill.id) - masteryScore(b.skill.id))
+    .slice(0, 3);
 }
 
 function choosePracticeItem(skillId, salt, focused = false) {
@@ -646,11 +818,32 @@ function formatDate(isoDate) {
   }).format(new Date(`${isoDate}T12:00:00`));
 }
 
+function formatShortDate(isoDate) {
+  return new Intl.DateTimeFormat(undefined, {
+    month: "short",
+    day: "numeric"
+  }).format(new Date(`${isoDate}T12:00:00`));
+}
+
 function formatDuration(milliseconds) {
   const seconds = Math.max(0, Math.round(milliseconds / 1000));
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
   return mins > 0 ? `${mins}m ${String(secs).padStart(2, "0")}s` : `${secs}s`;
+}
+
+function startOfWeek(isoDate) {
+  const date = new Date(`${isoDate}T00:00:00Z`);
+  const day = date.getUTCDay();
+  const offset = day === 0 ? -6 : 1 - day;
+  date.setUTCDate(date.getUTCDate() + offset);
+  return date.toISOString().slice(0, 10);
+}
+
+function addDays(isoDate, days) {
+  const date = new Date(`${isoDate}T00:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
 }
 
 function clamp(value, min, max) {
