@@ -36,7 +36,11 @@ const els = {
   leaderboard: document.querySelector("#leaderboard-list"),
   leaderboardTitle: document.querySelector("#leaderboard-title"),
   leaderboardNote: document.querySelector("#leaderboard-note"),
-  workbench: document.querySelector("#workbench")
+  workbench: document.querySelector("#workbench"),
+  practiceSkill: document.querySelector("#practice-skill"),
+  practiceDifficulty: document.querySelector("#practice-difficulty"),
+  practiceCount: document.querySelector("#practice-count"),
+  startCustomPractice: document.querySelector("#start-custom-practice")
 };
 
 init().catch((error) => {
@@ -63,6 +67,7 @@ async function init() {
 
   bindEvents();
   renderGallery();
+  renderPracticeBuilder();
   renderProfile();
   await renderLeaderboard();
   startDaily({ scroll: false });
@@ -85,8 +90,11 @@ function bindEvents() {
   });
   document.querySelector("[data-promo-practice]").addEventListener("click", (event) => {
     event.preventDefault();
-    startAdaptivePractice();
+    focusPracticeBuilder();
   });
+  document.querySelector("[data-teacher-daily]").addEventListener("click", () => startDaily());
+  document.querySelector("[data-teacher-practice]").addEventListener("click", () => focusPracticeBuilder());
+  els.startCustomPractice.addEventListener("click", () => startPracticeFromBuilder());
   document.querySelector("#reset-stats").addEventListener("click", () => {
     state.profile = createProfile();
     saveProfile();
@@ -145,7 +153,10 @@ function renderGallery() {
         </span>
         <span class="skill-card-meta">
           <span class="skill-code">${skillCode(skill)}</span>
-          <span class="skill-card-label">${escapeHtml(skill.publicLabel)}</span>
+          <span>
+            <span class="skill-card-label">${escapeHtml(skill.publicLabel)}</span>
+            <span class="skill-card-task">${escapeHtml(skill.testableTask)}</span>
+          </span>
         </span>
       </button>
     `;
@@ -158,6 +169,21 @@ function renderGallery() {
   els.gallery.querySelectorAll("[data-skill]").forEach((button) => {
     button.addEventListener("click", () => startSkillPractice(button.dataset.skill));
   });
+}
+
+function renderPracticeBuilder() {
+  els.practiceSkill.innerHTML = `
+    <option value="adaptive">Adaptive mix</option>
+    ${state.skills.map((skill) => (
+      `<option value="${skill.id}">${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</option>`
+    )).join("")}
+  `;
+}
+
+function focusPracticeBuilder() {
+  setMode("practice");
+  els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
+  els.practiceSkill.focus({ preventScroll: true });
 }
 
 function startDaily(options = {}) {
@@ -175,8 +201,8 @@ function startDaily(options = {}) {
 
 function startAdaptivePractice(options = {}) {
   setMode("practice");
-  const rankedSkills = [...state.skills].sort((a, b) => masteryScore(a.id) - masteryScore(b.id));
-  const items = rankedSkills.map((skill, index) => choosePracticeItem(skill.id, index)).filter(Boolean);
+  const count = options.count || 16;
+  const items = buildAdaptivePracticeItems(count, options.difficultyOverride);
   startQuiz({
     mode: "practice",
     title: "Adaptive Practice",
@@ -185,10 +211,33 @@ function startAdaptivePractice(options = {}) {
   }, options);
 }
 
-function startSkillPractice(skillId) {
+function startPracticeFromBuilder() {
+  const skillId = els.practiceSkill.value;
+  const difficultyOverride = els.practiceDifficulty.value === "auto"
+    ? null
+    : Number.parseInt(els.practiceDifficulty.value, 10);
+  const count = Number.parseInt(els.practiceCount.value, 10) || 16;
+
+  if (skillId === "adaptive") {
+    startAdaptivePractice({ count, difficultyOverride });
+    return;
+  }
+
+  startSkillPractice(skillId, { count, difficultyOverride });
+}
+
+function startSkillPractice(skillId, options = {}) {
   setMode("practice");
   const skill = state.skillById.get(skillId);
-  const items = Array.from({ length: 8 }, (_, index) => choosePracticeItem(skillId, index, true)).filter(Boolean);
+  if (!skill) {
+    startAdaptivePractice(options);
+    return;
+  }
+  const count = options.count || 8;
+  const items = Array.from({ length: count }, (_, index) => choosePracticeItem(skillId, index, {
+    focused: true,
+    difficultyOverride: options.difficultyOverride
+  })).filter(Boolean);
   startQuiz({
     mode: "practice",
     title: skill.publicLabel,
@@ -328,7 +377,7 @@ async function finishQuiz() {
 function renderResults(results, score, durationMs) {
   els.quizProgress.style.width = "100%";
   const total = results.length;
-  const focusSkills = focusSkillsFromResults(results);
+  const focusSkills = recommendedPracticeSkills(results);
   const missed = results.filter((result) => !result.correct);
   const submission = state.lastScoreSubmission;
   els.quizPanel.innerHTML = `
@@ -355,33 +404,37 @@ function renderResults(results, score, durationMs) {
           ${focusSkills.map((entry) => `
             <button class="focus-chip" type="button" data-focus-skill="${entry.skill.id}">
               <strong>${skillCode(entry.skill)} ${escapeHtml(entry.skill.publicLabel)}</strong>
-              <span>${entry.correct}/${entry.total} on this run</span>
+              <span>${escapeHtml(entry.note)}</span>
             </button>
           `).join("")}
         </div>
       </div>
     ` : ""}
-    <div class="results-grid">
-      ${results.map((result) => {
-        const skill = state.skillById.get(result.item.skill);
-        return `
-          <div class="result-cell ${result.correct ? "is-correct" : "is-missed"}">
-            <strong>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</strong>
-            <span>${result.correct ? "Correct" : "Missed"} / Level ${result.item.difficulty}</span>
-          </div>
-        `;
-      }).join("")}
+    <div class="diagnostic-panel">
+      <h3>Skill breakdown</h3>
+      <div class="results-grid">
+        ${results.map((result) => {
+          const skill = state.skillById.get(result.item.skill);
+          const diagnosis = skillDiagnostic(result);
+          return `
+            <div class="result-cell is-${diagnosis.key}">
+              <strong>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</strong>
+              <span>${diagnosis.label} / Level ${result.item.difficulty}</span>
+            </div>
+          `;
+        }).join("")}
+      </div>
     </div>
     ${missed.length > 0 ? `
       <div class="review-panel">
         <h3>Review the misses</h3>
         <div class="review-list">
-          ${missed.slice(0, 6).map((result) => {
+          ${missed.map((result) => {
             const skill = state.skillById.get(result.item.skill);
             const selected = result.item.choices.find((choice) => choice.id === result.answer?.choiceId);
             const correct = result.item.choices.find((choice) => choice.id === result.item.answer);
             return `
-              <details>
+              <details open>
                 <summary>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</summary>
                 <p>${escapeHtml(result.item.prompt)}</p>
                 <p><strong>Your answer:</strong> ${escapeHtml(selected?.text || "No answer")}</p>
@@ -430,6 +483,13 @@ function recordResults(results, durationMs) {
   }
 
   profile.seenItems = profile.seenItems.slice(-500);
+  profile.lastResults = results.map((result) => ({
+    itemId: result.item.id,
+    skillId: result.item.skill,
+    difficulty: result.item.difficulty,
+    correct: result.correct,
+    answeredAt: new Date().toISOString()
+  })).slice(-32);
 
   if (state.quiz.mode === "daily") {
     profile.dailyScores ||= {};
@@ -456,9 +516,16 @@ function renderProfile() {
 
   els.profileSummary.innerHTML = `
     <div class="name-field">
-      <label for="display-name">Display name</label>
+      <label for="display-name">Public name</label>
       <input id="display-name" maxlength="28" value="${escapeAttribute(state.profile.displayName)}" />
     </div>
+    <label class="share-field">
+      <input id="public-leaderboard" type="checkbox" ${state.profile.publicLeaderboard ? "checked" : ""} />
+      <span>
+        <strong>Share daily scores</strong>
+        <small>Used for daily and weekly winners.</small>
+      </span>
+    </label>
     <div class="metric">
       <strong>${totals.attempts}</strong>
       <span>Attempts</span>
@@ -480,6 +547,12 @@ function renderProfile() {
   const input = els.profileSummary.querySelector("#display-name");
   input.addEventListener("input", () => {
     state.profile.displayName = input.value.trim() || "Local Thinker";
+    saveProfile();
+  });
+
+  const publicToggle = els.profileSummary.querySelector("#public-leaderboard");
+  publicToggle.addEventListener("change", () => {
+    state.profile.publicLeaderboard = publicToggle.checked;
     saveProfile();
   });
 
@@ -563,6 +636,12 @@ async function renderLeaderboard() {
 }
 
 async function submitScore(results, score, durationMs) {
+  if (!state.profile.publicLeaderboard) {
+    return {
+      state: "local",
+      message: "Saved on this device. Turn on score sharing to appear on daily and weekly boards."
+    };
+  }
   if (!apiEnabled()) {
     return {
       state: "local",
@@ -670,6 +749,7 @@ function focusSkillsFromResults(results) {
   return [...bySkill.entries()]
     .map(([skillId, entry]) => ({
       skill: state.skillById.get(skillId),
+      note: `${entry.correct}/${entry.total} on this run`,
       ...entry
     }))
     .filter((entry) => entry.skill && entry.correct < entry.total)
@@ -677,11 +757,44 @@ function focusSkillsFromResults(results) {
     .slice(0, 3);
 }
 
-function choosePracticeItem(skillId, salt, focused = false) {
-  const baseDifficulty = difficultyForSkill(skillId);
-  const difficulty = focused
-    ? clamp(baseDifficulty + Math.floor(salt / 3) - 1, 1, 5)
-    : baseDifficulty;
+function recommendedPracticeSkills(results) {
+  const fromMisses = focusSkillsFromResults(results);
+  const seen = new Set(fromMisses.map((entry) => entry.skill.id));
+  const weakest = [...state.skills]
+    .filter((skill) => !seen.has(skill.id))
+    .sort((a, b) => masteryScore(a.id) - masteryScore(b.id))
+    .slice(0, Math.max(0, 3 - fromMisses.length))
+    .map((skill) => {
+      const stat = state.profile.skillStats?.[skill.id];
+      const accuracy = stat?.attempts ? Math.round((stat.correct / stat.attempts) * 100) : 0;
+      return {
+        skill,
+        correct: stat?.correct || 0,
+        total: stat?.attempts || 0,
+        note: stat?.attempts ? `${accuracy}% overall` : "Not tried yet"
+      };
+    });
+  return [...fromMisses, ...weakest].slice(0, 3);
+}
+
+function buildAdaptivePracticeItems(count, difficultyOverride = null) {
+  const rankedSkills = [...state.skills].sort((a, b) => masteryScore(a.id) - masteryScore(b.id));
+  return Array.from({ length: count }, (_, index) => {
+    const skill = rankedSkills[index % rankedSkills.length];
+    return choosePracticeItem(skill.id, index, {
+      focused: true,
+      difficultyOverride
+    });
+  }).filter(Boolean);
+}
+
+function choosePracticeItem(skillId, salt, options = {}) {
+  const baseDifficulty = options.difficultyOverride || difficultyForSkill(skillId);
+  const difficulty = options.difficultyOverride
+    ? baseDifficulty
+    : options.focused
+      ? clamp(baseDifficulty + Math.floor(salt / 4) - 1, 1, 5)
+      : baseDifficulty;
   const pool = (state.itemsBySkill.get(skillId) || []).filter((item) => item.difficulty === difficulty);
   const recent = new Set((state.profile.seenItems || []).slice(-120));
   const freshPool = pool.filter((item) => !recent.has(item.id));
@@ -692,6 +805,18 @@ function choosePracticeItem(skillId, salt, focused = false) {
   const attempts = state.profile.skillStats?.[skillId]?.attempts || 0;
   const index = hashString(`${skillId}:${salt}:${attempts}:${Date.now()}`) % source.length;
   return source[index];
+}
+
+function skillDiagnostic(result) {
+  const stat = state.profile.skillStats?.[result.item.skill];
+  const accuracy = stat?.attempts ? stat.correct / stat.attempts : result.correct ? 1 : 0;
+  if (result.correct && accuracy >= 0.75) {
+    return { key: "strong", label: "Strong" };
+  }
+  if (!result.correct && accuracy < 0.55) {
+    return { key: "needs-work", label: "Needs work" };
+  }
+  return { key: "shaky", label: "Shaky" };
 }
 
 function difficultyForSkill(skillId) {
@@ -768,7 +893,7 @@ function loadProfile() {
   try {
     const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (parsed?.participantId) {
-      return parsed;
+      return normalizeProfile(parsed);
     }
   } catch {
     // Fall through to a fresh profile.
@@ -777,12 +902,28 @@ function loadProfile() {
 }
 
 function createProfile() {
+  const participantId = crypto.randomUUID();
   return {
-    participantId: crypto.randomUUID(),
-    displayName: "Local Thinker",
+    participantId,
+    displayName: `Thinker ${participantId.slice(0, 4).toUpperCase()}`,
+    publicLeaderboard: true,
     skillStats: {},
     dailyScores: {},
-    seenItems: []
+    seenItems: [],
+    lastResults: []
+  };
+}
+
+function normalizeProfile(profile) {
+  const participantId = profile.participantId || crypto.randomUUID();
+  return {
+    participantId,
+    displayName: profile.displayName || `Thinker ${participantId.slice(0, 4).toUpperCase()}`,
+    publicLeaderboard: profile.publicLeaderboard !== false,
+    skillStats: profile.skillStats || {},
+    dailyScores: profile.dailyScores || {},
+    seenItems: Array.isArray(profile.seenItems) ? profile.seenItems : [],
+    lastResults: Array.isArray(profile.lastResults) ? profile.lastResults : []
   };
 }
 

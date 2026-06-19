@@ -38,6 +38,7 @@
             <a href="#skills">Skill Grid</a>
             <a href="#profile-title">Skill Map</a>
             <a href="#leaderboard-title">Leaderboard</a>
+            <a href="#teachers">For Teachers</a>
           </nav>
         </div>
         <div id="skill-gallery" class="skill-gallery" aria-label="Critical thinking skills"></div>
@@ -58,6 +59,33 @@
 
           <div class="progress-wrap" aria-hidden="true">
             <div id="quiz-progress" class="progress-bar"></div>
+          </div>
+
+          <div class="practice-dock" aria-label="Practice builder">
+            <label class="control-field" for="practice-skill">
+              <span>Skill</span>
+              <select id="practice-skill"></select>
+            </label>
+            <label class="control-field" for="practice-difficulty">
+              <span>Level</span>
+              <select id="practice-difficulty">
+                <option value="auto">Auto</option>
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+              </select>
+            </label>
+            <label class="control-field" for="practice-count">
+              <span>Items</span>
+              <select id="practice-count">
+                <option value="8">8</option>
+                <option value="16" selected>16</option>
+                <option value="24">24</option>
+              </select>
+            </label>
+            <button id="start-custom-practice" class="secondary-action" type="button">Start Practice</button>
           </div>
 
           <div id="quiz-panel" class="quiz-panel"></div>
@@ -89,6 +117,31 @@
           <p id="leaderboard-note" class="leaderboard-note"></p>
           <ol id="leaderboard-list" class="leaderboard-list"></ol>
         </section>
+      </section>
+
+      <section id="teachers" class="teacher-section" aria-labelledby="teacher-title">
+        <div class="teacher-intro">
+          <p class="eyebrow">For teachers</p>
+          <h2 id="teacher-title">A ready-made reasoning warm-up.</h2>
+          <p>XiXteen gives students one objective question for each critical-thinking skill, then turns the results into a skill map. It works as a five-minute opener, a weekly practice routine, or a quick way to find which reasoning moves need more class attention.</p>
+        </div>
+        <div class="teacher-grid">
+          <article>
+            <strong>Daily opener</strong>
+            <p>Run the daily sixteen, then discuss one missed item as a class.</p>
+            <button class="secondary-action" type="button" data-teacher-daily>Start Daily</button>
+          </article>
+          <article>
+            <strong>Targeted practice</strong>
+            <p>Choose a skill and level when a lesson needs focused repetition.</p>
+            <button class="secondary-action" type="button" data-teacher-practice>Build Practice</button>
+          </article>
+          <article>
+            <strong>Progress check</strong>
+            <p>Use the skill map to spot patterns before a quiz, discussion, or writing task.</p>
+            <a class="secondary-link" href="#profile-title">View Skill Map</a>
+          </article>
+        </div>
       </section>
     </main>
 
