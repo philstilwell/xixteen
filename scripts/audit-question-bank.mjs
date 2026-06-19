@@ -6,6 +6,7 @@ const MAX_PROMPT_CHARS = 520;
 const MAX_CHOICE_CHARS = 190;
 const MAX_AVG_SENTENCE_WORDS = 34;
 const MAX_LONGEST_SENTENCE_WORDS = 58;
+const LONGEST_CHOICE_TELL_MARGIN = 6;
 const CLUNKY_PROMPT_PATTERNS = [
   ["distracting quick-check frame", /^Quick check:/i],
   ["Scene label", /Scene:/],
@@ -133,7 +134,10 @@ for (const item of items) {
 }
 
 const failingAudits = itemAudits.filter((audit) => audit.issues.length > 0);
-const patternIssues = auditAnswerPatternTells(items);
+const patternIssues = [
+  ...auditAnswerPatternTells(items),
+  ...auditChoiceLengthTells(items)
+];
 
 if (failingAudits.length > 0 || patternIssues.length > 0) {
   if (patternIssues.length > 0) {
@@ -368,6 +372,37 @@ function auditAnswerPatternTells(allItems) {
   }
 
   return issues;
+}
+
+function auditChoiceLengthTells(allItems) {
+  const examples = [];
+
+  for (const item of allItems) {
+    if (!Array.isArray(item.choices) || item.choices.length !== 4) {
+      continue;
+    }
+
+    const lengths = item.choices.map((choice) => ({ id: choice.id, len: choice.text.length }));
+    const answer = lengths.find((choice) => choice.id === item.answer);
+    if (!answer) {
+      continue;
+    }
+
+    const sorted = [...lengths].sort((a, b) => b.len - a.len);
+    const isUniquelyLongest = sorted[0].id === item.answer && sorted[0].len > sorted[1].len;
+    const margin = sorted[0].len - sorted[1].len;
+    if (isUniquelyLongest && margin >= LONGEST_CHOICE_TELL_MARGIN) {
+      examples.push(`${item.id} answer ${item.answer} is longest by ${margin} chars`);
+    }
+  }
+
+  if (examples.length === 0) {
+    return [];
+  }
+
+  return [
+    `correct answer is visibly longest in ${examples.length} item(s): ${examples.slice(0, 12).join("; ")}`
+  ];
 }
 
 function getAnswerText(item) {

@@ -164,7 +164,7 @@ const topics = [
   topic("evening bus service for late-shift workers", "the city council", "extend evening bus service until midnight", "late-shift commute complaints", "fell by 22%", "a large employer started a private shuttle the same month", "the new buses were repainted blue", "late-shift workers", "transportation"),
   topic("classroom phone lockers", "the school board", "require phone lockers during class", "classroom disruption reports", "fell by 31%", "a new hall monitor schedule began at the same time", "the lockers are installed near the gym", "ninth-grade classrooms", "education"),
   topic("medication reminder texts for older patients", "the hospital", "send medication reminder texts before evening doses", "missed-dose reports", "fell by 18%", "pharmacists also began follow-up calls", "the text messages use a green pill icon", "patients over 60", "health"),
-  topic("four-day workweek test for software engineers", "the company", "test a Monday-through-Thursday workweek", "staff resignations", "fell by 15%", "the company also raised salaries that quarter", "the test calendar starts on a Monday", "software engineers", "workplace"),
+  topic("a four-day workweek test for software engineers", "the company", "test a Monday-through-Thursday workweek", "staff resignations", "fell by 15%", "the company also raised salaries that quarter", "the test calendar starts on a Monday", "software engineers", "workplace"),
   topic("larger grocery unit-price labels", "the grocery chain", "add larger unit-price labels on shelf tags", "shopper overpayment complaints", "fell by 27%", "a local consumer group ran a price-literacy campaign", "the shelf labels use bold black numbers", "weekly grocery shoppers", "retail"),
   topic("late fines on children's books", "the library", "waive late fines for children's books", "library card renewals", "rose by 19%", "the library also opened on Sundays", "the children's-book checkout desk moved six feet", "families checking out children's books", "public services"),
   topic("two-factor login for site administrators", "the platform", "require two-factor login for site administrators", "admin account takeovers", "fell by 44%", "some high-risk admin accounts were removed earlier", "the login button changed from green to blue", "site administrators", "technology"),
@@ -181,14 +181,14 @@ const topics = [
   topic("private-by-default app profiles", "the app maker", "make new user profiles private by default", "publicly visible profiles", "fell by 48%", "the app also deleted inactive accounts", "the privacy screen uses a shield icon", "new app users", "technology"),
   topic("same-day clinic appointment slots", "the clinic", "reserve same-day appointment slots", "patient no-show rates", "fell by 13%", "the clinic also began reminder calls", "the appointment cards are white", "primary-care patients", "health"),
   topic("seat-zone airline boarding", "the airline", "board passengers by seat zone", "average boarding time", "fell by 9%", "the airline also reduced carry-on size limits", "the gate signs are backlit", "domestic flight passengers", "travel"),
-  topic("online apartment repair portal", "the landlord", "launch an online apartment repair portal", "unresolved repair requests", "fell by 26%", "the landlord hired two additional repair technicians", "the repair portal uses a house logo", "apartment tenants", "housing"),
+  topic("an online apartment repair portal", "the landlord", "launch an online apartment repair portal", "unresolved repair requests", "fell by 26%", "the landlord hired two additional repair technicians", "the repair portal uses a house logo", "apartment tenants", "housing"),
   topic("fruit placement in a school cafeteria line", "the cafeteria", "move fruit bowls to the front of the cafeteria line", "fruit purchases", "rose by 23%", "a fruit discount started that week", "the fruit bowls are ceramic", "middle-school students", "food"),
   topic("weekly call-center script coaching", "the call center", "give support agents weekly script coaching", "customer complaint rates", "fell by 18%", "the call queue was also shortened", "the coaching slides use blue headers", "support agents", "customer support"),
   topic("household water-leak alerts", "the water utility", "send automatic household water-leak alerts", "average household water use", "fell by 10%", "a rainy season began during the study", "the water-leak alert screen includes a blue droplet icon", "local homeowners", "utilities"),
   topic("body-camera activation reminders", "the police department", "send body-camera activation reminders before patrol shifts", "missing-camera-footage reports", "fell by 35%", "the department also updated supervisor reviews", "the reminder tone is two beeps", "patrol officers", "governance"),
   topic("county mail-ballot tracking", "the election office", "offer online mail-ballot tracking", "phone calls asking ballot status", "fell by 42%", "the office also expanded its phone staff", "the ballot-tracking page uses county colors", "mail voters", "election administration"),
   topic("language-learning spaced-review prompts", "the tutoring app", "send spaced-review prompts for language vocabulary", "vocabulary retention quiz scores", "rose by 12%", "the app also changed the quiz format", "the review prompts use a bell icon", "language learners", "learning"),
-  topic("beginner gym orientation", "the gym", "offer a beginner gym orientation", "new-member cancellations", "fell by 19%", "the gym also discounted annual plans", "the orientation mats are black", "new gym members", "fitness"),
+  topic("a beginner gym orientation", "the gym", "offer a beginner gym orientation", "new-member cancellations", "fell by 19%", "the gym also discounted annual plans", "the orientation mats are black", "new gym members", "fitness"),
   topic("safe-driving feedback for policyholders", "the insurer", "send weekly safe-driving feedback", "reported minor crashes", "fell by 8%", "fuel prices changed driving patterns that month", "the feedback dashboard uses star ratings", "auto-insurance policyholders", "insurance"),
   topic("top-of-article correction boxes", "the newsroom", "place corrections at the top of articles", "reader trust ratings", "rose by 7%", "the newsroom also hired a public editor", "the correction box has a gray border", "newsletter readers", "media"),
   topic("clearer farmers market price signs", "the farmers market", "require clearer price signs at vendor stalls", "price disputes", "fell by 28%", "the market also added a weekend help desk", "the stall price signs are laminated", "weekend farmers market shoppers", "local commerce"),
@@ -207,60 +207,70 @@ const fallacyTypes = [
     name: "Straw man",
     tag: "straw-man",
     line: (t, speaker, otherSpeaker) => `${speaker} asks for one more small test before ${t.actor} decides. ${otherSpeaker} replies, "${speaker} wants to block every improvement forever."`,
+    choiceHint: "misstates a view before attacking it as if it were real",
     explanation: "The reply attacks an exaggerated version of the other person's view."
   },
   {
     name: "False dilemma",
     tag: "false-dilemma",
     line: (t, speaker) => `${speaker} says, "Either ${t.actor} must ${t.action} right now, or it does not care about ${t.group} at all."`,
+    choiceHint: "pretends two choices are the only realistic options",
     explanation: "The argument acts like there are only two choices when there may be more."
   },
   {
     name: "Ad hominem",
     tag: "ad-hominem",
     line: (t, speaker, otherSpeaker) => `${speaker} rejects ${otherSpeaker}'s proposal to ${t.action} because ${otherSpeaker} once made a budgeting mistake.`,
+    choiceHint: "attacks the person rather than answering the argument",
     explanation: "The response attacks the person instead of the argument."
   },
   {
     name: "Slippery slope",
     tag: "slippery-slope",
     line: (t, speaker) => `${speaker} says, "If ${t.actor} agrees to ${t.action}, soon every related rule will fall apart."`,
+    choiceHint: "predicts a chain reaction without enough support",
     explanation: "The argument predicts an extreme chain reaction without support."
   },
   {
     name: "Appeal to popularity",
     tag: "appeal-to-popularity",
     line: (t, speaker) => `${speaker} says ${t.actor} should ${t.action} because the idea received the most likes in an online poll.`,
+    choiceHint: "treats popularity as proof the claim is correct",
     explanation: "Popularity is treated as proof that the idea is correct."
   },
   {
     name: "Circular reasoning",
     tag: "circular-reasoning",
     line: (t, speaker) => `${speaker} writes that ${t.actor} should ${t.action} because it is the right move, and it is the right move because it should be done.`,
+    choiceHint: "uses the conclusion itself as its main support",
     explanation: "The conclusion is used as its own support."
   },
   {
     name: "Hasty generalization",
     tag: "hasty-generalization",
-    line: (t, speaker) => `After one group reports success with a similar change, ${speaker} says the same result will happen everywhere.`,
+    line: (t, speaker) => `${speaker} points to one group that reported success with a similar change and says the same result will happen everywhere.`,
+    choiceHint: "jumps from little evidence to a broad claim",
     explanation: "A broad conclusion is drawn from too little evidence."
   },
   {
     name: "Red herring",
     tag: "red-herring",
     line: (t, speaker, otherSpeaker) => `${otherSpeaker} asks whether ${t.actionGerund} would affect ${t.metric}. ${speaker} answers by talking about this side detail: ${lowerFirst(phrase(t.irrelevant))}.`,
+    choiceHint: "changes the subject instead of addressing the issue",
     explanation: "The response shifts attention to an irrelevant issue."
   },
   {
     name: "Appeal to tradition",
     tag: "appeal-to-tradition",
     line: (t, speaker) => `${speaker} says ${t.actor} should not ${t.action} because the old way has been used for many years.`,
+    choiceHint: "treats old habits as proof the claim is right",
     explanation: "The argument treats age or tradition as enough proof."
   },
   {
     name: "Post hoc",
     tag: "post-hoc",
     line: (t, speaker) => `${speaker} says, "${cap(t.afterChangeResult)}, so the policy must have caused the change."`,
+    choiceHint: "treats timing as enough proof of cause by itself",
     explanation: "The argument assumes that because one event came after another, the first caused the second."
   }
 ];
@@ -350,6 +360,14 @@ function lowerFirst(text) {
 
 function phrase(text) {
   return text.replace(/[.!?]+$/, "");
+}
+
+function fallacyChoice(name) {
+  const fallacy = fallacyTypes.find((entry) => entry.name === name);
+  if (!fallacy) {
+    throw new Error(`Unknown fallacy: ${name}`);
+  }
+  return `${fallacy.name}: ${fallacy.choiceHint}`;
 }
 
 function asSentence(text) {
@@ -506,9 +524,9 @@ function claimItems() {
       `${cap(t.actor)} should ${t.action}.`,
       [
         asSentence(t.evidence),
-        `${cap(t.actor)} has proven the idea will work everywhere.`,
+        `${cap(t.actor)} has proven the idea will work everywhere without needing more evidence.`,
         asSentence(t.irrelevant),
-        `${cap(t.group)} are the only ones affected.`
+        `${cap(t.group)} are the only ones affected, so no other concern matters.`
       ],
       `${speaker}'s main claim is the recommendation. The test result is a reason offered for that claim, not the claim itself.`,
       ["claim", t.field, `d${difficulty}`, `variant-${offset}`]
@@ -528,10 +546,10 @@ function termItems() {
       withFrame(difficulty, prompt),
       `"${term}"`,
       [
-        `"${t.actor.replace(/^the /, "")}"`,
-        `"${t.group}"`,
-        `"approve"`,
-        `"plan"`
+        `"approve it"`,
+        `"the plan"`,
+        `"weighing a proposal"`,
+        `"aimed at ${t.group}"`
       ],
       `The word "${term}" is vague here. People need a clear definition before they can tell whether the plan meets the rule.`,
       ["vagueness", t.field, `d${difficulty}`, term]
@@ -554,7 +572,11 @@ function argumentItems() {
       difficulty,
       withFrame(difficulty, prompt),
       conclusion,
-      [premise, background, extra, `${cap(t.metric)} was mentioned as context.`],
+      [
+        premise,
+        background,
+        extra
+      ],
       `The conclusion is ${speaker}'s point. The test result is a reason offered to support it.`,
       ["argument-map", t.field, `d${difficulty}`, `variant-${offset}`]
     );
@@ -578,7 +600,7 @@ function assumptionItems() {
     (t, speaker) => ({
       tag: "measure-link",
       prompt: `${decisionSetup(t)} ${trialResult(t)} ${speaker} says, "That means the plan helped ${t.group}." Which hidden assumption does ${speaker}'s argument need?`,
-      correct: `Measuring ${t.metric} is a reasonable way to judge whether the plan helped ${t.group}.`,
+      correct: `The measured result is a reasonable sign that the plan helped the target group.`,
       explanation: "The hidden assumption is that the measured result is a good sign of whether the plan helped."
     }),
     (t, speaker) => ({
@@ -605,9 +627,9 @@ function assumptionItems() {
       itemCase.correct,
       [
         `${asSentence(t.irrelevant)} That side detail is the most important fact about the idea.`,
-        `${cap(t.metric)} can never be measured reliably.`,
-        `${cap(t.actor)} should reject every alternative to the idea.`,
-        `${cap(t.group)} caused the test result by themselves.`
+        `${cap(t.metric)} can never be measured reliably, no matter how the study is designed.`,
+        `${cap(t.actor)} should reject every alternative to the idea before hearing any more evidence.`,
+        `${cap(t.group)} caused the test result by themselves, so the plan did not matter at all.`
       ],
       itemCase.explanation,
       ["assumption", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
@@ -619,15 +641,15 @@ function relevanceItems() {
   const cases = [
     (t) => ({
       tag: "similar-group",
-      correct: `A similar group tried ${t.actionGerund}, and ${t.testResult}.`
+      correct: `A similar group tried the plan and saw the tracked result improve under similar conditions.`
     }),
     (t) => ({
       tag: "direct-measure",
-      correct: `The study measured ${t.metric} before and after the proposal was tried with ${t.group}.`
+      correct: `The study measured the actual result before and after the plan was tried.`
     }),
     (t) => ({
       tag: "target-group",
-      correct: `The study measured ${t.metric} among ${t.group}, the people the proposal is meant to affect.`
+      correct: `The study measured the actual result in the group the proposal is meant to help.`
     }),
     (t) => ({
       tag: "comparison-group",
@@ -649,10 +671,10 @@ function relevanceItems() {
       withFrame(difficulty, prompt),
       itemCase.correct,
       [
-        asSentence(t.irrelevant),
-        `A report says some ${t.group} liked the idea, but it does not measure ${t.metric}.`,
-        `The plan has a short, memorable name in the meeting notes.`,
-        `The proposal uses the same colors and layout as last year's documents.`
+        `${asSentence(t.irrelevant)} The note does not connect that detail to ${t.metric}.`,
+        `A report says some ${t.group} liked the idea, but it does not measure ${t.metric} or compare results.`,
+        `The plan has a short, memorable name in the meeting notes, and several people say the name is easy to remember.`,
+        `The proposal uses the same colors and layout as last year's documents, so the handout looks familiar.`
       ],
       `Relevant evidence directly helps check whether the proposed action affects the result ${speaker} claimed.`,
       ["relevance", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
@@ -664,7 +686,7 @@ function evidenceItems() {
   const cases = [
     (t) => ({
       tag: "large-before-after",
-      correct: `A large, fair study of ${t.group} measured ${t.metric} before and after the change.`
+      correct: `A large, fair study measured ${t.metric} before and after the change.`
     }),
     (t) => ({
       tag: "random-comparison",
@@ -694,10 +716,10 @@ function evidenceItems() {
       withFrame(difficulty, prompt),
       itemCase.correct,
       [
-        `${speaker}'s friend says the idea feels promising but gives no data.`,
-        `A brochure explains how ${t.actionGerund} would work but does not measure ${t.metric}.`,
-        `Three people on social media say they like the idea after hearing about it.`,
-        `A report measured ${t.metric} after the change but did not say what it was before.`
+        `${speaker}'s friend says the idea feels promising but gives no data about ${t.metric}.`,
+        `A brochure explains how ${t.actionGerund} would work but does not measure ${t.metric} or compare groups.`,
+        `Three people on social media say they like the idea after hearing about it, but no results are reported.`,
+        `A report measured ${t.metric} after the change but did not say what it was before the plan.`
       ],
       "The strongest option measures the result in a fair way, often with a comparison group.",
       ["evidence", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
@@ -709,7 +731,7 @@ function sourceItems() {
   const cases = [
     (t) => ({
       tag: "profit-motive",
-      correct: `The report was produced by ${t.interestedParty}.`,
+      correct: `The report was produced by a vendor that would profit if the plan was approved.`,
       explanation: "A source is less trustworthy when it may profit from the answer it gives."
     }),
     () => ({
@@ -729,7 +751,7 @@ function sourceItems() {
     }),
     (t) => ({
       tag: "biased-sample",
-      correct: `The survey only included people who already supported ${t.actionGerund}.`,
+      correct: `The survey only included people who already supported the plan.`,
       explanation: "A source is less trustworthy when its sample is tilted toward one answer."
     })
   ];
@@ -744,10 +766,10 @@ function sourceItems() {
       withFrame(difficulty, prompt),
       itemCase.correct,
       [
-        `The report lists where its data came from.`,
-        `The author is ${t.expert}.`,
-        `The report explains how it measured ${t.metric}.`,
-        `The report includes results that conflict with the author's preference.`
+        `The report lists where its data came from, when it was collected, and who collected it.`,
+        `The author is ${t.expert} and cites methods that readers can check.`,
+        `The report explains how it measured ${t.metric} and why that measure fits the claim.`,
+        `The report includes results that conflict with the author's preference instead of hiding them.`
       ],
       itemCase.explanation,
       ["source", itemCase.tag, t.field, `d${difficulty}`]
@@ -788,10 +810,10 @@ function logicalGapItems() {
       withFrame(difficulty, pattern.prompt),
       pattern.correct,
       [
-        "It gives too many definitions of the same term.",
-        "It uses a source with no possible incentive.",
-        "It states the conclusion before the evidence.",
-        "It includes a specific number instead of a story."
+        "It gives too many definitions of the same term, even though the argument is not mainly about word meaning.",
+        "It criticizes a source's incentive, even though the prompt does not say who produced the evidence.",
+        "It states the conclusion before the evidence, even though order alone does not decide whether the reasoning works.",
+        "It includes a specific number instead of a story, even though numbers can still be useful evidence."
       ],
       pattern.explanation,
       ["logic", t.field, `d${difficulty}`, `pattern-${(offset + difficulty) % patterns.length}`]
@@ -812,8 +834,8 @@ function fallacyItems() {
       index,
       difficulty,
       withFrame(difficulty, `During a debate about ${t.domain}, ${fallacy.line(t, speaker, otherSpeaker)} Which fallacy is showing up?`),
-      fallacy.name,
-      stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3),
+      fallacyChoice(fallacy.name),
+      stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3).map(fallacyChoice),
       `${fallacy.name}: ${fallacy.explanation}`,
       ["fallacy", fallacy.tag, t.field, `d${difficulty}`]
     );
@@ -827,10 +849,10 @@ function probabilityItems() {
     (percent) => `If there were 100 similar forecasts, about ${percent} would be expected to improve.`,
     (percent) => `The forecast says improvement is possible but not guaranteed, with about a ${percent}-in-100 chance.`,
     (percent) => `It leaves room for the result not to happen, because ${percent}% is a chance, not a promise.`,
-    (percent) => `The number estimates how often this kind of improvement would happen across many similar cases.`
+    (percent) => `The number estimates how often this improvement would happen in similar cases.`
   ];
   const signalAnswers = [
-    "It should raise concern, but it is not proof without checking how common the problem is and how often the signal is wrong.",
+    "Treat it as a reason to check further, not as proof.",
     "Check the base rate and false-alarm rate before treating the signal as proof.",
     "Treat it as evidence to investigate, not as certainty.",
     "Take the signal seriously, but ask how often this tool is wrong.",
@@ -858,16 +880,16 @@ function probabilityItems() {
       correct,
       difficulty <= 3
         ? [
-            `The improvement will last for exactly ${percent}% of the month.`,
-            `The improvement is guaranteed because the number is above 0%.`,
-            `The forecast says ${percent}% of ${t.group} caused the result.`,
-            `The result is impossible if the forecast is below 100%.`
+            `The improvement will last for exactly ${percent}% of the month, so the timing is already known.`,
+            `The improvement is guaranteed because the number is above 0%, so no uncertainty remains.`,
+            `The forecast says ${percent}% of ${t.group} caused the result, not that the result is uncertain.`,
+            `The result is impossible if the forecast is below 100%, because only certainty can matter.`
           ]
         : [
-            "It proves the flagged problem is definitely there.",
-            "It should be ignored because every signal has some errors.",
-            "It proves how common the problem is no longer matters.",
-            "It means all unflagged cases are risk-free."
+            "It proves the flagged problem is definitely there, so no follow-up check is needed.",
+            "It should be ignored completely because every signal has some errors sometimes.",
+            "It proves how common the problem is no longer matters for interpreting the signal.",
+            "It means all unflagged cases are risk-free and all flagged cases have the problem."
           ],
       "Probability is about chance and uncertainty, not guarantees.",
       ["probability", t.field, `d${difficulty}`, `p${percent}`]
@@ -911,16 +933,16 @@ function statsItems() {
       correct,
       difficulty <= 3
         ? [
-            `Group A, because ${aEvents} is smaller than ${bEvents}.`,
-            `Group B, because ${bTotal} is larger than ${aTotal}.`,
+            `Group A, because ${aEvents} is smaller than ${bEvents}, so the raw count must be better.`,
+            `Group B, because ${bTotal} is larger than ${aTotal}, so the bigger group must have the higher rate.`,
             "The rates are automatically equal because both groups are in the same comparison.",
-            "There is no way to compare rates when group sizes differ."
+            "There is no way to compare rates when group sizes differ, even if both counts are given."
           ]
         : [
-            `${percentRises ? "It rose" : "It fell"} by 5%, because any move from one percent to another is a 5% change.`,
-            `${percentRises ? "It rose" : "It fell"} by ${percentRises ? percentEnd : percentStart} percentage points, because that is the ending value.`,
-            `${percentRises ? "It doubled" : "It was cut in half"}, because all five-point changes work that way.`,
-            "It cannot be described without knowing the city population."
+            `${percentRises ? "It rose" : "It fell"} by 5%, because any move from one percent to another is a 5% change and the starting value does not matter.`,
+            `${percentRises ? "It rose" : "It fell"} by ${percentRises ? percentEnd : percentStart} percentage points, because the ending value should be used as the number of points.`,
+            `${percentRises ? "It doubled" : "It was cut in half"}, because all five-point changes work that way regardless of the starting value.`,
+            "It cannot be described without knowing the city population, even though the starting and ending rates are given."
           ],
       "For numbers, pay attention to group size and to the difference between percentage points and percent change.",
       ["statistics", t.field, `d${difficulty}`, `variant-${offset}`]
@@ -994,11 +1016,11 @@ function biasItems() {
 
 function tradeoffItems() {
   const correctOptions = [
-    (t) => `The gain is possible improvement in ${t.metric}; the cost is staff time or money that cannot be used elsewhere.`,
-    (t) => `The choice may help ${t.group} while pulling resources away from another need.`,
-    (t) => `Better results for ${t.metric} would be a benefit, but the plan still has resource costs.`,
-    (t) => `The tradeoff is between the hoped-for result and what the plan would take from other work.`,
-    (t) => `${cap(t.actor)} might get the benefit it wants, but it would give up time, money, or attention.`
+    () => `It names both a possible benefit and a real cost.`,
+    () => `It weighs the hoped-for result against the resources the plan would take.`,
+    () => `It treats the benefit and the cost as parts of the same decision.`,
+    () => `It says the plan could help, but another need might get less attention.`,
+    () => `It keeps both sides in view: possible improvement and limited resources.`
   ];
   return buildSkill("tradeoffs", (t, difficulty, offset, index) => {
     const costs = [
@@ -1018,10 +1040,10 @@ function tradeoffItems() {
       withFrame(difficulty, prompt),
       correct,
       [
-        `The plan has benefits, so it cannot have costs.`,
-        `The plan has costs, so it cannot have benefits.`,
+        `The plan has benefits, so its costs should not be counted in the decision.`,
+        `The plan has costs, so its possible benefits should be ignored completely.`,
         `The main tradeoff is the unrelated detail: ${lowerFirst(phrase(t.irrelevant))}.`,
-        `A tradeoff exists only when every option is equally bad.`
+        `A tradeoff exists only when every option is equally bad and no option has any upside.`
       ],
       "A tradeoff compares what you gain with what you give up or risk.",
       ["tradeoff", t.field, `d${difficulty}`, `variant-${offset}`]
@@ -1037,9 +1059,9 @@ function beliefUpdateItems() {
       correct: "Raise confidence somewhat, while staying open to better evidence.",
       distractors: [
         "Raise confidence to complete certainty because one small test settles it.",
-        "Lower confidence because any small test counts against the idea.",
+        "Lower confidence because any small test counts against the idea, even when it points the right way.",
         "Keep confidence exactly the same even though the evidence points the right way.",
-        "Treat the evidence as proof that the opposite claim is true."
+        "Treat the evidence as proof that the opposite claim is true, even though the result supports the plan."
       ],
       explanation: "A small test that points the right way should raise confidence somewhat, but it is not final proof."
     }),
@@ -1049,8 +1071,8 @@ function beliefUpdateItems() {
       correct: "Raise confidence a lot, while still avoiding total certainty.",
       distractors: [
         "Keep confidence exactly the same because even strong evidence should be ignored.",
-        "Lower confidence because comparison groups make evidence weaker.",
-        "Become completely certain the action works in every setting.",
+        "Lower confidence because comparison groups make evidence weaker instead of stronger.",
+        "Become completely certain the action works in every setting after this one comparison.",
         "Treat the evidence as proof that the action makes the problem worse."
       ],
       explanation: "A fair comparison is stronger evidence, so confidence should rise more, but not to 100%."
@@ -1060,8 +1082,8 @@ function beliefUpdateItems() {
       newInfo: `you learn about one small four-week test where ${oppositeTestResult(t)}`,
       correct: "Lower confidence somewhat, while staying open to better evidence.",
       distractors: [
-        "Raise confidence because any test result supports the original idea.",
-        "Become completely certain the action can never work anywhere.",
+        "Raise confidence because any test result supports the original idea, no matter which way it points.",
+        "Become completely certain the action can never work anywhere after one small test.",
         "Keep confidence exactly the same even though the evidence points the wrong way.",
         "Treat the evidence as proof that the original claim is certainly true."
       ],
@@ -1072,10 +1094,10 @@ function beliefUpdateItems() {
       newInfo: `you learn that ${lowerFirst(phrase(t.irrelevant))}`,
       correct: "Keep confidence about the same, because that detail does not test whether the plan works.",
       distractors: [
-        "Raise confidence a lot because every new detail is useful evidence.",
-        "Lower confidence a lot because every side detail weakens the idea.",
-        "Become completely certain the action works in every setting.",
-        "Treat the detail as proof that the opposite claim is true."
+        "Raise confidence a lot because every new detail is useful evidence, even when it does not test the claim.",
+        "Lower confidence a lot because every side detail weakens the idea, even when it is unrelated.",
+        "Become completely certain the action works in every setting because the detail is easy to remember.",
+        "Treat the detail as proof that the opposite claim is true, even though it does not test the result."
       ],
       explanation: "Irrelevant information should not move confidence much, even when it sounds connected to the topic."
     }),
@@ -1084,10 +1106,10 @@ function beliefUpdateItems() {
       newInfo: `you learn about one small four-week test where ${t.testResult}. You also learn that ${lowerFirst(phrase(t.alternative))}`,
       correct: "Nudge confidence upward only a little, because the result helps but another change could explain it.",
       distractors: [
-        "Raise confidence to complete certainty because the result moved the right way.",
-        "Lower confidence a lot because mixed evidence always proves the idea false.",
-        "Keep confidence exactly the same because mixed evidence can never matter.",
-        "Treat the evidence as proof that the opposite claim is true."
+        "Raise confidence to complete certainty because the result moved the right way, ignoring the other change.",
+        "Lower confidence a lot because mixed evidence always proves the idea false, no matter what improved.",
+        "Keep confidence exactly the same because mixed evidence can never matter, even when part of it helps.",
+        "Treat the evidence as proof that the opposite claim is true, even though the result moved the right way."
       ],
       explanation: "Mixed evidence can still matter, but the possible alternative explanation should keep the update small."
     })
