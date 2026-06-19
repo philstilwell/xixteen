@@ -32019,7 +32019,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A company that sells services tied to the recommendation helped write the report."
       }
     ],
     "answer": "D",
@@ -32184,7 +32184,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The author works for a firm bidding to run part of the plan."
       }
     ],
     "answer": "D",
@@ -32205,7 +32205,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives results but no sample size, dates, or data source."
       },
       {
         "id": "B",
@@ -32242,7 +32242,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author works outside the topic area and does not quote experts."
       },
       {
         "id": "C",
@@ -32275,7 +32275,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The author reports only the best month and skips weaker months."
       },
       {
         "id": "C",
@@ -32304,7 +32304,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The survey came from a signup list for fans of the proposal."
       },
       {
         "id": "B",
@@ -32349,7 +32349,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report was sponsored by a supplier that could be hired if the plan passed."
       }
     ],
     "answer": "D",
@@ -32378,7 +32378,7 @@
       },
       {
         "id": "C",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report never explains who was surveyed or how they were chosen."
       },
       {
         "id": "D",
@@ -32403,7 +32403,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The report is written by a publicity intern with no background in the field."
       },
       {
         "id": "B",
@@ -32440,7 +32440,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The report mentions successes but leaves out failed trials of the same plan."
       },
       {
         "id": "C",
@@ -32477,7 +32477,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "People who disliked the plan were not invited to answer the survey."
       },
       {
         "id": "D",
@@ -32514,7 +32514,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A consultant who helped design the plan was paid to evaluate it."
       }
     ],
     "answer": "D",
@@ -32547,7 +32547,7 @@
       },
       {
         "id": "D",
-        "text": "The report does not say how the data was gathered."
+        "text": "The methods section is missing, so readers cannot check the process."
       }
     ],
     "answer": "D",
@@ -32576,7 +32576,7 @@
       },
       {
         "id": "C",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "No expert source is named, even though the report makes technical claims."
       },
       {
         "id": "D",
@@ -32605,7 +32605,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "Several negative results were collected but not included in the summary."
       },
       {
         "id": "C",
@@ -32634,7 +32634,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The sample was drawn from a meeting organized by supporters of the plan."
       },
       {
         "id": "B",
@@ -32675,7 +32675,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The publisher sells products connected to the recommendation."
       },
       {
         "id": "D",
@@ -32712,7 +32712,7 @@
       },
       {
         "id": "D",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives a conclusion but no way to inspect the raw data."
       }
     ],
     "answer": "D",
@@ -32733,7 +32733,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author gives no qualifications for judging this kind of plan."
       },
       {
         "id": "B",
@@ -32770,7 +32770,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The chart starts after the worst results had already happened."
       },
       {
         "id": "C",
@@ -32803,7 +32803,7 @@
       },
       {
         "id": "B",
-        "text": "The survey only included people who already supported the plan."
+        "text": "Only people who had already benefited from the plan were surveyed."
       },
       {
         "id": "C",
@@ -32832,7 +32832,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report comes from a group seeking the contract created by the plan."
       },
       {
         "id": "B",
@@ -33005,7 +33005,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A company that sells services tied to the recommendation helped write the report."
       },
       {
         "id": "D",
@@ -33042,7 +33042,7 @@
       },
       {
         "id": "D",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives results but no sample size, dates, or data source."
       }
     ],
     "answer": "D",
@@ -33063,7 +33063,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives results but no sample size, dates, or data source."
       },
       {
         "id": "B",
@@ -33100,7 +33100,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author works outside the topic area and does not quote experts."
       },
       {
         "id": "C",
@@ -33137,7 +33137,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The author reports only the best month and skips weaker months."
       },
       {
         "id": "D",
@@ -33174,7 +33174,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The survey came from a signup list for fans of the proposal."
       }
     ],
     "answer": "D",
@@ -33199,7 +33199,7 @@
       },
       {
         "id": "B",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The author works for a firm bidding to run part of the plan."
       },
       {
         "id": "C",
@@ -33228,7 +33228,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report never explains who was surveyed or how they were chosen."
       },
       {
         "id": "B",
@@ -33273,7 +33273,7 @@
       },
       {
         "id": "D",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The report is written by a publicity intern with no background in the field."
       }
     ],
     "answer": "D",
@@ -33302,7 +33302,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The report mentions successes but leaves out failed trials of the same plan."
       },
       {
         "id": "D",
@@ -33335,7 +33335,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "People who disliked the plan were not invited to answer the survey."
       },
       {
         "id": "D",
@@ -33372,7 +33372,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report was sponsored by a supplier that could be hired if the plan passed."
       }
     ],
     "answer": "D",
@@ -33393,7 +33393,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The methods section is missing, so readers cannot check the process."
       },
       {
         "id": "B",
@@ -33430,7 +33430,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "No expert source is named, even though the report makes technical claims."
       },
       {
         "id": "C",
@@ -33471,7 +33471,7 @@
       },
       {
         "id": "D",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "Several negative results were collected but not included in the summary."
       }
     ],
     "answer": "D",
@@ -33500,7 +33500,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The sample was drawn from a meeting organized by supporters of the plan."
       },
       {
         "id": "D",
@@ -33529,7 +33529,7 @@
       },
       {
         "id": "B",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A consultant who helped design the plan was paid to evaluate it."
       },
       {
         "id": "C",
@@ -33558,7 +33558,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives a conclusion but no way to inspect the raw data."
       },
       {
         "id": "B",
@@ -33591,7 +33591,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author gives no qualifications for judging this kind of plan."
       },
       {
         "id": "B",
@@ -33628,7 +33628,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The chart starts after the worst results had already happened."
       },
       {
         "id": "C",
@@ -33665,7 +33665,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "Only people who had already benefited from the plan were surveyed."
       },
       {
         "id": "D",
@@ -33702,7 +33702,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The publisher sells products connected to the recommendation."
       }
     ],
     "answer": "D",
@@ -33863,7 +33863,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report comes from a group seeking the contract created by the plan."
       },
       {
         "id": "D",
@@ -33900,7 +33900,7 @@
       },
       {
         "id": "D",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives results but no sample size, dates, or data source."
       }
     ],
     "answer": "D",
@@ -33921,7 +33921,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author works outside the topic area and does not quote experts."
       },
       {
         "id": "B",
@@ -33958,7 +33958,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The author reports only the best month and skips weaker months."
       },
       {
         "id": "C",
@@ -33999,7 +33999,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The survey came from a signup list for fans of the proposal."
       }
     ],
     "answer": "D",
@@ -34028,7 +34028,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A company that sells services tied to the recommendation helped write the report."
       },
       {
         "id": "D",
@@ -34057,7 +34057,7 @@
       },
       {
         "id": "B",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report never explains who was surveyed or how they were chosen."
       },
       {
         "id": "C",
@@ -34086,7 +34086,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The report is written by a publicity intern with no background in the field."
       },
       {
         "id": "B",
@@ -34123,7 +34123,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The report is written by a publicity intern with no background in the field."
       },
       {
         "id": "C",
@@ -34152,7 +34152,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The report mentions successes but leaves out failed trials of the same plan."
       },
       {
         "id": "B",
@@ -34197,7 +34197,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "People who disliked the plan were not invited to answer the survey."
       }
     ],
     "answer": "D",
@@ -34226,7 +34226,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report was sponsored by a supplier that could be hired if the plan passed."
       },
       {
         "id": "D",
@@ -34251,7 +34251,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report never explains who was surveyed or how they were chosen."
       },
       {
         "id": "B",
@@ -34288,7 +34288,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "No expert source is named, even though the report makes technical claims."
       },
       {
         "id": "C",
@@ -34325,7 +34325,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "Several negative results were collected but not included in the summary."
       },
       {
         "id": "D",
@@ -34362,7 +34362,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The sample was drawn from a meeting organized by supporters of the plan."
       }
     ],
     "answer": "D",
@@ -34395,7 +34395,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A consultant who helped design the plan was paid to evaluate it."
       }
     ],
     "answer": "D",
@@ -34424,7 +34424,7 @@
       },
       {
         "id": "C",
-        "text": "The report does not say how the data was gathered."
+        "text": "The methods section is missing, so readers cannot check the process."
       },
       {
         "id": "D",
@@ -34453,7 +34453,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author gives no qualifications for judging this kind of plan."
       },
       {
         "id": "C",
@@ -34482,7 +34482,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The chart starts after the worst results had already happened."
       },
       {
         "id": "B",
@@ -34523,7 +34523,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "Only people who had already benefited from the plan were surveyed."
       },
       {
         "id": "D",
@@ -34560,7 +34560,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The publisher sells products connected to the recommendation."
       }
     ],
     "answer": "D",
@@ -34581,7 +34581,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives a conclusion but no way to inspect the raw data."
       },
       {
         "id": "B",
@@ -34725,7 +34725,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report comes from a group seeking the contract created by the plan."
       }
     ],
     "answer": "D",
@@ -34779,7 +34779,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author works outside the topic area and does not quote experts."
       },
       {
         "id": "B",
@@ -34816,7 +34816,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The author reports only the best month and skips weaker months."
       },
       {
         "id": "C",
@@ -34853,7 +34853,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The survey came from a signup list for fans of the proposal."
       },
       {
         "id": "D",
@@ -34890,7 +34890,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A company that sells services tied to the recommendation helped write the report."
       }
     ],
     "answer": "D",
@@ -34923,7 +34923,7 @@
       },
       {
         "id": "D",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives results but no sample size, dates, or data source."
       }
     ],
     "answer": "D",
@@ -34952,7 +34952,7 @@
       },
       {
         "id": "C",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The report is written by a publicity intern with no background in the field."
       },
       {
         "id": "D",
@@ -34981,7 +34981,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The report mentions successes but leaves out failed trials of the same plan."
       },
       {
         "id": "C",
@@ -35010,7 +35010,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The survey only included people who already supported the plan."
+        "text": "People who disliked the plan were not invited to answer the survey."
       },
       {
         "id": "B",
@@ -35051,7 +35051,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The author works for a firm bidding to run part of the plan."
       },
       {
         "id": "D",
@@ -35088,7 +35088,7 @@
       },
       {
         "id": "D",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report never explains who was surveyed or how they were chosen."
       }
     ],
     "answer": "D",
@@ -35109,7 +35109,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "No expert source is named, even though the report makes technical claims."
       },
       {
         "id": "B",
@@ -35146,7 +35146,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "Several negative results were collected but not included in the summary."
       },
       {
         "id": "C",
@@ -35183,7 +35183,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "Several negative results were collected but not included in the summary."
       },
       {
         "id": "D",
@@ -35220,7 +35220,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The sample was drawn from a meeting organized by supporters of the plan."
       }
     ],
     "answer": "D",
@@ -35241,7 +35241,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A consultant who helped design the plan was paid to evaluate it."
       },
       {
         "id": "B",
@@ -35278,7 +35278,7 @@
       },
       {
         "id": "B",
-        "text": "The report does not say how the data was gathered."
+        "text": "The methods section is missing, so readers cannot check the process."
       },
       {
         "id": "C",
@@ -35319,7 +35319,7 @@
       },
       {
         "id": "D",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "No expert source is named, even though the report makes technical claims."
       }
     ],
     "answer": "D",
@@ -35348,7 +35348,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The chart starts after the worst results had already happened."
       },
       {
         "id": "D",
@@ -35377,7 +35377,7 @@
       },
       {
         "id": "B",
-        "text": "The survey only included people who already supported the plan."
+        "text": "Only people who had already benefited from the plan were surveyed."
       },
       {
         "id": "C",
@@ -35406,7 +35406,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The publisher sells products connected to the recommendation."
       },
       {
         "id": "B",
@@ -35439,7 +35439,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives a conclusion but no way to inspect the raw data."
       },
       {
         "id": "B",
@@ -35476,7 +35476,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author gives no qualifications for judging this kind of plan."
       },
       {
         "id": "C",
@@ -35575,7 +35575,7 @@
       },
       {
         "id": "B",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report comes from a group seeking the contract created by the plan."
       },
       {
         "id": "C",
@@ -35678,7 +35678,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The author reports only the best month and skips weaker months."
       },
       {
         "id": "D",
@@ -35711,7 +35711,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The survey came from a signup list for fans of the proposal."
       },
       {
         "id": "D",
@@ -35748,7 +35748,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A company that sells services tied to the recommendation helped write the report."
       }
     ],
     "answer": "D",
@@ -35769,7 +35769,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives results but no sample size, dates, or data source."
       },
       {
         "id": "B",
@@ -35806,7 +35806,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author works outside the topic area and does not quote experts."
       },
       {
         "id": "C",
@@ -35847,7 +35847,7 @@
       },
       {
         "id": "D",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The report mentions successes but leaves out failed trials of the same plan."
       }
     ],
     "answer": "D",
@@ -35876,7 +35876,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "People who disliked the plan were not invited to answer the survey."
       },
       {
         "id": "D",
@@ -35905,7 +35905,7 @@
       },
       {
         "id": "B",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The author works for a firm bidding to run part of the plan."
       },
       {
         "id": "C",
@@ -35934,7 +35934,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report never explains who was surveyed or how they were chosen."
       },
       {
         "id": "B",
@@ -35967,7 +35967,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The report is written by a publicity intern with no background in the field."
       },
       {
         "id": "B",
@@ -36004,7 +36004,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "Several negative results were collected but not included in the summary."
       },
       {
         "id": "C",
@@ -36041,7 +36041,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The sample was drawn from a meeting organized by supporters of the plan."
       },
       {
         "id": "D",
@@ -36078,7 +36078,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report was sponsored by a supplier that could be hired if the plan passed."
       }
     ],
     "answer": "D",
@@ -36103,7 +36103,7 @@
       },
       {
         "id": "B",
-        "text": "The report does not say how the data was gathered."
+        "text": "The methods section is missing, so readers cannot check the process."
       },
       {
         "id": "C",
@@ -36132,7 +36132,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "No expert source is named, even though the report makes technical claims."
       },
       {
         "id": "B",
@@ -36177,7 +36177,7 @@
       },
       {
         "id": "D",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The chart starts after the worst results had already happened."
       }
     ],
     "answer": "D",
@@ -36206,7 +36206,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "Only people who had already benefited from the plan were surveyed."
       },
       {
         "id": "D",
@@ -36243,7 +36243,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "Only people who had already benefited from the plan were surveyed."
       }
     ],
     "answer": "D",
@@ -36272,7 +36272,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The publisher sells products connected to the recommendation."
       },
       {
         "id": "D",
@@ -36301,7 +36301,7 @@
       },
       {
         "id": "B",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives a conclusion but no way to inspect the raw data."
       },
       {
         "id": "C",
@@ -36330,7 +36330,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author gives no qualifications for judging this kind of plan."
       },
       {
         "id": "B",
@@ -36371,7 +36371,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The chart starts after the worst results had already happened."
       },
       {
         "id": "D",
@@ -36429,7 +36429,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report comes from a group seeking the contract created by the plan."
       },
       {
         "id": "B",
@@ -36573,7 +36573,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The survey came from a signup list for fans of the proposal."
       }
     ],
     "answer": "D",
@@ -36602,7 +36602,7 @@
       },
       {
         "id": "C",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A company that sells services tied to the recommendation helped write the report."
       },
       {
         "id": "D",
@@ -36627,7 +36627,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives results but no sample size, dates, or data source."
       },
       {
         "id": "B",
@@ -36664,7 +36664,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author works outside the topic area and does not quote experts."
       },
       {
         "id": "C",
@@ -36701,7 +36701,7 @@
       },
       {
         "id": "C",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The author reports only the best month and skips weaker months."
       },
       {
         "id": "D",
@@ -36738,7 +36738,7 @@
       },
       {
         "id": "D",
-        "text": "The survey only included people who already supported the plan."
+        "text": "People who disliked the plan were not invited to answer the survey."
       }
     ],
     "answer": "D",
@@ -36771,7 +36771,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The author works for a firm bidding to run part of the plan."
       }
     ],
     "answer": "D",
@@ -36800,7 +36800,7 @@
       },
       {
         "id": "C",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report never explains who was surveyed or how they were chosen."
       },
       {
         "id": "D",
@@ -36829,7 +36829,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The report is written by a publicity intern with no background in the field."
       },
       {
         "id": "C",
@@ -36858,7 +36858,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The report mentions successes but leaves out failed trials of the same plan."
       },
       {
         "id": "B",
@@ -36899,7 +36899,7 @@
       },
       {
         "id": "C",
-        "text": "The survey only included people who already supported the plan."
+        "text": "The sample was drawn from a meeting organized by supporters of the plan."
       },
       {
         "id": "D",
@@ -36936,7 +36936,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The report was sponsored by a supplier that could be hired if the plan passed."
       }
     ],
     "answer": "D",
@@ -36957,7 +36957,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The report does not say how the data was gathered."
+        "text": "The methods section is missing, so readers cannot check the process."
       },
       {
         "id": "B",
@@ -36994,7 +36994,7 @@
       },
       {
         "id": "B",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "No expert source is named, even though the report makes technical claims."
       },
       {
         "id": "C",
@@ -37027,7 +37027,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "Several negative results were collected but not included in the summary."
       },
       {
         "id": "C",
@@ -37056,7 +37056,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The survey only included people who already supported the plan."
+        "text": "Only people who had already benefited from the plan were surveyed."
       },
       {
         "id": "B",
@@ -37101,7 +37101,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "A consultant who helped design the plan was paid to evaluate it."
       }
     ],
     "answer": "D",
@@ -37130,7 +37130,7 @@
       },
       {
         "id": "C",
-        "text": "The report does not say how the data was gathered."
+        "text": "The report gives a conclusion but no way to inspect the raw data."
       },
       {
         "id": "D",
@@ -37155,7 +37155,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The author has no relevant expertise and cites no one who does."
+        "text": "The author gives no qualifications for judging this kind of plan."
       },
       {
         "id": "B",
@@ -37192,7 +37192,7 @@
       },
       {
         "id": "B",
-        "text": "The report leaves out results that went against its conclusion."
+        "text": "The chart starts after the worst results had already happened."
       },
       {
         "id": "C",
@@ -37266,7 +37266,7 @@
       },
       {
         "id": "D",
-        "text": "The report was produced by a vendor that would profit if the plan was approved."
+        "text": "The publisher sells products connected to the recommendation."
       }
     ],
     "answer": "D",

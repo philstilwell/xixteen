@@ -37,7 +37,9 @@ const CLUNKY_CHOICE_PATTERNS = [
   ["underspecified household leak alerts", /\bsend household leak alerts\b/i],
   ["underspecified quiet-hours texts", /\bquiet-hours texts\b/i],
   ["generic same-action wording", /\bsame action\b/i],
-  ["double p.m. punctuation", /\bp\.m\.\./i]
+  ["double p.m. punctuation", /\bp\.m\.\./i],
+  ["overused money-motive tell", /\bwould make money\b/i],
+  ["overused profit-motive tell", /\bwould profit\b/i]
 ];
 const PERCENT_CHANGE_PATTERN = /\b(rose|fell|increased|decreased|dropped|reduced|improved|cut|lowered|raised)\s+by\s+\d+%/i;
 const PERCENT_COMPARISON_CUE_PATTERN = /\b(compared with|compared to|before|after|starting number|percentage points|from\s+\d+%\s+to\s+\d+%|out of 100|chance)\b/i;
@@ -45,7 +47,7 @@ const ANSWER_DIVERSITY_RULES = {
   hidden_assumptions: { minStems: 4, maxShare: 0.45 },
   relevance: { minStems: 4, maxShare: 0.45 },
   evidence_quality: { minStems: 4, maxShare: 0.45 },
-  source_reliability: { minStems: 4, maxShare: 0.45 },
+  source_reliability: { minStems: 15, maxShare: 0.25 },
   probability: { minStems: 4, maxShare: 0.45 },
   statistical_sense: { minStems: 4, maxShare: 0.45 },
   tradeoffs: { minStems: 4, maxShare: 0.45 },

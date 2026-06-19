@@ -345,7 +345,7 @@ function topic(domain, actor, action, metric, outcome, alternative, irrelevant, 
     group,
     field,
     evidence: `a four-week test with ${group} found that ${testResult}`,
-    interestedParty: `a company that would make money if ${actor} chose to ${action}`,
+    interestedParty: `a company with a financial stake if ${actor} chose to ${action}`,
     expert: `a ${field} expert who has studied similar programs`
   };
 }
@@ -728,36 +728,73 @@ function evidenceItems() {
 }
 
 function sourceItems() {
+  const financialMotiveAnswers = [
+    () => "A company that sells services tied to the recommendation helped write the report.",
+    () => "The author works for a firm bidding to run part of the plan.",
+    () => "The report was sponsored by a supplier that could be hired if the plan passed.",
+    () => "A consultant who helped design the plan was paid to evaluate it.",
+    () => "The publisher sells products connected to the recommendation.",
+    () => "The report comes from a group seeking the contract created by the plan."
+  ];
+  const missingMethodAnswers = [
+    () => "The report does not say how the data was gathered.",
+    () => "The report gives results but no sample size, dates, or data source.",
+    () => "The report never explains who was surveyed or how they were chosen.",
+    () => "The methods section is missing, so readers cannot check the process.",
+    () => "The report gives a conclusion but no way to inspect the raw data."
+  ];
+  const noExpertiseAnswers = [
+    () => "The author has no relevant expertise and cites no one who does.",
+    () => "The author works outside the topic area and does not quote experts.",
+    () => "The report is written by a publicity intern with no background in the field.",
+    () => "No expert source is named, even though the report makes technical claims.",
+    () => "The author gives no qualifications for judging this kind of plan."
+  ];
+  const cherryPickedAnswers = [
+    () => "The report leaves out results that went against its conclusion.",
+    () => "The author reports only the best month and skips weaker months.",
+    () => "The report mentions successes but leaves out failed trials of the same plan.",
+    () => "Several negative results were collected but not included in the summary.",
+    () => "The chart starts after the worst results had already happened."
+  ];
+  const biasedSampleAnswers = [
+    () => "The survey only included people who already supported the plan.",
+    () => "The survey came from a signup list for fans of the proposal.",
+    () => "People who disliked the plan were not invited to answer the survey.",
+    () => "The sample was drawn from a meeting organized by supporters of the plan.",
+    () => "Only people who had already benefited from the plan were surveyed."
+  ];
   const cases = [
-    (t) => ({
+    (t, variant) => ({
       tag: "profit-motive",
-      correct: `The report was produced by a vendor that would profit if the plan was approved.`,
+      correct: financialMotiveAnswers[variant % financialMotiveAnswers.length](t),
       explanation: "A source is less trustworthy when it may profit from the answer it gives."
     }),
-    () => ({
+    (t, variant) => ({
       tag: "missing-method",
-      correct: `The report does not say how the data was gathered.`,
+      correct: missingMethodAnswers[variant % missingMethodAnswers.length](t),
       explanation: "A source is less trustworthy when readers cannot check its method."
     }),
-    () => ({
+    (t, variant) => ({
       tag: "no-expertise",
-      correct: `The author has no relevant expertise and cites no one who does.`,
+      correct: noExpertiseAnswers[variant % noExpertiseAnswers.length](t),
       explanation: "A source is less trustworthy when it lacks expertise on the topic."
     }),
-    () => ({
+    (t, variant) => ({
       tag: "cherry-picked",
-      correct: `The report leaves out results that went against its conclusion.`,
+      correct: cherryPickedAnswers[variant % cherryPickedAnswers.length](t),
       explanation: "A source is less trustworthy when it hides inconvenient evidence."
     }),
-    (t) => ({
+    (t, variant) => ({
       tag: "biased-sample",
-      correct: `The survey only included people who already supported the plan.`,
+      correct: biasedSampleAnswers[variant % biasedSampleAnswers.length](t),
       explanation: "A source is less trustworthy when its sample is tilted toward one answer."
     })
   ];
   return buildSkill("source_reliability", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const itemCase = cases[(offset + difficulty - 1) % cases.length](t);
+    const variant = Math.floor(offset / cases.length) + difficulty - 1;
+    const itemCase = cases[(offset + difficulty - 1) % cases.length](t, variant);
     const prompt = `${speaker} reads a report about ${t.domain}. The report recommends that ${t.actor} ${t.action}, and it claims the plan would ${resultGoal(t)}. Which detail would make ${speaker} trust the report less?`;
     return makeItem(
       "source_reliability",
