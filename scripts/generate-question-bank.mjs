@@ -260,7 +260,7 @@ const fallacyTypes = [
   {
     name: "Post hoc",
     tag: "post-hoc",
-    line: (t, speaker) => `${speaker} says, "${cap(t.metric)} ${t.outcome} after ${t.actor} began the new policy, so the policy must have caused the change."`,
+    line: (t, speaker) => `${speaker} says, "${cap(t.afterChangeResult)}, so the policy must have caused the change."`,
     explanation: "The argument assumes that because one event came after another, the first caused the second."
   }
 ];
@@ -317,6 +317,9 @@ const biasTypes = [
 ];
 
 function topic(domain, actor, action, metric, outcome, alternative, irrelevant, group, field) {
+  const outcomeAmount = outcome.replace(/^(fell|rose) by /, "");
+  const testResult = `${metric} ${outcome} compared with the four weeks before the test`;
+  const afterChangeResult = `${metric} ${outcome} in the four weeks after the plan began compared with the four weeks before it`;
   return {
     domain,
     actor,
@@ -324,12 +327,14 @@ function topic(domain, actor, action, metric, outcome, alternative, irrelevant, 
     actionGerund: gerundize(action),
     metric,
     outcome,
-    outcomeAmount: outcome.replace(/^(fell|rose) by /, ""),
+    outcomeAmount,
+    testResult,
+    afterChangeResult,
     alternative,
     irrelevant,
     group,
     field,
-    evidence: `a small test with ${group} found that ${metric} ${outcome}`,
+    evidence: `a four-week test with ${group} found that ${testResult}`,
     interestedParty: `a company that would make money if ${actor} chose to ${action}`,
     expert: `a ${field} expert who has studied similar programs`
   };
@@ -646,12 +651,12 @@ function sourceItems() {
 function logicalGapItems() {
   const patterns = [
     (t, speaker) => ({
-      prompt: `At a planning meeting about ${t.domain}, ${speaker} says, "In one group, ${t.metric} ${t.outcome} after ${t.actionGerund}. So this plan will work in every similar setting." What is the logical gap in ${speaker}'s reasoning?`,
+      prompt: `At a planning meeting about ${t.domain}, ${speaker} says, "In one group that tried ${t.actionGerund}, ${t.testResult}. So this plan will work in every similar setting." What is the logical gap in ${speaker}'s reasoning?`,
       correct: "It generalizes from one case to every case without enough support.",
       explanation: "The logical gap is the jump from one case to every case. One success does not prove the same thing will happen everywhere."
     }),
     (t, speaker) => ({
-      prompt: `In a memo about ${t.domain}, ${speaker} writes, "${cap(t.metric)} ${t.outcome} after ${t.actionGerund}. So the action caused the change." What is the logical gap in ${speaker}'s reasoning?`,
+      prompt: `In a memo about ${t.domain}, ${speaker} writes, "During a small trial of ${t.actionGerund}, ${t.testResult}. So the action caused the change." What is the logical gap in ${speaker}'s reasoning?`,
       correct: "It assumes timing alone proves causation.",
       explanation: "The logical gap is treating timing as proof of cause. Something happening first does not, by itself, prove it caused what came next."
     }),
@@ -792,7 +797,7 @@ function statsItems() {
 function causationItems() {
   return buildSkill("causation", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const prompt = `${cap(t.actor)} tried a plan to ${t.action}. Afterward, ${t.metric} ${t.outcome}. ${speaker} says, "The plan caused the change." Which fact would show why ${speaker}'s claim is not proved yet?`;
+    const prompt = `${cap(t.actor)} tried a plan to ${t.action}. ${asSentence(t.afterChangeResult)} ${speaker} says, "The plan caused the change." Which fact would show why ${speaker}'s claim is not proved yet?`;
     return makeItem(
       "causation",
       index,
@@ -802,7 +807,7 @@ function causationItems() {
       [
         asSentence(t.irrelevant),
         `No event can ever have more than one possible cause.`,
-        `A change of ${t.outcomeAmount} is always too small to measure.`,
+        `Any result this size is automatically too small to measure.`,
         `${cap(t.actor)} is mentioned before ${t.metric} in the sentence.`
       ],
       "To prove cause, you need to rule out other likely causes or compare similar groups.",
@@ -814,7 +819,7 @@ function causationItems() {
 function alternativeItems() {
   return buildSkill("alternative_explanations", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const prompt = `${cap(t.actor)} tried ${t.actionGerund}. Afterward, ${t.metric} ${t.outcome}. ${speaker} says, "The plan caused the change." Which other explanation also fits the facts?`;
+    const prompt = `${cap(t.actor)} tried ${t.actionGerund}. ${asSentence(t.afterChangeResult)} ${speaker} says, "The plan caused the change." Which other explanation also fits the facts?`;
     return makeItem(
       "alternative_explanations",
       index,
@@ -881,7 +886,7 @@ function beliefUpdateItems() {
   return buildSkill("belief_update", (t, difficulty, offset, index) => {
     const evidence =
       difficulty <= 2
-        ? `one small test where ${t.metric} ${t.outcome}`
+        ? `one small four-week test where ${t.testResult}`
         : `a random comparison where similar groups with and without the change were measured`;
     const prompt = `You are unsure whether ${t.actionGerund} would ${resultGoal(t)}. Then you learn about ${evidence}. How should your confidence change?`;
     const correct =

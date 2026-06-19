@@ -20,6 +20,8 @@ const CLUNKY_PROMPT_PATTERNS = [
   ["use-only-facts warning", /Use only the facts/i],
   ["bureaucratic considering phrase", /is considering whether to/i]
 ];
+const PERCENT_CHANGE_PATTERN = /\b(rose|fell|increased|decreased|dropped|reduced|improved|cut|lowered|raised)\s+by\s+\d+%/i;
+const PERCENT_COMPARISON_CUE_PATTERN = /\b(compared with|compared to|before|after|starting number|percentage points|from\s+\d+%\s+to\s+\d+%|out of 100|chance)\b/i;
 
 const skills = JSON.parse(await readFile(new URL("skills.json", DATA_DIR), "utf8"));
 const items = JSON.parse(await readFile(new URL("question-bank.json", DATA_DIR), "utf8"));
@@ -78,6 +80,9 @@ for (const item of items) {
     if (pattern.test(item.prompt)) {
       errors.push(`${item.id} still uses clunky prompt boilerplate: ${label}.`);
     }
+  }
+  if (hasBarePercentChange(item.prompt)) {
+    errors.push(`${item.id} gives a percentage change without a clear comparison or reference point.`);
   }
   if (!Number.isInteger(item.difficulty) || item.difficulty < 1 || item.difficulty > 5) {
     errors.push(`${item.id} has invalid difficulty ${item.difficulty}.`);
@@ -171,3 +176,7 @@ if (errors.length > 0) {
 }
 
 console.log(`Validated ${skills.length} skills, ${items.length} items, and ${quizzes.length} daily quizzes.`);
+
+function hasBarePercentChange(text) {
+  return PERCENT_CHANGE_PATTERN.test(text) && !PERCENT_COMPARISON_CUE_PATTERN.test(text);
+}

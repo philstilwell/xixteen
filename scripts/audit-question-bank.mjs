@@ -38,6 +38,8 @@ const CLUNKY_CHOICE_PATTERNS = [
   ["generic same-action wording", /\bsame action\b/i],
   ["double p.m. punctuation", /\bp\.m\.\./i]
 ];
+const PERCENT_CHANGE_PATTERN = /\b(rose|fell|increased|decreased|dropped|reduced|improved|cut|lowered|raised)\s+by\s+\d+%/i;
+const PERCENT_COMPARISON_CUE_PATTERN = /\b(compared with|compared to|before|after|starting number|percentage points|from\s+\d+%\s+to\s+\d+%|out of 100|chance)\b/i;
 const RUBRIC_BY_SKILL = {
   clarify_claim: {
     prompt: [/Which claim is [A-Z][A-Za-z]+ asking people to accept\?/],
@@ -217,6 +219,9 @@ function checkClarity(item, issues, sentenceStats) {
   if (/\b(\w+)\s+\1\b/i.test(item.prompt)) {
     addIssue(issues, "clarity", "prompt repeats the same word twice in a row");
   }
+  if (hasBarePercentChange(item.prompt)) {
+    addIssue(issues, "clarity", "prompt gives a percentage change without a clear comparison or reference point");
+  }
 }
 
 function checkCoherence(item, skill, issues, choiceTexts, answer) {
@@ -247,6 +252,9 @@ function checkCoherence(item, skill, issues, choiceTexts, answer) {
       if (pattern.test(choice.text)) {
         addIssue(issues, "coherence", `choice ${choice.id} uses unclear wording: ${label}`);
       }
+    }
+    if (hasBarePercentChange(choice.text, `${item.prompt} ${choice.text}`)) {
+      addIssue(issues, "coherence", `choice ${choice.id} gives a percentage change without enough comparison context`);
     }
   }
   if (/undefined|\bNaN\b/.test(item.prompt + item.explanation)) {
@@ -299,4 +307,8 @@ function percentile(sorted, p) {
 
 function wordCount(text) {
   return (text.match(/[A-Za-z0-9%'-]+/g) || []).length;
+}
+
+function hasBarePercentChange(text, context = text) {
+  return PERCENT_CHANGE_PATTERN.test(text) && !PERCENT_COMPARISON_CUE_PATTERN.test(context);
 }
