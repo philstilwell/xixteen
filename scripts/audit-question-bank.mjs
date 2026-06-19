@@ -7,6 +7,7 @@ const MAX_CHOICE_CHARS = 190;
 const MAX_AVG_SENTENCE_WORDS = 34;
 const MAX_LONGEST_SENTENCE_WORDS = 58;
 const CLUNKY_PROMPT_PATTERNS = [
+  ["distracting quick-check frame", /^Quick check:/i],
   ["Scene label", /Scene:/],
   ["raw argument label", /Argument:\s*"/],
   ["anonymous someone", /\bsomeone\b/i],

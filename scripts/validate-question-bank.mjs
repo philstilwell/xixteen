@@ -6,8 +6,12 @@ const EXPECTED_PER_SKILL = 160;
 const EXPECTED_PER_DIFFICULTY = 32;
 const MIN_PROMPT_CHARS = 120;
 const MAX_PROMPT_CHARS = 520;
-const LABELS = new Set(["A", "B", "C", "D"]);
+const LABEL_LIST = ["A", "B", "C", "D"];
+const LABELS = new Set(LABEL_LIST);
+const EXPECTED_PER_LABEL_PER_SKILL_DIFFICULTY = EXPECTED_PER_DIFFICULTY / LABEL_LIST.length;
+const EXPECTED_DAILY_PER_LABEL = EXPECTED_SKILLS / LABEL_LIST.length;
 const CLUNKY_PROMPT_PATTERNS = [
+  ["distracting quick-check frame", /^Quick check:/i],
   ["Scene label", /Scene:/],
   ["generic situation wrapper", /\bsituation\b/i],
   ["result-being-watched wrapper", /result being watched/i],
@@ -25,9 +29,11 @@ const errors = [];
 const skillIds = new Set(skills.map((skill) => skill.id));
 const skillCodes = new Set();
 const itemIds = new Set();
+const itemById = new Map();
 const prompts = new Set();
 const bySkill = new Map();
 const bySkillDifficulty = new Map();
+const bySkillDifficultyAnswer = new Map();
 
 if (skills.length !== EXPECTED_SKILLS) {
   errors.push(`Expected ${EXPECTED_SKILLS} skills, found ${skills.length}.`);
@@ -49,6 +55,7 @@ for (const item of items) {
     errors.push(`Duplicate item id: ${item.id}`);
   }
   itemIds.add(item.id);
+  itemById.set(item.id, item);
 
   if (prompts.has(item.prompt)) {
     errors.push(`Duplicate prompt: ${item.id}`);
@@ -101,6 +108,10 @@ for (const item of items) {
   bySkill.set(item.skill, (bySkill.get(item.skill) || 0) + 1);
   const skillDifficultyKey = `${item.skill}:${item.difficulty}`;
   bySkillDifficulty.set(skillDifficultyKey, (bySkillDifficulty.get(skillDifficultyKey) || 0) + 1);
+  if (LABELS.has(item.answer)) {
+    const skillDifficultyAnswerKey = `${item.skill}:${item.difficulty}:${item.answer}`;
+    bySkillDifficultyAnswer.set(skillDifficultyAnswerKey, (bySkillDifficultyAnswer.get(skillDifficultyAnswerKey) || 0) + 1);
+  }
 }
 
 for (const skill of skills) {
@@ -112,6 +123,12 @@ for (const skill of skills) {
     const count = bySkillDifficulty.get(`${skill.id}:${difficulty}`) || 0;
     if (count !== EXPECTED_PER_DIFFICULTY) {
       errors.push(`${skill.id} difficulty ${difficulty} expected ${EXPECTED_PER_DIFFICULTY}, found ${count}.`);
+    }
+    for (const label of LABEL_LIST) {
+      const answerCount = bySkillDifficultyAnswer.get(`${skill.id}:${difficulty}:${label}`) || 0;
+      if (answerCount !== EXPECTED_PER_LABEL_PER_SKILL_DIFFICULTY) {
+        errors.push(`${skill.id} difficulty ${difficulty} expected ${EXPECTED_PER_LABEL_PER_SKILL_DIFFICULTY} ${label} answers, found ${answerCount}.`);
+      }
     }
   }
 }
@@ -125,14 +142,26 @@ for (const quiz of quizzes) {
     continue;
   }
   const quizSkills = new Set();
+  const quizAnswerCounts = new Map(LABEL_LIST.map((label) => [label, 0]));
   for (const entry of quiz.items) {
     quizSkills.add(entry.skill);
     if (!itemIds.has(entry.itemId)) {
       errors.push(`${quiz.id} references unknown item ${entry.itemId}.`);
+      continue;
+    }
+    const item = itemById.get(entry.itemId);
+    if (item && LABELS.has(item.answer)) {
+      quizAnswerCounts.set(item.answer, quizAnswerCounts.get(item.answer) + 1);
     }
   }
   if (quizSkills.size !== EXPECTED_SKILLS) {
     errors.push(`${quiz.id} does not have one item per skill.`);
+  }
+  for (const label of LABEL_LIST) {
+    const answerCount = quizAnswerCounts.get(label);
+    if (answerCount !== EXPECTED_DAILY_PER_LABEL) {
+      errors.push(`${quiz.id} expected ${EXPECTED_DAILY_PER_LABEL} ${label} answers, found ${answerCount}.`);
+    }
   }
 }
 

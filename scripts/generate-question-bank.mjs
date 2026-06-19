@@ -6,7 +6,7 @@ const ITEMS_PER_DIFFICULTY = 32;
 const LABELS = ["A", "B", "C", "D"];
 const speakerNames = ["Jordan", "Riley", "Maya", "Sam", "Avery", "Taylor", "Morgan", "Casey"];
 const difficultyFrames = [
-  "Quick check:",
+  "",
   "Try this:",
   "Think it through:",
   "Careful version:",
@@ -408,17 +408,22 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
   if (choices.length < 4) {
     throw new Error(`${id} has fewer than four unique choices`);
   }
-  const shuffled = stableShuffle(choices.slice(0, 4), id);
-  const answerIndex = shuffled.indexOf(correct);
-  if (answerIndex === -1) {
-    throw new Error(`${id} lost its correct answer while shuffling`);
+  const answerIndex = answerIndexFor(skillId, index, difficulty);
+  const shuffledDistractors = stableShuffle(choices.slice(1), `${id}:distractors`).slice(0, LABELS.length - 1);
+  const arrangedChoices = [];
+  let distractorIndex = 0;
+  for (let choiceIndex = 0; choiceIndex < LABELS.length; choiceIndex += 1) {
+    arrangedChoices.push(choiceIndex === answerIndex ? correct : shuffledDistractors[distractorIndex]);
+    if (choiceIndex !== answerIndex) {
+      distractorIndex += 1;
+    }
   }
   return {
     id,
     skill: skillId,
     difficulty,
     prompt: prompt.replace(/\s+/g, " ").trim(),
-    choices: shuffled.map((text, choiceIndex) => ({
+    choices: arrangedChoices.map((text, choiceIndex) => ({
       id: LABELS[choiceIndex],
       text
     })),
@@ -428,8 +433,17 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
   };
 }
 
+function answerIndexFor(skillId, index, difficulty) {
+  const itemOffset = (index - 1) % ITEMS_PER_DIFFICULTY;
+  const block = Math.floor(itemOffset / LABELS.length);
+  const positionInBlock = itemOffset % LABELS.length;
+  const answerOrder = stableShuffle(LABELS.map((_, labelIndex) => labelIndex), `${skillId}:d${difficulty}:answers:${block}`);
+  return answerOrder[positionInBlock];
+}
+
 function withFrame(difficulty, prompt) {
-  return `${difficultyFrames[difficulty - 1]} ${prompt}`;
+  const frame = difficultyFrames[difficulty - 1];
+  return frame ? `${frame} ${prompt}` : prompt;
 }
 
 function decisionSetup(t) {
