@@ -74,6 +74,14 @@ async function fetchJson(path) {
 function bindEvents() {
   document.querySelector("#start-daily").addEventListener("click", () => startDaily());
   document.querySelector("#start-practice").addEventListener("click", () => startAdaptivePractice());
+  document.querySelector("[data-promo-daily]").addEventListener("click", (event) => {
+    event.preventDefault();
+    startDaily();
+  });
+  document.querySelector("[data-promo-practice]").addEventListener("click", (event) => {
+    event.preventDefault();
+    startAdaptivePractice();
+  });
   document.querySelector("#reset-stats").addEventListener("click", () => {
     state.profile = createProfile();
     saveProfile();

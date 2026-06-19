@@ -78,7 +78,8 @@ button {
 .mode-button,
 .next-button,
 .choice-button,
-.icon-button {
+.icon-button,
+.promo-links a {
   border: 1px solid var(--line);
   border-radius: 8px;
   min-height: 40px;
@@ -111,6 +112,7 @@ button {
 .next-button:hover,
 .choice-button:hover,
 .icon-button:hover,
+.promo-links a:hover,
 .skill-card:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(31, 42, 46, 0.12);
@@ -124,7 +126,7 @@ main {
 
 .gallery-shell {
   display: grid;
-  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 0.48fr) minmax(0, 1fr);
   align-items: start;
   gap: 26px;
   padding: 22px;
@@ -138,20 +140,55 @@ main {
   position: sticky;
   top: 18px;
   display: grid;
-  gap: 10px;
+  gap: 14px;
   padding: 6px 2px;
 }
 
 .gallery-copy h2 {
-  max-width: 360px;
+  max-width: 430px;
   font-size: 30px;
   line-height: 1.08;
 }
 
-.gallery-copy p:last-child {
+.promo-lede,
+.audience-notes p {
   margin: 0;
   color: var(--muted);
   line-height: 1.5;
+}
+
+.promo-lede {
+  max-width: 46ch;
+  color: var(--ink);
+}
+
+.audience-notes {
+  display: grid;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.audience-notes strong {
+  color: var(--ink);
+}
+
+.promo-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.promo-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 11px;
+  background: rgba(255, 253, 247, 0.74);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 850;
+  text-decoration: none;
 }
 
 .skill-gallery {
@@ -179,7 +216,8 @@ main {
 .primary-action:focus-visible,
 .secondary-action:focus-visible,
 .next-button:focus-visible,
-.icon-button:focus-visible {
+.icon-button:focus-visible,
+.promo-links a:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent, var(--teal)) 40%, white);
   outline-offset: 2px;
 }
