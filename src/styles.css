@@ -221,6 +221,7 @@ main {
 .choice-button:focus-visible,
 .mode-button:focus-visible,
 .leaderboard-tab:focus-visible,
+.control-field select:focus-visible,
 .primary-action:focus-visible,
 .secondary-action:focus-visible,
 .next-button:focus-visible,
@@ -412,7 +413,7 @@ main {
 }
 
 .practice-dock {
-  display: grid;
+  display: none;
   grid-template-columns: minmax(160px, 1.2fr) minmax(120px, 0.7fr) minmax(92px, 0.5fr) auto;
   align-items: end;
   gap: 10px;
@@ -421,6 +422,10 @@ main {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(247, 243, 234, 0.62);
+}
+
+.practice-dock.is-visible {
+  display: grid;
 }
 
 .control-field {
@@ -595,6 +600,14 @@ main {
   line-height: 1.25;
 }
 
+.share-field.is-disabled {
+  opacity: 0.72;
+}
+
+.share-field.is-disabled input {
+  cursor: not-allowed;
+}
+
 .name-field label {
   color: var(--muted);
   font-size: 12px;
@@ -703,6 +716,30 @@ main {
   line-height: 1.5;
 }
 
+.practice-start {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.practice-start h3,
+.practice-start p {
+  margin: 0;
+}
+
+.practice-start h3 {
+  font-size: 18px;
+}
+
+.practice-start p {
+  max-width: 68ch;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .results-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -758,6 +795,30 @@ main {
 .submission-note.is-local,
 .submission-note.is-submitting {
   border-left-color: var(--blue);
+}
+
+.diagnostic-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.diagnostic-summary span {
+  min-height: 48px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.72);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.diagnostic-summary strong {
+  display: block;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
 }
 
 .focus-panel,
@@ -964,7 +1025,8 @@ main {
   .gallery-shell,
   .quiz-shell,
   .profile-panel,
-  .leaderboard-panel {
+  .leaderboard-panel,
+  .teacher-section {
     padding: 14px;
   }
 
@@ -1010,6 +1072,7 @@ main {
   }
 
   .score-summary,
+  .diagnostic-summary,
   .focus-list {
     grid-template-columns: 1fr;
   }

@@ -37,6 +37,7 @@ const els = {
   leaderboardTitle: document.querySelector("#leaderboard-title"),
   leaderboardNote: document.querySelector("#leaderboard-note"),
   workbench: document.querySelector("#workbench"),
+  practiceDock: document.querySelector(".practice-dock"),
   practiceSkill: document.querySelector("#practice-skill"),
   practiceDifficulty: document.querySelector("#practice-difficulty"),
   practiceCount: document.querySelector("#practice-count"),
@@ -68,8 +69,8 @@ async function init() {
   bindEvents();
   renderGallery();
   renderPracticeBuilder();
-  renderProfile();
   await renderLeaderboard();
+  renderProfile();
   startDaily({ scroll: false });
 }
 
@@ -83,7 +84,7 @@ async function fetchJson(path) {
 
 function bindEvents() {
   document.querySelector("#start-daily").addEventListener("click", () => startDaily());
-  document.querySelector("#start-practice").addEventListener("click", () => startAdaptivePractice());
+  document.querySelector("#start-practice").addEventListener("click", () => focusPracticeBuilder());
   document.querySelector("[data-promo-daily]").addEventListener("click", (event) => {
     event.preventDefault();
     startDaily();
@@ -114,7 +115,7 @@ function bindEvents() {
       if (button.dataset.mode === "daily") {
         startDaily();
       } else {
-        startAdaptivePractice();
+        focusPracticeBuilder();
       }
     });
   });
@@ -182,8 +183,21 @@ function renderPracticeBuilder() {
 
 function focusPracticeBuilder() {
   setMode("practice");
+  renderPracticeStart();
   els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
   els.practiceSkill.focus({ preventScroll: true });
+}
+
+function renderPracticeStart() {
+  els.quizTitle.textContent = "Build Practice";
+  els.quizDate.textContent = "Practice";
+  els.quizProgress.style.width = "0%";
+  els.quizPanel.innerHTML = `
+    <div class="practice-start">
+      <h3>Choose a practice set.</h3>
+      <p>Use the controls above to practice one skill, pick a level, or let XiXteen build an adaptive mix from your weakest areas.</p>
+    </div>
+  `;
 }
 
 function startDaily(options = {}) {
@@ -263,6 +277,7 @@ function setMode(mode) {
   document.querySelectorAll(".mode-button").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.mode === mode);
   });
+  els.practiceDock.classList.toggle("is-visible", mode === "practice");
 }
 
 function renderQuiz() {
@@ -361,14 +376,14 @@ async function finishQuiz() {
   renderResults(results, score, durationMs);
   renderProfile();
   if (state.quiz.mode === "daily") {
-    state.lastScoreSubmission = {
-      state: "submitting",
-      message: "Submitting your daily score..."
-    };
+    state.lastScoreSubmission = scoreSubmissionPreflight();
     renderResults(results, score, durationMs);
-    state.lastScoreSubmission = await submitScore(results, score, durationMs);
+    if (state.lastScoreSubmission.state === "submitting") {
+      state.lastScoreSubmission = await submitScore(results, score, durationMs);
+    }
     renderResults(results, score, durationMs);
     await renderLeaderboard();
+    renderProfile();
   } else {
     renderLeaderboard();
   }
@@ -380,6 +395,12 @@ function renderResults(results, score, durationMs) {
   const focusSkills = recommendedPracticeSkills(results);
   const missed = results.filter((result) => !result.correct);
   const submission = state.lastScoreSubmission;
+  const diagnostics = results.map((result) => ({
+    result,
+    skill: state.skillById.get(result.item.skill),
+    diagnosis: skillDiagnostic(result)
+  }));
+  const summary = diagnosticSummary(diagnostics);
   els.quizPanel.innerHTML = `
     <div class="score-summary">
       <div class="score-card">
@@ -397,6 +418,11 @@ function renderResults(results, score, durationMs) {
     </div>
     <p class="question-text">${resultMessage(score, total)}</p>
     ${submission ? `<p class="submission-note is-${escapeAttribute(submission.state)}">${escapeHtml(submission.message)}</p>` : ""}
+    <div class="diagnostic-summary" aria-label="Skill diagnosis summary">
+      <span><strong>${summary.strong}</strong> strong</span>
+      <span><strong>${summary.shaky}</strong> shaky</span>
+      <span><strong>${summary.needsWork}</strong> need work</span>
+    </div>
     ${focusSkills.length > 0 ? `
       <div class="focus-panel">
         <h3>Practice next</h3>
@@ -413,21 +439,17 @@ function renderResults(results, score, durationMs) {
     <div class="diagnostic-panel">
       <h3>Skill breakdown</h3>
       <div class="results-grid">
-        ${results.map((result) => {
-          const skill = state.skillById.get(result.item.skill);
-          const diagnosis = skillDiagnostic(result);
-          return `
+        ${diagnostics.map(({ result, skill, diagnosis }) => `
             <div class="result-cell is-${diagnosis.key}">
               <strong>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</strong>
               <span>${diagnosis.label} / Level ${result.item.difficulty}</span>
             </div>
-          `;
-        }).join("")}
+          `).join("")}
       </div>
     </div>
     ${missed.length > 0 ? `
       <div class="review-panel">
-        <h3>Review the misses</h3>
+        <h3>Review the misses (${missed.length})</h3>
         <div class="review-list">
           ${missed.map((result) => {
             const skill = state.skillById.get(result.item.skill);
@@ -483,13 +505,17 @@ function recordResults(results, durationMs) {
   }
 
   profile.seenItems = profile.seenItems.slice(-500);
-  profile.lastResults = results.map((result) => ({
+  const nextResults = results.map((result) => ({
     itemId: result.item.id,
     skillId: result.item.skill,
     difficulty: result.item.difficulty,
     correct: result.correct,
     answeredAt: new Date().toISOString()
-  })).slice(-32);
+  }));
+  profile.lastResults = [
+    ...(Array.isArray(profile.lastResults) ? profile.lastResults : []),
+    ...nextResults
+  ].slice(-64);
 
   if (state.quiz.mode === "daily") {
     profile.dailyScores ||= {};
@@ -513,17 +539,22 @@ function renderProfile() {
   }, { attempts: 0, correct: 0 });
   const accuracy = totals.attempts ? Math.round((totals.correct / totals.attempts) * 100) : 0;
   const todayScore = state.profile.dailyScores?.[todayIso()];
+  const boardsAvailable = publicBoardsAvailable();
+  const shareChecked = boardsAvailable && state.profile.publicLeaderboard;
+  const shareCopy = boardsAvailable
+    ? "Used for daily and weekly winners."
+    : "Public boards are not connected on this host yet.";
 
   els.profileSummary.innerHTML = `
     <div class="name-field">
       <label for="display-name">Public name</label>
       <input id="display-name" maxlength="28" value="${escapeAttribute(state.profile.displayName)}" />
     </div>
-    <label class="share-field">
-      <input id="public-leaderboard" type="checkbox" ${state.profile.publicLeaderboard ? "checked" : ""} />
+    <label class="share-field ${boardsAvailable ? "" : "is-disabled"}">
+      <input id="public-leaderboard" type="checkbox" ${shareChecked ? "checked" : ""} ${boardsAvailable ? "" : "disabled"} />
       <span>
         <strong>Share daily scores</strong>
-        <small>Used for daily and weekly winners.</small>
+        <small>${shareCopy}</small>
       </span>
     </label>
     <div class="metric">
@@ -583,7 +614,6 @@ async function renderLeaderboard() {
   document.querySelectorAll("[data-leaderboard-range]").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.leaderboardRange === range);
   });
-  els.leaderboardTitle.textContent = range === "weekly" ? "Weekly Board" : "Daily Board";
   els.leaderboardNote.textContent = "";
 
   if (apiEnabled() && state.apiAvailable !== false) {
@@ -603,6 +633,11 @@ async function renderLeaderboard() {
     }
   }
 
+  const localOnly = !apiEnabled() || state.apiAvailable === false;
+  els.leaderboardTitle.textContent = range === "weekly"
+    ? `${localOnly ? "Local " : ""}Weekly Board`
+    : `${localOnly ? "Local " : ""}Daily Board`;
+
   if (entries.length === 0) {
     entries = localLeaderboardEntries(range, date);
     meta.source = "local";
@@ -610,14 +645,15 @@ async function renderLeaderboard() {
 
   if (entries.length === 0) {
     els.leaderboardNote.textContent = range === "weekly"
-      ? "No weekly scores yet."
-      : "No score recorded today.";
+      ? emptyLeaderboardMessage("weekly")
+      : emptyLeaderboardMessage("daily");
     els.leaderboard.innerHTML = "";
+    renderProfile();
     return;
   }
 
   if (meta.source === "local" || state.apiAvailable === false) {
-    els.leaderboardNote.textContent = "Showing local scores. Public winners appear when the hosted API and D1 database are connected.";
+    els.leaderboardNote.textContent = "Local board on this device. Public winners require the Cloudflare Pages API and D1 database.";
   } else if (range === "weekly" && meta.start && meta.end) {
     els.leaderboardNote.textContent = `${formatShortDate(meta.start)} to ${formatShortDate(meta.end)}`;
   } else {
@@ -633,19 +669,20 @@ async function renderLeaderboard() {
       </div>
     </li>
   `).join("");
+  renderProfile();
 }
 
 async function submitScore(results, score, durationMs) {
+  if (!publicBoardsAvailable()) {
+    return {
+      state: "local",
+      message: "Saved on this device. Public boards are not connected on this host yet."
+    };
+  }
   if (!state.profile.publicLeaderboard) {
     return {
       state: "local",
       message: "Saved on this device. Turn on score sharing to appear on daily and weekly boards."
-    };
-  }
-  if (!apiEnabled()) {
-    return {
-      state: "local",
-      message: "Saved on this device. Public ranking is unavailable in this local preview."
     };
   }
   const answers = {};
@@ -700,6 +737,32 @@ async function submitScore(results, score, durationMs) {
   }
 }
 
+function scoreSubmissionPreflight() {
+  if (!publicBoardsAvailable()) {
+    return {
+      state: "local",
+      message: "Saved on this device. Public boards are not connected on this host yet."
+    };
+  }
+  if (!state.profile.publicLeaderboard) {
+    return {
+      state: "local",
+      message: "Saved on this device. Turn on score sharing to appear on daily and weekly boards."
+    };
+  }
+  return {
+    state: "submitting",
+    message: "Submitting your daily score..."
+  };
+}
+
+function emptyLeaderboardMessage(range) {
+  const base = range === "weekly" ? "No local weekly scores yet." : "No local score recorded today.";
+  return publicBoardsAvailable()
+    ? base.replace("local ", "")
+    : `${base} Public boards are not connected on this host yet.`;
+}
+
 function localLeaderboardEntries(range, date) {
   if (range === "weekly") {
     const scores = state.profile?.dailyScores || {};
@@ -735,6 +798,10 @@ function apiEnabled() {
     return false;
   }
   return true;
+}
+
+function publicBoardsAvailable() {
+  return apiEnabled() && state.apiAvailable !== false;
 }
 
 function focusSkillsFromResults(results) {
@@ -817,6 +884,15 @@ function skillDiagnostic(result) {
     return { key: "needs-work", label: "Needs work" };
   }
   return { key: "shaky", label: "Shaky" };
+}
+
+function diagnosticSummary(diagnostics) {
+  return diagnostics.reduce((counts, entry) => {
+    if (entry.diagnosis.key === "strong") counts.strong += 1;
+    if (entry.diagnosis.key === "shaky") counts.shaky += 1;
+    if (entry.diagnosis.key === "needs-work") counts.needsWork += 1;
+    return counts;
+  }, { strong: 0, shaky: 0, needsWork: 0 });
 }
 
 function difficultyForSkill(skillId) {
@@ -906,7 +982,7 @@ function createProfile() {
   return {
     participantId,
     displayName: `Thinker ${participantId.slice(0, 4).toUpperCase()}`,
-    publicLeaderboard: true,
+    publicLeaderboard: false,
     skillStats: {},
     dailyScores: {},
     seenItems: [],
@@ -919,7 +995,7 @@ function normalizeProfile(profile) {
   return {
     participantId,
     displayName: profile.displayName || `Thinker ${participantId.slice(0, 4).toUpperCase()}`,
-    publicLeaderboard: profile.publicLeaderboard !== false,
+    publicLeaderboard: profile.publicLeaderboard === true,
     skillStats: profile.skillStats || {},
     dailyScores: profile.dailyScores || {},
     seenItems: Array.isArray(profile.seenItems) ? profile.seenItems : [],
