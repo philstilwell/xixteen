@@ -30,3 +30,7 @@ This regenerates the skill file, the question bank, and daily quiz schedule, the
 ## Leaderboards
 
 The static app records local progress immediately. Public daily and weekly boards are supported by the Cloudflare Pages Functions in `functions/api` when a D1 database is bound as `DB`.
+
+## Operations
+
+- [GitHub Pages DNS runbook](docs/github-pages-dns-runbook.md) covers the Namecheap/GitHub Pages custom-domain fix for `xixteen.com`.
