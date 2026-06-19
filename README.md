@@ -16,7 +16,7 @@ Daily competition uses one fixed item from each skill for a given date. Practice
 npm run check
 ```
 
-This regenerates the skill file, the question bank, and daily quiz schedule, then validates and audits the corpus. The audit checks that every item has enough detail, asks a direct question, stays readable, and avoids clunky boilerplate.
+This regenerates the skill file, the question bank, and daily quiz schedule, then validates and audits the corpus. The audit checks every item for clarity, coherence, and pedagogical value, including enough detail, a direct question, readable length, skill-specific feedback, and no clunky boilerplate.
 
 ## Data Model
 

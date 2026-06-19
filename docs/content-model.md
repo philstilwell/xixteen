@@ -7,9 +7,10 @@ Every quiz item is built to have one clearly best answer:
 - the correct choice is unique;
 - the explanation names the thinking move;
 - each item belongs to exactly one numbered skill;
+- each item carries its target skill ID in `tags`;
 - every skill has 160 unique generated items across five difficulty levels.
 
-The generator now puts the context inside the question itself instead of adding a generic setup paragraph. `npm run audit` checks for direct questions, enough detail, reasonable prompt length, and old boilerplate such as `Scene:` or `result being watched`.
+The generator now puts the context inside the question itself instead of adding a generic setup paragraph. `npm run audit` checks each item for clarity, coherence, and pedagogical value: direct questions, enough detail, reasonable prompt length, valid answer choices, skill-specific explanation cues, target-skill tags, and old boilerplate such as `Scene:` or `result being watched`.
 
 Daily quizzes use the same 16 item IDs for every visitor on the same date. Practice sessions choose from the whole bank and lean toward weaker skills based on recent local performance.
 

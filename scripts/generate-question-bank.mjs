@@ -417,7 +417,7 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
     })),
     answer: LABELS[answerIndex],
     explanation,
-    tags
+    tags: uniqueTexts([skillId, ...tags])
   };
 }
 
@@ -633,9 +633,9 @@ function logicalGapItems() {
       explanation: "Most people liking something does not prove it helps everyone."
     }),
     (t) => ({
-      prompt: `Argument: "The average result improved after ${t.actionGerund}. So each individual ${t.group.slice(0, -1) || t.group} improved." What is the logical gap?`,
+      prompt: `Argument: "The average result improved after ${t.actionGerund}. So every person in that group improved." What is the logical gap?`,
       correct: "It treats an average change as proof that every individual changed the same way.",
-      explanation: "An average can go up even when some people do not improve."
+      explanation: "The logical gap is that an average can go up even when some people do not improve."
     })
   ];
   return buildSkill("logical_gaps", (t, difficulty, offset, index) => {
@@ -671,7 +671,7 @@ function fallacyItems() {
       withFrame(difficulty, `In a debate about a proposed ${t.domain} change, this happens: ${fallacy.line(t)} Which fallacy is showing up?`),
       fallacy.name,
       stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3),
-      fallacy.explanation,
+      `${fallacy.name}: ${fallacy.explanation}`,
       ["fallacy", fallacy.tag, t.field, `d${difficulty}`]
     );
   });
