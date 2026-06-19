@@ -64,15 +64,31 @@ CREATE TABLE IF NOT EXISTS score_submissions (
   participant_id TEXT NOT NULL REFERENCES participants(id),
   quiz_id TEXT NOT NULL REFERENCES daily_quizzes(id),
   quiz_date TEXT NOT NULL,
+  display_key TEXT,
+  client_hash TEXT,
+  answer_hash TEXT,
   score INTEGER NOT NULL CHECK (score BETWEEN 0 AND 16),
   total_items INTEGER NOT NULL DEFAULT 16,
   duration_ms INTEGER NOT NULL CHECK (duration_ms >= 0),
+  flagged INTEGER NOT NULL DEFAULT 0 CHECK (flagged IN (0, 1)),
+  flag_reason TEXT,
   submitted_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE (participant_id, quiz_id)
 );
 
 CREATE INDEX IF NOT EXISTS idx_score_submissions_daily
-ON score_submissions(quiz_date, score DESC, duration_ms ASC, submitted_at ASC);
+ON score_submissions(quiz_date, flagged, score DESC, duration_ms ASC, submitted_at ASC);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_score_submissions_quiz_display_key
+ON score_submissions(quiz_id, display_key)
+WHERE display_key IS NOT NULL;
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_score_submissions_quiz_client_hash
+ON score_submissions(quiz_id, client_hash)
+WHERE client_hash IS NOT NULL;
+
+CREATE INDEX IF NOT EXISTS idx_score_submissions_participant_date
+ON score_submissions(participant_id, quiz_date DESC);
 
 CREATE TABLE IF NOT EXISTS attempts (
   id TEXT PRIMARY KEY,

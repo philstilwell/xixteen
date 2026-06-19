@@ -31,6 +31,26 @@ This regenerates the skill file, the question bank, and daily quiz schedule, the
 
 The static app records local progress immediately. Public daily and weekly boards are supported by the Cloudflare Pages Functions in `functions/api` when a D1 database is bound as `DB`.
 
+The public scoring path is intentionally no-paid-AI:
+
+- `/api/score` checks daily answers on the server, records one public score per participant/name/device/day, and keeps unusually fast or incomplete runs out of public rankings.
+- `/api/leaderboard` returns daily or weekly winners from accepted submissions.
+- `/api/profile` returns server-side skill stats for a participant after public daily submissions.
+- Practice and weak-skill recommendations still work locally when the API is unavailable.
+
+To prepare D1 data:
+
+```bash
+npm run check
+npm run db:seed
+npx wrangler d1 create xixteen
+npx wrangler d1 execute xixteen --file=database/schema.sql
+npx wrangler d1 execute xixteen --file=database/seed.sql
+```
+
+Then paste the D1 database ID from `npx wrangler d1 create` into `wrangler.toml`. GitHub Pages cannot run the Functions API; public boards require hosting the same static files through Cloudflare Pages or another backend that exposes compatible `/api/*` routes.
+
 ## Operations
 
 - [GitHub Pages DNS runbook](docs/github-pages-dns-runbook.md) covers the Namecheap/GitHub Pages custom-domain fix for `xixteen.com`.
+- [Scoring and leaderboard runbook](docs/scoring-leaderboard-runbook.md) covers the public-score deployment path.

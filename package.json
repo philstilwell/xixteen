@@ -8,6 +8,8 @@
     "validate": "node scripts/validate-question-bank.mjs",
     "audit": "node scripts/audit-question-bank.mjs",
     "export:d1": "node scripts/export-d1-seed.mjs",
+    "db:seed": "node scripts/export-d1-seed.mjs",
+    "dev:pages": "npx wrangler pages dev . --compatibility-date=2026-06-18",
     "check": "npm run generate && npm run validate && npm run audit"
   }
 }

@@ -21,6 +21,7 @@ export async function onRequestGet({ request, env }) {
         FROM score_submissions s
         JOIN participants p ON p.id = s.participant_id
         WHERE s.quiz_date BETWEEN ? AND ?
+          AND s.flagged = 0
         GROUP BY s.participant_id
         ORDER BY score DESC, durationMs ASC, submittedAt ASC
         LIMIT 20
@@ -41,6 +42,7 @@ export async function onRequestGet({ request, env }) {
       FROM score_submissions s
       JOIN participants p ON p.id = s.participant_id
       WHERE s.quiz_date = ?
+        AND s.flagged = 0
       ORDER BY s.score DESC, s.duration_ms ASC, s.submitted_at ASC
       LIMIT 20
     `)

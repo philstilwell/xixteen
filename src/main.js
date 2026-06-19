@@ -70,6 +70,7 @@ async function init() {
   renderGallery();
   renderPracticeBuilder();
   await renderLeaderboard();
+  await syncServerProfile();
   renderProfile();
   startDaily({ scroll: false });
 }
@@ -383,6 +384,7 @@ async function finishQuiz() {
     }
     renderResults(results, score, durationMs);
     await renderLeaderboard();
+    await syncServerProfile();
     renderProfile();
   } else {
     renderLeaderboard();
@@ -714,12 +716,28 @@ async function submitScore(results, score, durationMs) {
     }
     const payload = await response.json();
     state.apiAvailable = true;
+    mergeSubmittedDailyScore(payload);
+    saveProfile();
     if (payload.accepted) {
+      if (payload.includedInLeaderboard === false) {
+        return {
+          state: "held",
+          message: payload.flagReason
+            ? `Saved, but held out of the public board: ${payload.flagReason}.`
+            : "Saved, but held out of the public board for review."
+        };
+      }
       return {
         state: "submitted",
         message: payload.rank
           ? `Submitted to the daily board. Current rank: #${payload.rank}.`
           : "Submitted to the daily board."
+      };
+    }
+    if (payload.conflict) {
+      return {
+        state: "duplicate",
+        message: payload.conflict
       };
     }
     return {
@@ -735,6 +753,46 @@ async function submitScore(results, score, durationMs) {
       message: "Saved on this device. The public leaderboard API could not be reached."
     };
   }
+}
+
+async function syncServerProfile() {
+  if (!publicBoardsAvailable()) {
+    return;
+  }
+  try {
+    const response = await fetch(`/api/profile?participantId=${encodeURIComponent(state.profile.participantId)}`);
+    if (!response.ok) {
+      state.apiAvailable = response.status === 404 || response.status === 501 ? false : state.apiAvailable;
+      return;
+    }
+    const payload = await response.json();
+    state.apiAvailable = true;
+    if (payload.dailyScores && typeof payload.dailyScores === "object") {
+      state.profile.dailyScores = {
+        ...(state.profile.dailyScores || {}),
+        ...payload.dailyScores
+      };
+      saveProfile();
+    }
+  } catch {
+    state.apiAvailable = false;
+  }
+}
+
+function mergeSubmittedDailyScore(payload) {
+  if (!payload?.quizDate) {
+    return;
+  }
+  state.profile.dailyScores ||= {};
+  state.profile.dailyScores[payload.quizDate] = {
+    ...(state.profile.dailyScores[payload.quizDate] || {}),
+    score: payload.score,
+    total: payload.totalItems || 16,
+    durationMs: payload.durationMs || 0,
+    submittedAt: payload.submittedAt || new Date().toISOString(),
+    includedInLeaderboard: payload.includedInLeaderboard !== false,
+    flagReason: payload.flagReason || null
+  };
 }
 
 function scoreSubmissionPreflight() {

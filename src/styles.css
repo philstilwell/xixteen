@@ -792,6 +792,10 @@ main {
   border-left-color: var(--gold);
 }
 
+.submission-note.is-held {
+  border-left-color: var(--coral);
+}
+
 .submission-note.is-local,
 .submission-note.is-submitting {
   border-left-color: var(--blue);
