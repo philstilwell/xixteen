@@ -459,6 +459,11 @@ function trialResult(t) {
   return asSentence(t.evidence);
 }
 
+function oppositeTestResult(t) {
+  const opposite = t.outcome.startsWith("fell") ? "rose" : "fell";
+  return `${t.metric} ${opposite} by ${t.outcomeAmount} compared with the four weeks before the test`;
+}
+
 function resultAction(t) {
   return t.outcome.startsWith("fell") ? "reduce" : "increase";
 }
@@ -557,37 +562,92 @@ function argumentItems() {
 }
 
 function assumptionItems() {
+  const cases = [
+    (t, speaker) => ({
+      tag: "scale-up",
+      prompt: `${decisionSetup(t)} ${trialResult(t)} ${speaker} argues, "That test is enough reason to use the plan more widely." Which hidden assumption does ${speaker}'s argument need?`,
+      correct: `The test group is similar enough to the wider group for the result to matter.`,
+      explanation: "The hidden assumption is that the test is a fair guide to the bigger decision."
+    }),
+    (t, speaker) => ({
+      tag: "cause-link",
+      prompt: `${decisionSetup(t)} ${trialResult(t)} ${speaker} says, "The plan caused that result." Which hidden assumption does ${speaker}'s argument need?`,
+      correct: `No other major change during the test better explains the result.`,
+      explanation: "The hidden assumption is that the result came from the plan, not from another cause."
+    }),
+    (t, speaker) => ({
+      tag: "measure-link",
+      prompt: `${decisionSetup(t)} ${trialResult(t)} ${speaker} says, "That means the plan helped ${t.group}." Which hidden assumption does ${speaker}'s argument need?`,
+      correct: `Measuring ${t.metric} is a reasonable way to judge whether the plan helped ${t.group}.`,
+      explanation: "The hidden assumption is that the measured result is a good sign of whether the plan helped."
+    }),
+    (t, speaker) => ({
+      tag: "goal-worth",
+      prompt: `${decisionSetup(t)} ${speaker} says, "If the plan can ${resultGoal(t)}, then it should be adopted." Which hidden assumption does ${speaker}'s argument need?`,
+      correct: `${cap(resultGerund(t))} ${t.metric} would matter enough for this decision.`,
+      explanation: "The hidden assumption is that the hoped-for result is important enough to count as a real reason."
+    }),
+    (t, speaker) => ({
+      tag: "lasting-result",
+      prompt: `${decisionSetup(t)} ${trialResult(t)} ${speaker} says, "The result will continue if the plan becomes permanent." Which hidden assumption does ${speaker}'s argument need?`,
+      correct: `The short-term result will not disappear once the test period ends.`,
+      explanation: "The hidden assumption is that the short test result will last long enough to matter."
+    })
+  ];
   return buildSkill("hidden_assumptions", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const prompt = `${decisionSetup(t)} ${trialResult(t)} ${speaker} argues, "That test is enough reason to use the plan more widely." Which hidden assumption does ${speaker}'s argument need?`;
+    const itemCase = cases[(offset + difficulty - 1) % cases.length](t, speaker);
     return makeItem(
       "hidden_assumptions",
       index,
       difficulty,
-      withFrame(difficulty, prompt),
-      `The small test is likely to work the same way when the idea is used more widely.`,
+      withFrame(difficulty, itemCase.prompt),
+      itemCase.correct,
       [
         `${asSentence(t.irrelevant)} That side detail is the most important fact about the idea.`,
         `${cap(t.metric)} can never be measured reliably.`,
         `${cap(t.actor)} should reject every alternative to the idea.`,
         `${cap(t.group)} caused the test result by themselves.`
       ],
-      `The argument assumes the small test is a good guide for the bigger decision. Without that bridge, the jump is not supported.`,
-      ["assumption", t.field, `d${difficulty}`, `variant-${offset}`]
+      itemCase.explanation,
+      ["assumption", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
 }
 
 function relevanceItems() {
+  const cases = [
+    (t) => ({
+      tag: "similar-group",
+      correct: `A similar group tried ${t.actionGerund}, and ${t.metric} moved in the hoped-for direction under similar conditions.`
+    }),
+    (t) => ({
+      tag: "direct-measure",
+      correct: `The study measured ${t.metric} before and after the proposal was tried with ${t.group}.`
+    }),
+    (t) => ({
+      tag: "target-group",
+      correct: `The data came from ${t.group}, the people the proposal is meant to affect.`
+    }),
+    (t) => ({
+      tag: "comparison-group",
+      correct: `A similar group that did not use the plan was tracked so the result could be compared.`
+    }),
+    (t) => ({
+      tag: "outcome-specific",
+      correct: `The report checked ${t.metric}, not just whether people said they liked the idea.`
+    })
+  ];
   return buildSkill("relevance", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
+    const itemCase = cases[(offset + difficulty - 1) % cases.length](t);
     const prompt = `${speaker} claims the proposal to ${t.action} will ${resultGoal(t)}. Which fact matters most for checking that claim?`;
     return makeItem(
       "relevance",
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      `A similar group tried ${t.actionGerund}, and ${t.metric} moved in the hoped-for direction under similar conditions.`,
+      itemCase.correct,
       [
         asSentence(t.irrelevant),
         `The idea was discussed on a Tuesday afternoon.`,
@@ -595,25 +655,44 @@ function relevanceItems() {
         `The office uses a newer font in this year's documents.`
       ],
       `Relevant evidence directly helps check whether the proposed action affects the result ${speaker} claimed.`,
-      ["relevance", t.field, `d${difficulty}`, `variant-${offset}`]
+      ["relevance", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
 }
 
 function evidenceItems() {
+  const cases = [
+    (t) => ({
+      tag: "large-before-after",
+      correct: `A large, fair study of ${t.group} measured ${t.metric} before and after the change.`
+    }),
+    (t) => ({
+      tag: "random-comparison",
+      correct: `A random test compared similar groups with and without the change, then measured ${t.metric}.`
+    }),
+    (t) => ({
+      tag: "independent-team",
+      correct: `Independent researchers used the same method to measure ${t.metric} before and after the plan.`
+    }),
+    (t) => ({
+      tag: "repeated-settings",
+      correct: `Several similar settings tried the plan, and each one measured ${t.metric} the same way.`
+    }),
+    (t) => ({
+      tag: "clear-sample",
+      correct: `The study reported its sample size, comparison method, and results for ${t.metric}.`
+    })
+  ];
   return buildSkill("evidence_quality", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const strongest =
-      difficulty <= 2
-        ? `A large, fair study of ${t.group} measured ${t.metric} before and after the change.`
-        : `A random test compared similar groups with and without the change, then measured ${t.metric}.`;
+    const itemCase = cases[(offset + difficulty - 1) % cases.length](t);
     const prompt = `${speaker} wants to know whether the proposal to ${t.action} actually helps ${t.group} by ${resultGerund(t)} ${t.metric}. Which evidence would be strongest?`;
     return makeItem(
       "evidence_quality",
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      strongest,
+      itemCase.correct,
       [
         `${speaker}'s friend says the idea feels promising.`,
         `A brochure says ${t.actionGerund} is new and exciting but gives no data.`,
@@ -621,29 +700,57 @@ function evidenceItems() {
         `A note repeats that the idea is useful without explaining how anyone checked it.`
       ],
       "The strongest option measures the result in a fair way, often with a comparison group.",
-      ["evidence", t.field, `d${difficulty}`, `variant-${offset}`]
+      ["evidence", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
 }
 
 function sourceItems() {
+  const cases = [
+    (t) => ({
+      tag: "profit-motive",
+      correct: `The report was produced by ${t.interestedParty}.`,
+      explanation: "A source is less trustworthy when it may profit from the answer it gives."
+    }),
+    () => ({
+      tag: "missing-method",
+      correct: `The report does not say how the data was gathered.`,
+      explanation: "A source is less trustworthy when readers cannot check its method."
+    }),
+    () => ({
+      tag: "no-expertise",
+      correct: `The author has no relevant expertise and cites no one who does.`,
+      explanation: "A source is less trustworthy when it lacks expertise on the topic."
+    }),
+    () => ({
+      tag: "cherry-picked",
+      correct: `The report leaves out results that went against its conclusion.`,
+      explanation: "A source is less trustworthy when it hides inconvenient evidence."
+    }),
+    (t) => ({
+      tag: "biased-sample",
+      correct: `The survey only included people who already supported ${t.actionGerund}.`,
+      explanation: "A source is less trustworthy when its sample is tilted toward one answer."
+    })
+  ];
   return buildSkill("source_reliability", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
+    const itemCase = cases[(offset + difficulty - 1) % cases.length](t);
     const prompt = `${speaker} reads a report about ${t.domain}. The report recommends that ${t.actor} ${t.action}, and it claims the plan would ${resultGoal(t)}. Which detail would make ${speaker} trust the report less?`;
     return makeItem(
       "source_reliability",
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      `The report was produced by ${t.interestedParty}.`,
+      itemCase.correct,
       [
         `The report lists where its data came from.`,
         `The author is ${t.expert}.`,
         `The report explains how it measured ${t.metric}.`,
         `The report includes results that conflict with the author's preference.`
       ],
-      "A source is less trustworthy when it may profit from the answer it gives.",
-      ["source", "conflict-of-interest", t.field, `d${difficulty}`]
+      itemCase.explanation,
+      ["source", itemCase.tag, t.field, `d${difficulty}`]
     );
   });
 }
@@ -715,16 +822,31 @@ function fallacyItems() {
 
 function probabilityItems() {
   const percentages = [20, 25, 30, 40, 55, 60, 65, 70, 75, 80, 85, 90, 15, 35, 45, 50];
+  const forecastAnswers = [
+    (percent) => `In many similar cases, improvement would happen about ${percent} out of 100 times.`,
+    (percent) => `If there were 100 similar forecasts, about ${percent} would be expected to improve.`,
+    (percent) => `The forecast says improvement is possible but not guaranteed, with about a ${percent}-in-100 chance.`,
+    (percent) => `It leaves room for the result not to happen, because ${percent}% is a chance, not a promise.`,
+    (percent) => `The number estimates how often this kind of improvement would happen across many similar cases.`
+  ];
+  const signalAnswers = [
+    "It should raise concern, but it is not proof without checking how common the problem is and how often the signal is wrong.",
+    "Check the base rate and false-alarm rate before treating the signal as proof.",
+    "Treat it as evidence to investigate, not as certainty.",
+    "Take the signal seriously, but ask how often this tool is wrong.",
+    "Update cautiously because a positive signal can still be a false alarm."
+  ];
   return buildSkill("probability", (t, difficulty, offset, index) => {
     const percent = percentages[(offset + difficulty) % percentages.length];
+    const answerVariant = (offset + difficulty - 1) % 5;
     const prompt =
       difficulty <= 3
         ? `A month-ahead forecast for ${t.domain} says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)}. What does that percentage mean?`
         : `A screening tool connected to ${t.domain} flags possible problems. It catches many real problems, but it also gives false alarms, and the problem is uncommon. What is the best way to treat a positive signal?`;
     const correct =
       difficulty <= 3
-        ? `In many similar cases, improvement would happen about ${percent} out of 100 times.`
-        : "It should raise concern, but it is not proof without checking how common the problem is and how often the signal is wrong.";
+        ? forecastAnswers[answerVariant](percent)
+        : signalAnswers[answerVariant];
     return makeItem(
       "probability",
       index,
@@ -752,23 +874,32 @@ function probabilityItems() {
 
 function statsItems() {
   return buildSkill("statistical_sense", (t, difficulty, offset, index) => {
-    const aEvents = 4 + ((offset + difficulty) % 9);
-    const aTotal = 100;
-    const bEvents = aEvents + 2;
-    const bTotal = 300;
+    const baseEvents = 4 + ((offset + difficulty) % 9);
+    const bHigherScenario = (offset + difficulty) % 2 === 0;
+    const aEvents = bHigherScenario ? baseEvents + 2 : baseEvents;
+    const aTotal = bHigherScenario ? 300 : 100;
+    const bEvents = bHigherScenario ? baseEvents : baseEvents + 2;
+    const bTotal = bHigherScenario ? 100 : 300;
     const aRate = aEvents / aTotal;
     const bRate = bEvents / bTotal;
     const aHigher = aRate > bRate;
+    const percentStart = baseEvents;
+    const percentEnd = percentStart + 5;
+    const percentRises = (offset + difficulty) % 2 === 0;
     const prompt =
       difficulty <= 3
         ? `In one ${t.domain} comparison, Group A had ${aEvents} cases out of ${aTotal}. Group B had ${bEvents} cases out of ${bTotal}. Which group had the higher rate?`
-        : `A report about ${t.domain} says ${t.metric} rose from ${aEvents}% to ${aEvents + 5}% after a test program. What is the clearest way to describe the change?`;
+        : percentRises
+          ? `A report about ${t.domain} says ${t.metric} rose from ${percentStart}% to ${percentEnd}% after a test program. What is the clearest way to describe the change?`
+          : `A report about ${t.domain} says ${t.metric} fell from ${percentEnd}% to ${percentStart}% after a test program. What is the clearest way to describe the change?`;
     const correct =
       difficulty <= 3
         ? aHigher
           ? `Group A, because ${aEvents}/${aTotal} is a higher rate than ${bEvents}/${bTotal}.`
           : `Group B, because ${bEvents}/${bTotal} is a higher rate than ${aEvents}/${aTotal}.`
-        : `It rose by 5 percentage points, which is about a ${Math.round((5 / aEvents) * 100)}% increase compared with the starting number.`;
+        : percentRises
+          ? `It rose by 5 percentage points, which is about a ${Math.round((5 / percentStart) * 100)}% increase compared with the starting number.`
+          : `It fell by 5 percentage points, which is about a ${Math.round((5 / percentEnd) * 100)}% decrease compared with the starting number.`;
     return makeItem(
       "statistical_sense",
       index,
@@ -783,12 +914,12 @@ function statsItems() {
             "There is no way to compare rates when group sizes differ."
           ]
         : [
-            "It rose by 5%, because any move from one percent to another is a 5% change.",
-            `It rose by ${aEvents + 5} percentage points, because that is the ending value.`,
-            "It doubled, because all five-point changes are doublings.",
+            `${percentRises ? "It rose" : "It fell"} by 5%, because any move from one percent to another is a 5% change.`,
+            `${percentRises ? "It rose" : "It fell"} by ${percentRises ? percentEnd : percentStart} percentage points, because that is the ending value.`,
+            `${percentRises ? "It doubled" : "It was cut in half"}, because all five-point changes work that way.`,
             "It cannot be described without knowing the city population."
           ],
-      "For numbers, pay attention to group size and to the difference between percentage points and percent increase.",
+      "For numbers, pay attention to group size and to the difference between percentage points and percent change.",
       ["statistics", t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
@@ -859,17 +990,25 @@ function biasItems() {
 }
 
 function tradeoffItems() {
+  const correctOptions = [
+    (t) => `The gain is possible improvement in ${t.metric}; the cost is staff time or money that cannot be used elsewhere.`,
+    (t) => `The choice may help ${t.group} while pulling resources away from another need.`,
+    (t) => `Better results for ${t.metric} would be a benefit, but the plan still has resource costs.`,
+    (t) => `The tradeoff is between the hoped-for result and what the plan would take from other work.`,
+    (t) => `${cap(t.actor)} might get the benefit it wants, but it would give up time, money, or attention.`
+  ];
   return buildSkill("tradeoffs", (t, difficulty, offset, index) => {
     const cost = difficulty <= 2
       ? `requires staff time that could be used for other ${t.field} work`
       : `may move resources away from a smaller group that was not included in the test`;
+    const correct = correctOptions[(offset + difficulty - 1) % correctOptions.length](t);
     const prompt = `${cap(t.actor)} can ${t.action}, which may ${resultGoal(t)}. But the plan ${cost}. Which statement best names the tradeoff?`;
     return makeItem(
       "tradeoffs",
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      `The plan may ${resultGoal(t)} while also using resources that could serve another need.`,
+      correct,
       [
         `The plan has benefits, so it cannot have costs.`,
         `The plan has costs, so it cannot have benefits.`,
@@ -883,30 +1022,80 @@ function tradeoffItems() {
 }
 
 function beliefUpdateItems() {
+  const cases = [
+    (t) => ({
+      tag: "small-support",
+      newInfo: `you learn about one small four-week test where ${t.testResult}`,
+      correct: "Raise confidence somewhat, while staying open to better evidence.",
+      distractors: [
+        "Raise confidence to complete certainty because one small test settles it.",
+        "Lower confidence because any small test counts against the idea.",
+        "Keep confidence exactly the same even though the evidence points the right way.",
+        "Treat the evidence as proof that the opposite claim is true."
+      ],
+      explanation: "A small test that points the right way should raise confidence somewhat, but it is not final proof."
+    }),
+    (t) => ({
+      tag: "strong-support",
+      newInfo: `you see a random comparison using two similar groups. In the group that used the plan, ${t.testResult}. In the group without the plan, the same result did not improve`,
+      correct: "Raise confidence a lot, while still avoiding total certainty.",
+      distractors: [
+        "Keep confidence exactly the same because even strong evidence should be ignored.",
+        "Lower confidence because comparison groups make evidence weaker.",
+        "Become completely certain the action works in every setting.",
+        "Treat the evidence as proof that the action makes the problem worse."
+      ],
+      explanation: "A fair comparison is stronger evidence, so confidence should rise more, but not to 100%."
+    }),
+    (t) => ({
+      tag: "small-opposition",
+      newInfo: `you learn about one small four-week test where ${oppositeTestResult(t)}`,
+      correct: "Lower confidence somewhat, while staying open to better evidence.",
+      distractors: [
+        "Raise confidence because any test result supports the original idea.",
+        "Become completely certain the action can never work anywhere.",
+        "Keep confidence exactly the same even though the evidence points the wrong way.",
+        "Treat the evidence as proof that the original claim is certainly true."
+      ],
+      explanation: "A small test that points the wrong way should lower confidence somewhat, but it is not final proof."
+    }),
+    (t) => ({
+      tag: "irrelevant-detail",
+      newInfo: `you learn that ${lowerFirst(phrase(t.irrelevant))}`,
+      correct: "Keep confidence about the same, because that detail does not test whether the plan works.",
+      distractors: [
+        "Raise confidence a lot because every new detail is useful evidence.",
+        "Lower confidence a lot because every side detail weakens the idea.",
+        "Become completely certain the action works in every setting.",
+        "Treat the detail as proof that the opposite claim is true."
+      ],
+      explanation: "Irrelevant information should not move confidence much, even when it sounds connected to the topic."
+    }),
+    (t) => ({
+      tag: "mixed-support",
+      newInfo: `you learn about one small four-week test where ${t.testResult}. You also learn that ${lowerFirst(phrase(t.alternative))}`,
+      correct: "Nudge confidence upward only a little, because the result helps but another change could explain it.",
+      distractors: [
+        "Raise confidence to complete certainty because the result moved the right way.",
+        "Lower confidence a lot because mixed evidence always proves the idea false.",
+        "Keep confidence exactly the same because mixed evidence can never matter.",
+        "Treat the evidence as proof that the opposite claim is true."
+      ],
+      explanation: "Mixed evidence can still matter, but the possible alternative explanation should keep the update small."
+    })
+  ];
   return buildSkill("belief_update", (t, difficulty, offset, index) => {
-    const evidence =
-      difficulty <= 2
-        ? `one small four-week test where ${t.testResult}`
-        : `a random comparison where similar groups with and without the change were measured`;
-    const prompt = `You are unsure whether ${t.actionGerund} would ${resultGoal(t)}. Then you learn about ${evidence}. How should your confidence change?`;
-    const correct =
-      difficulty <= 2
-        ? "Increase confidence somewhat, while staying open to better evidence."
-        : "Increase confidence a lot, while still avoiding total certainty.";
+    const updateCase = cases[(offset + difficulty - 1) % cases.length](t);
+    const prompt = `You are unsure whether ${t.actionGerund} would ${resultGoal(t)}. Then ${updateCase.newInfo}. How should your confidence change?`;
     return makeItem(
       "belief_update",
       index,
       difficulty,
       withFrame(difficulty, prompt),
-      correct,
-      [
-        "Become completely certain the action works in every setting.",
-        "Ignore the evidence because no single item can matter at all.",
-        "Reverse your view even if the new evidence supports your prior view.",
-        "Treat the evidence as proof of the opposite claim."
-      ],
-      "Change your confidence in proportion to how strong and limited the evidence is.",
-      ["belief-update", t.field, `d${difficulty}`, `variant-${offset}`]
+      updateCase.correct,
+      updateCase.distractors,
+      updateCase.explanation,
+      ["belief-update", updateCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
 }

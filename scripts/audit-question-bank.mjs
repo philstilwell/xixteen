@@ -40,6 +40,16 @@ const CLUNKY_CHOICE_PATTERNS = [
 ];
 const PERCENT_CHANGE_PATTERN = /\b(rose|fell|increased|decreased|dropped|reduced|improved|cut|lowered|raised)\s+by\s+\d+%/i;
 const PERCENT_COMPARISON_CUE_PATTERN = /\b(compared with|compared to|before|after|starting number|percentage points|from\s+\d+%\s+to\s+\d+%|out of 100|chance)\b/i;
+const ANSWER_DIVERSITY_RULES = {
+  hidden_assumptions: { minStems: 4, maxShare: 0.45 },
+  relevance: { minStems: 4, maxShare: 0.45 },
+  evidence_quality: { minStems: 4, maxShare: 0.45 },
+  source_reliability: { minStems: 4, maxShare: 0.45 },
+  probability: { minStems: 4, maxShare: 0.45 },
+  statistical_sense: { minStems: 4, maxShare: 0.45 },
+  tradeoffs: { minStems: 4, maxShare: 0.45 },
+  belief_update: { minStems: 5, maxShare: 0.35 }
+};
 const RUBRIC_BY_SKILL = {
   clarify_claim: {
     prompt: [/Which claim is [A-Z][A-Za-z]+ asking people to accept\?/],
@@ -55,7 +65,7 @@ const RUBRIC_BY_SKILL = {
   },
   hidden_assumptions: {
     prompt: [/hidden assumption/i],
-    explanation: [/small test/i, /bigger decision/i]
+    explanation: [/hidden assumption|assumption/i]
   },
   relevance: {
     prompt: [/matters most/i, /checking that claim/i],
@@ -67,7 +77,7 @@ const RUBRIC_BY_SKILL = {
   },
   source_reliability: {
     prompt: [/trust the report less|less trustworthy/i],
-    explanation: [/source/i, /trustworthy/i, /profit/i]
+    explanation: [/source|trustworthy|method|expertise|sample|evidence|profit/i]
   },
   logical_gaps: {
     prompt: [/logical gap/i],
@@ -83,7 +93,7 @@ const RUBRIC_BY_SKILL = {
   },
   statistical_sense: {
     prompt: [/higher rate|clearest way to describe/i],
-    explanation: [/group size/i, /percentage points/i, /percent increase/i]
+    explanation: [/group size/i, /percentage points/i, /percent change/i]
   },
   causation: {
     prompt: [/does not prove|not prove|not proved/i],
@@ -123,8 +133,15 @@ for (const item of items) {
 }
 
 const failingAudits = itemAudits.filter((audit) => audit.issues.length > 0);
+const patternIssues = auditAnswerPatternTells(items);
 
-if (failingAudits.length > 0) {
+if (failingAudits.length > 0 || patternIssues.length > 0) {
+  if (patternIssues.length > 0) {
+    console.error(`${patternIssues.length} answer-pattern audit issue(s):`);
+    for (const issue of patternIssues) {
+      console.error(`  - ${issue}`);
+    }
+  }
   console.error(`${failingAudits.length} of ${itemAudits.length} items failed the item audit. Showing the first 80:`);
   for (const audit of failingAudits.slice(0, 80)) {
     console.error(`${audit.itemId} failed item audit:`);
@@ -311,4 +328,55 @@ function wordCount(text) {
 
 function hasBarePercentChange(text, context = text) {
   return PERCENT_CHANGE_PATTERN.test(text) && !PERCENT_COMPARISON_CUE_PATTERN.test(context);
+}
+
+function auditAnswerPatternTells(allItems) {
+  const issues = [];
+  for (const [skillId, rule] of Object.entries(ANSWER_DIVERSITY_RULES)) {
+    const skillItems = allItems.filter((item) => item.skill === skillId);
+    if (skillItems.length === 0) {
+      continue;
+    }
+    const stemCounts = new Map();
+    for (const item of skillItems) {
+      const answerText = getAnswerText(item);
+      const stem = answerStem(answerText);
+      stemCounts.set(stem, (stemCounts.get(stem) || 0) + 1);
+    }
+    const maxCount = Math.max(...stemCounts.values());
+    if (stemCounts.size < rule.minStems) {
+      issues.push(`${skillId} has only ${stemCounts.size} recurring correct-answer stem(s); expected at least ${rule.minStems}.`);
+    }
+    if (maxCount / skillItems.length > rule.maxShare) {
+      issues.push(`${skillId} has one correct-answer stem in ${maxCount}/${skillItems.length} items.`);
+    }
+  }
+
+  const rateItems = allItems.filter((item) => item.skill === "statistical_sense" && /higher rate/i.test(item.prompt));
+  const rateAnswerCounts = rateItems.reduce((counts, item) => {
+    const answerText = getAnswerText(item);
+    if (/^Group A\b/.test(answerText)) {
+      counts.a += 1;
+    }
+    if (/^Group B\b/.test(answerText)) {
+      counts.b += 1;
+    }
+    return counts;
+  }, { a: 0, b: 0 });
+  if (rateItems.length > 0 && (rateAnswerCounts.a === 0 || rateAnswerCounts.b === 0)) {
+    issues.push(`statistical_sense higher-rate items are one-sided: Group A ${rateAnswerCounts.a}, Group B ${rateAnswerCounts.b}.`);
+  }
+
+  return issues;
+}
+
+function getAnswerText(item) {
+  return item.choices.find((choice) => choice.id === item.answer)?.text || "";
+}
+
+function answerStem(text) {
+  return (text.match(/[A-Za-z0-9%'-]+/g) || [])
+    .slice(0, 7)
+    .map((word) => word.replace(/^\d+%?$/, "#").toLowerCase())
+    .join(" ");
 }
