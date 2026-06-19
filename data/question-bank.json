@@ -47843,7 +47843,7 @@
     "id": "probability-001",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for evening bus service for late-shift workers says there is a 25% chance that late-shift commute complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for evening bus service for late-shift workers says the chance is 25 out of 100 that late-shift commute complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -47875,7 +47875,7 @@
     "id": "probability-002",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for classroom phone lockers says there is a 30% chance that classroom disruption reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for classroom phone lockers says the chance is 30 out of 100 that classroom disruption reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -47907,7 +47907,7 @@
     "id": "probability-003",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for medication reminder texts for older patients says there is a 40% chance that missed-dose reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for medication reminder texts for older patients says the chance is 40 out of 100 that missed-dose reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -47939,7 +47939,7 @@
     "id": "probability-004",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for a four-day workweek test for software engineers says there is a 55% chance that staff resignations will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for a four-day workweek test for software engineers says the chance is 55 out of 100 that staff resignations will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -47971,7 +47971,7 @@
     "id": "probability-005",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for larger grocery unit-price labels says there is a 60% chance that shopper overpayment complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for larger grocery unit-price labels says the chance is 60 out of 100 that shopper overpayment complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48003,7 +48003,7 @@
     "id": "probability-006",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for late fines on children's books says there is a 65% chance that library card renewals will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for late fines on children's books says the chance is 65 out of 100 that library card renewals will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48035,7 +48035,7 @@
     "id": "probability-007",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for two-factor login for site administrators says there is a 70% chance that admin account takeovers will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for two-factor login for site administrators says the chance is 70 out of 100 that admin account takeovers will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48067,7 +48067,7 @@
     "id": "probability-008",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for brighter streetlights on Maple Street says there is a 75% chance that reported thefts will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for brighter streetlights on Maple Street says the chance is 75 out of 100 that reported thefts will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48099,7 +48099,7 @@
     "id": "probability-009",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for peer tutoring for first-year statistics students says there is a 80% chance that course pass rates will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for peer tutoring for first-year statistics students says the chance is 80 out of 100 that course pass rates will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48131,7 +48131,7 @@
     "id": "probability-010",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for calorie labels on restaurant menus says there is a 85% chance that dessert orders will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for calorie labels on restaurant menus says the chance is 85 out of 100 that dessert orders will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48163,7 +48163,7 @@
     "id": "probability-011",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for bank overdraft warning texts says there is a 90% chance that overdraft fees will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for bank overdraft warning texts says the chance is 90 out of 100 that overdraft fees will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48195,7 +48195,7 @@
     "id": "probability-012",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for timed-entry passes for weekend park trails says there is a 15% chance that trail crowding complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for timed-entry passes for weekend park trails says the chance is 15 out of 100 that trail crowding complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48227,7 +48227,7 @@
     "id": "probability-013",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for free Friday museum admission says there is a 35% chance that family visits will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for free Friday museum admission says the chance is 35 out of 100 that family visits will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48259,7 +48259,7 @@
     "id": "probability-014",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for youth soccer concussion checks says there is a 45% chance that repeat head injuries will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for youth soccer concussion checks says the chance is 45 out of 100 that repeat head injuries will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48291,7 +48291,7 @@
     "id": "probability-015",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for same-day donation receipts says there is a 50% chance that donor retention will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for same-day donation receipts says the chance is 50 out of 100 that donor retention will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48323,7 +48323,7 @@
     "id": "probability-016",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for warehouse ergonomic training says there is a 20% chance that back-injury claims will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for warehouse ergonomic training says the chance is 20 out of 100 that back-injury claims will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48355,7 +48355,7 @@
     "id": "probability-017",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for apartment-lobby compost bins says there is a 25% chance that landfill waste from participating buildings will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for apartment-lobby compost bins says the chance is 25 out of 100 that landfill waste from participating buildings will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48387,7 +48387,7 @@
     "id": "probability-018",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for private-by-default app profiles says there is a 30% chance that publicly visible profiles will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for private-by-default app profiles says the chance is 30 out of 100 that publicly visible profiles will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48419,7 +48419,7 @@
     "id": "probability-019",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for same-day clinic appointment slots says there is a 40% chance that patient no-show rates will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for same-day clinic appointment slots says the chance is 40 out of 100 that patient no-show rates will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48451,7 +48451,7 @@
     "id": "probability-020",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for seat-zone airline boarding says there is a 55% chance that average boarding time will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for seat-zone airline boarding says the chance is 55 out of 100 that average boarding time will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48483,7 +48483,7 @@
     "id": "probability-021",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for an online apartment repair portal says there is a 60% chance that unresolved repair requests will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for an online apartment repair portal says the chance is 60 out of 100 that unresolved repair requests will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48515,7 +48515,7 @@
     "id": "probability-022",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for fruit placement in a school cafeteria line says there is a 65% chance that fruit purchases will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for fruit placement in a school cafeteria line says the chance is 65 out of 100 that fruit purchases will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48547,7 +48547,7 @@
     "id": "probability-023",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for weekly call-center script coaching says there is a 70% chance that customer complaint rates will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for weekly call-center script coaching says the chance is 70 out of 100 that customer complaint rates will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48579,7 +48579,7 @@
     "id": "probability-024",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for household water-leak alerts says there is a 75% chance that average household water use will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for household water-leak alerts says the chance is 75 out of 100 that average household water use will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48611,7 +48611,7 @@
     "id": "probability-025",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for body-camera activation reminders says there is a 80% chance that missing-camera-footage reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for body-camera activation reminders says the chance is 80 out of 100 that missing-camera-footage reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48643,7 +48643,7 @@
     "id": "probability-026",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for county mail-ballot tracking says there is a 85% chance that phone calls asking ballot status will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for county mail-ballot tracking says the chance is 85 out of 100 that phone calls asking ballot status will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48675,7 +48675,7 @@
     "id": "probability-027",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for language-learning spaced-review prompts says there is a 90% chance that vocabulary retention quiz scores will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for language-learning spaced-review prompts says the chance is 90 out of 100 that vocabulary retention quiz scores will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48707,7 +48707,7 @@
     "id": "probability-028",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for a beginner gym orientation says there is a 15% chance that new-member cancellations will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for a beginner gym orientation says the chance is 15 out of 100 that new-member cancellations will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48739,7 +48739,7 @@
     "id": "probability-029",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for safe-driving feedback for policyholders says there is a 35% chance that reported minor crashes will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for safe-driving feedback for policyholders says the chance is 35 out of 100 that reported minor crashes will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48771,7 +48771,7 @@
     "id": "probability-030",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for top-of-article correction boxes says there is a 45% chance that reader trust ratings will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for top-of-article correction boxes says the chance is 45 out of 100 that reader trust ratings will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48803,7 +48803,7 @@
     "id": "probability-031",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for clearer farmers market price signs says there is a 50% chance that price disputes will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for clearer farmers market price signs says the chance is 50 out of 100 that price disputes will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48835,7 +48835,7 @@
     "id": "probability-032",
     "skill": "probability",
     "difficulty": 1,
-    "prompt": "A month-ahead forecast for hotel quiet-hours text reminders says there is a 20% chance that noise complaints from guest rooms will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for hotel quiet-hours text reminders says the chance is 20 out of 100 that noise complaints from guest rooms will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48867,7 +48867,7 @@
     "id": "probability-033",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for evening bus service for late-shift workers says there is a 30% chance that late-shift commute complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for evening bus service for late-shift workers says the chance is 30 out of 100 that late-shift commute complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48899,7 +48899,7 @@
     "id": "probability-034",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for classroom phone lockers says there is a 40% chance that classroom disruption reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for classroom phone lockers says the chance is 40 out of 100 that classroom disruption reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48931,7 +48931,7 @@
     "id": "probability-035",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for medication reminder texts for older patients says there is a 55% chance that missed-dose reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for medication reminder texts for older patients says the chance is 55 out of 100 that missed-dose reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48963,7 +48963,7 @@
     "id": "probability-036",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for a four-day workweek test for software engineers says there is a 60% chance that staff resignations will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for a four-day workweek test for software engineers says the chance is 60 out of 100 that staff resignations will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -48995,7 +48995,7 @@
     "id": "probability-037",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for larger grocery unit-price labels says there is a 65% chance that shopper overpayment complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for larger grocery unit-price labels says the chance is 65 out of 100 that shopper overpayment complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49027,7 +49027,7 @@
     "id": "probability-038",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for late fines on children's books says there is a 70% chance that library card renewals will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for late fines on children's books says the chance is 70 out of 100 that library card renewals will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49059,7 +49059,7 @@
     "id": "probability-039",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for two-factor login for site administrators says there is a 75% chance that admin account takeovers will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for two-factor login for site administrators says the chance is 75 out of 100 that admin account takeovers will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49091,7 +49091,7 @@
     "id": "probability-040",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for brighter streetlights on Maple Street says there is a 80% chance that reported thefts will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for brighter streetlights on Maple Street says the chance is 80 out of 100 that reported thefts will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49123,7 +49123,7 @@
     "id": "probability-041",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for peer tutoring for first-year statistics students says there is a 85% chance that course pass rates will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for peer tutoring for first-year statistics students says the chance is 85 out of 100 that course pass rates will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49155,7 +49155,7 @@
     "id": "probability-042",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for calorie labels on restaurant menus says there is a 90% chance that dessert orders will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for calorie labels on restaurant menus says the chance is 90 out of 100 that dessert orders will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49187,7 +49187,7 @@
     "id": "probability-043",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for bank overdraft warning texts says there is a 15% chance that overdraft fees will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for bank overdraft warning texts says the chance is 15 out of 100 that overdraft fees will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49219,7 +49219,7 @@
     "id": "probability-044",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for timed-entry passes for weekend park trails says there is a 35% chance that trail crowding complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for timed-entry passes for weekend park trails says the chance is 35 out of 100 that trail crowding complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49251,7 +49251,7 @@
     "id": "probability-045",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for free Friday museum admission says there is a 45% chance that family visits will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for free Friday museum admission says the chance is 45 out of 100 that family visits will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49283,7 +49283,7 @@
     "id": "probability-046",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for youth soccer concussion checks says there is a 50% chance that repeat head injuries will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for youth soccer concussion checks says the chance is 50 out of 100 that repeat head injuries will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49315,7 +49315,7 @@
     "id": "probability-047",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for same-day donation receipts says there is a 20% chance that donor retention will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for same-day donation receipts says the chance is 20 out of 100 that donor retention will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49347,7 +49347,7 @@
     "id": "probability-048",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for warehouse ergonomic training says there is a 25% chance that back-injury claims will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for warehouse ergonomic training says the chance is 25 out of 100 that back-injury claims will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49379,7 +49379,7 @@
     "id": "probability-049",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for apartment-lobby compost bins says there is a 30% chance that landfill waste from participating buildings will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for apartment-lobby compost bins says the chance is 30 out of 100 that landfill waste from participating buildings will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49411,7 +49411,7 @@
     "id": "probability-050",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for private-by-default app profiles says there is a 40% chance that publicly visible profiles will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for private-by-default app profiles says the chance is 40 out of 100 that publicly visible profiles will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49443,7 +49443,7 @@
     "id": "probability-051",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for same-day clinic appointment slots says there is a 55% chance that patient no-show rates will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for same-day clinic appointment slots says the chance is 55 out of 100 that patient no-show rates will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49475,7 +49475,7 @@
     "id": "probability-052",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for seat-zone airline boarding says there is a 60% chance that average boarding time will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for seat-zone airline boarding says the chance is 60 out of 100 that average boarding time will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49507,7 +49507,7 @@
     "id": "probability-053",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for an online apartment repair portal says there is a 65% chance that unresolved repair requests will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for an online apartment repair portal says the chance is 65 out of 100 that unresolved repair requests will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49539,7 +49539,7 @@
     "id": "probability-054",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for fruit placement in a school cafeteria line says there is a 70% chance that fruit purchases will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for fruit placement in a school cafeteria line says the chance is 70 out of 100 that fruit purchases will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49571,7 +49571,7 @@
     "id": "probability-055",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for weekly call-center script coaching says there is a 75% chance that customer complaint rates will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for weekly call-center script coaching says the chance is 75 out of 100 that customer complaint rates will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49603,7 +49603,7 @@
     "id": "probability-056",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for household water-leak alerts says there is a 80% chance that average household water use will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for household water-leak alerts says the chance is 80 out of 100 that average household water use will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49635,7 +49635,7 @@
     "id": "probability-057",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for body-camera activation reminders says there is a 85% chance that missing-camera-footage reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for body-camera activation reminders says the chance is 85 out of 100 that missing-camera-footage reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49667,7 +49667,7 @@
     "id": "probability-058",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for county mail-ballot tracking says there is a 90% chance that phone calls asking ballot status will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for county mail-ballot tracking says the chance is 90 out of 100 that phone calls asking ballot status will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49699,7 +49699,7 @@
     "id": "probability-059",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for language-learning spaced-review prompts says there is a 15% chance that vocabulary retention quiz scores will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for language-learning spaced-review prompts says the chance is 15 out of 100 that vocabulary retention quiz scores will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49731,7 +49731,7 @@
     "id": "probability-060",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for a beginner gym orientation says there is a 35% chance that new-member cancellations will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for a beginner gym orientation says the chance is 35 out of 100 that new-member cancellations will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49763,7 +49763,7 @@
     "id": "probability-061",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for safe-driving feedback for policyholders says there is a 45% chance that reported minor crashes will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for safe-driving feedback for policyholders says the chance is 45 out of 100 that reported minor crashes will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49795,7 +49795,7 @@
     "id": "probability-062",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for top-of-article correction boxes says there is a 50% chance that reader trust ratings will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for top-of-article correction boxes says the chance is 50 out of 100 that reader trust ratings will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49827,7 +49827,7 @@
     "id": "probability-063",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for clearer farmers market price signs says there is a 20% chance that price disputes will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for clearer farmers market price signs says the chance is 20 out of 100 that price disputes will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49859,7 +49859,7 @@
     "id": "probability-064",
     "skill": "probability",
     "difficulty": 2,
-    "prompt": "A month-ahead forecast for hotel quiet-hours text reminders says there is a 25% chance that noise complaints from guest rooms will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for hotel quiet-hours text reminders says the chance is 25 out of 100 that noise complaints from guest rooms will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49891,7 +49891,7 @@
     "id": "probability-065",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for evening bus service for late-shift workers says there is a 40% chance that late-shift commute complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for evening bus service for late-shift workers says the chance is 40 out of 100 that late-shift commute complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49923,7 +49923,7 @@
     "id": "probability-066",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for classroom phone lockers says there is a 55% chance that classroom disruption reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for classroom phone lockers says the chance is 55 out of 100 that classroom disruption reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49955,7 +49955,7 @@
     "id": "probability-067",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for medication reminder texts for older patients says there is a 60% chance that missed-dose reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for medication reminder texts for older patients says the chance is 60 out of 100 that missed-dose reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -49987,7 +49987,7 @@
     "id": "probability-068",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for a four-day workweek test for software engineers says there is a 65% chance that staff resignations will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for a four-day workweek test for software engineers says the chance is 65 out of 100 that staff resignations will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50019,7 +50019,7 @@
     "id": "probability-069",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for larger grocery unit-price labels says there is a 70% chance that shopper overpayment complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for larger grocery unit-price labels says the chance is 70 out of 100 that shopper overpayment complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50051,7 +50051,7 @@
     "id": "probability-070",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for late fines on children's books says there is a 75% chance that library card renewals will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for late fines on children's books says the chance is 75 out of 100 that library card renewals will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50083,7 +50083,7 @@
     "id": "probability-071",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for two-factor login for site administrators says there is a 80% chance that admin account takeovers will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for two-factor login for site administrators says the chance is 80 out of 100 that admin account takeovers will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50115,7 +50115,7 @@
     "id": "probability-072",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for brighter streetlights on Maple Street says there is a 85% chance that reported thefts will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for brighter streetlights on Maple Street says the chance is 85 out of 100 that reported thefts will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50147,7 +50147,7 @@
     "id": "probability-073",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for peer tutoring for first-year statistics students says there is a 90% chance that course pass rates will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for peer tutoring for first-year statistics students says the chance is 90 out of 100 that course pass rates will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50179,7 +50179,7 @@
     "id": "probability-074",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for calorie labels on restaurant menus says there is a 15% chance that dessert orders will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for calorie labels on restaurant menus says the chance is 15 out of 100 that dessert orders will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50211,7 +50211,7 @@
     "id": "probability-075",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for bank overdraft warning texts says there is a 35% chance that overdraft fees will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for bank overdraft warning texts says the chance is 35 out of 100 that overdraft fees will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50243,7 +50243,7 @@
     "id": "probability-076",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for timed-entry passes for weekend park trails says there is a 45% chance that trail crowding complaints will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for timed-entry passes for weekend park trails says the chance is 45 out of 100 that trail crowding complaints will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50275,7 +50275,7 @@
     "id": "probability-077",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for free Friday museum admission says there is a 50% chance that family visits will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for free Friday museum admission says the chance is 50 out of 100 that family visits will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50307,7 +50307,7 @@
     "id": "probability-078",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for youth soccer concussion checks says there is a 20% chance that repeat head injuries will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for youth soccer concussion checks says the chance is 20 out of 100 that repeat head injuries will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50339,7 +50339,7 @@
     "id": "probability-079",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for same-day donation receipts says there is a 25% chance that donor retention will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for same-day donation receipts says the chance is 25 out of 100 that donor retention will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50371,7 +50371,7 @@
     "id": "probability-080",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for warehouse ergonomic training says there is a 30% chance that back-injury claims will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for warehouse ergonomic training says the chance is 30 out of 100 that back-injury claims will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50403,7 +50403,7 @@
     "id": "probability-081",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for apartment-lobby compost bins says there is a 40% chance that landfill waste from participating buildings will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for apartment-lobby compost bins says the chance is 40 out of 100 that landfill waste from participating buildings will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50435,7 +50435,7 @@
     "id": "probability-082",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for private-by-default app profiles says there is a 55% chance that publicly visible profiles will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for private-by-default app profiles says the chance is 55 out of 100 that publicly visible profiles will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50467,7 +50467,7 @@
     "id": "probability-083",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for same-day clinic appointment slots says there is a 60% chance that patient no-show rates will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for same-day clinic appointment slots says the chance is 60 out of 100 that patient no-show rates will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50499,7 +50499,7 @@
     "id": "probability-084",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for seat-zone airline boarding says there is a 65% chance that average boarding time will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for seat-zone airline boarding says the chance is 65 out of 100 that average boarding time will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50531,7 +50531,7 @@
     "id": "probability-085",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for an online apartment repair portal says there is a 70% chance that unresolved repair requests will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for an online apartment repair portal says the chance is 70 out of 100 that unresolved repair requests will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50563,7 +50563,7 @@
     "id": "probability-086",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for fruit placement in a school cafeteria line says there is a 75% chance that fruit purchases will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for fruit placement in a school cafeteria line says the chance is 75 out of 100 that fruit purchases will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50595,7 +50595,7 @@
     "id": "probability-087",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for weekly call-center script coaching says there is a 80% chance that customer complaint rates will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for weekly call-center script coaching says the chance is 80 out of 100 that customer complaint rates will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50627,7 +50627,7 @@
     "id": "probability-088",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for household water-leak alerts says there is a 85% chance that average household water use will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for household water-leak alerts says the chance is 85 out of 100 that average household water use will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50659,7 +50659,7 @@
     "id": "probability-089",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for body-camera activation reminders says there is a 90% chance that missing-camera-footage reports will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for body-camera activation reminders says the chance is 90 out of 100 that missing-camera-footage reports will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50691,7 +50691,7 @@
     "id": "probability-090",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for county mail-ballot tracking says there is a 15% chance that phone calls asking ballot status will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for county mail-ballot tracking says the chance is 15 out of 100 that phone calls asking ballot status will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50723,7 +50723,7 @@
     "id": "probability-091",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for language-learning spaced-review prompts says there is a 35% chance that vocabulary retention quiz scores will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for language-learning spaced-review prompts says the chance is 35 out of 100 that vocabulary retention quiz scores will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50755,7 +50755,7 @@
     "id": "probability-092",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for a beginner gym orientation says there is a 45% chance that new-member cancellations will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for a beginner gym orientation says the chance is 45 out of 100 that new-member cancellations will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50787,7 +50787,7 @@
     "id": "probability-093",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for safe-driving feedback for policyholders says there is a 50% chance that reported minor crashes will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for safe-driving feedback for policyholders says the chance is 50 out of 100 that reported minor crashes will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50819,7 +50819,7 @@
     "id": "probability-094",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for top-of-article correction boxes says there is a 20% chance that reader trust ratings will rise. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for top-of-article correction boxes says the chance is 20 out of 100 that reader trust ratings will rise. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50851,7 +50851,7 @@
     "id": "probability-095",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for clearer farmers market price signs says there is a 25% chance that price disputes will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for clearer farmers market price signs says the chance is 25 out of 100 that price disputes will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",
@@ -50883,7 +50883,7 @@
     "id": "probability-096",
     "skill": "probability",
     "difficulty": 3,
-    "prompt": "A month-ahead forecast for hotel quiet-hours text reminders says there is a 30% chance that noise complaints from guest rooms will fall. What does that percentage mean?",
+    "prompt": "A month-ahead forecast for hotel quiet-hours text reminders says the chance is 30 out of 100 that noise complaints from guest rooms will fall. What does that percentage mean?",
     "choices": [
       {
         "id": "A",

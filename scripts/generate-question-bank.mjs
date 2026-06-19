@@ -866,7 +866,7 @@ function probabilityItems() {
       : `A screening tool connected to ${t.domain} gives a positive signal for one case. The tool catches many real problems, but false alarms are common, and only a small share of cases have the problem. What is the best way to treat that signal?`;
     const prompt =
       difficulty <= 3
-        ? `A month-ahead forecast for ${t.domain} says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)}. What does that percentage mean?`
+        ? `A month-ahead forecast for ${t.domain} says the chance is ${percent} out of 100 that ${t.metric} will ${resultFuture(t)}. What does that percentage mean?`
         : signalPrompt;
     const correct =
       difficulty <= 3
