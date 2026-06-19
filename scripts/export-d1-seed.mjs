@@ -7,9 +7,7 @@ const skills = JSON.parse(await readFile(new URL("skills.json", DATA_DIR), "utf8
 const items = JSON.parse(await readFile(new URL("question-bank.json", DATA_DIR), "utf8"));
 const quizzes = JSON.parse(await readFile(new URL("daily-quizzes.json", DATA_DIR), "utf8"));
 
-const lines = [
-  "BEGIN TRANSACTION;"
-];
+const lines = [];
 
 for (const skill of skills) {
   lines.push(`INSERT OR REPLACE INTO skills (id, code, ordinal, name, public_label, testable_task, description) VALUES (${sql(skill.id)}, ${sql(skill.code)}, ${skill.ordinal}, ${sql(skill.name)}, ${sql(skill.publicLabel)}, ${sql(skill.testableTask)}, ${sql(skill.description)});`);
@@ -29,8 +27,6 @@ for (const quiz of quizzes) {
     lines.push(`INSERT OR REPLACE INTO daily_quiz_items (quiz_id, item_id, position) VALUES (${sql(quiz.id)}, ${sql(entry.itemId)}, ${entry.position});`);
   }
 }
-
-lines.push("COMMIT;");
 
 await mkdir(DATABASE_DIR, { recursive: true });
 await writeFile(new URL("seed.sql", DATABASE_DIR), `${lines.join("\n")}\n`);
