@@ -7,10 +7,10 @@ const LABELS = ["A", "B", "C", "D"];
 const speakerNames = ["Jordan", "Riley", "Maya", "Sam", "Avery", "Taylor", "Morgan", "Casey"];
 const difficultyFrames = [
   "",
-  "Try this:",
-  "Think it through:",
-  "Careful version:",
-  "Challenge version:"
+  "",
+  "",
+  "",
+  ""
 ];
 
 const skills = [
@@ -164,7 +164,7 @@ const topics = [
   topic("evening bus service for late-shift workers", "the city council", "extend evening bus service until midnight", "late-shift commute complaints", "fell by 22%", "a large employer started a private shuttle the same month", "the new buses were repainted blue", "late-shift workers", "transportation"),
   topic("classroom phone lockers", "the school board", "require phone lockers during class", "classroom disruption reports", "fell by 31%", "a new hall monitor schedule began at the same time", "the lockers are installed near the gym", "ninth-grade classrooms", "education"),
   topic("medication reminder texts for older patients", "the hospital", "send medication reminder texts before evening doses", "missed-dose reports", "fell by 18%", "pharmacists also began follow-up calls", "the text messages use a green pill icon", "patients over 60", "health"),
-  topic("four-day workweek test for software engineers", "the company", "test a Monday-through-Thursday workweek", "staff quitting", "fell by 15%", "the company also raised salaries that quarter", "the test calendar starts on a Monday", "software engineers", "workplace"),
+  topic("four-day workweek test for software engineers", "the company", "test a Monday-through-Thursday workweek", "staff resignations", "fell by 15%", "the company also raised salaries that quarter", "the test calendar starts on a Monday", "software engineers", "workplace"),
   topic("larger grocery unit-price labels", "the grocery chain", "add larger unit-price labels on shelf tags", "shopper overpayment complaints", "fell by 27%", "a local consumer group ran a price-literacy campaign", "the shelf labels use bold black numbers", "weekly grocery shoppers", "retail"),
   topic("late fines on children's books", "the library", "waive late fines for children's books", "library card renewals", "rose by 19%", "the library also opened on Sundays", "the children's-book checkout desk moved six feet", "families checking out children's books", "public services"),
   topic("two-factor login for site administrators", "the platform", "require two-factor login for site administrators", "admin account takeovers", "fell by 44%", "some high-risk admin accounts were removed earlier", "the login button changed from green to blue", "site administrators", "technology"),
@@ -275,19 +275,19 @@ const biasTypes = [
   {
     name: "Availability bias",
     tag: "availability-bias",
-    line: (t, speaker) => `${speaker} hears one vivid story about ${t.domain} and assumes the same problem is common everywhere.`,
+    line: (t, speaker) => `${speaker} hears one vivid story about ${t.group} and assumes that example shows what usually happens.`,
     explanation: "A memorable example is treated as more common than it may be."
   },
   {
     name: "Anchoring",
     tag: "anchoring",
-    line: (t, speaker) => `${speaker} sees a first cost guess of $900,000 for the ${t.domain} plan. After that, ${speaker} treats $850,000 as cheap without checking what the plan should cost.`,
+    line: (t, speaker) => `${speaker} sees a first cost guess of $900,000 for the plan. After that, ${speaker} treats $850,000 as cheap without checking what the plan should cost.`,
     explanation: "Judgment is pulled toward the first number encountered."
   },
   {
     name: "Sunk cost bias",
     tag: "sunk-cost",
-    line: (t, speaker) => `${speaker}'s team keeps funding a failing ${t.domain} project because it already spent a year on it.`,
+    line: (t, speaker) => `${speaker}'s team keeps funding the plan because it already spent a year developing it, even after early results look poor.`,
     explanation: "Past unrecoverable costs are allowed to drive the current decision."
   },
   {
@@ -508,7 +508,7 @@ function claimItems() {
         asSentence(t.evidence),
         `${cap(t.actor)} has proven the idea will work everywhere.`,
         asSentence(t.irrelevant),
-        `${cap(t.group)} are the only people affected.`
+        `${cap(t.group)} are the only ones affected.`
       ],
       `${speaker}'s main claim is the recommendation. The test result is a reason offered for that claim, not the claim itself.`,
       ["claim", t.field, `d${difficulty}`, `variant-${offset}`]
@@ -520,7 +520,7 @@ function termItems() {
   return buildSkill("define_terms", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
     const term = vagueTerms[offset];
-    const prompt = `${decisionSetup(t)} At the meeting, ${speaker} says, "Let's approve it only if the plan is ${term}." Which word or phrase needs a clearer meaning before people can judge the rule?`;
+    const prompt = `${decisionSetup(t)} At the meeting, ${speaker} says, "Let's approve it only if the plan is ${term}." Which word or phrase needs a clearer meaning before people can judge what ${speaker} means?`;
     return makeItem(
       "define_terms",
       index,
@@ -530,8 +530,8 @@ function termItems() {
       [
         `"${t.actor.replace(/^the /, "")}"`,
         `"${t.group}"`,
-        `"rule"`,
-        `"applied"`
+        `"approve"`,
+        `"plan"`
       ],
       `The word "${term}" is vague here. People need a clear definition before they can tell whether the plan meets the rule.`,
       ["vagueness", t.field, `d${difficulty}`, term]
@@ -619,7 +619,7 @@ function relevanceItems() {
   const cases = [
     (t) => ({
       tag: "similar-group",
-      correct: `A similar group tried ${t.actionGerund}, and ${t.metric} moved in the hoped-for direction under similar conditions.`
+      correct: `A similar group tried ${t.actionGerund}, and ${t.testResult}.`
     }),
     (t) => ({
       tag: "direct-measure",
@@ -627,7 +627,7 @@ function relevanceItems() {
     }),
     (t) => ({
       tag: "target-group",
-      correct: `The data came from ${t.group}, the people the proposal is meant to affect.`
+      correct: `The study measured ${t.metric} among ${t.group}, the people the proposal is meant to affect.`
     }),
     (t) => ({
       tag: "comparison-group",
@@ -650,9 +650,9 @@ function relevanceItems() {
       itemCase.correct,
       [
         asSentence(t.irrelevant),
-        `The idea was discussed on a Tuesday afternoon.`,
-        `The report includes a photograph of ${t.group} in the setting where the plan would be used.`,
-        `The office uses a newer font in this year's documents.`
+        `A report says some ${t.group} liked the idea, but it does not measure ${t.metric}.`,
+        `The plan has a short, memorable name in the meeting notes.`,
+        `The proposal uses the same colors and layout as last year's documents.`
       ],
       `Relevant evidence directly helps check whether the proposed action affects the result ${speaker} claimed.`,
       ["relevance", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
@@ -694,10 +694,10 @@ function evidenceItems() {
       withFrame(difficulty, prompt),
       itemCase.correct,
       [
-        `${speaker}'s friend says the idea feels promising.`,
-        `A brochure says ${t.actionGerund} is new and exciting but gives no data.`,
-        `Three people on social media praised the idea.`,
-        `A note repeats that the idea is useful without explaining how anyone checked it.`
+        `${speaker}'s friend says the idea feels promising but gives no data.`,
+        `A brochure explains how ${t.actionGerund} would work but does not measure ${t.metric}.`,
+        `Three people on social media say they like the idea after hearing about it.`,
+        `A report measured ${t.metric} after the change but did not say what it was before.`
       ],
       "The strongest option measures the result in a fair way, often with a comparison group.",
       ["evidence", itemCase.tag, t.field, `d${difficulty}`, `variant-${offset}`]
@@ -811,7 +811,7 @@ function fallacyItems() {
       "fallacies",
       index,
       difficulty,
-      withFrame(difficulty, `During a debate about the ${t.domain} proposal, ${fallacy.line(t, speaker, otherSpeaker)} Which fallacy is showing up?`),
+      withFrame(difficulty, `During a debate about ${t.domain}, ${fallacy.line(t, speaker, otherSpeaker)} Which fallacy is showing up?`),
       fallacy.name,
       stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3),
       `${fallacy.name}: ${fallacy.explanation}`,
@@ -839,10 +839,13 @@ function probabilityItems() {
   return buildSkill("probability", (t, difficulty, offset, index) => {
     const percent = percentages[(offset + difficulty) % percentages.length];
     const answerVariant = (offset + difficulty - 1) % 5;
+    const signalPrompt = difficulty === 4
+      ? `A screening tool connected to ${t.domain} flags possible problems. It catches many real problems, but it also gives false alarms. The problem is uncommon in the group being screened. What is the best way to treat a positive signal?`
+      : `A screening tool connected to ${t.domain} gives a positive signal for one case. The tool catches many real problems, but false alarms are common, and only a small share of cases have the problem. What is the best way to treat that signal?`;
     const prompt =
       difficulty <= 3
         ? `A month-ahead forecast for ${t.domain} says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)}. What does that percentage mean?`
-        : `A screening tool connected to ${t.domain} flags possible problems. It catches many real problems, but it also gives false alarms, and the problem is uncommon. What is the best way to treat a positive signal?`;
+        : signalPrompt;
     const correct =
       difficulty <= 3
         ? forecastAnswers[answerVariant](percent)
@@ -888,7 +891,7 @@ function statsItems() {
     const percentRises = (offset + difficulty) % 2 === 0;
     const prompt =
       difficulty <= 3
-        ? `In one ${t.domain} comparison, Group A had ${aEvents} cases out of ${aTotal}. Group B had ${bEvents} cases out of ${bTotal}. Which group had the higher rate?`
+        ? `In a study about ${t.domain}, the tracked outcome is ${t.metric}. Group A recorded ${aEvents} outcome events in ${aTotal} observations. Group B recorded ${bEvents} outcome events in ${bTotal} observations. Which group had the higher rate?`
         : percentRises
           ? `A report about ${t.domain} says ${t.metric} rose from ${percentStart}% to ${percentEnd}% after a test program. What is the clearest way to describe the change?`
           : `A report about ${t.domain} says ${t.metric} fell from ${percentEnd}% to ${percentStart}% after a test program. What is the clearest way to describe the change?`;
@@ -998,9 +1001,14 @@ function tradeoffItems() {
     (t) => `${cap(t.actor)} might get the benefit it wants, but it would give up time, money, or attention.`
   ];
   return buildSkill("tradeoffs", (t, difficulty, offset, index) => {
-    const cost = difficulty <= 2
-      ? `requires staff time that could be used for other ${t.field} work`
-      : `may move resources away from a smaller group that was not included in the test`;
+    const costs = [
+      `requires staff time that could be used for other ${t.field} work`,
+      `uses money that could fund a different ${t.field} need`,
+      `may move resources away from a smaller group that was not included in the test`,
+      `could create extra work for people who already handle other ${t.field} tasks`,
+      `may help ${t.group} while making another group's problem wait longer`
+    ];
+    const cost = costs[difficulty - 1];
     const correct = correctOptions[(offset + difficulty - 1) % correctOptions.length](t);
     const prompt = `${cap(t.actor)} can ${t.action}, which may ${resultGoal(t)}. But the plan ${cost}. Which statement best names the tradeoff?`;
     return makeItem(
