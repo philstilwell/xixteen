@@ -4,6 +4,7 @@ const DATA_DIR = new URL("../data/", import.meta.url);
 const ITEMS_PER_SKILL = 160;
 const ITEMS_PER_DIFFICULTY = 32;
 const LABELS = ["A", "B", "C", "D"];
+const speakerNames = ["Jordan", "Riley", "Maya", "Sam", "Avery", "Taylor", "Morgan", "Casey"];
 const difficultyFrames = [
   "Quick check:",
   "Try this:",
@@ -163,7 +164,7 @@ const topics = [
   topic("city transit", "the city council", "extend evening bus service", "late-shift commute complaints", "fell by 22%", "a large employer started a shuttle the same month", "the buses were repainted blue", "late-shift workers", "transportation"),
   topic("school phones", "the school board", "require phone lockers during class", "classroom disruption reports", "fell by 31%", "a new hall monitor schedule began at the same time", "the lockers are installed near the gym", "ninth-grade teachers", "education"),
   topic("medication reminders", "the hospital", "send medication reminder texts", "missed-dose reports", "fell by 18%", "pharmacists also began follow-up calls", "the text messages use a green icon", "patients over 60", "health"),
-  topic("four-day pilot", "the company", "test a four-day workweek", "voluntary turnover", "fell by 15%", "the company also raised salaries that quarter", "the pilot calendar starts on a Monday", "software engineers", "workplace"),
+  topic("four-day workweek", "the company", "test a four-day workweek", "voluntary turnover", "fell by 15%", "the company also raised salaries that quarter", "the test calendar starts on a Monday", "software engineers", "workplace"),
   topic("unit pricing", "the grocery chain", "add larger unit-price labels", "shopper overpayment complaints", "fell by 27%", "a local consumer group ran a price-literacy campaign", "the labels use bold numbers", "weekly shoppers", "retail"),
   topic("library fines", "the library", "waive late fines for children's books", "library card renewals", "rose by 19%", "the library also opened on Sundays", "the checkout desk moved six feet", "families with children", "public services"),
   topic("login security", "the platform", "require two-factor login for admins", "account takeover incidents", "fell by 44%", "some high-risk accounts were removed earlier", "the login button changed color", "site administrators", "technology"),
@@ -205,61 +206,61 @@ const fallacyTypes = [
   {
     name: "Straw man",
     tag: "straw-man",
-    line: (t) => `Someone asks for a small test before ${t.actor} decides whether to ${t.action}. A supporter replies, "They want to block every improvement forever."`,
+    line: (t, speaker, otherSpeaker) => `${speaker} asks for one more small test before ${t.actor} decides. ${otherSpeaker} replies, "${speaker} wants to block every improvement forever."`,
     explanation: "The reply attacks an exaggerated version of the other person's view."
   },
   {
     name: "False dilemma",
     tag: "false-dilemma",
-    line: (t) => `A speaker says, "Either ${t.actor} must ${t.action} right now, or it does not care about ${t.group} at all."`,
+    line: (t, speaker) => `${speaker} says, "Either ${t.actor} must ${t.action} right now, or it does not care about ${t.group} at all."`,
     explanation: "The argument acts like there are only two choices when there may be more."
   },
   {
     name: "Ad hominem",
     tag: "ad-hominem",
-    line: (t) => `Someone rejects the idea of ${t.actionGerund} because the presenter once made a budgeting mistake.`,
+    line: (t, speaker, otherSpeaker) => `${speaker} rejects ${otherSpeaker}'s proposal to ${t.action} because ${otherSpeaker} once made a budgeting mistake.`,
     explanation: "The response attacks the person instead of the argument."
   },
   {
     name: "Slippery slope",
     tag: "slippery-slope",
-    line: (t) => `A speaker says, "If ${t.actor} agrees to ${t.action}, soon every rule in ${t.domain} will fall apart."`,
+    line: (t, speaker) => `${speaker} says, "If ${t.actor} agrees to ${t.action}, soon every related rule will fall apart."`,
     explanation: "The argument predicts an extreme chain reaction without support."
   },
   {
     name: "Appeal to popularity",
     tag: "appeal-to-popularity",
-    line: (t) => `A presenter says ${t.actor} should ${t.action} because the idea received the most likes in an online poll.`,
+    line: (t, speaker) => `${speaker} says ${t.actor} should ${t.action} because the idea received the most likes in an online poll.`,
     explanation: "Popularity is treated as proof that the idea is correct."
   },
   {
     name: "Circular reasoning",
     tag: "circular-reasoning",
-    line: (t) => `A note says ${t.actor} should ${t.action} because it is the right move, and it is the right move because it should be done.`,
+    line: (t, speaker) => `${speaker} writes that ${t.actor} should ${t.action} because it is the right move, and it is the right move because it should be done.`,
     explanation: "The conclusion is used as its own support."
   },
   {
     name: "Hasty generalization",
     tag: "hasty-generalization",
-    line: (t) => `After one ${t.domain} group reports success, a speaker says the same result will happen everywhere.`,
+    line: (t, speaker) => `After one group reports success with a similar change, ${speaker} says the same result will happen everywhere.`,
     explanation: "A broad conclusion is drawn from too little evidence."
   },
   {
     name: "Red herring",
     tag: "red-herring",
-    line: (t) => `Asked whether ${t.actionGerund} would affect ${t.metric}, a speaker talks instead about the building's new paint color.`,
+    line: (t, speaker, otherSpeaker) => `${otherSpeaker} asks whether ${t.actionGerund} would affect ${t.metric}. ${speaker} answers by talking about this side detail: ${lowerFirst(phrase(t.irrelevant))}.`,
     explanation: "The response shifts attention to an irrelevant issue."
   },
   {
     name: "Appeal to tradition",
     tag: "appeal-to-tradition",
-    line: (t) => `A manager says ${t.actor} should not ${t.action} because the old way has been used for many years.`,
+    line: (t, speaker) => `${speaker} says ${t.actor} should not ${t.action} because the old way has been used for many years.`,
     explanation: "The argument treats age or tradition as enough proof."
   },
   {
     name: "Post hoc",
     tag: "post-hoc",
-    line: (t) => `${t.metric} ${t.outcome} after ${t.actor} began the new policy, so a speaker concludes the policy must have caused the change.`,
+    line: (t, speaker) => `${speaker} says, "${cap(t.metric)} ${t.outcome} after ${t.actor} began the new policy, so the policy must have caused the change."`,
     explanation: "The argument assumes that because one event came after another, the first caused the second."
   }
 ];
@@ -268,49 +269,49 @@ const biasTypes = [
   {
     name: "Confirmation bias",
     tag: "confirmation-bias",
-    line: (t) => `A manager reads only comments praising the plan to ${t.action} and ignores equally detailed criticism.`,
+    line: (t, speaker) => `${speaker} reads only comments praising the plan to ${t.action} and ignores equally detailed criticism.`,
     explanation: "The person favors evidence that supports an existing view."
   },
   {
     name: "Availability bias",
     tag: "availability-bias",
-    line: (t) => `After hearing one vivid story about ${t.domain}, someone assumes the same problem is common everywhere.`,
+    line: (t, speaker) => `${speaker} hears one vivid story about ${t.domain} and assumes the same problem is common everywhere.`,
     explanation: "A memorable example is treated as more common than it may be."
   },
   {
     name: "Anchoring",
     tag: "anchoring",
-    line: (t) => `The first guess for the ${t.domain} plan says it will cost $900,000, so later reviewers treat $850,000 as cheap without checking what it should cost.`,
+    line: (t, speaker) => `${speaker} sees a first cost guess of $900,000 for the ${t.domain} plan. After that, ${speaker} treats $850,000 as cheap without checking what the plan should cost.`,
     explanation: "Judgment is pulled toward the first number encountered."
   },
   {
     name: "Sunk cost bias",
     tag: "sunk-cost",
-    line: (t) => `A team keeps funding a failing ${t.domain} project because it already spent a year on it.`,
+    line: (t, speaker) => `${speaker}'s team keeps funding a failing ${t.domain} project because it already spent a year on it.`,
     explanation: "Past unrecoverable costs are allowed to drive the current decision."
   },
   {
     name: "Overconfidence bias",
     tag: "overconfidence",
-    line: (t) => `A director predicts exact results from ${t.actionGerund} even though no similar test has been run.`,
+    line: (t, speaker) => `${speaker} predicts exact results from ${t.actionGerund} even though no similar test has been run.`,
     explanation: "The person shows more certainty than the evidence supports."
   },
   {
     name: "Status quo bias",
     tag: "status-quo",
-    line: (t) => `A group rejects every change to ${t.domain} mainly because the current system feels familiar.`,
+    line: (t, speaker) => `${speaker} rejects the proposal mainly because the current system feels familiar.`,
     explanation: "The current option is favored because it is already in place."
   },
   {
     name: "Motivated reasoning",
     tag: "motivated-reasoning",
-    line: (t) => `A sponsor praises weak evidence supporting ${t.actionGerund} because the result would help its preferred plan.`,
+    line: (t, speaker) => `${speaker} praises weak evidence supporting ${t.actionGerund} because that conclusion would help ${speaker}'s preferred plan.`,
     explanation: "The evaluation is shaped by the desired conclusion."
   },
   {
     name: "Bandwagon effect",
     tag: "bandwagon",
-    line: (t) => `A reviewer supports ${t.actionGerund} after seeing that most classmates or coworkers support it, without checking the evidence.`,
+    line: (t, speaker) => `${speaker} supports ${t.actionGerund} after seeing that most classmates or coworkers support it, without checking the evidence.`,
     explanation: "The person follows the crowd rather than the reasons."
   }
 ];
@@ -328,7 +329,7 @@ function topic(domain, actor, action, metric, outcome, alternative, irrelevant, 
     irrelevant,
     group,
     field,
-    evidence: `${metric} ${outcome} in a small test`,
+    evidence: `a small test found that ${metric} ${outcome}`,
     interestedParty: `a company that would make money if ${actor} chose to ${action}`,
     expert: `a ${field} expert who has studied similar programs`
   };
@@ -395,6 +396,10 @@ function uniqueTexts(values) {
   return output;
 }
 
+function speakerName(offset, difficulty, shift = 0) {
+  return speakerNames[(offset + difficulty + shift) % speakerNames.length];
+}
+
 function makeItem(skillId, index, difficulty, prompt, correct, distractors, explanation, tags) {
   const id = `${skillId}-${String(index).padStart(3, "0")}`;
   const choices = uniqueTexts([correct, ...distractors]);
@@ -426,11 +431,11 @@ function withFrame(difficulty, prompt) {
 }
 
 function decisionSetup(t) {
-  return `${cap(t.actor)} is deciding whether to ${t.action} to help ${t.group}.`;
+  return `${cap(t.actor)} is weighing a proposal for ${t.group}: ${t.action}.`;
 }
 
 function trialResult(t) {
-  return `In a small test, ${t.metric} ${t.outcome}.`;
+  return `${cap(t.evidence)}.`;
 }
 
 function resultAction(t) {
@@ -465,7 +470,8 @@ function buildSkill(skillId, builder) {
 
 function claimItems() {
   return buildSkill("clarify_claim", (t, difficulty, offset, index) => {
-    const prompt = `${decisionSetup(t)} ${trialResult(t)} A supporter argues, "That result shows this plan should go forward." What is the main claim?`;
+    const speaker = speakerName(offset, difficulty);
+    const prompt = `${decisionSetup(t)} ${trialResult(t)} ${speaker}, who supports the proposal, says, "Because of that test, ${t.actor} should ${t.action}." Which claim is ${speaker} asking people to accept?`;
     return makeItem(
       "clarify_claim",
       index,
@@ -474,11 +480,11 @@ function claimItems() {
       `${cap(t.actor)} should ${t.action}.`,
       [
         `${cap(t.evidence)}.`,
-        `${cap(t.actor)} has proven the idea will always work.`,
+        `${cap(t.actor)} has proven the idea will work everywhere.`,
         `${cap(t.irrelevant)}.`,
         `${cap(t.group)} are the only people affected.`
       ],
-      "The main claim is the point the argument wants you to accept.",
+      `${speaker}'s main claim is the recommendation. The test result is a reason offered for that claim, not the claim itself.`,
       ["claim", t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
@@ -486,8 +492,9 @@ function claimItems() {
 
 function termItems() {
   return buildSkill("define_terms", (t, difficulty, offset, index) => {
+    const speaker = speakerName(offset, difficulty);
     const term = vagueTerms[offset];
-    const prompt = `${decisionSetup(t)} The plan will move ahead only if it is "${term}". Which word most needs a clearer meaning?`;
+    const prompt = `${decisionSetup(t)} At the meeting, ${speaker} says, "Let's approve it only if the plan is ${term}." Which word or phrase needs a clearer meaning before people can judge the rule?`;
     return makeItem(
       "define_terms",
       index,
@@ -500,7 +507,7 @@ function termItems() {
         `"rule"`,
         `"applied"`
       ],
-      `The word "${term}" is vague, so we need to know exactly what it means.`,
+      `The word "${term}" is vague here. People need a clear definition before they can tell whether the plan meets the rule.`,
       ["vagueness", t.field, `d${difficulty}`, term]
     );
   });
@@ -508,12 +515,13 @@ function termItems() {
 
 function argumentItems() {
   return buildSkill("find_argument", (t, difficulty, offset, index) => {
+    const speaker = speakerName(offset, difficulty);
     const conclusionText = `${t.actor} should ${t.action}.`;
     const conclusion = cap(conclusionText);
     const premise = `${cap(t.evidence)}.`;
     const background = `${cap(t.irrelevant)}.`;
-    const extra = `${cap(t.group)} were included in the report.`;
-    const prompt = `At a meeting about whether ${t.actor} should ${t.action}, someone says: "${background} ${premise} So ${conclusionText} ${extra}" Which sentence is the conclusion?`;
+    const extra = `${cap(t.group)} are the group the proposal is meant to help.`;
+    const prompt = `At a meeting about ${t.domain}, ${speaker} says, "${background} ${premise} Therefore, ${conclusionText} ${extra}" Which sentence is ${speaker}'s conclusion?`;
     return makeItem(
       "find_argument",
       index,
@@ -521,7 +529,7 @@ function argumentItems() {
       withFrame(difficulty, prompt),
       conclusion,
       [premise, background, extra, `${cap(t.metric)} was mentioned as context.`],
-      "The conclusion is the point the other sentences are trying to support.",
+      `The conclusion is ${speaker}'s point. The test result is a reason offered to support it.`,
       ["argument-map", t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
@@ -529,7 +537,8 @@ function argumentItems() {
 
 function assumptionItems() {
   return buildSkill("hidden_assumptions", (t, difficulty, offset, index) => {
-    const prompt = `${trialResult(t)} On that evidence alone, ${t.actor} argues it should ${t.action} everywhere it can. Which hidden assumption does the argument need?`;
+    const speaker = speakerName(offset, difficulty);
+    const prompt = `${decisionSetup(t)} ${trialResult(t)} ${speaker} argues, "That test is enough reason to use the plan more widely." Which hidden assumption does ${speaker}'s argument need?`;
     return makeItem(
       "hidden_assumptions",
       index,
@@ -542,7 +551,7 @@ function assumptionItems() {
         `${cap(t.actor)} should reject every alternative to the idea.`,
         `${cap(t.group)} caused the test result by themselves.`
       ],
-      "The argument needs the small test to be a good guide for the bigger decision.",
+      `The argument assumes the small test is a good guide for the bigger decision. Without that bridge, the jump is not supported.`,
       ["assumption", t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
@@ -550,7 +559,8 @@ function assumptionItems() {
 
 function relevanceItems() {
   return buildSkill("relevance", (t, difficulty, offset, index) => {
-    const prompt = `${cap(t.actor)} claims that ${t.actionGerund} will ${resultGoal(t)} among ${t.group}. Which fact matters most for checking that claim?`;
+    const speaker = speakerName(offset, difficulty);
+    const prompt = `${speaker} claims the proposal to ${t.action} will ${resultGoal(t)} among ${t.group}. Which fact matters most for checking ${speaker}'s claim?`;
     return makeItem(
       "relevance",
       index,
@@ -563,7 +573,7 @@ function relevanceItems() {
         `The report includes a photograph of ${t.group}.`,
         `The office uses a newer font in this year's documents.`
       ],
-      "Relevant evidence directly helps check whether the action affects the result.",
+      `Relevant evidence directly helps check whether the proposed action affects the result ${speaker} claimed.`,
       ["relevance", t.field, `d${difficulty}`, `variant-${offset}`]
     );
   });
@@ -571,11 +581,12 @@ function relevanceItems() {
 
 function evidenceItems() {
   return buildSkill("evidence_quality", (t, difficulty, offset, index) => {
+    const speaker = speakerName(offset, difficulty);
     const strongest =
       difficulty <= 2
-        ? `A large, fair survey of ${t.group} measured ${t.metric} before and after the change.`
+        ? `A large, fair study of ${t.group} measured ${t.metric} before and after the change.`
         : `A random test compared similar groups with and without the change, then measured ${t.metric}.`;
-    const prompt = `${cap(t.actor)} wants to know whether ${t.actionGerund} actually helps ${t.group} by ${resultGerund(t)} ${t.metric}. Which evidence would be strongest?`;
+    const prompt = `${speaker} wants to know whether the proposal to ${t.action} actually helps ${t.group} by ${resultGerund(t)} ${t.metric}. Which evidence would be strongest?`;
     return makeItem(
       "evidence_quality",
       index,
@@ -583,7 +594,7 @@ function evidenceItems() {
       withFrame(difficulty, prompt),
       strongest,
       [
-        `One supporter says the idea feels promising.`,
+        `${speaker}'s friend says the idea feels promising.`,
         `A brochure says ${t.actionGerund} is new and exciting but gives no data.`,
         `Three people on social media praised the idea.`,
         `A note repeats that the idea is useful without explaining how anyone checked it.`
@@ -596,7 +607,8 @@ function evidenceItems() {
 
 function sourceItems() {
   return buildSkill("source_reliability", (t, difficulty, offset, index) => {
-    const prompt = `A report recommends that ${t.actor} ${t.action}. It also claims the plan would ${resultGoal(t)}. Which detail makes the report less trustworthy?`;
+    const speaker = speakerName(offset, difficulty);
+    const prompt = `${speaker} reads a report that recommends ${t.actor} ${t.action}. The report also claims the plan would ${resultGoal(t)}. Which detail would make ${speaker} trust the report less?`;
     return makeItem(
       "source_reliability",
       index,
@@ -617,29 +629,30 @@ function sourceItems() {
 
 function logicalGapItems() {
   const patterns = [
-    (t) => ({
-      prompt: `Argument: "In one group, ${t.metric} ${t.outcome} after ${t.actionGerund}. So the same action will work in every ${t.domain} setting." What is the logical gap?`,
+    (t, speaker) => ({
+      prompt: `At a planning meeting, ${speaker} says, "In one group, ${t.metric} ${t.outcome} after ${t.actionGerund}. So the same action will work in every ${t.domain} setting." What is the logical gap in ${speaker}'s reasoning?`,
       correct: "It generalizes from one case to every case without enough support.",
-      explanation: "One case does not prove the same thing will happen everywhere."
+      explanation: "The logical gap is the jump from one case to every case. One success does not prove the same thing will happen everywhere."
     }),
-    (t) => ({
-      prompt: `Argument: "${cap(t.metric)} ${t.outcome} after ${t.actionGerund}. So the action caused the change." What is the logical gap?`,
+    (t, speaker) => ({
+      prompt: `In a memo about ${t.domain}, ${speaker} writes, "${cap(t.metric)} ${t.outcome} after ${t.actionGerund}. So the action caused the change." What is the logical gap in ${speaker}'s reasoning?`,
       correct: "It assumes timing alone proves causation.",
-      explanation: "Something happening first does not, by itself, prove it caused what came next."
+      explanation: "The logical gap is treating timing as proof of cause. Something happening first does not, by itself, prove it caused what came next."
     }),
-    (t) => ({
-      prompt: `Argument: "Most ${t.group} asked in a survey liked ${t.actionGerund}. So every person affected will benefit from it." What is the logical gap?`,
+    (t, speaker) => ({
+      prompt: `${speaker} says, "Most ${t.group} asked in a survey liked ${t.actionGerund}. So every person affected will benefit from it." What is the logical gap in ${speaker}'s reasoning?`,
       correct: "It moves from what most surveyed people liked to what everyone will benefit from.",
-      explanation: "Most people liking something does not prove it helps everyone."
+      explanation: "The logical gap is moving from most surveyed people to every affected person. Liking a plan also does not prove the plan helps."
     }),
-    (t) => ({
-      prompt: `Argument: "The average result improved after ${t.actionGerund}. So every person in that group improved." What is the logical gap?`,
+    (t, speaker) => ({
+      prompt: `A report says the average result improved after ${t.actionGerund}. ${speaker} concludes, "That means every person in the group improved." What is the logical gap in ${speaker}'s reasoning?`,
       correct: "It treats an average change as proof that every individual changed the same way.",
       explanation: "The logical gap is that an average can go up even when some people do not improve."
     })
   ];
   return buildSkill("logical_gaps", (t, difficulty, offset, index) => {
-    const pattern = patterns[(offset + difficulty) % patterns.length](t);
+    const speaker = speakerName(offset, difficulty);
+    const pattern = patterns[(offset + difficulty) % patterns.length](t, speaker);
     return makeItem(
       "logical_gaps",
       index,
@@ -660,6 +673,8 @@ function logicalGapItems() {
 
 function fallacyItems() {
   return buildSkill("fallacies", (t, difficulty, offset, index) => {
+    const speaker = speakerName(offset, difficulty);
+    const otherSpeaker = speakerName(offset, difficulty, 3);
     const fallacy = fallacyTypes[(offset + difficulty - 1) % fallacyTypes.length];
     const otherNames = fallacyTypes
       .filter((entry) => entry.name !== fallacy.name)
@@ -668,7 +683,7 @@ function fallacyItems() {
       "fallacies",
       index,
       difficulty,
-      withFrame(difficulty, `In a debate about a proposed ${t.domain} change, this happens: ${fallacy.line(t)} Which fallacy is showing up?`),
+      withFrame(difficulty, `During a debate about ${t.actor}'s proposal, ${fallacy.line(t, speaker, otherSpeaker)} Which fallacy is showing up?`),
       fallacy.name,
       stableShuffle(otherNames, `${fallacy.name}:${index}`).slice(0, 3),
       `${fallacy.name}: ${fallacy.explanation}`,
@@ -683,8 +698,8 @@ function probabilityItems() {
     const percent = percentages[(offset + difficulty) % percentages.length];
     const prompt =
       difficulty <= 3
-        ? `A forecast about ${t.domain} says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)} next month. What does that mean?`
-        : `A warning signal in ${t.domain} can catch a real problem, but it also gives false alarms. The problem it flags is uncommon. What is the best way to treat a positive signal?`;
+        ? `A month-ahead forecast for the ${t.domain} proposal says there is a ${percent}% chance that ${t.metric} will ${resultFuture(t)}. What does that percentage mean?`
+        : `A screening tool for the ${t.domain} proposal flags possible problems. It catches many real problems, but it also gives false alarms, and the problem is uncommon. What is the best way to treat a positive signal?`;
     const correct =
       difficulty <= 3
         ? `In many similar cases, improvement would happen about ${percent} out of 100 times.`
@@ -726,7 +741,7 @@ function statsItems() {
     const prompt =
       difficulty <= 3
         ? `In one ${t.domain} comparison, Group A had ${aEvents} cases out of ${aTotal}. Group B had ${bEvents} cases out of ${bTotal}. Which group had the higher rate?`
-        : `A report about ${t.domain} says ${t.metric} rose from ${aEvents}% to ${aEvents + 5}% after a pilot program. What is the clearest way to describe the change?`;
+        : `A report about ${t.domain} says ${t.metric} rose from ${aEvents}% to ${aEvents + 5}% after a test program. What is the clearest way to describe the change?`;
     const correct =
       difficulty <= 3
         ? aHigher
@@ -760,7 +775,8 @@ function statsItems() {
 
 function causationItems() {
   return buildSkill("causation", (t, difficulty, offset, index) => {
-    const prompt = `${cap(t.actor)} tried a plan to ${t.action}. Afterward, ${t.metric} ${t.outcome}. Which fact would show why this does not prove the plan caused the change?`;
+    const speaker = speakerName(offset, difficulty);
+    const prompt = `${cap(t.actor)} tried a plan to ${t.action}. Afterward, ${t.metric} ${t.outcome}. ${speaker} says, "The plan caused the change." Which fact would show why ${speaker}'s claim is not proved yet?`;
     return makeItem(
       "causation",
       index,
@@ -781,7 +797,8 @@ function causationItems() {
 
 function alternativeItems() {
   return buildSkill("alternative_explanations", (t, difficulty, offset, index) => {
-    const prompt = `${cap(t.actor)} tried ${t.actionGerund}. Afterward, ${t.metric} ${t.outcome}. A supporter says the plan caused the change. Which other explanation also fits?`;
+    const speaker = speakerName(offset, difficulty);
+    const prompt = `${cap(t.actor)} tried ${t.actionGerund}. Afterward, ${t.metric} ${t.outcome}. ${speaker} says, "The plan caused the change." Which other explanation also fits the facts?`;
     return makeItem(
       "alternative_explanations",
       index,
@@ -802,6 +819,7 @@ function alternativeItems() {
 
 function biasItems() {
   return buildSkill("cognitive_biases", (t, difficulty, offset, index) => {
+    const speaker = speakerName(offset, difficulty);
     const bias = biasTypes[(offset + difficulty - 1) % biasTypes.length];
     const otherNames = biasTypes
       .filter((entry) => entry.name !== bias.name)
@@ -810,7 +828,7 @@ function biasItems() {
       "cognitive_biases",
       index,
       difficulty,
-      withFrame(difficulty, `In a discussion about ${t.domain}, ${lowerFirst(bias.line(t))} Which thinking bias is shown?`),
+      withFrame(difficulty, `In a discussion about ${t.domain}, ${bias.line(t, speaker)} Which thinking bias is shown in ${speaker}'s thinking?`),
       bias.name,
       stableShuffle(otherNames, `${bias.name}:${index}`).slice(0, 3),
       bias.explanation,

@@ -8,6 +8,12 @@ const MAX_AVG_SENTENCE_WORDS = 34;
 const MAX_LONGEST_SENTENCE_WORDS = 58;
 const CLUNKY_PROMPT_PATTERNS = [
   ["Scene label", /Scene:/],
+  ["raw argument label", /Argument:\s*"/],
+  ["anonymous someone", /\bsomeone\b/i],
+  ["anonymous speaker", /\ba speaker\b/i],
+  ["anonymous supporter argues", /\bA supporter argues\b/i],
+  ["anonymous supporter says", /\bA supporter says\b/i],
+  ["old main-claim wording", /\bWhat is the main claim\?/i],
   ["generic situation wrapper", /\bsituation\b/i],
   ["result-being-watched wrapper", /result being watched/i],
   ["supposed-to-help wrapper", /The change is supposed to help/i],
@@ -21,11 +27,11 @@ const CLUNKY_PROMPT_PATTERNS = [
 ];
 const RUBRIC_BY_SKILL = {
   clarify_claim: {
-    prompt: [/main claim/i],
-    explanation: [/main claim/i, /point/i, /accept/i]
+    prompt: [/Which claim is [A-Z][A-Za-z]+ asking people to accept\?/],
+    explanation: [/main claim/i, /recommendation/i, /test result/i]
   },
   define_terms: {
-    prompt: [/word most needs/i, /clearer meaning/i],
+    prompt: [/word or phrase/i, /clearer meaning/i],
     explanation: [/vague/i, /means/i]
   },
   find_argument: {
@@ -45,7 +51,7 @@ const RUBRIC_BY_SKILL = {
     explanation: [/measures/i, /fair/i]
   },
   source_reliability: {
-    prompt: [/less trustworthy/i],
+    prompt: [/trust the report less|less trustworthy/i],
     explanation: [/source/i, /trustworthy/i, /profit/i]
   },
   logical_gaps: {
@@ -65,7 +71,7 @@ const RUBRIC_BY_SKILL = {
     explanation: [/group size/i, /percentage points/i, /percent increase/i]
   },
   causation: {
-    prompt: [/does not prove|not prove/i],
+    prompt: [/does not prove|not prove|not proved/i],
     explanation: [/cause/i, /rule out/i, /compare/i]
   },
   alternative_explanations: {
