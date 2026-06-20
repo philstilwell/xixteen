@@ -85,6 +85,7 @@ async function fetchJson(path) {
 }
 
 function bindEvents() {
+  bindModeHelp();
   document.querySelector("#start-daily").addEventListener("click", () => startDaily());
   document.querySelector("#start-practice").addEventListener("click", () => focusPracticeBuilder());
   document.querySelectorAll("[data-promo-daily]").forEach((button) => {
@@ -144,6 +145,40 @@ function bindEvents() {
     if (scrollButton) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+  });
+}
+
+function bindModeHelp() {
+  document.querySelectorAll(".mode-help > button").forEach((button) => {
+    button.addEventListener("click", () => {
+      showModeHelp(button.closest(".mode-help"));
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".mode-help")) {
+      hideModeHelp();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      hideModeHelp();
+    }
+  });
+}
+
+function showModeHelp(wrapper) {
+  if (!wrapper) return;
+  document.querySelectorAll(".mode-help.is-help-visible").forEach((current) => {
+    current.classList.toggle("is-help-visible", current === wrapper);
+  });
+  wrapper.classList.add("is-help-visible");
+}
+
+function hideModeHelp() {
+  document.querySelectorAll(".mode-help.is-help-visible").forEach((wrapper) => {
+    wrapper.classList.remove("is-help-visible");
   });
 }
 

@@ -16,8 +16,20 @@
       </div>
       <div class="topbar-actions">
         <a class="secondary-link" href="teachers/">For Teachers</a>
-        <button id="start-daily" class="primary-action" type="button">Today's Board</button>
-        <button id="start-practice" class="secondary-action" type="button">Practice</button>
+        <span class="mode-help">
+          <button id="start-daily" class="primary-action" type="button" aria-describedby="topbar-daily-help">Today's Board</button>
+          <span id="topbar-daily-help" class="mode-popover" role="tooltip">
+            <strong>Daily board</strong>
+            <span>Answer one question from each of the 16 skills. It fills the grid, creates a daily score, and can place you on the leaderboard.</span>
+          </span>
+        </span>
+        <span class="mode-help">
+          <button id="start-practice" class="secondary-action" type="button" aria-describedby="topbar-practice-help">Practice</button>
+          <span id="topbar-practice-help" class="mode-popover" role="tooltip">
+            <strong>Practice mode</strong>
+            <span>Choose a skill, level, and set length. Use it to train weak spots without replacing today's board score.</span>
+          </span>
+        </span>
       </div>
     </header>
 
@@ -61,9 +73,21 @@
               <p class="eyebrow" id="quiz-date"></p>
               <h2 id="quiz-title">Today's XiXteen</h2>
             </div>
-            <div class="mode-switch" role="tablist" aria-label="Quiz mode">
-              <button class="mode-button is-active" data-mode="daily" type="button">Daily</button>
-              <button class="mode-button" data-mode="practice" type="button">Practice</button>
+            <div class="mode-switch" role="group" aria-label="Quiz mode">
+              <span class="mode-help">
+                <button class="mode-button is-active" data-mode="daily" type="button" aria-describedby="workbench-daily-help">Daily</button>
+                <span id="workbench-daily-help" class="mode-popover" role="tooltip">
+                  <strong>Daily board</strong>
+                  <span>The full 16-skill challenge for today. Everyone gets the same daily board, so scores are comparable.</span>
+                </span>
+              </span>
+              <span class="mode-help">
+                <button class="mode-button" data-mode="practice" type="button" aria-describedby="workbench-practice-help">Practice</button>
+                <span id="workbench-practice-help" class="mode-popover" role="tooltip">
+                  <strong>Practice mode</strong>
+                  <span>Build a focused set or adaptive mix. Best after the board shows which skills need more reps.</span>
+                </span>
+              </span>
             </div>
           </div>
 

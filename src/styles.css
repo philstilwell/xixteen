@@ -77,6 +77,74 @@ button {
   justify-content: flex-end;
 }
 
+.mode-help {
+  position: relative;
+  display: inline-flex;
+}
+
+.mode-help > button {
+  width: 100%;
+}
+
+.mode-popover {
+  position: absolute;
+  z-index: 40;
+  inset-block-start: calc(100% + 10px);
+  inset-inline-end: 0;
+  display: grid;
+  gap: 5px;
+  width: min(280px, calc(100vw - 36px));
+  padding: 11px 12px;
+  border: 1px solid color-mix(in srgb, var(--teal) 35%, var(--line));
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 16px 34px rgba(31, 42, 46, 0.16);
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
+  visibility: hidden;
+}
+
+.mode-popover::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -6px;
+  inset-inline-end: 18px;
+  width: 10px;
+  height: 10px;
+  border-block-start: 1px solid color-mix(in srgb, var(--teal) 35%, var(--line));
+  border-inline-start: 1px solid color-mix(in srgb, var(--teal) 35%, var(--line));
+  background: var(--panel);
+  transform: rotate(45deg);
+}
+
+.mode-popover strong,
+.mode-popover span {
+  display: block;
+}
+
+.mode-popover strong {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.mode-popover span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.mode-help:hover .mode-popover,
+.mode-help:focus-within .mode-popover,
+.mode-help.is-help-visible .mode-popover {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  visibility: visible;
+}
+
 .primary-action,
 .secondary-action,
 .mode-button,
@@ -1651,6 +1719,18 @@ main {
   .topbar-actions {
     width: 100%;
     justify-content: stretch;
+  }
+
+  .topbar-actions .mode-help {
+    flex: 1 1 160px;
+  }
+
+  .mode-switch {
+    width: 100%;
+  }
+
+  .mode-switch .mode-help {
+    flex: 1;
   }
 
   .primary-action,
