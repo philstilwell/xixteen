@@ -7,6 +7,30 @@ const MAX_CHOICE_CHARS = 190;
 const MAX_AVG_SENTENCE_WORDS = 34;
 const MAX_LONGEST_SENTENCE_WORDS = 58;
 const LONGEST_CHOICE_TELL_MARGIN = 6;
+const SHORTEST_CHOICE_TELL_MARGIN = 8;
+const SHORTEST_CHOICE_TELL_RATE = 0.55;
+const SHORTEST_CHOICE_TELL_MIN_COUNT = 10;
+const TAG_ANSWER_SKEW_MIN_ITEMS = 16;
+const TAG_ANSWER_SKEW_MAX_SHARE = 0.6;
+const TAG_ANSWER_SKEW_IGNORED_TAGS = new Set([
+  "source",
+  "claim",
+  "argument-map",
+  "vagueness",
+  "relevance",
+  "evidence",
+  "assumption",
+  "probability",
+  "statistics",
+  "fallacy",
+  "bias",
+  "tradeoff",
+  "causation",
+  "alternatives",
+  "belief-update",
+  "confounder",
+  "logic"
+]);
 const CLUNKY_PROMPT_PATTERNS = [
   ["distracting quick-check frame", /^Quick check:/i],
   ["Scene label", /Scene:/],
@@ -48,6 +72,7 @@ const ANSWER_DIVERSITY_RULES = {
   relevance: { minStems: 4, maxShare: 0.45 },
   evidence_quality: { minStems: 4, maxShare: 0.45 },
   source_reliability: { minStems: 15, maxShare: 0.25 },
+  logical_gaps: { minStems: 8, maxShare: 0.15 },
   probability: { minStems: 4, maxShare: 0.45 },
   statistical_sense: { minStems: 4, maxShare: 0.45 },
   tradeoffs: { minStems: 4, maxShare: 0.45 },
@@ -138,7 +163,8 @@ for (const item of items) {
 const failingAudits = itemAudits.filter((audit) => audit.issues.length > 0);
 const patternIssues = [
   ...auditAnswerPatternTells(items),
-  ...auditChoiceLengthTells(items)
+  ...auditChoiceLengthTells(items),
+  ...auditTagAnswerSkew(items)
 ];
 
 if (failingAudits.length > 0 || patternIssues.length > 0) {
@@ -377,7 +403,8 @@ function auditAnswerPatternTells(allItems) {
 }
 
 function auditChoiceLengthTells(allItems) {
-  const examples = [];
+  const longestExamples = [];
+  const shortestExamples = [];
 
   for (const item of allItems) {
     if (!Array.isArray(item.choices) || item.choices.length !== 4) {
@@ -394,17 +421,103 @@ function auditChoiceLengthTells(allItems) {
     const isUniquelyLongest = sorted[0].id === item.answer && sorted[0].len > sorted[1].len;
     const margin = sorted[0].len - sorted[1].len;
     if (isUniquelyLongest && margin >= LONGEST_CHOICE_TELL_MARGIN) {
-      examples.push(`${item.id} answer ${item.answer} is longest by ${margin} chars`);
+      longestExamples.push(`${item.id} answer ${item.answer} is longest by ${margin} chars`);
     }
   }
 
-  if (examples.length === 0) {
-    return [];
+  const skillIds = new Set(allItems.map((item) => item.skill));
+  for (const skillId of skillIds) {
+    const skillItems = allItems.filter((item) => item.skill === skillId);
+    let uniqueShortestCount = 0;
+    let shortestCorrectCount = 0;
+    let largeMarginCount = 0;
+    for (const item of skillItems) {
+      if (!Array.isArray(item.choices) || item.choices.length !== 4) {
+        continue;
+      }
+
+      const lengths = item.choices.map((choice) => ({ id: choice.id, len: choice.text.length }));
+      const sorted = [...lengths].sort((a, b) => a.len - b.len);
+      if (sorted[0].len === sorted[1].len) {
+        continue;
+      }
+
+      uniqueShortestCount += 1;
+      if (sorted[0].id === item.answer) {
+        shortestCorrectCount += 1;
+        if (sorted[1].len - sorted[0].len >= SHORTEST_CHOICE_TELL_MARGIN) {
+          largeMarginCount += 1;
+        }
+      }
+    }
+
+    const shortestCorrectRate = uniqueShortestCount > 0 ? shortestCorrectCount / uniqueShortestCount : 0;
+    if (
+      uniqueShortestCount >= 80 &&
+      shortestCorrectRate > SHORTEST_CHOICE_TELL_RATE &&
+      largeMarginCount >= SHORTEST_CHOICE_TELL_MIN_COUNT
+    ) {
+      shortestExamples.push(
+        `${skillId} has shortest-correct pattern ${shortestCorrectCount}/${uniqueShortestCount} with ${largeMarginCount} large-margin item(s)`
+      );
+    }
   }
 
   return [
-    `correct answer is visibly longest in ${examples.length} item(s): ${examples.slice(0, 12).join("; ")}`
+    ...(longestExamples.length > 0
+      ? [`correct answer is visibly longest in ${longestExamples.length} item(s): ${longestExamples.slice(0, 12).join("; ")}`]
+      : []),
+    ...(shortestExamples.length > 0
+      ? [`correct answer has a shortest-choice tell: ${shortestExamples.join("; ")}`]
+      : [])
   ];
+}
+
+function auditTagAnswerSkew(allItems) {
+  const issues = [];
+  const skillIds = new Set(allItems.map((item) => item.skill));
+
+  for (const skillId of skillIds) {
+    const skillItems = allItems.filter((item) => item.skill === skillId);
+    const itemsByTag = new Map();
+    for (const item of skillItems) {
+      for (const tag of item.tags || []) {
+        if (shouldIgnoreTag(tag, skillIds)) {
+          continue;
+        }
+        const tagItems = itemsByTag.get(tag) || [];
+        tagItems.push(item);
+        itemsByTag.set(tag, tagItems);
+      }
+    }
+
+    for (const [tag, tagItems] of itemsByTag) {
+      if (tagItems.length < TAG_ANSWER_SKEW_MIN_ITEMS) {
+        continue;
+      }
+      const counts = { A: 0, B: 0, C: 0, D: 0 };
+      for (const item of tagItems) {
+        counts[item.answer] += 1;
+      }
+      const maxCount = Math.max(...Object.values(counts));
+      if (maxCount / tagItems.length >= TAG_ANSWER_SKEW_MAX_SHARE) {
+        issues.push(
+          `${skillId} tag "${tag}" has answer-position skew ${JSON.stringify(counts)} across ${tagItems.length} items`
+        );
+      }
+    }
+  }
+
+  return issues;
+}
+
+function shouldIgnoreTag(tag, skillIds) {
+  return (
+    skillIds.has(tag) ||
+    TAG_ANSWER_SKEW_IGNORED_TAGS.has(tag) ||
+    /^d\d$/.test(tag) ||
+    /^variant-/.test(tag)
+  );
 }
 
 function getAnswerText(item) {
