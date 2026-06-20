@@ -952,14 +952,17 @@ main {
   font-size: 12px;
 }
 
-.rank {
-  display: grid;
+.leaderboard-list .rank {
+  display: inline-grid;
   place-items: center;
   width: 28px;
   height: 28px;
+  line-height: 1;
+  text-align: center;
   border-radius: 50%;
   background: rgba(31, 42, 46, 0.08);
   color: var(--ink);
+  font-size: 13px;
   font-weight: 900;
 }
 
