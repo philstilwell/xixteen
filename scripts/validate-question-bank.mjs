@@ -10,6 +10,9 @@ const LABEL_LIST = ["A", "B", "C", "D"];
 const LABELS = new Set(LABEL_LIST);
 const EXPECTED_PER_LABEL_PER_SKILL_DIFFICULTY = EXPECTED_PER_DIFFICULTY / LABEL_LIST.length;
 const EXPECTED_DAILY_PER_LABEL = EXPECTED_SKILLS / LABEL_LIST.length;
+const MAX_DAILY_SAME_ANSWER_RUN = 2;
+const MIN_DISTINCT_DAILY_ANSWERS_PER_ROW = 3;
+const DAILY_ROW_SIZE = 4;
 const CLUNKY_PROMPT_PATTERNS = [
   ["distracting quick-check frame", /^Quick check:/i],
   ["Scene label", /Scene:/],
@@ -147,9 +150,18 @@ for (const quiz of quizzes) {
     continue;
   }
   const quizSkills = new Set();
+  const quizPositions = new Set();
+  const answerSequence = [];
   const quizAnswerCounts = new Map(LABEL_LIST.map((label) => [label, 0]));
   for (const entry of quiz.items) {
     quizSkills.add(entry.skill);
+    if (!Number.isInteger(entry.position) || entry.position < 1 || entry.position > EXPECTED_SKILLS) {
+      errors.push(`${quiz.id} has invalid position ${entry.position}.`);
+    } else if (quizPositions.has(entry.position)) {
+      errors.push(`${quiz.id} repeats position ${entry.position}.`);
+    } else {
+      quizPositions.add(entry.position);
+    }
     if (!itemIds.has(entry.itemId)) {
       errors.push(`${quiz.id} references unknown item ${entry.itemId}.`);
       continue;
@@ -157,15 +169,33 @@ for (const quiz of quizzes) {
     const item = itemById.get(entry.itemId);
     if (item && LABELS.has(item.answer)) {
       quizAnswerCounts.set(item.answer, quizAnswerCounts.get(item.answer) + 1);
+      answerSequence.push({ position: entry.position, answer: item.answer });
     }
   }
   if (quizSkills.size !== EXPECTED_SKILLS) {
     errors.push(`${quiz.id} does not have one item per skill.`);
   }
+  if (quizPositions.size !== EXPECTED_SKILLS) {
+    errors.push(`${quiz.id} does not have one entry per position.`);
+  }
   for (const label of LABEL_LIST) {
     const answerCount = quizAnswerCounts.get(label);
     if (answerCount !== EXPECTED_DAILY_PER_LABEL) {
       errors.push(`${quiz.id} expected ${EXPECTED_DAILY_PER_LABEL} ${label} answers, found ${answerCount}.`);
+    }
+  }
+
+  const orderedAnswers = [...answerSequence]
+    .sort((a, b) => a.position - b.position)
+    .map((entry) => entry.answer);
+  const longestRun = longestSameAnswerRun(orderedAnswers);
+  if (longestRun > MAX_DAILY_SAME_ANSWER_RUN) {
+    errors.push(`${quiz.id} has a same-answer run of ${longestRun}; expected at most ${MAX_DAILY_SAME_ANSWER_RUN}.`);
+  }
+  for (let index = 0; index < orderedAnswers.length; index += DAILY_ROW_SIZE) {
+    const row = orderedAnswers.slice(index, index + DAILY_ROW_SIZE);
+    if (new Set(row).size < MIN_DISTINCT_DAILY_ANSWERS_PER_ROW) {
+      errors.push(`${quiz.id} positions ${index + 1}-${index + DAILY_ROW_SIZE} have an obvious answer block: ${row.join("")}.`);
     }
   }
 }
@@ -179,4 +209,18 @@ console.log(`Validated ${skills.length} skills, ${items.length} items, and ${qui
 
 function hasBarePercentChange(text) {
   return PERCENT_CHANGE_PATTERN.test(text) && !PERCENT_COMPARISON_CUE_PATTERN.test(text);
+}
+
+function longestSameAnswerRun(labels) {
+  let longest = 0;
+  let current = 0;
+  let previous = null;
+
+  for (const label of labels) {
+    current = label === previous ? current + 1 : 1;
+    previous = label;
+    longest = Math.max(longest, current);
+  }
+
+  return longest;
 }
