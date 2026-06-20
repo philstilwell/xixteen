@@ -97,8 +97,12 @@ button {
 .primary-action,
 .secondary-action,
 .next-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0 16px;
   font-weight: 800;
+  text-decoration: none;
 }
 
 .primary-action,
@@ -120,6 +124,7 @@ button {
 .choice-button:hover,
 .icon-button:hover,
 .promo-links a:hover,
+.secondary-link:hover,
 .skill-card:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(31, 42, 46, 0.12);
@@ -303,6 +308,7 @@ main {
 .secondary-action:focus-visible,
 .next-button:focus-visible,
 .icon-button:focus-visible,
+.secondary-link:focus-visible,
 .promo-links a:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--accent, var(--teal)) 40%, white);
   outline-offset: 2px;
@@ -1219,7 +1225,7 @@ main {
 
 .teacher-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 12px;
 }
 
@@ -1250,6 +1256,202 @@ main {
   color: var(--ink);
   font-weight: 800;
   text-decoration: none;
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease, box-shadow 140ms ease;
+}
+
+.teachers-main {
+  display: grid;
+  gap: 22px;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.teacher-hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.58fr) minmax(260px, 0.42fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.teacher-hero-copy {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.teacher-hero-copy h2,
+.resource-section-head h2,
+.teacher-usage h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.teacher-hero-copy h2 {
+  max-width: 760px;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.05;
+}
+
+.teacher-hero-copy p,
+.resource-section-head p,
+.resource-card em,
+.teacher-usage li {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.resource-feature {
+  display: grid;
+  align-content: end;
+  gap: 12px;
+  min-height: 270px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--teal) 42%, var(--line));
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(31, 138, 138, 0.16), rgba(199, 154, 45, 0.14)),
+    var(--panel);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.resource-feature:hover,
+.resource-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--teal) 60%, var(--line));
+  box-shadow: 0 16px 32px rgba(31, 42, 46, 0.14);
+}
+
+.resource-feature span,
+.resource-card span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.resource-feature strong {
+  max-width: 14ch;
+  font-size: 30px;
+  line-height: 1.06;
+}
+
+.resource-feature em {
+  justify-self: start;
+  min-height: 36px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--panel);
+  font-style: normal;
+  font-weight: 850;
+}
+
+.teacher-usage {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.3fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.76);
+  box-shadow: var(--shadow);
+}
+
+.teacher-usage ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: teacher-step;
+}
+
+.teacher-usage li {
+  position: relative;
+  min-height: 120px;
+  padding: 42px 12px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  counter-increment: teacher-step;
+}
+
+.teacher-usage li::before {
+  content: counter(teacher-step);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(31, 138, 138, 0.13);
+  color: #185f61;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.resource-section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.resource-section-head p {
+  max-width: 44ch;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.resource-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-height: 180px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 253, 247, 0.84);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+}
+
+.resource-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 30px;
+  border-radius: 7px;
+  background: rgba(31, 138, 138, 0.1);
+  color: #185f61;
+}
+
+.resource-card strong {
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.resource-card em {
+  font-style: normal;
+  font-size: 13px;
 }
 
 .tech-page {
@@ -1385,6 +1587,8 @@ main {
   .gallery-shell,
   .workbench,
   .teacher-section,
+  .teacher-hero,
+  .teacher-usage,
   .tech-hero,
   .tech-notes {
     grid-template-columns: 1fr;
@@ -1417,6 +1621,11 @@ main {
   .tech-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .resource-grid,
+  .teacher-usage ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -1431,7 +1640,8 @@ main {
   }
 
   .primary-action,
-  .secondary-action {
+  .secondary-action,
+  .secondary-link {
     flex: 1;
   }
 
@@ -1482,7 +1692,9 @@ main {
   .quiz-shell,
   .profile-panel,
   .leaderboard-panel,
-  .teacher-section {
+  .teacher-section,
+  .teacher-hero,
+  .teacher-usage {
     padding: 14px;
   }
 
@@ -1501,8 +1713,15 @@ main {
 
   .practice-dock,
   .teacher-grid,
-  .tech-grid {
+  .tech-grid,
+  .resource-grid,
+  .teacher-usage ol {
     grid-template-columns: 1fr;
+  }
+
+  .resource-section-head {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .practice-dock .secondary-action {

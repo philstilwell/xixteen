@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections import defaultdict
 from datetime import date
 from html import escape
@@ -34,6 +35,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 OUTPUT_DIR = ROOT / "output" / "pdf"
 OUTPUT_FILE = OUTPUT_DIR / "xixteen-critical-thinking-curriculum.pdf"
+SKILL_OUTPUT_DIR = OUTPUT_DIR / "skills"
+TEACHER_RESOURCE_FILE = DATA_DIR / "teacher-resources.json"
 
 PAGE_WIDTH, PAGE_HEIGHT = letter
 MARGIN_X = 0.62 * inch
@@ -180,6 +183,443 @@ SKILL_CURRICULUM = {
     },
 }
 
+PEDAGOGY_EXPANSIONS = {
+    "clarify_claim": {
+        "essential_question": "What exactly is the speaker asking us to accept?",
+        "conceptual_core": "This skill trains students to locate the target of judgment before judging it. A prompt may include background, measurements, motives, vivid details, and a speaker's conclusion. The claim is the statement that would need support after the background has been cleared away. Students should learn that claims can be descriptive, predictive, causal, evaluative, or practical recommendations, and that each type requires different later tests.",
+        "student_moves": [
+            "Find the speaker and mark the sentence that sounds like the point of the argument.",
+            "Separate the claim from the evidence that is offered for it.",
+            "Check whether an answer overstates the claim by adding always, only, proven, everyone, or everywhere.",
+            "Restate the claim in plain language before choosing an answer."
+        ],
+        "common_confusions": [
+            "Students often pick the most concrete fact because it feels important, even when it is only evidence.",
+            "Students may pick an extreme version of the claim because it sounds more decisive than the actual conclusion.",
+            "Students sometimes confuse the issue being discussed with the position someone takes on that issue."
+        ],
+        "teacher_prompts": [
+            "Who is trying to persuade whom?",
+            "Which sentence would the speaker need to defend if challenged?",
+            "Which choices are evidence, background, or exaggeration rather than the claim?"
+        ],
+        "worked_example": {
+            "scenario": "A city tests later library hours and visits rise from 400 to 460 per week. A council member says, because of that test, the city should keep the later hours.",
+            "think_aloud": "The visit count is evidence. The issue is library hours. The council member's claim is the recommendation to keep later hours. A choice saying the test proves later hours always work would go beyond the claim.",
+            "takeaway": "The main claim is the point being defended, not the measurement used to defend it."
+        },
+        "assessment": "A good answer names the exact point being supported and rejects answers that are merely supporting facts, side details, or overclaims.",
+        "extension": "Ask students to bring in a short editorial or ad and highlight the main claim in one color and the support in another."
+    },
+    "define_terms": {
+        "essential_question": "Which word or phrase must be made clearer before the argument can be fairly judged?",
+        "conceptual_core": "Arguments often turn on ordinary words that hide a standard. Words like safe, fair, effective, affordable, harmful, successful, and better invite disagreement unless the speaker says what would count. Defining terms does not settle the whole argument, but it makes the argument testable. The goal is not to demand definitions for every word; it is to find the term that carries the burden of the conclusion.",
+        "student_moves": [
+            "Look for judgment words, threshold words, and comparison words.",
+            "Ask what someone would need to count or observe to apply the term.",
+            "Distinguish unclear key terms from details that are already specific.",
+            "Test whether two reasonable readers could interpret the word differently."
+        ],
+        "common_confusions": [
+            "Students may pick a familiar word simply because it appears often in the prompt.",
+            "Students may think a term is clear because they have a private meaning for it.",
+            "Students may define a side detail while leaving the standard that matters untouched."
+        ],
+        "teacher_prompts": [
+            "What would count as enough?",
+            "What would two people disagree about even if they agreed on the facts?",
+            "Can we measure or apply this word without adding a standard?"
+        ],
+        "worked_example": {
+            "scenario": "A school says a phone rule is justified because it creates a healthier classroom.",
+            "think_aloud": "The word healthier is doing the work. Does it mean fewer distractions, less anxiety, better grades, more sleep, or better social interaction? Until that term is defined, the rule cannot be judged clearly.",
+            "takeaway": "The key term is the one that hides the standard for success."
+        },
+        "assessment": "A good answer selects the vague or standard-setting phrase and can explain what kind of definition would make the claim testable.",
+        "extension": "Have students rewrite a vague claim twice with two different definitions and discuss how the evidence needed would change."
+    },
+    "find_argument": {
+        "essential_question": "What role does each sentence play in the argument?",
+        "conceptual_core": "Finding the argument means mapping the relationship among sentences. Students learn to distinguish conclusion, reason, evidence, example, context, and irrelevant detail. This is a structural skill: the same sentence can be evidence in one argument and conclusion in another. The key is the job it performs in the immediate passage.",
+        "student_moves": [
+            "Identify the sentence that other sentences are meant to support.",
+            "Mark evidence or reasons that point toward that conclusion.",
+            "Treat examples as illustrations unless they are the main point being defended.",
+            "Ignore signal words if the sentence's actual role points the other way."
+        ],
+        "common_confusions": [
+            "Students often treat the first fact as the conclusion because it appears first.",
+            "Students may mistake a topic sentence for an argued conclusion.",
+            "Students may choose a true background statement even when it is not doing argumentative work."
+        ],
+        "teacher_prompts": [
+            "Which sentence answers 'so what should we believe or do?'",
+            "Which sentence answers 'why should we believe that?'",
+            "If we removed this sentence, would the argument lose its support, its conclusion, or only some background?"
+        ],
+        "worked_example": {
+            "scenario": "A school club says its bake sale raised more money than the car wash, so next month the club should run another bake sale.",
+            "think_aloud": "The money comparison supports the recommendation. The conclusion is the action the club should take. The topic is fundraising, but the argument is the move from past result to future plan.",
+            "takeaway": "The conclusion is the supported point; the reason is the support."
+        },
+        "assessment": "A good answer identifies the conclusion, reason, or other requested role without being pulled toward the most interesting sentence.",
+        "extension": "Give students a short passage and ask them to diagram it with arrows from reasons to conclusion."
+    },
+    "hidden_assumptions": {
+        "essential_question": "What unstated idea must be true for the reason to support the conclusion?",
+        "conceptual_core": "An assumption is not merely something unstated; it is an unstated bridge the argument needs. Students should learn to avoid both extremes: choosing an assumption so broad it would make almost any argument work, or choosing a detail that is true but not necessary for this argument. The best assumption usually connects the specific evidence to the specific conclusion.",
+        "student_moves": [
+            "Put the stated reason and conclusion next to each other.",
+            "Ask what must be true for that reason to count in favor of that conclusion.",
+            "Prefer a narrow bridge over a sweeping guarantee.",
+            "Use the denial test: if this assumption were false, would the argument weaken?"
+        ],
+        "common_confusions": [
+            "Students may choose a statement that would be nice to know but is not required.",
+            "Students may choose a much stronger claim than the argument needs.",
+            "Students may confuse evidence with the assumption that lets the evidence matter."
+        ],
+        "teacher_prompts": [
+            "What is the missing bridge between these two sentences?",
+            "Would the conclusion still be supported if this choice were false?",
+            "Is this answer just helpful, or is it needed?"
+        ],
+        "worked_example": {
+            "scenario": "A store's weekend trial of a new checkout line reduced waiting times, so the store should use that checkout setup every day.",
+            "think_aloud": "The argument assumes weekend customers and weekday customers are similar enough, or that the checkout setup would still reduce waits under normal daily conditions.",
+            "takeaway": "Assumptions connect the evidence to the conclusion without adding more than the argument needs."
+        },
+        "assessment": "A good answer supplies a necessary bridge and avoids choices that are mere background, evidence, or overconfident guarantees.",
+        "extension": "Have students write because-therefore sentences and insert the missing assumption between the reason and conclusion."
+    },
+    "relevance": {
+        "essential_question": "Which fact actually helps us judge the claim?",
+        "conceptual_core": "Relevance is about fit. Evidence can be vivid, surprising, or emotionally interesting while still not bearing on the claim. Students should learn to anchor each relevance judgment in the claim's action, target group, and outcome. A relevant fact does not have to prove the claim by itself; it just has to make the claim easier or harder to assess.",
+        "student_moves": [
+            "Circle the action, group, and outcome in the claim.",
+            "Ask whether each option speaks to one of those anchors.",
+            "Reject decorative details that only share the same topic.",
+            "Prefer evidence from similar conditions when the claim is about whether a plan will work."
+        ],
+        "common_confusions": [
+            "Students may pick a fact because it mentions the same setting or people.",
+            "Students may think irrelevant means false, even though irrelevant facts can be true.",
+            "Students may demand conclusive proof when the task only asks what matters most."
+        ],
+        "teacher_prompts": [
+            "Does this fact help decide the claim, or does it just sit near the claim?",
+            "Which part of the claim does this evidence touch?",
+            "If this fact changed, would our view of the claim change?"
+        ],
+        "worked_example": {
+            "scenario": "A hotel manager claims quiet-hour text reminders will reduce hallway noise complaints from overnight guests.",
+            "think_aloud": "A photo of the hotel lobby is not relevant. Complaint rates after a similar reminder program at comparable hotels are relevant because they match the action and outcome.",
+            "takeaway": "Relevant evidence touches the exact claim, not just the general topic."
+        },
+        "assessment": "A good answer identifies the fact that bears most directly on the claim's action, target group, and outcome.",
+        "extension": "Ask students to create one relevant and one irrelevant fact for the same claim, then trade with a partner."
+    },
+    "evidence_quality": {
+        "essential_question": "How strong is the evidence for this claim?",
+        "conceptual_core": "Evidence quality depends on directness, comparison, measurement, sample size, and transparency. Students should learn that a piece of evidence can be relevant but still weak. A single anecdote, a vague report, or a tiny unrepresentative survey may point in a direction without carrying much weight. The skill is comparative: choose the option that would deserve the most confidence under the facts given.",
+        "student_moves": [
+            "Ask whether the evidence measures the claimed outcome directly.",
+            "Look for a fair comparison or baseline.",
+            "Check whether the sample is large enough and similar enough to the target group.",
+            "Prefer visible methods over impressions and unexplained summaries."
+        ],
+        "common_confusions": [
+            "Students may treat any number as strong evidence because it looks precise.",
+            "Students may overvalue a personal story when the claim is about a larger group.",
+            "Students may ignore whether the measurement matches the outcome in the claim."
+        ],
+        "teacher_prompts": [
+            "What was measured, and was it the right thing?",
+            "Compared with what?",
+            "How many cases, and were they like the group in the claim?"
+        ],
+        "worked_example": {
+            "scenario": "A tutoring program claims it improves algebra pass rates. One happy student gives a testimonial, while a district report compares pass rates in similar classes with and without tutoring.",
+            "think_aloud": "The testimonial is relevant but weak. The comparison report is stronger because it uses the right outcome, a comparison group, and more cases.",
+            "takeaway": "Strong evidence is relevant evidence with better design."
+        },
+        "assessment": "A good answer selects the option with better direct measurement, comparison, sample, and transparency.",
+        "extension": "Have students rank four evidence types and justify the ranking using the same four criteria every time."
+    },
+    "source_reliability": {
+        "essential_question": "How much trust should we place in this source, and why?",
+        "conceptual_core": "Source reliability is not a vibe check. It is a structured judgment about expertise, method, independence, transparency, and track record. Students should learn that a source with a possible interest is not automatically wrong, and a source without an obvious interest is not automatically right. The question is how the source's position affects the weight we should give its claim.",
+        "student_moves": [
+            "Ask whether the source has relevant knowledge or access.",
+            "Look for a clear method, sample, and data path.",
+            "Check whether the source has pressure, incentives, or commitments that could slant judgment.",
+            "Value sources that show limitations or inconvenient evidence."
+        ],
+        "common_confusions": [
+            "Students may treat motive as proof of falsehood rather than a reason for caution.",
+            "Students may trust impressive titles even when the topic is outside the person's expertise.",
+            "Students may ignore missing methods because the conclusion sounds reasonable."
+        ],
+        "teacher_prompts": [
+            "What does this source know, and how would it know?",
+            "What method is visible?",
+            "What reason might this source have to leave something out?"
+        ],
+        "worked_example": {
+            "scenario": "A company claims its study shows its app improves sleep, but the report does not say how users were selected or how sleep was measured.",
+            "think_aloud": "The problem is not just that the company benefits. The missing method makes the claim hard to check, and the source's incentive gives us another reason to ask for transparency.",
+            "takeaway": "Reliability grows when expertise, method, and openness are visible."
+        },
+        "assessment": "A good answer names the reliability issue precisely: expertise, method, sampling, independence, transparency, or track record.",
+        "extension": "Ask students to compare two sources on the same claim using a five-column reliability chart."
+    },
+    "logical_gaps": {
+        "essential_question": "Does the conclusion really follow from the evidence?",
+        "conceptual_core": "Logical gaps occur when the evidence is asked to do more than it can do. Students should learn to compare the exact scope of the evidence with the exact scope of the conclusion. Gaps often involve quantity, time, group, certainty, causation, or universality. This skill is not about whether the conclusion is false; it is about whether this argument has earned it.",
+        "student_moves": [
+            "State what the evidence actually shows in one careful sentence.",
+            "State what the conclusion adds.",
+            "Look for jumps from some to all, possible to certain, short term to long term, or one group to another.",
+            "Choose the answer that names the unsupported jump."
+        ],
+        "common_confusions": [
+            "Students may reject a conclusion because they dislike it rather than because it fails to follow.",
+            "Students may accept a conclusion because the evidence is true.",
+            "Students may overlook small words like all, always, only, or proves."
+        ],
+        "teacher_prompts": [
+            "What does the evidence show only?",
+            "What extra thing does the conclusion claim?",
+            "Which word makes the conclusion stronger than the evidence?"
+        ],
+        "worked_example": {
+            "scenario": "A survey finds that most students in one art class liked a new grading rubric, so the school says every student will prefer it.",
+            "think_aloud": "The evidence is about one class and most students in that class. The conclusion expands to every student in the school. That group and certainty jump is the gap.",
+            "takeaway": "True evidence can still be too narrow for the conclusion."
+        },
+        "assessment": "A good answer identifies the precise leap from evidence to conclusion rather than attacking the topic generally.",
+        "extension": "Have students rewrite weak conclusions so they match the evidence more modestly."
+    },
+    "fallacies": {
+        "essential_question": "What recognizable bad move does this argument make?",
+        "conceptual_core": "Fallacy work should improve reasoning, not turn discussion into name-calling. Students should first describe the move in plain language, then attach the label. The label is useful only if it identifies the structure: attacking a person instead of the argument, pretending there are only two options, misrepresenting an opponent, changing the subject, appealing to popularity, or assuming the conclusion.",
+        "student_moves": [
+            "Describe what the speaker does in ordinary language.",
+            "Match that move to the fallacy label.",
+            "Use the wrong choices as contrast cases rather than memorized vocabulary.",
+            "Explain how the argument could return to the real issue."
+        ],
+        "common_confusions": [
+            "Students may label any bad argument with a familiar fallacy name.",
+            "Students may confuse a harsh tone with ad hominem when the evidence is still addressed.",
+            "Students may spot the topic but miss the argumentative move."
+        ],
+        "teacher_prompts": [
+            "What move did the speaker make?",
+            "Did the reply address the claim or dodge it?",
+            "How would you describe the error without using a fallacy label?"
+        ],
+        "worked_example": {
+            "scenario": "A student asks whether a new schedule has evidence behind it. Another student replies, you just hate change and want the school to fail.",
+            "think_aloud": "The reply attacks the person's attitude instead of answering the evidence question. That is an ad hominem style move, not a response to the argument.",
+            "takeaway": "Name the pattern only after you can describe the bad reasoning move."
+        },
+        "assessment": "A good answer selects the fallacy whose structure matches the scenario and rejects labels that are only topically related.",
+        "extension": "Have students revise a fallacious argument into a stronger version that addresses the actual issue.",
+        "resource_note": "The quiz feedback links fallacy items to corresponding LogFall articles when a direct article match is available."
+    },
+    "probability": {
+        "essential_question": "How should uncertainty affect what we expect?",
+        "conceptual_core": "Probability gives students language for partial belief. Many claims are neither proved nor disproved; they are more or less likely given the information available. Students need to distinguish chance from certainty, risk from outcome, signal from guarantee, and individual cases from long-run frequencies. This is essential for forecasts, tests, warnings, and everyday planning.",
+        "student_moves": [
+            "Translate percentages into out-of-100 language.",
+            "Ask whether the number describes a chance, a frequency, a false alarm rate, or a prediction.",
+            "Keep likely separate from certain and unlikely separate from impossible.",
+            "Notice when the evidence changes odds without settling the result."
+        ],
+        "common_confusions": [
+            "Students may treat a high probability as a guarantee.",
+            "Students may treat a low probability as impossible.",
+            "Students may ignore the base rate or the group the probability applies to."
+        ],
+        "teacher_prompts": [
+            "Out of 100 similar cases, about how many would we expect?",
+            "Does this number tell us what will happen here, or how often it tends to happen?",
+            "What uncertainty remains?"
+        ],
+        "worked_example": {
+            "scenario": "A weather app says there is a 70 percent chance of rain in town tomorrow.",
+            "think_aloud": "That does not mean it will rain for 70 percent of the day or that rain is guaranteed. It means that in similar forecast situations, rain would occur about 70 out of 100 times.",
+            "takeaway": "Probability guides expectations while leaving room for uncertainty."
+        },
+        "assessment": "A good answer uses the probability as evidence without turning it into certainty or dismissing it as useless.",
+        "extension": "Ask students to rewrite probabilistic claims as frequencies and identify what group of cases the frequency refers to."
+    },
+    "statistical_sense": {
+        "essential_question": "What does this number mean in context?",
+        "conceptual_core": "Statistical sense keeps numbers connected to their denominators, baselines, units, and comparisons. Students should learn that a precise number can still be misleading if the reference point is missing. The central habits are asking compared with what, out of how many, measured how, and over what time period. The goal is not advanced math; it is disciplined interpretation.",
+        "student_moves": [
+            "Identify the numerator and denominator behind a rate.",
+            "Ask what the number is being compared with.",
+            "Separate percent change from percentage-point change.",
+            "Check whether averages, totals, or selected examples hide variation."
+        ],
+        "common_confusions": [
+            "Students may think a bigger raw count always means a bigger rate.",
+            "Students may treat a percentage change as clear without knowing the starting value.",
+            "Students may ignore whether the comparison groups are the same size."
+        ],
+        "teacher_prompts": [
+            "Out of how many?",
+            "Compared with what baseline?",
+            "Is this a total, rate, average, percentage, or percentage-point change?"
+        ],
+        "worked_example": {
+            "scenario": "A clinic says missed appointments fell by 20 percent after reminder texts, from 100 missed visits per month to 80.",
+            "think_aloud": "The 20 percent has a reference point: 20 fewer missed visits compared with the earlier 100. Without the before number, the change would be harder to judge.",
+            "takeaway": "Numbers become meaningful when the comparison and denominator are visible."
+        },
+        "assessment": "A good answer identifies the missing or correct numerical context: baseline, denominator, comparison group, unit, or time period.",
+        "extension": "Have students convert every statistic in a news paragraph into a sentence that names the denominator and comparison."
+    },
+    "causation": {
+        "essential_question": "Has the argument shown that one thing caused another?",
+        "conceptual_core": "Causal claims are attractive because they suggest a lever for action. Students should learn that timing and correlation are clues, not proof. A responsible causal judgment asks about comparison groups, other changes, selection effects, reverse direction, and plausible mechanisms. This skill slows the leap from after this to because of this.",
+        "student_moves": [
+            "Check whether the alleged cause happened before the effect.",
+            "Ask what else changed at the same time.",
+            "Look for a comparison group or baseline trend.",
+            "Consider whether the effect could have influenced the supposed cause."
+        ],
+        "common_confusions": [
+            "Students may assume that improvement after a plan proves the plan caused it.",
+            "Students may treat correlation as useless rather than as a clue that needs testing.",
+            "Students may ignore selection effects when people choose into a program."
+        ],
+        "teacher_prompts": [
+            "What would we need to compare?",
+            "What else could have changed?",
+            "Could the cause and effect be reversed or both caused by a third factor?"
+        ],
+        "worked_example": {
+            "scenario": "Reported thefts drop after brighter streetlights are installed, but the city also increases evening patrols that month.",
+            "think_aloud": "The drop is compatible with the lights helping, but patrols are a rival cause. A better design would compare similar streets with and without the lighting change while tracking patrol changes.",
+            "takeaway": "A causal claim gets stronger when rival causes are ruled out."
+        },
+        "assessment": "A good answer explains why the cause is not yet proven or identifies evidence that would better test the causal link.",
+        "extension": "Ask students to list three rival causes for a before-after result before they discuss the original cause."
+    },
+    "alternative_explanations": {
+        "essential_question": "What else could explain the same facts?",
+        "conceptual_core": "Alternative explanation thinking is disciplined imagination. Students keep the observed evidence fixed and ask what other story could make it true. This reduces premature closure, especially when the first explanation is emotionally satisfying or easy to remember. The strongest alternative explanation is specific, plausible, and compatible with the given facts.",
+        "student_moves": [
+            "Name the observed result without interpreting it.",
+            "Generate another cause, condition, or selection effect that could produce the same result.",
+            "Reject alternatives that contradict the prompt.",
+            "Prefer alternatives that are specific enough to test."
+        ],
+        "common_confusions": [
+            "Students may offer a random possibility that does not fit the facts.",
+            "Students may think an alternative explanation must disprove the original explanation.",
+            "Students may choose a vague phrase like many factors without naming one."
+        ],
+        "teacher_prompts": [
+            "What fact are we trying to explain?",
+            "What other story could make that fact true?",
+            "How could we test the original explanation against this alternative?"
+        ],
+        "worked_example": {
+            "scenario": "A museum's family attendance rises after free Friday admission begins, but a popular dinosaur exhibit opens the same weekend.",
+            "think_aloud": "Free admission could matter, but the new exhibit could also explain the attendance increase. Both fit the observed rise, so we need more evidence to separate them.",
+            "takeaway": "An alternative explanation does not have to be proven; it has to plausibly fit the same evidence."
+        },
+        "assessment": "A good answer names a plausible alternative that matches the observed facts and avoids unsupported contradictions.",
+        "extension": "Have students practice the sentence frame: The result could be due to __, but it could also be due to __."
+    },
+    "cognitive_biases": {
+        "essential_question": "What mental pull is shaping this judgment?",
+        "conceptual_core": "Cognitive biases are patterns in attention, memory, confidence, motivation, and social influence. Students should learn that bias does not mean stupidity or bad character; it means a normal mental shortcut is distorting judgment. The skill is to identify the pull: toward confirming what we already believe, following the group, protecting past effort, anchoring on the first number, or trusting what is easiest to recall.",
+        "student_moves": [
+            "Identify what the thinker is drawn toward or away from.",
+            "Separate evidence problems from mind-pattern problems.",
+            "Match the pattern to the bias label.",
+            "Suggest a debiasing move, such as seeking disconfirming evidence or resetting the anchor."
+        ],
+        "common_confusions": [
+            "Students may label any mistake as bias without naming the mental pattern.",
+            "Students may confuse a fallacy in an argument with a bias in judgment.",
+            "Students may treat bias as something only other people have."
+        ],
+        "teacher_prompts": [
+            "What is pulling the person's attention?",
+            "What information is being overweighted or ignored?",
+            "What would a more balanced thinking move look like?"
+        ],
+        "worked_example": {
+            "scenario": "After deciding a study app is helpful, a student reads only positive reviews and skips detailed negative reviews.",
+            "think_aloud": "The student is filtering information to support a prior belief. That is confirmation bias, and the correction is to actively inspect evidence on the other side.",
+            "takeaway": "Bias labels should point to a specific mental pull."
+        },
+        "assessment": "A good answer identifies the bias pattern shown by the person's thinking and distinguishes it from nearby labels.",
+        "extension": "Ask students to design a small debiasing checklist for one decision they actually face.",
+        "resource_note": "The quiz feedback links bias items to corresponding CogBias articles when a direct article match is available."
+    },
+    "tradeoffs": {
+        "essential_question": "What does this choice gain, and what does it give up or risk?",
+        "conceptual_core": "Tradeoff thinking moves students beyond pro-con lists by asking how goods compete. Time, money, attention, privacy, fairness, speed, safety, accuracy, and flexibility can all be scarce. A tradeoff is not merely a downside; it is a relationship between values or resources. Strong tradeoff answers keep the benefit and the cost in one frame.",
+        "student_moves": [
+            "Identify the main benefit the plan seeks.",
+            "Identify the resource, value, or opportunity it may use up.",
+            "Look for second effects on people not centered in the proposal.",
+            "Avoid answers that mention a cost without linking it to the choice."
+        ],
+        "common_confusions": [
+            "Students may treat any negative fact as a tradeoff even if it is unrelated.",
+            "Students may ignore opportunity cost because no money is visibly spent.",
+            "Students may choose the most emotional consequence rather than the clearest competing value."
+        ],
+        "teacher_prompts": [
+            "What is the plan trying to improve?",
+            "What could get worse, receive less attention, or become riskier?",
+            "Who benefits, who pays, and who carries the risk?"
+        ],
+        "worked_example": {
+            "scenario": "A school wants more test-prep time before exams by reducing open reading time.",
+            "think_aloud": "The plan may improve short-term test practice, but it spends time that could support independent reading, curiosity, and long-term literacy. That is the tradeoff.",
+            "takeaway": "A tradeoff names both the gain and what is spent or risked to get it."
+        },
+        "assessment": "A good answer shows the competing benefit and cost, risk, delay, or opportunity cost in the same decision.",
+        "extension": "Ask students to map one school policy as a triangle of benefits, costs, and affected groups."
+    },
+    "belief_update": {
+        "essential_question": "How much should new evidence change confidence?",
+        "conceptual_core": "Belief updating teaches proportion. Students should neither ignore evidence that points in a direction nor treat one small result as final proof. The skill joins direction and size: does the evidence support or weaken the claim, and is it strong enough to move confidence a little or a lot? This habit is central to intellectual humility.",
+        "student_moves": [
+            "State the prior uncertainty or starting belief.",
+            "Decide whether the evidence points toward or away from the claim.",
+            "Judge the evidence strength using sample, comparison, directness, and reliability.",
+            "Move confidence by an amount that fits the evidence."
+        ],
+        "common_confusions": [
+            "Students may think changing confidence means fully changing sides.",
+            "Students may ignore weak evidence because it is not conclusive.",
+            "Students may overreact to one vivid case or small test."
+        ],
+        "teacher_prompts": [
+            "Which direction does the evidence point?",
+            "How strong is it?",
+            "What uncertainty remains after we update?"
+        ],
+        "worked_example": {
+            "scenario": "You are unsure whether brighter lights reduce theft reports. A small matched test finds reports fell from 50 to 44 over the same period nearby streets stayed about the same.",
+            "think_aloud": "The evidence points toward the lights helping, and the comparison makes it more useful. But it is still one small test, so confidence should increase somewhat, not jump to certainty.",
+            "takeaway": "Responsible updating changes belief in proportion to evidence strength."
+        },
+        "assessment": "A good answer names both the direction and size of the confidence change while preserving remaining uncertainty.",
+        "extension": "Ask students to practice a confidence scale from 0 to 100 and explain what would move them 5 points versus 30 points."
+    },
+}
+
 
 PROCESS_TEMPLATES = {
     "clarify_claim": "To uncover the answer, separate the speaker's recommendation from the evidence used to support it. The correct choice is {answer_label} because it states the point the speaker wants accepted: {answer_text}. The other options are either support, background, or an overclaim.",
@@ -224,7 +664,14 @@ class DotXMark(Flowable):
 
 
 class CurriculumDoc(BaseDocTemplate):
-    def __init__(self, filename):
+    def __init__(
+        self,
+        filename,
+        title="XiXteen Critical Thinking Curriculum",
+        subject="Critical thinking curriculum and item bank",
+        running_title="XiXteen Critical Thinking Curriculum",
+    ):
+        self.running_title = running_title
         frame = Frame(
             MARGIN_X,
             MARGIN_BOTTOM,
@@ -243,9 +690,9 @@ class CurriculumDoc(BaseDocTemplate):
             rightMargin=MARGIN_X,
             topMargin=MARGIN_TOP,
             bottomMargin=MARGIN_BOTTOM,
-            title="XiXteen Critical Thinking Curriculum",
+            title=title,
             author="XiXteen",
-            subject="Critical thinking curriculum and item bank",
+            subject=subject,
         )
         self.addPageTemplates([PageTemplate(id="main", frames=[frame], onPage=draw_page_frame)])
 
@@ -259,7 +706,7 @@ def draw_page_frame(canvas, doc):
         canvas.line(MARGIN_X, PAGE_HEIGHT - 0.42 * inch, PAGE_WIDTH - MARGIN_X, PAGE_HEIGHT - 0.42 * inch)
         canvas.setFont("Helvetica-Bold", 8)
         canvas.setFillColor(MUTED)
-        canvas.drawString(MARGIN_X, PAGE_HEIGHT - 0.30 * inch, "XiXteen Critical Thinking Curriculum")
+        canvas.drawString(MARGIN_X, PAGE_HEIGHT - 0.30 * inch, getattr(doc, "running_title", "XiXteen Critical Thinking Curriculum"))
         canvas.setFont("Helvetica", 8)
         canvas.drawRightString(PAGE_WIDTH - MARGIN_X, 0.34 * inch, str(page_num))
         canvas.setStrokeColor(LINE)
@@ -432,6 +879,98 @@ def skill_accent(skill):
     return colors.HexColor(ACCENTS[(skill["ordinal"] - 1) % len(ACCENTS)])
 
 
+def slugify(value):
+    value = value.replace("'", "")
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return slug or "skill"
+
+
+def skill_pdf_path(skill):
+    return SKILL_OUTPUT_DIR / f"{skill['code']}-{slugify(skill['publicLabel'])}.pdf"
+
+
+def pdf_href(path):
+    return str(path.relative_to(ROOT)).replace("\\", "/")
+
+
+def numbered_paragraphs(title, values, styles):
+    flowables = [Paragraph(p(title), styles["H2"])]
+    for index, value in enumerate(values, start=1):
+        flowables.append(Paragraph(f"<b>{index}.</b> {p(value)}", styles["BodySmall"]))
+    return flowables
+
+
+def pedagogy_summary_table(skill, items, styles):
+    accent = skill_accent(skill)
+    details = SKILL_CURRICULUM[skill["id"]]
+    expansion = PEDAGOGY_EXPANSIONS[skill["id"]]
+    rows = [
+        [Paragraph("<b>Essential question</b>", styles["Choice"]), Paragraph(p(expansion["essential_question"]), styles["BodySmall"])],
+        [Paragraph("<b>Why it matters</b>", styles["Choice"]), Paragraph(p(details["importance"]), styles["BodySmall"])],
+        [Paragraph("<b>Conceptual core</b>", styles["Choice"]), Paragraph(p(expansion["conceptual_core"]), styles["BodySmall"])],
+        [Paragraph("<b>Student method</b>", styles["Choice"]), Paragraph(p(details["method"]), styles["BodySmall"])],
+        [Paragraph("<b>Analogy</b>", styles["Choice"]), Paragraph(p(details["analogy"]), styles["BodySmall"])],
+        [Paragraph("<b>Assessment focus</b>", styles["Choice"]), Paragraph(p(expansion["assessment"]), styles["BodySmall"])],
+    ]
+    resource_note = expansion.get("resource_note") or details.get("resource")
+    if resource_note:
+        rows.append([Paragraph("<b>Resource note</b>", styles["Choice"]), Paragraph(p(resource_note), styles["BodySmall"])])
+    table = Table(rows, colWidths=[1.22 * inch, CONTENT_WIDTH - 1.22 * inch], repeatRows=0)
+    table.setStyle(TableStyle([
+        ("BOX", (0, 0), (-1, -1), 0.6, accent),
+        ("INNERGRID", (0, 0), (-1, -1), 0.25, LINE),
+        ("BACKGROUND", (0, 0), (0, -1), colors.HexColor("#f1eadc")),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+    ]))
+    return table
+
+
+def worked_example_table(skill, styles):
+    expansion = PEDAGOGY_EXPANSIONS[skill["id"]]
+    example = expansion["worked_example"]
+    rows = [
+        [Paragraph("<b>Scenario</b>", styles["Choice"]), Paragraph(p(example["scenario"]), styles["BodySmall"])],
+        [Paragraph("<b>Teacher think-aloud</b>", styles["Choice"]), Paragraph(p(example["think_aloud"]), styles["BodySmall"])],
+        [Paragraph("<b>Student takeaway</b>", styles["Choice"]), Paragraph(p(example["takeaway"]), styles["BodySmall"])],
+    ]
+    table = Table(rows, colWidths=[1.35 * inch, CONTENT_WIDTH - 1.35 * inch])
+    table.setStyle(TableStyle([
+        ("BOX", (0, 0), (-1, -1), 0.45, LINE),
+        ("INNERGRID", (0, 0), (-1, -1), 0.25, LINE),
+        ("BACKGROUND", (0, 0), (0, -1), colors.HexColor("#f7f3ea")),
+        ("BACKGROUND", (1, 0), (1, -1), PAPER),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+    ]))
+    return table
+
+
+def pedagogy_deep_dive(skill, styles):
+    expansion = PEDAGOGY_EXPANSIONS[skill["id"]]
+    flowables = [
+        Spacer(1, 0.12 * inch),
+        Paragraph("Teaching Sequence", styles["H2"]),
+    ]
+    flowables.extend([Paragraph(f"<b>{index}.</b> {p(value)}", styles["BodySmall"]) for index, value in enumerate(expansion["student_moves"], start=1)])
+    flowables.extend(numbered_paragraphs("Common Confusions To Watch For", expansion["common_confusions"], styles))
+    flowables.extend(numbered_paragraphs("Teacher Prompts", expansion["teacher_prompts"], styles))
+    flowables.extend([
+        CondPageBreak(2.2 * inch),
+        Paragraph("Worked Example", styles["H2"]),
+        worked_example_table(skill, styles),
+        Spacer(1, 0.08 * inch),
+        Paragraph(f"<b>Classroom extension.</b> {p(expansion['extension'])}", styles["BodySmall"]),
+    ])
+    return flowables
+
+
 def make_cover(styles, item_count):
     story = [Spacer(1, 0.28 * inch)]
     mark_table = Table([[DotXMark()]], colWidths=[CONTENT_WIDTH])
@@ -513,31 +1052,9 @@ def summary_table(pairs, styles, accent):
     return table
 
 
-def chapter_intro(skill, items, styles):
+def chapter_intro(skill, items, styles, include_page_break=True):
     accent = skill_accent(skill)
-    details = SKILL_CURRICULUM[skill["id"]]
-    rows = [
-        [Paragraph("<b>Why it matters</b>", styles["Choice"]), Paragraph(p(details["importance"]), styles["BodySmall"])],
-        [Paragraph("<b>Method</b>", styles["Choice"]), Paragraph(p(details["method"]), styles["BodySmall"])],
-        [Paragraph("<b>Analogy</b>", styles["Choice"]), Paragraph(p(details["analogy"]), styles["BodySmall"])],
-        [Paragraph("<b>Related example</b>", styles["Choice"]), Paragraph(p(details["example"]), styles["BodySmall"])],
-        [Paragraph("<b>Teacher move</b>", styles["Choice"]), Paragraph(p(details["classroom"]), styles["BodySmall"])],
-    ]
-    if details.get("resource"):
-        rows.append([Paragraph("<b>Resource note</b>", styles["Choice"]), Paragraph(p(details["resource"]), styles["BodySmall"])])
-    table = Table(rows, colWidths=[1.18 * inch, CONTENT_WIDTH - 1.18 * inch])
-    table.setStyle(TableStyle([
-        ("BOX", (0, 0), (-1, -1), 0.6, accent),
-        ("INNERGRID", (0, 0), (-1, -1), 0.25, LINE),
-        ("BACKGROUND", (0, 0), (0, -1), colors.HexColor("#f1eadc")),
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 6),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-        ("TOPPADDING", (0, 0), (-1, -1), 5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
-    ]))
-    return [
-        PageBreak(),
+    story = [
         Paragraph(f"Skill {p(skill['code'])}", styles["ChapterKicker"]),
         Paragraph(p(skill["name"]), styles["ChapterTitle"]),
         Paragraph(p(skill["publicLabel"]), styles["ChapterPublic"]),
@@ -547,11 +1064,17 @@ def chapter_intro(skill, items, styles):
             ("Difficulty bands", "Levels 1-5"),
         ], styles, accent=accent),
         Spacer(1, 0.14 * inch),
-        table,
+        pedagogy_summary_table(skill, items, styles),
+    ]
+    story.extend(pedagogy_deep_dive(skill, styles))
+    story.extend([
         Spacer(1, 0.12 * inch),
         Paragraph("Item Bank", styles["H2"]),
         Paragraph("Items are grouped by level. For each item, read the prompt, predict the answer, choose, and then use the feedback and process commentary to examine the reasoning path.", styles["Body"]),
-    ]
+    ])
+    if include_page_break:
+        story.insert(0, PageBreak())
+    return story
 
 
 def item_process_note(skill, item):
@@ -638,25 +1161,116 @@ def level_description(level, skill):
     return descriptions[level]
 
 
-def build_pdf():
-    styles = build_styles()
-    skills, by_skill, all_items = load_data()
+def make_skill_cover(skill, items, styles):
+    accent = skill_accent(skill)
+    expansion = PEDAGOGY_EXPANSIONS[skill["id"]]
+    story = [Spacer(1, 0.24 * inch)]
+    mark_table = Table([[DotXMark()]], colWidths=[CONTENT_WIDTH])
+    mark_table.setStyle(TableStyle([("ALIGN", (0, 0), (-1, -1), "CENTER")]))
+    story.extend([
+        mark_table,
+        Spacer(1, 0.16 * inch),
+        Paragraph(f"Skill {p(skill['code'])}", styles["ChapterKicker"]),
+        Paragraph(p(skill["name"]), styles["CoverTitle"]),
+        Paragraph(p(skill["publicLabel"]), styles["CoverSub"]),
+        summary_table([
+            ("Items", str(len(items))),
+            ("Levels", "1-5"),
+            ("Objective", skill["testableTask"]),
+        ], styles, accent=accent),
+        Spacer(1, 0.26 * inch),
+        Paragraph(f"<b>Essential question.</b> {p(expansion['essential_question'])}", styles["Body"]),
+        Paragraph(
+            "This PDF is designed for classroom use. It gives teachers a rigorous introduction to the skill, a repeatable solving routine, likely student confusions, a worked example, and the full XiXteen item set with choice-level feedback.",
+            styles["Body"],
+        ),
+        Paragraph(f"Generated from the current XiXteen corpus on {date.today().isoformat()}.", styles["Muted"]),
+        PageBreak(),
+    ])
+    return story
+
+
+def append_item_bank(story, skill, items, styles):
+    current_level = None
+    for item in items:
+        if item["difficulty"] != current_level:
+            current_level = item["difficulty"]
+            story.extend(level_heading(current_level, skill, styles))
+        story.extend(make_item_flowables(skill, item, styles))
+
+
+def build_master_pdf(styles, skills, by_skill, all_items):
     story = []
     story.extend(make_cover(styles, len(all_items)))
     story.extend(make_front_matter(styles, skills, by_skill))
     for skill in skills:
         items = by_skill[skill["id"]]
         story.extend(chapter_intro(skill, items, styles))
-        current_level = None
-        for item in items:
-            if item["difficulty"] != current_level:
-                current_level = item["difficulty"]
-                story.extend(level_heading(current_level, skill, styles))
-            story.extend(make_item_flowables(skill, item, styles))
+        append_item_bank(story, skill, items, styles)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     doc = CurriculumDoc(str(OUTPUT_FILE))
     doc.build(story)
-    print(OUTPUT_FILE)
+    return OUTPUT_FILE
+
+
+def build_skill_pdf(styles, skill, items):
+    story = []
+    story.extend(make_skill_cover(skill, items, styles))
+    story.extend(chapter_intro(skill, items, styles, include_page_break=False))
+    append_item_bank(story, skill, items, styles)
+    path = skill_pdf_path(skill)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    title = f"XiXteen Skill {skill['code']}: {skill['name']}"
+    doc = CurriculumDoc(
+        str(path),
+        title=title,
+        subject=f"{skill['name']} curriculum and quiz item bank",
+        running_title=f"XiXteen Skill {skill['code']}: {skill['publicLabel']}",
+    )
+    doc.build(story)
+    return path
+
+
+def write_teacher_resource_manifest(skills, by_skill, pdf_paths):
+    manifest = {
+        "generated": date.today().isoformat(),
+        "master": {
+            "title": "Complete XiXteen Critical Thinking Curriculum",
+            "href": pdf_href(OUTPUT_FILE),
+            "description": "Full 16-skill curriculum with all item feedback and classroom commentary.",
+        },
+        "skills": [],
+    }
+    for skill in skills:
+        expansion = PEDAGOGY_EXPANSIONS[skill["id"]]
+        path = pdf_paths[skill["id"]]
+        manifest["skills"].append({
+            "id": skill["id"],
+            "code": skill["code"],
+            "name": skill["name"],
+            "publicLabel": skill["publicLabel"],
+            "testableTask": skill["testableTask"],
+            "essentialQuestion": expansion["essential_question"],
+            "itemCount": len(by_skill[skill["id"]]),
+            "href": pdf_href(path),
+        })
+    TEACHER_RESOURCE_FILE.write_text(json.dumps(manifest, indent=2) + "\n")
+    return TEACHER_RESOURCE_FILE
+
+
+def build_pdf():
+    styles = build_styles()
+    skills, by_skill, all_items = load_data()
+    outputs = [build_master_pdf(styles, skills, by_skill, all_items)]
+    skill_paths = {}
+    for skill in skills:
+        items = by_skill[skill["id"]]
+        path = build_skill_pdf(styles, skill, items)
+        skill_paths[skill["id"]] = path
+        outputs.append(path)
+    outputs.append(write_teacher_resource_manifest(skills, by_skill, skill_paths))
+    for output in outputs:
+        print(output)
 
 
 if __name__ == "__main__":

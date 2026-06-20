@@ -1,0 +1,170 @@
+{
+  "generated": "2026-06-19",
+  "master": {
+    "title": "Complete XiXteen Critical Thinking Curriculum",
+    "href": "output/pdf/xixteen-critical-thinking-curriculum.pdf",
+    "description": "Full 16-skill curriculum with all item feedback and classroom commentary."
+  },
+  "skills": [
+    {
+      "id": "clarify_claim",
+      "code": "01",
+      "name": "Clarify the Claim",
+      "publicLabel": "What's the Claim?",
+      "testableTask": "Find the exact claim being made.",
+      "essentialQuestion": "What exactly is the speaker asking us to accept?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/01-whats-the-claim.pdf"
+    },
+    {
+      "id": "define_terms",
+      "code": "02",
+      "name": "Define Key Terms",
+      "publicLabel": "What Do the Words Mean?",
+      "testableTask": "Find the word or phrase that needs a clearer meaning.",
+      "essentialQuestion": "Which word or phrase must be made clearer before the argument can be fairly judged?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/02-what-do-the-words-mean.pdf"
+    },
+    {
+      "id": "find_argument",
+      "code": "03",
+      "name": "Find the Argument",
+      "publicLabel": "What's the Argument?",
+      "testableTask": "Find the conclusion, reason, evidence, example, or side comment.",
+      "essentialQuestion": "What role does each sentence play in the argument?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/03-whats-the-argument.pdf"
+    },
+    {
+      "id": "hidden_assumptions",
+      "code": "04",
+      "name": "Spot Hidden Assumptions",
+      "publicLabel": "What's Assumed?",
+      "testableTask": "Find the unstated idea the argument needs.",
+      "essentialQuestion": "What unstated idea must be true for the reason to support the conclusion?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/04-whats-assumed.pdf"
+    },
+    {
+      "id": "relevance",
+      "code": "05",
+      "name": "Test Relevance",
+      "publicLabel": "Does That Matter?",
+      "testableTask": "Decide whether a fact actually matters for the claim.",
+      "essentialQuestion": "Which fact actually helps us judge the claim?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/05-does-that-matter.pdf"
+    },
+    {
+      "id": "evidence_quality",
+      "code": "06",
+      "name": "Evaluate Evidence Quality",
+      "publicLabel": "How Good Is the Evidence?",
+      "testableTask": "Pick the strongest evidence from the details given.",
+      "essentialQuestion": "How strong is the evidence for this claim?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/06-how-good-is-the-evidence.pdf"
+    },
+    {
+      "id": "source_reliability",
+      "code": "07",
+      "name": "Check Source Reliability",
+      "publicLabel": "Can We Trust the Source?",
+      "testableTask": "Judge a source using expertise, motives, method, and openness.",
+      "essentialQuestion": "How much trust should we place in this source, and why?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/07-can-we-trust-the-source.pdf"
+    },
+    {
+      "id": "logical_gaps",
+      "code": "08",
+      "name": "Detect Logical Gaps",
+      "publicLabel": "Does the Logic Follow?",
+      "testableTask": "Find the step that does not follow.",
+      "essentialQuestion": "Does the conclusion really follow from the evidence?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/08-does-the-logic-follow.pdf"
+    },
+    {
+      "id": "fallacies",
+      "code": "09",
+      "name": "Recognize Common Fallacies",
+      "publicLabel": "What's the Fallacy?",
+      "testableTask": "Match a bad argument to its mistake.",
+      "essentialQuestion": "What recognizable bad move does this argument make?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/09-whats-the-fallacy.pdf"
+    },
+    {
+      "id": "probability",
+      "code": "10",
+      "name": "Think Probabilistically",
+      "publicLabel": "How Likely Is It?",
+      "testableTask": "Choose the answer that handles chance and uncertainty well.",
+      "essentialQuestion": "How should uncertainty affect what we expect?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/10-how-likely-is-it.pdf"
+    },
+    {
+      "id": "statistical_sense",
+      "code": "11",
+      "name": "Use Statistical Sense",
+      "publicLabel": "What Do the Numbers Say?",
+      "testableTask": "Read numbers with the right context.",
+      "essentialQuestion": "What does this number mean in context?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/11-what-do-the-numbers-say.pdf"
+    },
+    {
+      "id": "causation",
+      "code": "12",
+      "name": "Separate Correlation and Causation",
+      "publicLabel": "Cause or Coincidence?",
+      "testableTask": "Explain why a cause claim is not proven yet.",
+      "essentialQuestion": "Has the argument shown that one thing caused another?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/12-cause-or-coincidence.pdf"
+    },
+    {
+      "id": "alternative_explanations",
+      "code": "13",
+      "name": "Consider Alternative Explanations",
+      "publicLabel": "What Else Could Explain It?",
+      "testableTask": "Pick another explanation that also fits the facts.",
+      "essentialQuestion": "What else could explain the same facts?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/13-what-else-could-explain-it.pdf"
+    },
+    {
+      "id": "cognitive_biases",
+      "code": "14",
+      "name": "Recognize Cognitive Biases",
+      "publicLabel": "What Bias Is Showing?",
+      "testableTask": "Name the thinking bias shown in a choice.",
+      "essentialQuestion": "What mental pull is shaping this judgment?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/14-what-bias-is-showing.pdf"
+    },
+    {
+      "id": "tradeoffs",
+      "code": "15",
+      "name": "Weigh Tradeoffs and Consequences",
+      "publicLabel": "What Are the Tradeoffs?",
+      "testableTask": "Find the clearest cost, benefit, risk, or second effect.",
+      "essentialQuestion": "What does this choice gain, and what does it give up or risk?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/15-what-are-the-tradeoffs.pdf"
+    },
+    {
+      "id": "belief_update",
+      "code": "16",
+      "name": "Update Beliefs Responsibly",
+      "publicLabel": "How Should Belief Change?",
+      "testableTask": "Change confidence by the right amount.",
+      "essentialQuestion": "How much should new evidence change confidence?",
+      "itemCount": 160,
+      "href": "output/pdf/skills/16-how-should-belief-change.pdf"
+    }
+  ]
+}
