@@ -5,6 +5,11 @@
     "href": "output/pdf/xixteen-critical-thinking-curriculum.pdf",
     "description": "Full 16-skill curriculum with all item feedback and classroom commentary."
   },
+  "synthesis": {
+    "title": "XiXteen Synthesis Paper",
+    "href": "output/pdf/xixteen-critical-thinking-synthesis.pdf",
+    "description": "A concise overview of the 16 skills as essential aspects of critical thinking."
+  },
   "skills": [
     {
       "id": "clarify_claim",

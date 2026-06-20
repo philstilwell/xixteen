@@ -35,6 +35,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 OUTPUT_DIR = ROOT / "output" / "pdf"
 OUTPUT_FILE = OUTPUT_DIR / "xixteen-critical-thinking-curriculum.pdf"
+SYNTHESIS_FILE = OUTPUT_DIR / "xixteen-critical-thinking-synthesis.pdf"
 SKILL_OUTPUT_DIR = OUTPUT_DIR / "skills"
 TEACHER_RESOURCE_FILE = DATA_DIR / "teacher-resources.json"
 
@@ -620,6 +621,129 @@ PEDAGOGY_EXPANSIONS = {
     },
 }
 
+SYNTHESIS_ARCS = [
+    {
+        "title": "Clarify the object of judgment",
+        "skills": "01-04",
+        "summary": "Critical thinking begins by slowing down the rush to agree or disagree. These skills identify the claim, define the terms, map the argument, and locate the assumption that makes the reasoning possible.",
+    },
+    {
+        "title": "Evaluate support",
+        "skills": "05-08",
+        "summary": "Once the target is clear, the thinker asks whether the support actually matters, whether it is strong enough, whether the source deserves trust, and whether the conclusion follows without a hidden jump.",
+    },
+    {
+        "title": "Handle error and uncertainty",
+        "skills": "09-14",
+        "summary": "Real reasoning happens under uncertainty and human pressure. These skills name common fallacies, interpret probability and statistics, resist weak causal claims, generate alternatives, and notice cognitive bias.",
+    },
+    {
+        "title": "Decide and update responsibly",
+        "skills": "15-16",
+        "summary": "Critical thinking ends in judgment, not paralysis. These skills help learners weigh tradeoffs and update confidence by the right amount when new evidence arrives.",
+    },
+]
+
+
+SYNTHESIS_OVERVIEWS = {
+    "clarify_claim": {
+        "aspect": "The object of judgment",
+        "overview": "Critical thinking needs a target. Before a person can judge an argument, they must know what is actually being claimed. This skill prevents students from attacking background details, reacting to tone, or treating evidence as if it were the conclusion. It is the first act of intellectual fairness: identify the point someone wants accepted before deciding whether it deserves acceptance.",
+        "practice": "Ask: What sentence would still need support if all the scene-setting details were removed?",
+        "connection": "This skill prepares every later skill, because relevance, evidence, assumptions, and belief updates all depend on knowing the claim under review.",
+    },
+    "define_terms": {
+        "aspect": "The meaning of the target",
+        "overview": "Arguments often fail because key words carry hidden standards. Fair, harmful, enough, better, safe, affordable, and effective are not small decorative words; they can decide the whole dispute. Defining terms turns a blurry argument into a testable one. Students learn that disagreement is sometimes about facts, but often about what the words are allowed to mean.",
+        "practice": "Ask: Which word would two reasonable people define differently while thinking they agree?",
+        "connection": "Clear terms make claims measurable and make evidence easier to interpret.",
+    },
+    "find_argument": {
+        "aspect": "The structure of support",
+        "overview": "A thinker needs to know what each sentence is doing. Some sentences state conclusions, some give reasons, some provide examples, and some merely set the scene. This skill trains students to see argument as architecture rather than a pile of statements. Once the structure is visible, students can test whether the support actually holds the conclusion up.",
+        "practice": "Ask: Which sentence is being supported, and which sentence is doing the supporting?",
+        "connection": "Argument structure connects claim clarification to later work on assumptions and logical gaps.",
+    },
+    "hidden_assumptions": {
+        "aspect": "The unstated bridge",
+        "overview": "Reasoning often depends on what is left unsaid. A stated reason may be true, and the conclusion may still not follow unless a bridge assumption is also true. Students who can find assumptions become less vulnerable to persuasive gaps. They learn to ask what must be true, not merely what would be convenient, interesting, or vaguely related.",
+        "practice": "Ask: If this unstated idea were false, would the reason still support the conclusion?",
+        "connection": "Assumption work is the hinge between understanding an argument and evaluating whether it earns its conclusion.",
+    },
+    "relevance": {
+        "aspect": "The discipline of attention",
+        "overview": "Relevant facts touch the claim; irrelevant facts only stand nearby. This skill trains students to resist vivid but useless details. It is especially important in public arguments, advertising, and social media, where a detail can feel meaningful simply because it shares the same topic. Relevance asks whether a fact changes the rational pressure on the claim.",
+        "practice": "Ask: Which part of the claim does this fact help us judge?",
+        "connection": "Relevance is the gatekeeper for evidence quality. A fact cannot be strong evidence for a claim if it does not bear on that claim.",
+    },
+    "evidence_quality": {
+        "aspect": "The weight of support",
+        "overview": "Evidence comes in grades. Anecdotes, impressions, tiny surveys, large comparisons, transparent measurements, and controlled tests do not deserve equal weight. This skill gives students a practical standard for deciding how much confidence evidence should create. The goal is not cynicism; it is proportional trust based on directness, comparison, sample, measurement, and method.",
+        "practice": "Ask: Does this evidence measure the right outcome, in the right group, with a fair comparison?",
+        "connection": "Evidence quality links directly to belief updating: stronger evidence should move confidence more than weaker evidence.",
+    },
+    "source_reliability": {
+        "aspect": "Epistemic trust",
+        "overview": "Much of what humans know comes through other people. Source reliability teaches students how to trust without being naive and doubt without becoming reflexively suspicious. Expertise, method, transparency, independence, and track record all matter. A source with an interest is not automatically wrong, but hidden methods and strong incentives should change how carefully we treat its claims.",
+        "practice": "Ask: How does this source know, and what might make its report tilted, thin, or incomplete?",
+        "connection": "Source reliability complements evidence quality by asking whether the pathway from evidence to audience is trustworthy.",
+    },
+    "logical_gaps": {
+        "aspect": "Entitlement to the conclusion",
+        "overview": "A logical gap appears when a conclusion reaches beyond what the evidence has earned. The problem may not be false evidence or a bad source; it may simply be an overextended conclusion. Students learn to detect jumps from some to all, possible to certain, short term to long term, one group to another, or average to every individual.",
+        "practice": "Ask: What does the evidence show only, and what extra thing does the conclusion add?",
+        "connection": "Logical-gap thinking converts vague doubt into a precise diagnosis of what the argument has not shown.",
+    },
+    "fallacies": {
+        "aspect": "Recognizable bad moves",
+        "overview": "Fallacies are recurring patterns of failed reasoning. Used well, fallacy names are not insults; they are diagnostic tools. Students should first describe the bad move in ordinary language, then name it. The important habit is to return attention to the real issue: Is the claim supported, or has the speaker dodged, distorted, attacked, or oversimplified?",
+        "practice": "Ask: What move did the speaker make instead of addressing the real argument?",
+        "connection": "Fallacy recognition strengthens argument evaluation by naming common ways reasoning can go off track.",
+    },
+    "probability": {
+        "aspect": "Thinking between proof and impossibility",
+        "overview": "Many real judgments live between yes and no. Probability gives students a language for partial confidence, risk, forecasts, false alarms, and long-run frequencies. It protects against both overconfidence and dismissal. A likely result is not guaranteed; an unlikely result is not impossible; a useful signal is not final proof.",
+        "practice": "Ask: Out of 100 similar cases, how many should we expect, and what uncertainty remains?",
+        "connection": "Probability prepares students to update belief responsibly rather than swinging between certainty and rejection.",
+    },
+    "statistical_sense": {
+        "aspect": "Numbers with context",
+        "overview": "Numbers can illuminate or mislead. Statistical sense keeps quantities attached to denominators, baselines, units, rates, averages, and comparison groups. Students learn that a percentage without a starting point can be empty, a raw count can hide group size, and an average can conceal variation. This is everyday numeracy for judgment.",
+        "practice": "Ask: Compared with what, out of how many, measured how, and over what time?",
+        "connection": "Statistical sense strengthens evidence quality and makes probability concrete.",
+    },
+    "causation": {
+        "aspect": "Claims about what makes things happen",
+        "overview": "Causal claims invite action: if this caused that, then changing this may change that. Because causal claims are powerful, they need discipline. Students learn that timing and correlation are clues, not proof. They look for comparison groups, rival causes, selection effects, reverse direction, and other changes happening at the same time.",
+        "practice": "Ask: What else changed, and what comparison would show whether this factor caused the result?",
+        "connection": "Causation joins evidence, alternatives, and logical gaps in one of the most common real-world reasoning tasks.",
+    },
+    "alternative_explanations": {
+        "aspect": "Disciplined imagination",
+        "overview": "A good thinker does not stop with the first explanation that fits. Alternative explanations keep the observed facts fixed while asking what else could make those facts true. This skill builds humility without paralysis. A plausible alternative does not have to defeat the original explanation by itself; it shows what still needs to be tested.",
+        "practice": "Ask: What other story could produce the same result without contradicting the facts?",
+        "connection": "Alternative explanations are central to causal reasoning, source evaluation, and fair-minded inquiry.",
+    },
+    "cognitive_biases": {
+        "aspect": "The self as a reasoning instrument",
+        "overview": "Critical thinking is not only about other people's arguments. The thinker is part of the system. Biases shape attention, memory, confidence, and motivation before an argument is even spoken. Students learn that bias is not a moral failure; it is a predictable pressure that can be noticed and managed through better habits.",
+        "practice": "Ask: What is pulling this person's attention, memory, or confidence off course?",
+        "connection": "Bias recognition makes critical thinking self-correcting rather than merely critical of others.",
+    },
+    "tradeoffs": {
+        "aspect": "Judgment among competing goods",
+        "overview": "Many decisions are not battles between good and bad. They are choices among values: speed and accuracy, privacy and convenience, fairness and efficiency, short-term gain and long-term cost. Tradeoff thinking teaches students to hold benefits and costs in the same frame. It turns critique into practical judgment.",
+        "practice": "Ask: What does this choice gain, and what does it spend, risk, delay, or crowd out?",
+        "connection": "Tradeoff thinking bridges analysis and action by showing what a decision commits us to.",
+    },
+    "belief_update": {
+        "aspect": "Calibrated learning",
+        "overview": "The endpoint of critical thinking is not permanent doubt. It is better calibration. Students should learn to move confidence in the right direction and by the right amount. Weak evidence may deserve a small update; strong evidence may deserve a large one; no single result should become certainty unless the support truly warrants it.",
+        "practice": "Ask: Does this evidence raise or lower confidence, and how much should it move us?",
+        "connection": "Belief updating synthesizes the whole model: clarity, evidence, logic, uncertainty, bias, and tradeoffs all feed into proportionate judgment.",
+    },
+}
+
 
 PROCESS_TEMPLATES = {
     "clarify_claim": "To uncover the answer, separate the speaker's recommendation from the evidence used to support it. The correct choice is {answer_label} because it states the point the speaker wants accepted: {answer_text}. The other options are either support, background, or an overclaim.",
@@ -1035,6 +1159,32 @@ def curriculum_map_cell(skill, styles):
     )
 
 
+def synthesis_arc_table(styles):
+    rows = [[
+        Paragraph("<b>Arc</b>", styles["Choice"]),
+        Paragraph("<b>Skills</b>", styles["Choice"]),
+        Paragraph("<b>Role in critical thinking</b>", styles["Choice"]),
+    ]]
+    for arc in SYNTHESIS_ARCS:
+        rows.append([
+            Paragraph(p(arc["title"]), styles["Choice"]),
+            Paragraph(p(arc["skills"]), styles["Choice"]),
+            Paragraph(p(arc["summary"]), styles["BodySmall"]),
+        ])
+    table = Table(rows, colWidths=[1.72 * inch, 0.72 * inch, CONTENT_WIDTH - 2.44 * inch])
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#f1eadc")),
+        ("BOX", (0, 0), (-1, -1), 0.6, TEAL),
+        ("INNERGRID", (0, 0), (-1, -1), 0.25, LINE),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+        ("TOPPADDING", (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    return table
+
+
 def summary_table(pairs, styles, accent):
     row = []
     for label, value in pairs:
@@ -1199,6 +1349,149 @@ def append_item_bank(story, skill, items, styles):
         story.extend(make_item_flowables(skill, item, styles))
 
 
+def make_synthesis_cover(styles):
+    story = [Spacer(1, 0.25 * inch)]
+    mark_table = Table([[DotXMark()]], colWidths=[CONTENT_WIDTH])
+    mark_table.setStyle(TableStyle([("ALIGN", (0, 0), (-1, -1), "CENTER")]))
+    story.extend([
+        mark_table,
+        Spacer(1, 0.18 * inch),
+        Paragraph("XiXteen Synthesis", styles["CoverTitle"]),
+        Paragraph("The sixteen skills as essential aspects of critical thinking.", styles["CoverSub"]),
+        Spacer(1, 0.16 * inch),
+        summary_table([
+            ("Skills", "16"),
+            ("Organizing arcs", "4"),
+            ("Purpose", "calibrated judgment"),
+        ], styles, accent=TEAL),
+        Spacer(1, 0.28 * inch),
+        Paragraph(
+            "Critical thinking is not one mysterious talent. It is a coordinated set of habits that help a person clarify what is being judged, evaluate the support, handle uncertainty, notice human error, weigh competing goods, and update belief responsibly.",
+            styles["Body"],
+        ),
+        Paragraph(
+            "This synthesis paper explains how the sixteen XiXteen skills fit together as a practical model of judgment for everyday thinkers, students, and teachers.",
+            styles["Body"],
+        ),
+        Paragraph(f"Generated from the current XiXteen skill model on {date.today().isoformat()}.", styles["Muted"]),
+        PageBreak(),
+    ])
+    return story
+
+
+def make_synthesis_front_matter(styles):
+    return [
+        Paragraph("A Practical Model Of Critical Thinking", styles["H1"]),
+        Paragraph(
+            "The XiXteen model treats critical thinking as a repeatable movement from clarity to calibration. The learner first identifies the object of judgment, then asks whether the support is relevant, strong, trustworthy, and logically sufficient. From there, the learner handles uncertainty, looks for rival explanations and mental bias, weighs tradeoffs, and changes confidence by the right amount.",
+            styles["Body"],
+        ),
+        Paragraph(
+            "The point is not to make students suspicious of everything. The point is to help them become more accurate, fair, and flexible in the presence of claims, evidence, numbers, sources, causes, explanations, choices, and new information.",
+            styles["Body"],
+        ),
+        Paragraph("The Four Arcs", styles["H2"]),
+        synthesis_arc_table(styles),
+        Spacer(1, 0.14 * inch),
+        Paragraph("Why Sixteen Skills?", styles["H2"]),
+        Paragraph(
+            "Sixteen is enough to cover the core terrain without turning the curriculum into a vocabulary maze. The skills are objective enough to test, friendly enough to practice daily, and broad enough to transfer across school, work, media, personal decisions, and civic life.",
+            styles["Body"],
+        ),
+        Paragraph(
+            "Together, the skills form a sequence. A learner can ask: What is the claim? What do the terms mean? What is the argument? What is assumed? What evidence matters? How good is it? Can we trust the source? Does the logic follow? What bad reasoning move or mental bias might be present? How should probability, numbers, causation, alternatives, tradeoffs, and new evidence change judgment?",
+            styles["Body"],
+        ),
+    ]
+
+
+def synthesis_skill_flowables(skill, styles):
+    overview = SYNTHESIS_OVERVIEWS[skill["id"]]
+    accent = skill_accent(skill)
+    header = Table(
+        [[
+            Paragraph(f"<b>{p(skill['code'])}</b>", styles["ChapterPublic"]),
+            Paragraph(f"<b>{p(skill['publicLabel'])}</b><br/><font color='#637176'>{p(skill['name'])}</font>", styles["BodySmall"]),
+            Paragraph(f"<b>Essential aspect:</b><br/>{p(overview['aspect'])}", styles["BodySmall"]),
+        ]],
+        colWidths=[0.55 * inch, 2.15 * inch, CONTENT_WIDTH - 2.70 * inch],
+    )
+    header.setStyle(TableStyle([
+        ("BOX", (0, 0), (-1, -1), 0.5, accent),
+        ("INNERGRID", (0, 0), (-1, -1), 0.25, LINE),
+        ("BACKGROUND", (0, 0), (0, 0), colors.HexColor("#f1eadc")),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+        ("TOPPADDING", (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    return [
+        CondPageBreak(2.4 * inch),
+        header,
+        Spacer(1, 0.06 * inch),
+        Paragraph(p(overview["overview"]), styles["Body"]),
+        Paragraph(f"<b>Practice move.</b> {p(overview['practice'])}", styles["BodySmall"]),
+        Paragraph(f"<b>Connection.</b> {p(overview['connection'])}", styles["BodySmall"]),
+        Spacer(1, 0.08 * inch),
+    ]
+
+
+def make_synthesis_skill_overviews(styles, skills):
+    story = [
+        PageBreak(),
+        Paragraph("The Sixteen Essential Aspects", styles["H1"]),
+        Paragraph(
+            "Each skill below names one aspect of critical thinking that students can practice directly. The friendly public names keep the work approachable; the underlying aspects keep the curriculum rigorous.",
+            styles["Body"],
+        ),
+    ]
+    for skill in skills:
+        story.extend(synthesis_skill_flowables(skill, styles))
+    return story
+
+
+def make_synthesis_teacher_notes(styles):
+    return [
+        PageBreak(),
+        Paragraph("Teaching The Synthesis", styles["H1"]),
+        Paragraph(
+            "A teacher does not need to teach all sixteen skills at once. The synthesis is most useful as a map: students can locate the kind of thinking a task demands, then practice the specific move. Over time, the moves combine into a general habit of judgment.",
+            styles["Body"],
+        ),
+        Paragraph("Three Classroom Uses", styles["H2"]),
+        Paragraph(bold("1.", "Use the four arcs as a unit structure: clarity, support, uncertainty, and judgment."), styles["BodySmall"]),
+        Paragraph(bold("2.", "Use the sixteen questions as a discussion protocol for articles, lab claims, historical interpretations, policy proposals, ads, or student essays."), styles["BodySmall"]),
+        Paragraph(bold("3.", "Use the daily XiXteen board as retrieval practice, then select one missed item for a short metacognitive discussion."), styles["BodySmall"]),
+        Paragraph("The Transfer Goal", styles["H2"]),
+        Paragraph(
+            "The goal is transfer. A student has not merely learned a critical thinking term when they can pick it on a quiz. They have learned the skill when they spontaneously ask the right kind of question in a new setting: What exactly is being claimed? What does that word mean? What evidence would matter? What else could explain it? How much should this change my confidence?",
+            styles["Body"],
+        ),
+        Paragraph(
+            "XiXteen is built to make that transfer concrete. The items give objective practice. The feedback explains why each distractor is weaker. The synthesis shows why the sixteen separate moves belong together as one disciplined way of thinking.",
+            styles["Body"],
+        ),
+    ]
+
+
+def build_synthesis_pdf(styles, skills):
+    story = []
+    story.extend(make_synthesis_cover(styles))
+    story.extend(make_synthesis_front_matter(styles))
+    story.extend(make_synthesis_skill_overviews(styles, skills))
+    story.extend(make_synthesis_teacher_notes(styles))
+    SYNTHESIS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    doc = CurriculumDoc(
+        str(SYNTHESIS_FILE),
+        title="XiXteen Synthesis: The Sixteen Skills",
+        subject="Overview of sixteen critical thinking skills as essential aspects of judgment",
+        running_title="XiXteen Synthesis",
+    )
+    doc.build(story)
+    return SYNTHESIS_FILE
+
+
 def build_master_pdf(styles, skills, by_skill, all_items):
     story = []
     story.extend(make_cover(styles, len(all_items)))
@@ -1239,6 +1532,11 @@ def write_teacher_resource_manifest(skills, by_skill, pdf_paths):
             "href": pdf_href(OUTPUT_FILE),
             "description": "Full 16-skill curriculum with all item feedback and classroom commentary.",
         },
+        "synthesis": {
+            "title": "XiXteen Synthesis Paper",
+            "href": pdf_href(SYNTHESIS_FILE),
+            "description": "A concise overview of the 16 skills as essential aspects of critical thinking.",
+        },
         "skills": [],
     }
     for skill in skills:
@@ -1261,7 +1559,10 @@ def write_teacher_resource_manifest(skills, by_skill, pdf_paths):
 def build_pdf():
     styles = build_styles()
     skills, by_skill, all_items = load_data()
-    outputs = [build_master_pdf(styles, skills, by_skill, all_items)]
+    outputs = [
+        build_synthesis_pdf(styles, skills),
+        build_master_pdf(styles, skills, by_skill, all_items),
+    ]
     skill_paths = {}
     for skill in skills:
         items = by_skill[skill["id"]]

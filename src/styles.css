@@ -1322,6 +1322,16 @@ main {
   transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
 }
 
+.teacher-feature-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.teacher-feature-stack .resource-feature {
+  min-height: 0;
+}
+
 .resource-feature:hover,
 .resource-card:hover {
   transform: translateY(-2px);
@@ -1339,9 +1349,13 @@ main {
 }
 
 .resource-feature strong {
-  max-width: 14ch;
+  max-width: 18ch;
   font-size: 30px;
   line-height: 1.06;
+}
+
+.teacher-feature-stack .resource-feature strong {
+  font-size: 24px;
 }
 
 .resource-feature em {
