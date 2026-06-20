@@ -15,7 +15,7 @@
         <h1>XiXteen</h1>
       </div>
       <div class="topbar-actions">
-        <button id="start-daily" class="primary-action" type="button">Today's Quiz</button>
+        <button id="start-daily" class="primary-action" type="button">Today's Board</button>
         <button id="start-practice" class="secondary-action" type="button">Practice</button>
       </div>
     </header>
@@ -23,25 +23,34 @@
     <main>
       <section id="skills" class="gallery-shell" aria-labelledby="gallery-title">
         <div class="gallery-copy promo-panel">
-          <p class="eyebrow">The sixteen skills</p>
-          <h2 id="gallery-title">Daily practice for sharper, fairer thinking.</h2>
-          <p class="promo-lede">XiXteen turns critical thinking into a quick daily habit: 16 objective questions across 16 useful reasoning skills, with practice that adapts as your weak spots become clearer.</p>
+          <p class="eyebrow">The daily board</p>
+          <h2 id="gallery-title">Clear all 16 thinking tiles.</h2>
+          <p class="promo-lede">Answer one objective question from each square. Tiles fill as you go, then XiXteen shows your score, strengths, and best next practice.</p>
 
+          <div id="board-status" class="board-status" role="status" aria-live="polite"></div>
+
+          <div class="board-actions">
+            <button class="primary-action" type="button" data-promo-daily>Start Today's Board</button>
+            <button class="secondary-action" type="button" data-sample-question>Try One Sample</button>
+          </div>
+        </div>
+
+        <div id="skill-gallery" class="skill-gallery" aria-label="Daily critical thinking board"></div>
+
+        <div class="gallery-support">
           <div class="audience-notes" aria-label="Who XiXteen is for">
-            <p><strong>For everyday thinkers:</strong> get better at claims, evidence, numbers, causes, bias, and tradeoffs without needing a textbook nearby.</p>
-            <p><strong>For teachers:</strong> use the daily set as a warm-up, assign skill practice, or compare class discussion around one clear reasoning move at a time.</p>
+            <p><strong>For everyday thinkers:</strong> get a quick read on claims, evidence, numbers, causes, bias, and tradeoffs.</p>
+            <p><strong>For teachers:</strong> use the board as a warm-up, discussion starter, or skill-by-skill practice map.</p>
           </div>
 
           <nav class="promo-links" aria-label="XiXteen sections">
-            <a href="#workbench" data-promo-daily>Daily Quiz</a>
+            <a href="#workbench" data-promo-daily>Daily Board</a>
             <a href="#workbench" data-promo-practice>Practice</a>
-            <a href="#skills">Skill Grid</a>
             <a href="#profile-title">Skill Map</a>
             <a href="#leaderboard-title">Leaderboard</a>
             <a href="#teachers">For Teachers</a>
           </nav>
         </div>
-        <div id="skill-gallery" class="skill-gallery" aria-label="Critical thinking skills"></div>
       </section>
 
       <section id="workbench" class="workbench" aria-label="Quiz workbench">

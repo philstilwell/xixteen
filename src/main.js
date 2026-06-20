@@ -27,6 +27,7 @@ const state = {
 
 const els = {
   gallery: document.querySelector("#skill-gallery"),
+  boardStatus: document.querySelector("#board-status"),
   quizDate: document.querySelector("#quiz-date"),
   quizTitle: document.querySelector("#quiz-title"),
   quizProgress: document.querySelector("#quiz-progress"),
@@ -86,14 +87,19 @@ async function fetchJson(path) {
 function bindEvents() {
   document.querySelector("#start-daily").addEventListener("click", () => startDaily());
   document.querySelector("#start-practice").addEventListener("click", () => focusPracticeBuilder());
-  document.querySelector("[data-promo-daily]").addEventListener("click", (event) => {
-    event.preventDefault();
-    startDaily();
+  document.querySelectorAll("[data-promo-daily]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      startDaily();
+    });
   });
-  document.querySelector("[data-promo-practice]").addEventListener("click", (event) => {
-    event.preventDefault();
-    focusPracticeBuilder();
+  document.querySelectorAll("[data-promo-practice]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      focusPracticeBuilder();
+    });
   });
+  document.querySelector("[data-sample-question]").addEventListener("click", () => startAdaptivePractice({ count: 1 }));
   document.querySelector("[data-teacher-daily]").addEventListener("click", () => startDaily());
   document.querySelector("[data-teacher-practice]").addEventListener("click", () => focusPracticeBuilder());
   els.startCustomPractice.addEventListener("click", () => startPracticeFromBuilder());
@@ -143,21 +149,29 @@ function bindEvents() {
 
 function renderGallery() {
   const assetBySkill = new Map(state.assets.map((asset) => [asset.skill, asset]));
+  const board = boardSnapshot();
+  renderBoardStatus(board);
   els.gallery.innerHTML = state.skills.map((skill, index) => {
     const asset = assetBySkill.get(skill.id);
     const accent = COLORS[index % COLORS.length];
     const image = asset?.ready ? asset.file : "";
+    const tile = board.tiles.get(skill.id) || {
+      status: board.mode === "practice" ? "ready" : "upcoming",
+      statusLabel: "Ready",
+      actionLabel: board.mode === "daily" ? "Go to the daily board" : "Start the daily board"
+    };
     return `
-      <button class="skill-card" type="button" data-skill="${skill.id}" style="--accent: ${accent}">
+      <button class="skill-card is-${tile.status}" type="button" data-skill="${skill.id}" style="--accent: ${accent}" aria-label="${escapeAttribute(`${skillCode(skill)} ${skill.publicLabel}. ${tile.statusLabel}. ${tile.actionLabel}.`)}">
         <span class="skill-image">
           ${image ? `<img src="${image}" alt="" loading="lazy" />` : ""}
           <span class="fallback-mark" aria-hidden="true">${skillCode(skill)}</span>
         </span>
+        <span class="board-state-mark" aria-hidden="true">${boardStateMark(tile.status)}</span>
         <span class="skill-card-meta">
           <span class="skill-code">${skillCode(skill)}</span>
           <span>
             <span class="skill-card-label">${escapeHtml(skill.publicLabel)}</span>
-            <span class="skill-card-task">${escapeHtml(skill.testableTask)}</span>
+            <span class="skill-card-task">${escapeHtml(tile.statusLabel)}</span>
           </span>
         </span>
       </button>
@@ -169,8 +183,106 @@ function renderGallery() {
   });
 
   els.gallery.querySelectorAll("[data-skill]").forEach((button) => {
-    button.addEventListener("click", () => startSkillPractice(button.dataset.skill));
+    button.addEventListener("click", () => handleBoardTileClick(button.dataset.skill));
   });
+}
+
+function handleBoardTileClick(skillId) {
+  const board = boardSnapshot();
+  if (state.quiz?.mode === "daily" && board.answered < board.total) {
+    els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+  if (state.quiz?.mode === "daily" && board.answered === board.total) {
+    startSkillPractice(skillId);
+    return;
+  }
+  startDaily();
+}
+
+function boardSnapshot() {
+  const tiles = new Map();
+  const quiz = state.quiz;
+  const activeQuiz = quiz && Array.isArray(quiz.items);
+
+  if (activeQuiz) {
+    quiz.items.forEach((item, index) => {
+      const answer = state.answers.get(item.id);
+      const status = answer
+        ? answer.choiceId === item.answer ? "correct" : "missed"
+        : index === state.currentIndex ? "current" : "upcoming";
+      const tile = {
+        status,
+        statusLabel: boardStatusLabel(status, index),
+        actionLabel: quiz.mode === "daily" ? "Go to the current question" : "Return to practice"
+      };
+      const existing = tiles.get(item.skill);
+      tiles.set(item.skill, mergeTileStatus(existing, tile));
+    });
+  }
+
+  const answered = activeQuiz
+    ? quiz.items.filter((item) => state.answers.has(item.id)).length
+    : 0;
+  const total = activeQuiz ? quiz.items.length : 16;
+  return {
+    mode: quiz?.mode || "daily",
+    title: quiz?.title || "Today's XiXteen",
+    answered,
+    total,
+    tiles
+  };
+}
+
+function mergeTileStatus(existing, next) {
+  if (!existing) {
+    return next;
+  }
+  const rank = { current: 5, missed: 4, correct: 3, upcoming: 2, ready: 1 };
+  return rank[next.status] > rank[existing.status] ? next : existing;
+}
+
+function boardStatusLabel(status, index) {
+  if (status === "current") return `Tile ${index + 1}: answer this next`;
+  if (status === "correct") return `Tile ${index + 1}: cleared`;
+  if (status === "missed") return `Tile ${index + 1}: review later`;
+  return `Tile ${index + 1}: waiting`;
+}
+
+function boardStateMark(status) {
+  if (status === "correct") return "✓";
+  if (status === "missed") return "!";
+  if (status === "current") return "•";
+  return "";
+}
+
+function renderBoardStatus(board) {
+  if (!els.boardStatus) {
+    return;
+  }
+  const isPractice = board.mode === "practice";
+  const complete = board.answered >= board.total && board.total > 0;
+  const countLabel = `${board.answered}/${board.total}`;
+  const headline = complete
+    ? isPractice ? "Practice set complete" : "Board cleared"
+    : isPractice ? "Practice in progress" : "Board in progress";
+  const body = complete
+    ? isPractice
+      ? "Use the skill map to pick what to practice next."
+      : "Review your score, then practice any tile that needs work."
+    : isPractice
+      ? "Practice colors show this set. Return to Daily when you want the full board."
+      : board.answered === 0
+        ? "Start with tile 01. Each answer fills one square."
+        : "Keep going until all sixteen squares are filled.";
+
+  els.boardStatus.innerHTML = `
+    <div class="board-status-count">
+      <strong>${escapeHtml(countLabel)}</strong>
+      <span>${isPractice ? "practice answers" : "tiles cleared"}</span>
+    </div>
+    <p><strong>${escapeHtml(headline)}</strong> <span>${escapeHtml(body)}</span></p>
+  `;
 }
 
 function renderPracticeBuilder() {
@@ -268,6 +380,7 @@ function startQuiz(quiz, options = {}) {
   state.startedAt = performance.now();
   state.itemStartedAt = performance.now();
   state.lastScoreSubmission = null;
+  renderGallery();
   renderQuiz();
   if (options.scroll !== false) {
     els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -297,8 +410,9 @@ function renderQuiz() {
   const skill = state.skillById.get(item.skill);
   const selected = state.answers.get(item.id);
   const answered = Boolean(selected);
-  const progress = (state.currentIndex / quiz.items.length) * 100;
+  const progress = (state.answers.size / quiz.items.length) * 100;
   els.quizProgress.style.width = `${progress}%`;
+  renderGallery();
 
   const choices = item.choices.map((choice) => {
     const classes = ["choice-button"];
@@ -393,6 +507,7 @@ async function finishQuiz() {
 
 function renderResults(results, score, durationMs) {
   els.quizProgress.style.width = "100%";
+  renderGallery();
   const total = results.length;
   const focusSkills = recommendedPracticeSkills(results);
   const missed = results.filter((result) => !result.correct);
@@ -471,7 +586,7 @@ function renderResults(results, score, durationMs) {
       </div>
     ` : ""}
     <div class="question-actions">
-      <button class="secondary-action" type="button" data-scroll-grid>Skill Grid</button>
+      <button class="secondary-action" type="button" data-scroll-grid>Daily Board</button>
       <button class="next-button" type="button" data-next-practice>Practice Again</button>
     </div>
   `;
