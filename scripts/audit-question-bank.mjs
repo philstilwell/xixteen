@@ -12,6 +12,7 @@ const SHORTEST_CHOICE_TELL_RATE = 0.55;
 const SHORTEST_CHOICE_TELL_MIN_COUNT = 10;
 const TAG_ANSWER_SKEW_MIN_ITEMS = 16;
 const TAG_ANSWER_SKEW_MAX_SHARE = 0.6;
+const CORRECT_START_TELL_MIN_COUNT = 16;
 const TAG_ANSWER_SKEW_IGNORED_TAGS = new Set([
   "source",
   "claim",
@@ -31,6 +32,15 @@ const TAG_ANSWER_SKEW_IGNORED_TAGS = new Set([
   "confounder",
   "logic"
 ]);
+const CORRECT_START_TELL_PATTERNS = [
+  ["confidence-update opening", /^(increase confidence|let confidence|move confidence)\b/i],
+  ["logic-treats opening", /^it treats\b/i],
+  ["logic-jump opening", /^it (assumes|moves|jumps)\b/i],
+  ["study opening", /^the study\b/i],
+  ["evidence opening", /^the evidence\b/i],
+  ["average opening", /^an average\b/i],
+  ["signal-proof opening", /^treat the signal\b/i]
+];
 const CLUNKY_PROMPT_PATTERNS = [
   ["distracting quick-check frame", /^Quick check:/i],
   ["Scene label", /Scene:/],
@@ -164,7 +174,8 @@ const failingAudits = itemAudits.filter((audit) => audit.issues.length > 0);
 const patternIssues = [
   ...auditAnswerPatternTells(items),
   ...auditChoiceLengthTells(items),
-  ...auditTagAnswerSkew(items)
+  ...auditTagAnswerSkew(items),
+  ...auditRecurringCorrectStarts(items)
 ];
 
 if (failingAudits.length > 0 || patternIssues.length > 0) {
@@ -508,6 +519,23 @@ function auditTagAnswerSkew(allItems) {
     }
   }
 
+  return issues;
+}
+
+function auditRecurringCorrectStarts(allItems) {
+  const issues = [];
+  for (const [label, pattern] of CORRECT_START_TELL_PATTERNS) {
+    const matches = allItems
+      .map((item) => ({ item, answerText: getAnswerText(item) }))
+      .filter(({ answerText }) => pattern.test(answerText));
+    if (matches.length >= CORRECT_START_TELL_MIN_COUNT) {
+      const examples = matches
+        .slice(0, 8)
+        .map(({ item }) => item.id)
+        .join(", ");
+      issues.push(`${label} appears in ${matches.length} correct answer(s): ${examples}`);
+    }
+  }
   return issues;
 }
 

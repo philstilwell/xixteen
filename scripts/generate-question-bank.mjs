@@ -677,7 +677,7 @@ function relevanceItems() {
     (t, variant) => ({
       tag: "similar-group",
       correct: [
-        "A similar group tried the plan and saw the tracked result improve under similar conditions.",
+        "A comparable group tried the plan and saw the tracked result improve under similar conditions.",
         "Another group in a similar setting used the plan and the same result improved.",
         "A comparable group tried the plan, and the result being checked moved in the right direction.",
         "A similar group used the plan under similar conditions and the tracked result improved.",
@@ -687,41 +687,41 @@ function relevanceItems() {
     (t, variant) => ({
       tag: "direct-measure",
       correct: [
-        "The study measured the actual result before and after the plan was tried.",
+        "Researchers measured the actual result before and after the plan was tried.",
         "The report tracked the claimed result both before the plan and after the plan.",
-        "The evidence compares the result from before the plan with the result after it began.",
-        "The study checks the result named in the claim, not just people's reactions to the idea.",
+        "Before-and-after data compare the result from before the plan with the result after it began.",
+        "A careful check focused on the result named in the claim, not just people's reactions to the idea.",
         "The report measures whether the result actually changed after the plan was used."
       ][variant % 5]
     }),
     (t, variant) => ({
       tag: "target-group",
       correct: [
-        "The study measured the actual result in the group the proposal is meant to help.",
+        "The actual result was measured in the group the proposal is meant to help.",
         "The report checks the claimed result among the people the plan is supposed to affect.",
-        "The evidence comes from the target group, not from a different group with different needs.",
-        "The study looks at the result for the same people the proposal is meant to help.",
+        "Data come from the target group, not from a different group with different needs.",
+        "Researchers looked at the result for the same people the proposal is meant to help.",
         "The report measures the claimed result in the group named in the proposal."
       ][variant % 5]
     }),
     (t, variant) => ({
       tag: "comparison-group",
       correct: [
-        "A similar group that did not use the plan was tracked so the result could be compared.",
-        "The study included a similar group without the plan, giving the result a fair comparison.",
+        "A matched group that did not use the plan was tracked so the result could be compared.",
+        "Researchers included a similar group without the plan, giving the result a fair comparison.",
         "A comparison group was tracked at the same time, so the plan's result could be checked.",
         "The report compares the target group with a similar group that did not use the plan.",
-        "A similar no-plan group was measured too, making the result easier to interpret."
+        "A no-plan group was measured too, making the result easier to interpret."
       ][variant % 5]
     }),
     (t, variant) => ({
       tag: "outcome-specific",
       correct: [
         `The report checked ${t.metric}, not just whether people said they liked the idea.`,
-        `The evidence measures ${t.metric} directly instead of only asking whether the plan sounds good.`,
+        `Direct measurement tracks ${t.metric} instead of only asking whether the plan sounds good.`,
         `The report focuses on ${t.metric}, which is the result named in the claim.`,
-        `The study checks whether ${t.metric} changed, not merely whether people approved of the plan.`,
-        `The evidence is about ${t.metric}, so it speaks to the exact result being claimed.`
+        `A careful check measured whether ${t.metric} changed, not merely whether people approved of the plan.`,
+        `Because it is about ${t.metric}, the fact speaks to the exact result being claimed.`
       ][variant % 5]
     })
   ];
@@ -749,30 +749,61 @@ function relevanceItems() {
 
 function evidenceItems() {
   const cases = [
-    (t) => ({
+    (t, variant) => ({
       tag: "large-before-after",
-      correct: `A large, fair study measured ${t.metric} before and after the change.`
+      correct: [
+        `A large, fair study measured ${t.metric} before and after the change.`,
+        `Many people were included, and researchers measured ${t.metric} before and after the plan.`,
+        `A fair before-and-after study used a large sample to track ${t.metric}.`,
+        `Researchers used a large sample and checked ${t.metric} both before and after the change.`,
+        `The evidence covers many cases and measures ${t.metric} on both sides of the change.`
+      ][variant % 5]
     }),
-    (t) => ({
+    (t, variant) => ({
       tag: "random-comparison",
-      correct: `A random test compared similar groups with and without the change, then measured ${t.metric}.`
+      correct: [
+        `A random test compared similar groups with and without the change, then measured ${t.metric}.`,
+        `Similar groups were randomly assigned to use or not use the plan, then ${t.metric} was measured.`,
+        `Researchers randomly compared a plan group with a no-plan group and tracked ${t.metric}.`,
+        `The plan was tested against a similar no-plan group chosen by random assignment.`,
+        `A fair random comparison measured ${t.metric} in both the plan group and the no-plan group.`
+      ][variant % 5]
     }),
-    (t) => ({
+    (t, variant) => ({
       tag: "independent-team",
-      correct: `Independent researchers used the same method to measure ${t.metric} before and after the plan.`
+      correct: [
+        `Independent researchers used the same method to measure ${t.metric} before and after the plan.`,
+        `A team not connected to the proposal measured ${t.metric} with the same method each time.`,
+        `Outside researchers checked ${t.metric} before and after the plan using a consistent method.`,
+        `The measurement was done by an independent team using the same rules before and after.`,
+        `People outside the project collected comparable before-and-after data on ${t.metric}.`
+      ][variant % 5]
     }),
-    (t) => ({
+    (t, variant) => ({
       tag: "repeated-settings",
-      correct: `Several similar settings tried the plan, and each one measured ${t.metric} the same way.`
+      correct: [
+        `Several similar settings tried the plan, and each one measured ${t.metric} the same way.`,
+        `The plan was tried in several similar places, with ${t.metric} measured consistently in each one.`,
+        `Multiple similar settings tracked ${t.metric} using the same method after trying the plan.`,
+        `Results from several similar places were checked with the same measure of ${t.metric}.`,
+        `Comparable sites each tried the plan and used the same method to track ${t.metric}.`
+      ][variant % 5]
     }),
-    (t) => ({
+    (t, variant) => ({
       tag: "clear-sample",
-      correct: `The study reported its sample size, comparison method, and results for ${t.metric}.`
+      correct: [
+        `The study reported its sample size, comparison method, and results for ${t.metric}.`,
+        `The report gave the sample size, comparison method, and measured result for ${t.metric}.`,
+        `Researchers listed how many cases were studied, how they compared them, and what happened to ${t.metric}.`,
+        `A study write-up included the sample size, method, and results for ${t.metric}.`,
+        `The evidence states who was measured, how the comparison worked, and what changed in ${t.metric}.`
+      ][variant % 5]
     })
   ];
   return buildSkill("evidence_quality", (t, difficulty, offset, index) => {
     const speaker = speakerName(offset, difficulty);
-    const itemCase = cases[(offset + difficulty - 1) % cases.length](t);
+    const variant = Math.floor(offset / cases.length) + difficulty - 1;
+    const itemCase = cases[(offset + difficulty - 1) % cases.length](t, variant);
     const prompt = `${speaker} wants to know whether the proposal to ${t.action} actually helps ${t.group} by ${resultGerund(t)} ${t.metric}. Which evidence would be strongest?`;
     return makeItem(
       "evidence_quality",
@@ -883,44 +914,44 @@ function logicalGapItems() {
     (t, speaker, variant) => ({
       prompt: `At a planning meeting about ${t.domain}, ${speaker} says, "In one group that tried ${t.actionGerund}, ${t.testResult}. So this plan will work in every similar setting." What is the logical gap in ${speaker}'s reasoning?`,
       correct: [
-        "It generalizes from one case to every case without enough support.",
-        "It treats one successful example as enough to prove the result will happen everywhere.",
-        "It jumps from one group that improved to all similar settings without more evidence.",
-        "It assumes one test is enough to show the plan will work in every setting.",
-        "It moves from a single success to a much broader claim than the evidence supports."
+        "The argument generalizes from one case to every case without enough support.",
+        "One successful example is used as if it proves the result will happen everywhere.",
+        "One group improved, but that does not show all similar settings will improve too.",
+        "One test is assumed to be enough to show the plan will work in every setting.",
+        "A single success becomes a much broader claim than the evidence supports."
       ][variant % 5],
       explanation: "The logical gap is the jump from one case to every case. One success does not prove the same thing will happen everywhere."
     }),
     (t, speaker, variant) => ({
       prompt: `In a memo about ${t.domain}, ${speaker} writes, "During a small trial of ${t.actionGerund}, ${t.testResult}. So the action caused the change." What is the logical gap in ${speaker}'s reasoning?`,
       correct: [
-        "It assumes timing alone proves causation, without ruling out other causes.",
-        "It treats a before-and-after change as proof of cause without more evidence.",
-        "It assumes the action caused the change just because the change came after it.",
-        "It moves from sequence to cause without checking what else changed.",
-        "It treats timing as enough evidence even though another cause could explain the result."
+        "Timing alone is treated as proof of causation, without ruling out other causes.",
+        "A before-and-after change is used as proof of cause without more evidence.",
+        "The action is assumed to be the cause just because the change came after it.",
+        "The reasoning moves from sequence to cause without checking what else changed.",
+        "Timing is counted as enough evidence even though another cause could explain the result."
       ][variant % 5],
       explanation: "The logical gap is treating timing as proof of cause. Something happening first does not, by itself, prove it caused what came next."
     }),
     (t, speaker, variant) => ({
       prompt: `${speaker} says, "Most ${t.group} asked in a survey liked ${t.actionGerund}. So every person affected will benefit from it." What is the logical gap in ${speaker}'s reasoning?`,
       correct: [
-        "It moves from what most surveyed people liked to what everyone will benefit from.",
-        "It treats most survey approval as proof that every affected person will be helped.",
-        "It jumps from liking the plan to proving the plan benefits every person affected.",
-        "It assumes a survey of most people is enough to show every person will benefit.",
-        "It confuses people liking the plan with evidence that the plan helps everyone."
+        "The claim moves from what most surveyed people liked to what everyone will benefit from.",
+        "Most survey approval is used as proof that every affected person will be helped.",
+        "Liking the plan is treated as proof that the plan benefits every person affected.",
+        "A survey of most people is assumed to show that every person will benefit.",
+        "People liking the plan is confused with evidence that the plan helps everyone."
       ][variant % 5],
       explanation: "The logical gap is moving from most surveyed people to every affected person. Liking a plan also does not prove the plan helps."
     }),
     (t, speaker, variant) => ({
       prompt: `A report says the average result improved after ${t.actionGerund}. ${speaker} concludes, "That means every person in the group improved." What is the logical gap in ${speaker}'s reasoning?`,
       correct: [
-        "It treats an average change as proof that every individual changed the same way.",
-        "It assumes the group average tells what happened to each individual person.",
-        "It jumps from an average improvement to the claim that everyone improved.",
-        "It treats a group-level result as if it proves the same result for every person.",
-        "It ignores that an average can improve even when some people do not improve."
+        "The average change is used as proof that every individual changed the same way.",
+        "The group average is assumed to show what happened to each individual person.",
+        "The reasoning stretches an average improvement into the claim that everyone improved.",
+        "A group-level result is read as if it proves the same result for every person.",
+        "Some people may not improve even when the average does, and the argument misses that."
       ][variant % 5],
       explanation: "The logical gap is that an average can go up even when some people do not improve."
     })
@@ -975,18 +1006,23 @@ function probabilityItems() {
     (percent) => `If there were 100 similar forecasts, about ${percent} would be expected to improve.`,
     (percent) => `The forecast says improvement is possible but not guaranteed: about ${percent} chances in 100.`,
     (percent) => `It leaves room for the result not to happen, because ${percent}% is a chance rather than a promise.`,
-    (percent) => `The number estimates how often this improvement would happen across many similar cases.`
+    (percent) => `The number estimates how often this improvement would happen across many similar cases.`,
+    (percent) => `Out of 100 cases like this, roughly ${percent} would be expected to improve.`,
+    (percent) => `A ${percent}-out-of-100 chance means the result may happen, but it may not.`,
+    (percent) => `The percentage describes a chance across repeated similar cases, not a promise for this one.`,
+    (percent) => `About ${percent} of 100 similar situations would be expected to show the improvement.`,
+    (percent) => `This is a likelihood estimate: the result is possible, not certain.`
   ];
   const signalAnswers = [
-    "Treat the signal as a reason to check further, not as proof that the problem is there.",
+    "Use the signal as a reason to check further, not as proof that the problem is there.",
     "Check the base rate and false-alarm rate before treating the signal as strong evidence.",
-    "Treat the signal as evidence to investigate, while remembering that it is not certainty.",
+    "See the signal as evidence to investigate, while remembering that it is not certainty.",
     "Take the signal seriously, but ask how often this kind of tool is wrong.",
     "Update cautiously because a positive signal can still turn out to be a false alarm."
   ];
   return buildSkill("probability", (t, difficulty, offset, index) => {
     const percent = percentages[(offset + difficulty) % percentages.length];
-    const answerVariant = (offset + difficulty - 1) % 5;
+    const answerVariant = offset + difficulty - 1;
     const signalPrompt = difficulty === 4
       ? `A screening tool connected to ${t.domain} flags possible problems. It catches many real problems, but it also gives false alarms. The problem is uncommon in the group being screened. What is the best way to treat a positive signal?`
       : `A screening tool connected to ${t.domain} gives a positive signal for one case. The tool catches many real problems, but false alarms are common, and only a small share of cases have the problem. What is the best way to treat that signal?`;
@@ -996,8 +1032,8 @@ function probabilityItems() {
         : signalPrompt;
     const correct =
       difficulty <= 3
-        ? forecastAnswers[answerVariant](percent)
-        : signalAnswers[answerVariant];
+        ? forecastAnswers[answerVariant % forecastAnswers.length](percent)
+        : signalAnswers[answerVariant % signalAnswers.length];
     return makeItem(
       "probability",
       index,
@@ -1141,36 +1177,36 @@ function tradeoffItems() {
     (t, variant) => [
       "It names the possible benefit and the real cost so both sides are visible.",
       "It points out what the plan might improve and what it would require in return.",
-      "It shows the gain people hope for while also naming the cost of getting it.",
-      "It treats the possible improvement and the required cost as part of one choice.",
+      "The gain people hope for is named along with the cost of getting it.",
+      "The possible improvement and the required cost are kept together.",
       "It notices that the plan may help, but only by using something limited."
     ][variant % 5],
     (t, variant) => [
       "It weighs the hoped-for result against the resources the plan would take.",
       "It compares the result people want with the time, money, or attention required.",
       "It asks whether the expected gain is worth the resources the plan would use.",
-      "It keeps the desired result and the required resources in the same decision.",
-      "It treats the plan's possible payoff and resource cost as connected."
+      "The desired result and the required resources stay in the same decision.",
+      "The plan's possible payoff and resource cost are connected in the choice."
     ][variant % 5],
     (t, variant) => [
-      "It treats the benefit and the cost as parts of the same decision.",
+      "The benefit and the cost are counted as parts of the same decision.",
       "It avoids looking only at the upside by including the cost in the judgment.",
-      "It says the benefit matters, but the cost also has to be counted.",
-      "It keeps the upside and the downside together instead of separating them.",
+      "The benefit matters, but the cost also has to be counted.",
+      "The upside and the downside are kept together instead of separated.",
       "It judges the plan by looking at both what it gains and what it uses."
     ][variant % 5],
     (t, variant) => [
-      "It says the plan could help, but another need might get less attention.",
+      "The plan could help, but another need might get less attention.",
       "It notices that helping one goal may leave less support for another goal.",
-      "It shows that one group or need may benefit while another waits longer.",
-      "It treats the possible help as real, while also naming what may be delayed.",
+      "One group or need may benefit while another waits longer.",
+      "The possible help is real, but the answer also names what may be delayed.",
       "It recognizes that choosing this plan may push another useful option aside."
     ][variant % 5],
     (t, variant) => [
-      "It keeps both sides in view: possible improvement and limited resources.",
+      "Both sides stay in view: possible improvement and limited resources.",
       "It looks at the possible improvement while remembering the resources are limited.",
       "It names the hoped-for gain and the limit that makes the choice difficult.",
-      "It treats the upside and the resource limit as the two sides of the tradeoff.",
+      "The upside and the resource limit are shown as the two sides of the tradeoff.",
       "It says the plan may improve something, but resources still have to be shared."
     ][variant % 5]
   ];
@@ -1210,10 +1246,10 @@ function beliefUpdateItems() {
       newInfo: `you learn about one small four-week test where ${t.testResult}`,
       correct: [
         "Raise confidence somewhat, while staying open to better evidence.",
-        "Move confidence upward a bit, because the test helps but does not settle the question.",
+        "Shift your confidence upward a bit, because the test helps but does not settle the question.",
         "Become somewhat more confident, while remembering that one small test is limited.",
         "Treat the result as support for the claim, but keep looking for stronger evidence.",
-        "Increase confidence modestly because the result points the right way but is still small."
+        "Make a modest upward update because the result points the right way but is still small."
       ][variant % 5],
       distractors: [
         "Treat one small test as final proof.",
@@ -1228,8 +1264,8 @@ function beliefUpdateItems() {
       correct: [
         "Raise confidence a lot, while still avoiding total certainty.",
         "Become much more confident, but do not treat one comparison as perfect proof.",
-        "Increase confidence strongly because the comparison makes the evidence much better.",
-        "Move confidence up sharply, while leaving room for future evidence to matter.",
+        "Give the claim a strong boost because the comparison makes the evidence much better.",
+        "Make a sharp upward update, while leaving room for future evidence to matter.",
         "Treat the claim as much more likely, though not guaranteed in every setting."
       ][variant % 5],
       distractors: [
@@ -1244,7 +1280,7 @@ function beliefUpdateItems() {
       newInfo: `you learn about one small four-week test where ${oppositeTestResult(t)}`,
       correct: [
         "Lower confidence somewhat, while staying open to better evidence.",
-        "Move confidence down a bit, because the test counts against the claim but is small.",
+        "Shift your confidence downward a bit, because the test counts against the claim but is small.",
         "Become somewhat less confident, while remembering that one small test is limited.",
         "Treat the result as evidence against the claim, but not as final disproof.",
         "Decrease confidence modestly because the result points the wrong way but is still small."
@@ -1278,8 +1314,8 @@ function beliefUpdateItems() {
       newInfo: `you learn about one small four-week test where ${t.testResult}. You also learn that ${lowerFirst(phrase(t.alternative))}`,
       correct: [
         "Nudge confidence upward only a little, because the result helps but another change could explain it.",
-        "Increase confidence slightly, since the result helps but the other change weakens the update.",
-        "Move confidence up a bit, while taking the competing explanation seriously.",
+        "Make only a slight upward update, since the result helps but the other change weakens the update.",
+        "Adjust upward a bit, while taking the competing explanation seriously.",
         "Treat the result as some support, but keep the update small because of the other change.",
         "Become only a little more confident because the helpful result has another possible cause."
       ][variant % 5],

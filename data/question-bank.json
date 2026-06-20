@@ -21287,7 +21287,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A similar group tried the plan and saw the tracked result improve under similar conditions."
+        "text": "A comparable group tried the plan and saw the tracked result improve under similar conditions."
       },
       {
         "id": "B",
@@ -21324,7 +21324,7 @@
       },
       {
         "id": "B",
-        "text": "The study measured the actual result before and after the plan was tried."
+        "text": "Researchers measured the actual result before and after the plan was tried."
       },
       {
         "id": "C",
@@ -21361,7 +21361,7 @@
       },
       {
         "id": "C",
-        "text": "The study measured the actual result in the group the proposal is meant to help."
+        "text": "The actual result was measured in the group the proposal is meant to help."
       },
       {
         "id": "D",
@@ -21398,7 +21398,7 @@
       },
       {
         "id": "D",
-        "text": "A similar group that did not use the plan was tracked so the result could be compared."
+        "text": "A matched group that did not use the plan was tracked so the result could be compared."
       }
     ],
     "answer": "D",
@@ -21559,7 +21559,7 @@
       },
       {
         "id": "C",
-        "text": "The study included a similar group without the plan, giving the result a fair comparison."
+        "text": "Researchers included a similar group without the plan, giving the result a fair comparison."
       },
       {
         "id": "D",
@@ -21596,7 +21596,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence measures dessert orders directly instead of only asking whether the plan sounds good."
+        "text": "Direct measurement tracks dessert orders instead of only asking whether the plan sounds good."
       }
     ],
     "answer": "D",
@@ -21662,7 +21662,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence compares the result from before the plan with the result after it began."
+        "text": "Before-and-after data compare the result from before the plan with the result after it began."
       }
     ],
     "answer": "D",
@@ -21687,7 +21687,7 @@
       },
       {
         "id": "B",
-        "text": "The evidence comes from the target group, not from a different group with different needs."
+        "text": "Data come from the target group, not from a different group with different needs."
       },
       {
         "id": "C",
@@ -21819,7 +21819,7 @@
       },
       {
         "id": "B",
-        "text": "The study checks the result named in the claim, not just people's reactions to the idea."
+        "text": "A careful check focused on the result named in the claim, not just people's reactions to the idea."
       },
       {
         "id": "C",
@@ -21848,7 +21848,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study looks at the result for the same people the proposal is meant to help."
+        "text": "Researchers looked at the result for the same people the proposal is meant to help."
       },
       {
         "id": "B",
@@ -21918,7 +21918,7 @@
       },
       {
         "id": "B",
-        "text": "The study checks whether average boarding time changed, not merely whether people approved of the plan."
+        "text": "A careful check measured whether average boarding time changed, not merely whether people approved of the plan."
       },
       {
         "id": "C",
@@ -22058,7 +22058,7 @@
       },
       {
         "id": "D",
-        "text": "A similar no-plan group was measured too, making the result easier to interpret."
+        "text": "A no-plan group was measured too, making the result easier to interpret."
       }
     ],
     "answer": "D",
@@ -22087,7 +22087,7 @@
       },
       {
         "id": "C",
-        "text": "The evidence is about missing-camera-footage reports, so it speaks to the exact result being claimed."
+        "text": "Because it is about missing-camera-footage reports, the fact speaks to the exact result being claimed."
       },
       {
         "id": "D",
@@ -22124,7 +22124,7 @@
       },
       {
         "id": "D",
-        "text": "A similar group tried the plan and saw the tracked result improve under similar conditions."
+        "text": "A comparable group tried the plan and saw the tracked result improve under similar conditions."
       }
     ],
     "answer": "D",
@@ -22145,7 +22145,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study measured the actual result before and after the plan was tried."
+        "text": "Researchers measured the actual result before and after the plan was tried."
       },
       {
         "id": "B",
@@ -22182,7 +22182,7 @@
       },
       {
         "id": "B",
-        "text": "The study measured the actual result in the group the proposal is meant to help."
+        "text": "The actual result was measured in the group the proposal is meant to help."
       },
       {
         "id": "C",
@@ -22219,7 +22219,7 @@
       },
       {
         "id": "C",
-        "text": "A similar group that did not use the plan was tracked so the result could be compared."
+        "text": "A matched group that did not use the plan was tracked so the result could be compared."
       },
       {
         "id": "D",
@@ -22421,7 +22421,7 @@
       },
       {
         "id": "D",
-        "text": "The study included a similar group without the plan, giving the result a fair comparison."
+        "text": "Researchers included a similar group without the plan, giving the result a fair comparison."
       }
     ],
     "answer": "D",
@@ -22450,7 +22450,7 @@
       },
       {
         "id": "C",
-        "text": "The evidence measures staff resignations directly instead of only asking whether the plan sounds good."
+        "text": "Direct measurement tracks staff resignations instead of only asking whether the plan sounds good."
       },
       {
         "id": "D",
@@ -22508,7 +22508,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence compares the result from before the plan with the result after it began."
+        "text": "Before-and-after data compare the result from before the plan with the result after it began."
       },
       {
         "id": "B",
@@ -22553,7 +22553,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence comes from the target group, not from a different group with different needs."
+        "text": "Data come from the target group, not from a different group with different needs."
       }
     ],
     "answer": "D",
@@ -22681,7 +22681,7 @@
       },
       {
         "id": "C",
-        "text": "The study checks the result named in the claim, not just people's reactions to the idea."
+        "text": "A careful check focused on the result named in the claim, not just people's reactions to the idea."
       },
       {
         "id": "D",
@@ -22718,7 +22718,7 @@
       },
       {
         "id": "D",
-        "text": "The study looks at the result for the same people the proposal is meant to help."
+        "text": "Researchers looked at the result for the same people the proposal is meant to help."
       }
     ],
     "answer": "D",
@@ -22776,7 +22776,7 @@
       },
       {
         "id": "B",
-        "text": "The study checks whether repeat head injuries changed, not merely whether people approved of the plan."
+        "text": "A careful check measured whether repeat head injuries changed, not merely whether people approved of the plan."
       },
       {
         "id": "C",
@@ -22908,7 +22908,7 @@
       },
       {
         "id": "B",
-        "text": "A similar no-plan group was measured too, making the result easier to interpret."
+        "text": "A no-plan group was measured too, making the result easier to interpret."
       },
       {
         "id": "C",
@@ -22945,7 +22945,7 @@
       },
       {
         "id": "C",
-        "text": "The evidence is about patient no-show rates, so it speaks to the exact result being claimed."
+        "text": "Because it is about patient no-show rates, the fact speaks to the exact result being claimed."
       },
       {
         "id": "D",
@@ -23015,7 +23015,7 @@
       },
       {
         "id": "D",
-        "text": "The study measured the actual result before and after the plan was tried."
+        "text": "Researchers measured the actual result before and after the plan was tried."
       }
     ],
     "answer": "D",
@@ -23044,7 +23044,7 @@
       },
       {
         "id": "C",
-        "text": "The study measured the actual result in the group the proposal is meant to help."
+        "text": "The actual result was measured in the group the proposal is meant to help."
       },
       {
         "id": "D",
@@ -23073,7 +23073,7 @@
       },
       {
         "id": "B",
-        "text": "A similar group that did not use the plan was tracked so the result could be compared."
+        "text": "A matched group that did not use the plan was tracked so the result could be compared."
       },
       {
         "id": "C",
@@ -23147,7 +23147,7 @@
       },
       {
         "id": "D",
-        "text": "A similar group tried the plan and saw the tracked result improve under similar conditions."
+        "text": "A comparable group tried the plan and saw the tracked result improve under similar conditions."
       }
     ],
     "answer": "D",
@@ -23234,7 +23234,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study included a similar group without the plan, giving the result a fair comparison."
+        "text": "Researchers included a similar group without the plan, giving the result a fair comparison."
       },
       {
         "id": "B",
@@ -23279,7 +23279,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence measures reported minor crashes directly instead of only asking whether the plan sounds good."
+        "text": "Direct measurement tracks reported minor crashes instead of only asking whether the plan sounds good."
       }
     ],
     "answer": "D",
@@ -23333,7 +23333,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence compares the result from before the plan with the result after it began."
+        "text": "Before-and-after data compare the result from before the plan with the result after it began."
       },
       {
         "id": "B",
@@ -23370,7 +23370,7 @@
       },
       {
         "id": "B",
-        "text": "The evidence comes from the target group, not from a different group with different needs."
+        "text": "Data come from the target group, not from a different group with different needs."
       },
       {
         "id": "C",
@@ -23399,7 +23399,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence comes from the target group, not from a different group with different needs."
+        "text": "Data come from the target group, not from a different group with different needs."
       },
       {
         "id": "B",
@@ -23531,7 +23531,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence compares the result from before the plan with the result after it began."
+        "text": "Before-and-after data compare the result from before the plan with the result after it began."
       },
       {
         "id": "B",
@@ -23568,7 +23568,7 @@
       },
       {
         "id": "B",
-        "text": "The study looks at the result for the same people the proposal is meant to help."
+        "text": "Researchers looked at the result for the same people the proposal is meant to help."
       },
       {
         "id": "C",
@@ -23642,7 +23642,7 @@
       },
       {
         "id": "D",
-        "text": "The study checks whether reported thefts changed, not merely whether people approved of the plan."
+        "text": "A careful check measured whether reported thefts changed, not merely whether people approved of the plan."
       }
     ],
     "answer": "D",
@@ -23708,7 +23708,7 @@
       },
       {
         "id": "D",
-        "text": "The study checks the result named in the claim, not just people's reactions to the idea."
+        "text": "A careful check focused on the result named in the claim, not just people's reactions to the idea."
       }
     ],
     "answer": "D",
@@ -23770,7 +23770,7 @@
       },
       {
         "id": "C",
-        "text": "A similar no-plan group was measured too, making the result easier to interpret."
+        "text": "A no-plan group was measured too, making the result easier to interpret."
       },
       {
         "id": "D",
@@ -23799,7 +23799,7 @@
       },
       {
         "id": "B",
-        "text": "The evidence is about family visits, so it speaks to the exact result being claimed."
+        "text": "Because it is about family visits, the fact speaks to the exact result being claimed."
       },
       {
         "id": "C",
@@ -23902,7 +23902,7 @@
       },
       {
         "id": "C",
-        "text": "The study measured the actual result in the group the proposal is meant to help."
+        "text": "The actual result was measured in the group the proposal is meant to help."
       },
       {
         "id": "D",
@@ -23931,7 +23931,7 @@
       },
       {
         "id": "B",
-        "text": "A similar group that did not use the plan was tracked so the result could be compared."
+        "text": "A matched group that did not use the plan was tracked so the result could be compared."
       },
       {
         "id": "C",
@@ -23997,7 +23997,7 @@
       },
       {
         "id": "B",
-        "text": "A similar group tried the plan and saw the tracked result improve under similar conditions."
+        "text": "A comparable group tried the plan and saw the tracked result improve under similar conditions."
       },
       {
         "id": "C",
@@ -24026,7 +24026,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study measured the actual result before and after the plan was tried."
+        "text": "Researchers measured the actual result before and after the plan was tried."
       },
       {
         "id": "B",
@@ -24096,7 +24096,7 @@
       },
       {
         "id": "B",
-        "text": "The study included a similar group without the plan, giving the result a fair comparison."
+        "text": "Researchers included a similar group without the plan, giving the result a fair comparison."
       },
       {
         "id": "C",
@@ -24133,7 +24133,7 @@
       },
       {
         "id": "C",
-        "text": "The evidence measures customer complaint rates directly instead of only asking whether the plan sounds good."
+        "text": "Direct measurement tracks customer complaint rates instead of only asking whether the plan sounds good."
       },
       {
         "id": "D",
@@ -24228,7 +24228,7 @@
       },
       {
         "id": "B",
-        "text": "The evidence comes from the target group, not from a different group with different needs."
+        "text": "Data come from the target group, not from a different group with different needs."
       },
       {
         "id": "C",
@@ -24360,7 +24360,7 @@
       },
       {
         "id": "B",
-        "text": "The evidence compares the result from before the plan with the result after it began."
+        "text": "Before-and-after data compare the result from before the plan with the result after it began."
       },
       {
         "id": "C",
@@ -24401,7 +24401,7 @@
       },
       {
         "id": "D",
-        "text": "The study looks at the result for the same people the proposal is meant to help."
+        "text": "Researchers looked at the result for the same people the proposal is meant to help."
       }
     ],
     "answer": "D",
@@ -24488,7 +24488,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study checks whether classroom disruption reports changed, not merely whether people approved of the plan."
+        "text": "A careful check measured whether classroom disruption reports changed, not merely whether people approved of the plan."
       },
       {
         "id": "B",
@@ -24562,7 +24562,7 @@
       },
       {
         "id": "C",
-        "text": "The study checks the result named in the claim, not just people's reactions to the idea."
+        "text": "A careful check focused on the result named in the claim, not just people's reactions to the idea."
       },
       {
         "id": "D",
@@ -24591,7 +24591,7 @@
       },
       {
         "id": "B",
-        "text": "The study looks at the result for the same people the proposal is meant to help."
+        "text": "Researchers looked at the result for the same people the proposal is meant to help."
       },
       {
         "id": "C",
@@ -24620,7 +24620,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A similar no-plan group was measured too, making the result easier to interpret."
+        "text": "A no-plan group was measured too, making the result easier to interpret."
       },
       {
         "id": "B",
@@ -24665,7 +24665,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence is about admin account takeovers, so it speaks to the exact result being claimed."
+        "text": "Because it is about admin account takeovers, the fact speaks to the exact result being claimed."
       }
     ],
     "answer": "D",
@@ -24793,7 +24793,7 @@
       },
       {
         "id": "C",
-        "text": "A similar group that did not use the plan was tracked so the result could be compared."
+        "text": "A matched group that did not use the plan was tracked so the result could be compared."
       },
       {
         "id": "D",
@@ -24851,7 +24851,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A similar group tried the plan and saw the tracked result improve under similar conditions."
+        "text": "A comparable group tried the plan and saw the tracked result improve under similar conditions."
       },
       {
         "id": "B",
@@ -24888,7 +24888,7 @@
       },
       {
         "id": "B",
-        "text": "The study measured the actual result before and after the plan was tried."
+        "text": "Researchers measured the actual result before and after the plan was tried."
       },
       {
         "id": "C",
@@ -24925,7 +24925,7 @@
       },
       {
         "id": "C",
-        "text": "The study measured the actual result in the group the proposal is meant to help."
+        "text": "The actual result was measured in the group the proposal is meant to help."
       },
       {
         "id": "D",
@@ -24962,7 +24962,7 @@
       },
       {
         "id": "D",
-        "text": "The study included a similar group without the plan, giving the result a fair comparison."
+        "text": "Researchers included a similar group without the plan, giving the result a fair comparison."
       }
     ],
     "answer": "D",
@@ -24983,7 +24983,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence measures landfill waste from participating buildings directly instead of only asking whether the plan sounds good."
+        "text": "Direct measurement tracks landfill waste from participating buildings instead of only asking whether the plan sounds good."
       },
       {
         "id": "B",
@@ -25214,7 +25214,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence compares the result from before the plan with the result after it began."
+        "text": "Before-and-after data compare the result from before the plan with the result after it began."
       },
       {
         "id": "B",
@@ -25259,7 +25259,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence comes from the target group, not from a different group with different needs."
+        "text": "Data come from the target group, not from a different group with different needs."
       }
     ],
     "answer": "D",
@@ -25317,7 +25317,7 @@
       },
       {
         "id": "B",
-        "text": "The study checks whether vocabulary retention quiz scores changed, not merely whether people approved of the plan."
+        "text": "A careful check measured whether vocabulary retention quiz scores changed, not merely whether people approved of the plan."
       },
       {
         "id": "C",
@@ -25391,7 +25391,7 @@
       },
       {
         "id": "D",
-        "text": "The study checks the result named in the claim, not just people's reactions to the idea."
+        "text": "A careful check focused on the result named in the claim, not just people's reactions to the idea."
       }
     ],
     "answer": "D",
@@ -25420,7 +25420,7 @@
       },
       {
         "id": "C",
-        "text": "The study looks at the result for the same people the proposal is meant to help."
+        "text": "Researchers looked at the result for the same people the proposal is meant to help."
       },
       {
         "id": "D",
@@ -25445,7 +25445,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A similar no-plan group was measured too, making the result easier to interpret."
+        "text": "A no-plan group was measured too, making the result easier to interpret."
       },
       {
         "id": "B",
@@ -25482,7 +25482,7 @@
       },
       {
         "id": "B",
-        "text": "The evidence is about noise complaints from guest rooms, so it speaks to the exact result being claimed."
+        "text": "Because it is about noise complaints from guest rooms, the fact speaks to the exact result being claimed."
       },
       {
         "id": "C",
@@ -25511,7 +25511,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence is about late-shift commute complaints, so it speaks to the exact result being claimed."
+        "text": "Because it is about late-shift commute complaints, the fact speaks to the exact result being claimed."
       },
       {
         "id": "B",
@@ -25643,7 +25643,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A similar no-plan group was measured too, making the result easier to interpret."
+        "text": "A no-plan group was measured too, making the result easier to interpret."
       },
       {
         "id": "B",
@@ -25717,7 +25717,7 @@
       },
       {
         "id": "C",
-        "text": "A similar group tried the plan and saw the tracked result improve under similar conditions."
+        "text": "A comparable group tried the plan and saw the tracked result improve under similar conditions."
       },
       {
         "id": "D",
@@ -25754,7 +25754,7 @@
       },
       {
         "id": "D",
-        "text": "The study measured the actual result before and after the plan was tried."
+        "text": "Researchers measured the actual result before and after the plan was tried."
       }
     ],
     "answer": "D",
@@ -25783,7 +25783,7 @@
       },
       {
         "id": "C",
-        "text": "The study measured the actual result in the group the proposal is meant to help."
+        "text": "The actual result was measured in the group the proposal is meant to help."
       },
       {
         "id": "D",
@@ -25820,7 +25820,7 @@
       },
       {
         "id": "D",
-        "text": "A similar group that did not use the plan was tracked so the result could be compared."
+        "text": "A matched group that did not use the plan was tracked so the result could be compared."
       }
     ],
     "answer": "D",
@@ -25853,7 +25853,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence measures overdraft fees directly instead of only asking whether the plan sounds good."
+        "text": "Direct measurement tracks overdraft fees instead of only asking whether the plan sounds good."
       }
     ],
     "answer": "D",
@@ -25985,7 +25985,7 @@
       },
       {
         "id": "D",
-        "text": "The study included a similar group without the plan, giving the result a fair comparison."
+        "text": "Researchers included a similar group without the plan, giving the result a fair comparison."
       }
     ],
     "answer": "D",
@@ -26072,7 +26072,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The evidence compares the result from before the plan with the result after it began."
+        "text": "Before-and-after data compare the result from before the plan with the result after it began."
       },
       {
         "id": "B",
@@ -26117,7 +26117,7 @@
       },
       {
         "id": "D",
-        "text": "The evidence comes from the target group, not from a different group with different needs."
+        "text": "Data come from the target group, not from a different group with different needs."
       }
     ],
     "answer": "D",
@@ -26171,7 +26171,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study checks whether unresolved repair requests changed, not merely whether people approved of the plan."
+        "text": "A careful check measured whether unresolved repair requests changed, not merely whether people approved of the plan."
       },
       {
         "id": "B",
@@ -26245,7 +26245,7 @@
       },
       {
         "id": "C",
-        "text": "The study checks the result named in the claim, not just people's reactions to the idea."
+        "text": "A careful check focused on the result named in the claim, not just people's reactions to the idea."
       },
       {
         "id": "D",
@@ -26282,7 +26282,7 @@
       },
       {
         "id": "D",
-        "text": "The study looks at the result for the same people the proposal is meant to help."
+        "text": "Researchers looked at the result for the same people the proposal is meant to help."
       }
     ],
     "answer": "D",
@@ -26340,7 +26340,7 @@
       },
       {
         "id": "B",
-        "text": "The evidence is about phone calls asking ballot status, so it speaks to the exact result being claimed."
+        "text": "Because it is about phone calls asking ballot status, the fact speaks to the exact result being claimed."
       },
       {
         "id": "C",
@@ -26472,7 +26472,7 @@
       },
       {
         "id": "B",
-        "text": "A similar no-plan group was measured too, making the result easier to interpret."
+        "text": "A no-plan group was measured too, making the result easier to interpret."
       },
       {
         "id": "C",
@@ -26534,7 +26534,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A similar group tried the plan and saw the tracked result improve under similar conditions."
+        "text": "A comparable group tried the plan and saw the tracked result improve under similar conditions."
       },
       {
         "id": "B",
@@ -26749,7 +26749,7 @@
       },
       {
         "id": "D",
-        "text": "A large, fair study measured library card renewals before and after the change."
+        "text": "Many people were included, and researchers measured library card renewals before and after the plan."
       }
     ],
     "answer": "D",
@@ -26771,7 +26771,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured admin account takeovers."
+        "text": "Similar groups were randomly assigned to use or not use the plan, then admin account takeovers was measured."
       },
       {
         "id": "B",
@@ -26809,7 +26809,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure reported thefts before and after the plan."
+        "text": "A team not connected to the proposal measured reported thefts with the same method each time."
       },
       {
         "id": "C",
@@ -26839,7 +26839,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Several similar settings tried the plan, and each one measured course pass rates the same way."
+        "text": "The plan was tried in several similar places, with course pass rates measured consistently in each one."
       },
       {
         "id": "B",
@@ -26877,7 +26877,7 @@
       },
       {
         "id": "B",
-        "text": "The study reported its sample size, comparison method, and results for dessert orders."
+        "text": "The report gave the sample size, comparison method, and measured result for dessert orders."
       },
       {
         "id": "C",
@@ -26911,7 +26911,7 @@
       },
       {
         "id": "B",
-        "text": "A large, fair study measured overdraft fees before and after the change."
+        "text": "A fair before-and-after study used a large sample to track overdraft fees."
       },
       {
         "id": "C",
@@ -26941,7 +26941,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured trail crowding complaints."
+        "text": "Researchers randomly compared a plan group with a no-plan group and tracked trail crowding complaints."
       },
       {
         "id": "B",
@@ -26987,7 +26987,7 @@
       },
       {
         "id": "D",
-        "text": "Independent researchers used the same method to measure family visits before and after the plan."
+        "text": "Outside researchers checked family visits before and after the plan using a consistent method."
       }
     ],
     "answer": "D",
@@ -27017,7 +27017,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured repeat head injuries the same way."
+        "text": "Multiple similar settings tracked repeat head injuries using the same method after trying the plan."
       },
       {
         "id": "D",
@@ -27047,7 +27047,7 @@
       },
       {
         "id": "B",
-        "text": "The study reported its sample size, comparison method, and results for donor retention."
+        "text": "Researchers listed how many cases were studied, how they compared them, and what happened to donor retention."
       },
       {
         "id": "C",
@@ -27077,7 +27077,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured back-injury claims before and after the change."
+        "text": "Researchers used a large sample and checked back-injury claims both before and after the change."
       },
       {
         "id": "B",
@@ -27123,7 +27123,7 @@
       },
       {
         "id": "D",
-        "text": "A random test compared similar groups with and without the change, then measured landfill waste from participating buildings."
+        "text": "The plan was tested against a similar no-plan group chosen by random assignment."
       }
     ],
     "answer": "D",
@@ -27153,7 +27153,7 @@
       },
       {
         "id": "C",
-        "text": "Independent researchers used the same method to measure publicly visible profiles before and after the plan."
+        "text": "The measurement was done by an independent team using the same rules before and after."
       },
       {
         "id": "D",
@@ -27191,7 +27191,7 @@
       },
       {
         "id": "D",
-        "text": "Several similar settings tried the plan, and each one measured patient no-show rates the same way."
+        "text": "Results from several similar places were checked with the same measure of patient no-show rates."
       }
     ],
     "answer": "D",
@@ -27221,7 +27221,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for average boarding time."
+        "text": "A study write-up included the sample size, method, and results for average boarding time."
       },
       {
         "id": "D",
@@ -27247,7 +27247,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured unresolved repair requests before and after the change."
+        "text": "The evidence covers many cases and measures unresolved repair requests on both sides of the change."
       },
       {
         "id": "B",
@@ -27285,7 +27285,7 @@
       },
       {
         "id": "B",
-        "text": "A random test compared similar groups with and without the change, then measured fruit purchases."
+        "text": "A fair random comparison measured fruit purchases in both the plan group and the no-plan group."
       },
       {
         "id": "C",
@@ -27323,7 +27323,7 @@
       },
       {
         "id": "C",
-        "text": "Independent researchers used the same method to measure customer complaint rates before and after the plan."
+        "text": "People outside the project collected comparable before-and-after data on customer complaint rates."
       },
       {
         "id": "D",
@@ -27361,7 +27361,7 @@
       },
       {
         "id": "D",
-        "text": "Several similar settings tried the plan, and each one measured average household water use the same way."
+        "text": "Comparable sites each tried the plan and used the same method to track average household water use."
       }
     ],
     "answer": "D",
@@ -27383,7 +27383,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study reported its sample size, comparison method, and results for missing-camera-footage reports."
+        "text": "The evidence states who was measured, how the comparison worked, and what changed in missing-camera-footage reports."
       },
       {
         "id": "B",
@@ -27587,7 +27587,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured price disputes before and after the change."
+        "text": "Many people were included, and researchers measured price disputes before and after the plan."
       },
       {
         "id": "B",
@@ -27629,7 +27629,7 @@
       },
       {
         "id": "C",
-        "text": "A random test compared similar groups with and without the change, then measured noise complaints from guest rooms."
+        "text": "Similar groups were randomly assigned to use or not use the plan, then noise complaints from guest rooms was measured."
       },
       {
         "id": "D",
@@ -27659,7 +27659,7 @@
       },
       {
         "id": "B",
-        "text": "A random test compared similar groups with and without the change, then measured late-shift commute complaints."
+        "text": "Similar groups were randomly assigned to use or not use the plan, then late-shift commute complaints was measured."
       },
       {
         "id": "C",
@@ -27689,7 +27689,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Independent researchers used the same method to measure classroom disruption reports before and after the plan."
+        "text": "A team not connected to the proposal measured classroom disruption reports with the same method each time."
       },
       {
         "id": "B",
@@ -27735,7 +27735,7 @@
       },
       {
         "id": "D",
-        "text": "Several similar settings tried the plan, and each one measured missed-dose reports the same way."
+        "text": "The plan was tried in several similar places, with missed-dose reports measured consistently in each one."
       }
     ],
     "answer": "D",
@@ -27765,7 +27765,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for staff resignations."
+        "text": "The report gave the sample size, comparison method, and measured result for staff resignations."
       },
       {
         "id": "D",
@@ -27795,7 +27795,7 @@
       },
       {
         "id": "B",
-        "text": "A large, fair study measured shopper overpayment complaints before and after the change."
+        "text": "Many people were included, and researchers measured shopper overpayment complaints before and after the plan."
       },
       {
         "id": "C",
@@ -27825,7 +27825,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured library card renewals."
+        "text": "Researchers randomly compared a plan group with a no-plan group and tracked library card renewals."
       },
       {
         "id": "B",
@@ -27871,7 +27871,7 @@
       },
       {
         "id": "D",
-        "text": "Independent researchers used the same method to measure admin account takeovers before and after the plan."
+        "text": "Outside researchers checked admin account takeovers before and after the plan using a consistent method."
       }
     ],
     "answer": "D",
@@ -27901,7 +27901,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured reported thefts the same way."
+        "text": "Multiple similar settings tracked reported thefts using the same method after trying the plan."
       },
       {
         "id": "D",
@@ -27931,7 +27931,7 @@
       },
       {
         "id": "B",
-        "text": "The study reported its sample size, comparison method, and results for course pass rates."
+        "text": "Researchers listed how many cases were studied, how they compared them, and what happened to course pass rates."
       },
       {
         "id": "C",
@@ -27961,7 +27961,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured dessert orders before and after the change."
+        "text": "A fair before-and-after study used a large sample to track dessert orders."
       },
       {
         "id": "B",
@@ -27995,7 +27995,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured overdraft fees."
+        "text": "The plan was tested against a similar no-plan group chosen by random assignment."
       },
       {
         "id": "B",
@@ -28033,7 +28033,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure trail crowding complaints before and after the plan."
+        "text": "The measurement was done by an independent team using the same rules before and after."
       },
       {
         "id": "C",
@@ -28071,7 +28071,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured family visits the same way."
+        "text": "Results from several similar places were checked with the same measure of family visits."
       },
       {
         "id": "D",
@@ -28109,7 +28109,7 @@
       },
       {
         "id": "D",
-        "text": "The study reported its sample size, comparison method, and results for repeat head injuries."
+        "text": "A study write-up included the sample size, method, and results for repeat head injuries."
       }
     ],
     "answer": "D",
@@ -28139,7 +28139,7 @@
       },
       {
         "id": "C",
-        "text": "A large, fair study measured donor retention before and after the change."
+        "text": "Researchers used a large sample and checked donor retention both before and after the change."
       },
       {
         "id": "D",
@@ -28165,7 +28165,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured back-injury claims."
+        "text": "A fair random comparison measured back-injury claims in both the plan group and the no-plan group."
       },
       {
         "id": "B",
@@ -28207,7 +28207,7 @@
       },
       {
         "id": "C",
-        "text": "Independent researchers used the same method to measure landfill waste from participating buildings before and after the plan."
+        "text": "People outside the project collected comparable before-and-after data on landfill waste from participating buildings."
       },
       {
         "id": "D",
@@ -28233,7 +28233,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Several similar settings tried the plan, and each one measured publicly visible profiles the same way."
+        "text": "Comparable sites each tried the plan and used the same method to track publicly visible profiles."
       },
       {
         "id": "B",
@@ -28275,7 +28275,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for patient no-show rates."
+        "text": "The evidence states who was measured, how the comparison worked, and what changed in patient no-show rates."
       },
       {
         "id": "D",
@@ -28301,7 +28301,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured average boarding time before and after the change."
+        "text": "The evidence covers many cases and measures average boarding time on both sides of the change."
       },
       {
         "id": "B",
@@ -28517,7 +28517,7 @@
       },
       {
         "id": "D",
-        "text": "A random test compared similar groups with and without the change, then measured phone calls asking ballot status."
+        "text": "Similar groups were randomly assigned to use or not use the plan, then phone calls asking ballot status was measured."
       }
     ],
     "answer": "D",
@@ -28543,7 +28543,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure vocabulary retention quiz scores before and after the plan."
+        "text": "A team not connected to the proposal measured vocabulary retention quiz scores with the same method each time."
       },
       {
         "id": "C",
@@ -28585,7 +28585,7 @@
       },
       {
         "id": "D",
-        "text": "Several similar settings tried the plan, and each one measured new-member cancellations the same way."
+        "text": "The plan was tried in several similar places, with new-member cancellations measured consistently in each one."
       }
     ],
     "answer": "D",
@@ -28619,7 +28619,7 @@
       },
       {
         "id": "D",
-        "text": "The study reported its sample size, comparison method, and results for reported minor crashes."
+        "text": "The report gave the sample size, comparison method, and measured result for reported minor crashes."
       }
     ],
     "answer": "D",
@@ -28649,7 +28649,7 @@
       },
       {
         "id": "C",
-        "text": "A large, fair study measured reader trust ratings before and after the change."
+        "text": "Many people were included, and researchers measured reader trust ratings before and after the plan."
       },
       {
         "id": "D",
@@ -28683,7 +28683,7 @@
       },
       {
         "id": "C",
-        "text": "A random test compared similar groups with and without the change, then measured price disputes."
+        "text": "Researchers randomly compared a plan group with a no-plan group and tracked price disputes."
       },
       {
         "id": "D",
@@ -28721,7 +28721,7 @@
       },
       {
         "id": "D",
-        "text": "Independent researchers used the same method to measure noise complaints from guest rooms before and after the plan."
+        "text": "Outside researchers checked noise complaints from guest rooms before and after the plan using a consistent method."
       }
     ],
     "answer": "D",
@@ -28743,7 +28743,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Independent researchers used the same method to measure late-shift commute complaints before and after the plan."
+        "text": "Outside researchers checked late-shift commute complaints before and after the plan using a consistent method."
       },
       {
         "id": "B",
@@ -28781,7 +28781,7 @@
       },
       {
         "id": "B",
-        "text": "Several similar settings tried the plan, and each one measured classroom disruption reports the same way."
+        "text": "Multiple similar settings tracked classroom disruption reports using the same method after trying the plan."
       },
       {
         "id": "C",
@@ -28819,7 +28819,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for missed-dose reports."
+        "text": "Researchers listed how many cases were studied, how they compared them, and what happened to missed-dose reports."
       },
       {
         "id": "D",
@@ -28857,7 +28857,7 @@
       },
       {
         "id": "D",
-        "text": "A large, fair study measured staff resignations before and after the change."
+        "text": "A fair before-and-after study used a large sample to track staff resignations."
       }
     ],
     "answer": "D",
@@ -28879,7 +28879,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured shopper overpayment complaints."
+        "text": "Researchers randomly compared a plan group with a no-plan group and tracked shopper overpayment complaints."
       },
       {
         "id": "B",
@@ -28917,7 +28917,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure library card renewals before and after the plan."
+        "text": "The measurement was done by an independent team using the same rules before and after."
       },
       {
         "id": "C",
@@ -28955,7 +28955,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured admin account takeovers the same way."
+        "text": "Results from several similar places were checked with the same measure of admin account takeovers."
       },
       {
         "id": "D",
@@ -28993,7 +28993,7 @@
       },
       {
         "id": "D",
-        "text": "The study reported its sample size, comparison method, and results for reported thefts."
+        "text": "A study write-up included the sample size, method, and results for reported thefts."
       }
     ],
     "answer": "D",
@@ -29023,7 +29023,7 @@
       },
       {
         "id": "C",
-        "text": "A large, fair study measured course pass rates before and after the change."
+        "text": "Researchers used a large sample and checked course pass rates both before and after the change."
       },
       {
         "id": "D",
@@ -29061,7 +29061,7 @@
       },
       {
         "id": "D",
-        "text": "A random test compared similar groups with and without the change, then measured dessert orders."
+        "text": "The plan was tested against a similar no-plan group chosen by random assignment."
       }
     ],
     "answer": "D",
@@ -29087,7 +29087,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure overdraft fees before and after the plan."
+        "text": "People outside the project collected comparable before-and-after data on overdraft fees."
       },
       {
         "id": "C",
@@ -29129,7 +29129,7 @@
       },
       {
         "id": "D",
-        "text": "Several similar settings tried the plan, and each one measured trail crowding complaints the same way."
+        "text": "Comparable sites each tried the plan and used the same method to track trail crowding complaints."
       }
     ],
     "answer": "D",
@@ -29155,7 +29155,7 @@
       },
       {
         "id": "B",
-        "text": "The study reported its sample size, comparison method, and results for family visits."
+        "text": "The evidence states who was measured, how the comparison worked, and what changed in family visits."
       },
       {
         "id": "C",
@@ -29185,7 +29185,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured repeat head injuries before and after the change."
+        "text": "The evidence covers many cases and measures repeat head injuries on both sides of the change."
       },
       {
         "id": "B",
@@ -29231,7 +29231,7 @@
       },
       {
         "id": "D",
-        "text": "A random test compared similar groups with and without the change, then measured donor retention."
+        "text": "A fair random comparison measured donor retention in both the plan group and the no-plan group."
       }
     ],
     "answer": "D",
@@ -29423,7 +29423,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Independent researchers used the same method to measure unresolved repair requests before and after the plan."
+        "text": "A team not connected to the proposal measured unresolved repair requests with the same method each time."
       },
       {
         "id": "B",
@@ -29465,7 +29465,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured fruit purchases the same way."
+        "text": "The plan was tried in several similar places, with fruit purchases measured consistently in each one."
       },
       {
         "id": "D",
@@ -29499,7 +29499,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for customer complaint rates."
+        "text": "The report gave the sample size, comparison method, and measured result for customer complaint rates."
       },
       {
         "id": "D",
@@ -29537,7 +29537,7 @@
       },
       {
         "id": "D",
-        "text": "A large, fair study measured average household water use before and after the change."
+        "text": "Many people were included, and researchers measured average household water use before and after the plan."
       }
     ],
     "answer": "D",
@@ -29567,7 +29567,7 @@
       },
       {
         "id": "C",
-        "text": "A random test compared similar groups with and without the change, then measured missing-camera-footage reports."
+        "text": "Similar groups were randomly assigned to use or not use the plan, then missing-camera-footage reports was measured."
       },
       {
         "id": "D",
@@ -29605,7 +29605,7 @@
       },
       {
         "id": "D",
-        "text": "Independent researchers used the same method to measure phone calls asking ballot status before and after the plan."
+        "text": "Outside researchers checked phone calls asking ballot status before and after the plan using a consistent method."
       }
     ],
     "answer": "D",
@@ -29627,7 +29627,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Several similar settings tried the plan, and each one measured vocabulary retention quiz scores the same way."
+        "text": "Multiple similar settings tracked vocabulary retention quiz scores using the same method after trying the plan."
       },
       {
         "id": "B",
@@ -29665,7 +29665,7 @@
       },
       {
         "id": "B",
-        "text": "The study reported its sample size, comparison method, and results for new-member cancellations."
+        "text": "Researchers listed how many cases were studied, how they compared them, and what happened to new-member cancellations."
       },
       {
         "id": "C",
@@ -29703,7 +29703,7 @@
       },
       {
         "id": "C",
-        "text": "A large, fair study measured reported minor crashes before and after the change."
+        "text": "A fair before-and-after study used a large sample to track reported minor crashes."
       },
       {
         "id": "D",
@@ -29729,7 +29729,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured reader trust ratings."
+        "text": "Researchers randomly compared a plan group with a no-plan group and tracked reader trust ratings."
       },
       {
         "id": "B",
@@ -29767,7 +29767,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure price disputes before and after the plan."
+        "text": "The measurement was done by an independent team using the same rules before and after."
       },
       {
         "id": "C",
@@ -29797,7 +29797,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Several similar settings tried the plan, and each one measured noise complaints from guest rooms the same way."
+        "text": "Results from several similar places were checked with the same measure of noise complaints from guest rooms."
       },
       {
         "id": "B",
@@ -29843,7 +29843,7 @@
       },
       {
         "id": "D",
-        "text": "Several similar settings tried the plan, and each one measured late-shift commute complaints the same way."
+        "text": "Results from several similar places were checked with the same measure of late-shift commute complaints."
       }
     ],
     "answer": "D",
@@ -29873,7 +29873,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for classroom disruption reports."
+        "text": "A study write-up included the sample size, method, and results for classroom disruption reports."
       },
       {
         "id": "D",
@@ -29903,7 +29903,7 @@
       },
       {
         "id": "B",
-        "text": "A large, fair study measured missed-dose reports before and after the change."
+        "text": "Researchers used a large sample and checked missed-dose reports both before and after the change."
       },
       {
         "id": "C",
@@ -29933,7 +29933,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured staff resignations."
+        "text": "The plan was tested against a similar no-plan group chosen by random assignment."
       },
       {
         "id": "B",
@@ -29979,7 +29979,7 @@
       },
       {
         "id": "D",
-        "text": "Independent researchers used the same method to measure shopper overpayment complaints before and after the plan."
+        "text": "The measurement was done by an independent team using the same rules before and after."
       }
     ],
     "answer": "D",
@@ -30009,7 +30009,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured library card renewals the same way."
+        "text": "Comparable sites each tried the plan and used the same method to track library card renewals."
       },
       {
         "id": "D",
@@ -30039,7 +30039,7 @@
       },
       {
         "id": "B",
-        "text": "The study reported its sample size, comparison method, and results for admin account takeovers."
+        "text": "The evidence states who was measured, how the comparison worked, and what changed in admin account takeovers."
       },
       {
         "id": "C",
@@ -30069,7 +30069,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured reported thefts before and after the change."
+        "text": "The evidence covers many cases and measures reported thefts on both sides of the change."
       },
       {
         "id": "B",
@@ -30107,7 +30107,7 @@
       },
       {
         "id": "B",
-        "text": "A random test compared similar groups with and without the change, then measured course pass rates."
+        "text": "A fair random comparison measured course pass rates in both the plan group and the no-plan group."
       },
       {
         "id": "C",
@@ -30137,7 +30137,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Independent researchers used the same method to measure dessert orders before and after the plan."
+        "text": "People outside the project collected comparable before-and-after data on dessert orders."
       },
       {
         "id": "B",
@@ -30345,7 +30345,7 @@
       },
       {
         "id": "B",
-        "text": "Several similar settings tried the plan, and each one measured back-injury claims the same way."
+        "text": "The plan was tried in several similar places, with back-injury claims measured consistently in each one."
       },
       {
         "id": "C",
@@ -30383,7 +30383,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for landfill waste from participating buildings."
+        "text": "The report gave the sample size, comparison method, and measured result for landfill waste from participating buildings."
       },
       {
         "id": "D",
@@ -30421,7 +30421,7 @@
       },
       {
         "id": "D",
-        "text": "A large, fair study measured publicly visible profiles before and after the change."
+        "text": "Many people were included, and researchers measured publicly visible profiles before and after the plan."
       }
     ],
     "answer": "D",
@@ -30443,7 +30443,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured patient no-show rates."
+        "text": "Similar groups were randomly assigned to use or not use the plan, then patient no-show rates was measured."
       },
       {
         "id": "B",
@@ -30481,7 +30481,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure average boarding time before and after the plan."
+        "text": "A team not connected to the proposal measured average boarding time with the same method each time."
       },
       {
         "id": "C",
@@ -30515,7 +30515,7 @@
       },
       {
         "id": "B",
-        "text": "Several similar settings tried the plan, and each one measured unresolved repair requests the same way."
+        "text": "Multiple similar settings tracked unresolved repair requests using the same method after trying the plan."
       },
       {
         "id": "C",
@@ -30545,7 +30545,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study reported its sample size, comparison method, and results for fruit purchases."
+        "text": "Researchers listed how many cases were studied, how they compared them, and what happened to fruit purchases."
       },
       {
         "id": "B",
@@ -30591,7 +30591,7 @@
       },
       {
         "id": "D",
-        "text": "A large, fair study measured customer complaint rates before and after the change."
+        "text": "A fair before-and-after study used a large sample to track customer complaint rates."
       }
     ],
     "answer": "D",
@@ -30621,7 +30621,7 @@
       },
       {
         "id": "C",
-        "text": "A random test compared similar groups with and without the change, then measured average household water use."
+        "text": "Researchers randomly compared a plan group with a no-plan group and tracked average household water use."
       },
       {
         "id": "D",
@@ -30651,7 +30651,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure missing-camera-footage reports before and after the plan."
+        "text": "Outside researchers checked missing-camera-footage reports before and after the plan using a consistent method."
       },
       {
         "id": "C",
@@ -30681,7 +30681,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Several similar settings tried the plan, and each one measured phone calls asking ballot status the same way."
+        "text": "Results from several similar places were checked with the same measure of phone calls asking ballot status."
       },
       {
         "id": "B",
@@ -30727,7 +30727,7 @@
       },
       {
         "id": "D",
-        "text": "The study reported its sample size, comparison method, and results for vocabulary retention quiz scores."
+        "text": "A study write-up included the sample size, method, and results for vocabulary retention quiz scores."
       }
     ],
     "answer": "D",
@@ -30757,7 +30757,7 @@
       },
       {
         "id": "C",
-        "text": "A large, fair study measured new-member cancellations before and after the change."
+        "text": "Researchers used a large sample and checked new-member cancellations both before and after the change."
       },
       {
         "id": "D",
@@ -30795,7 +30795,7 @@
       },
       {
         "id": "D",
-        "text": "A random test compared similar groups with and without the change, then measured reported minor crashes."
+        "text": "The plan was tested against a similar no-plan group chosen by random assignment."
       }
     ],
     "answer": "D",
@@ -30825,7 +30825,7 @@
       },
       {
         "id": "C",
-        "text": "Independent researchers used the same method to measure reader trust ratings before and after the plan."
+        "text": "The measurement was done by an independent team using the same rules before and after."
       },
       {
         "id": "D",
@@ -30859,7 +30859,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured price disputes the same way."
+        "text": "Comparable sites each tried the plan and used the same method to track price disputes."
       },
       {
         "id": "D",
@@ -30897,7 +30897,7 @@
       },
       {
         "id": "D",
-        "text": "The study reported its sample size, comparison method, and results for noise complaints from guest rooms."
+        "text": "The evidence states who was measured, how the comparison worked, and what changed in noise complaints from guest rooms."
       }
     ],
     "answer": "D",
@@ -30919,7 +30919,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study reported its sample size, comparison method, and results for late-shift commute complaints."
+        "text": "The evidence states who was measured, how the comparison worked, and what changed in late-shift commute complaints."
       },
       {
         "id": "B",
@@ -30957,7 +30957,7 @@
       },
       {
         "id": "B",
-        "text": "A large, fair study measured classroom disruption reports before and after the change."
+        "text": "The evidence covers many cases and measures classroom disruption reports on both sides of the change."
       },
       {
         "id": "C",
@@ -30995,7 +30995,7 @@
       },
       {
         "id": "C",
-        "text": "A random test compared similar groups with and without the change, then measured missed-dose reports."
+        "text": "A fair random comparison measured missed-dose reports in both the plan group and the no-plan group."
       },
       {
         "id": "D",
@@ -31033,7 +31033,7 @@
       },
       {
         "id": "D",
-        "text": "Independent researchers used the same method to measure staff resignations before and after the plan."
+        "text": "People outside the project collected comparable before-and-after data on staff resignations."
       }
     ],
     "answer": "D",
@@ -31055,7 +31055,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Several similar settings tried the plan, and each one measured shopper overpayment complaints the same way."
+        "text": "Comparable sites each tried the plan and used the same method to track shopper overpayment complaints."
       },
       {
         "id": "B",
@@ -31263,7 +31263,7 @@
       },
       {
         "id": "B",
-        "text": "The study reported its sample size, comparison method, and results for overdraft fees."
+        "text": "The report gave the sample size, comparison method, and measured result for overdraft fees."
       },
       {
         "id": "C",
@@ -31293,7 +31293,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured trail crowding complaints before and after the change."
+        "text": "Many people were included, and researchers measured trail crowding complaints before and after the plan."
       },
       {
         "id": "B",
@@ -31339,7 +31339,7 @@
       },
       {
         "id": "D",
-        "text": "A random test compared similar groups with and without the change, then measured family visits."
+        "text": "Similar groups were randomly assigned to use or not use the plan, then family visits was measured."
       }
     ],
     "answer": "D",
@@ -31369,7 +31369,7 @@
       },
       {
         "id": "C",
-        "text": "Independent researchers used the same method to measure repeat head injuries before and after the plan."
+        "text": "A team not connected to the proposal measured repeat head injuries with the same method each time."
       },
       {
         "id": "D",
@@ -31399,7 +31399,7 @@
       },
       {
         "id": "B",
-        "text": "Several similar settings tried the plan, and each one measured donor retention the same way."
+        "text": "The plan was tried in several similar places, with donor retention measured consistently in each one."
       },
       {
         "id": "C",
@@ -31429,7 +31429,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The study reported its sample size, comparison method, and results for back-injury claims."
+        "text": "Researchers listed how many cases were studied, how they compared them, and what happened to back-injury claims."
       },
       {
         "id": "B",
@@ -31475,7 +31475,7 @@
       },
       {
         "id": "D",
-        "text": "A large, fair study measured landfill waste from participating buildings before and after the change."
+        "text": "A fair before-and-after study used a large sample to track landfill waste from participating buildings."
       }
     ],
     "answer": "D",
@@ -31505,7 +31505,7 @@
       },
       {
         "id": "C",
-        "text": "A random test compared similar groups with and without the change, then measured publicly visible profiles."
+        "text": "Researchers randomly compared a plan group with a no-plan group and tracked publicly visible profiles."
       },
       {
         "id": "D",
@@ -31543,7 +31543,7 @@
       },
       {
         "id": "D",
-        "text": "Independent researchers used the same method to measure patient no-show rates before and after the plan."
+        "text": "Outside researchers checked patient no-show rates before and after the plan using a consistent method."
       }
     ],
     "answer": "D",
@@ -31573,7 +31573,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured average boarding time the same way."
+        "text": "Multiple similar settings tracked average boarding time using the same method after trying the plan."
       },
       {
         "id": "D",
@@ -31607,7 +31607,7 @@
       },
       {
         "id": "C",
-        "text": "The study reported its sample size, comparison method, and results for unresolved repair requests."
+        "text": "A study write-up included the sample size, method, and results for unresolved repair requests."
       },
       {
         "id": "D",
@@ -31645,7 +31645,7 @@
       },
       {
         "id": "D",
-        "text": "A large, fair study measured fruit purchases before and after the change."
+        "text": "Researchers used a large sample and checked fruit purchases both before and after the change."
       }
     ],
     "answer": "D",
@@ -31667,7 +31667,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A random test compared similar groups with and without the change, then measured customer complaint rates."
+        "text": "The plan was tested against a similar no-plan group chosen by random assignment."
       },
       {
         "id": "B",
@@ -31705,7 +31705,7 @@
       },
       {
         "id": "B",
-        "text": "Independent researchers used the same method to measure average household water use before and after the plan."
+        "text": "The measurement was done by an independent team using the same rules before and after."
       },
       {
         "id": "C",
@@ -31743,7 +31743,7 @@
       },
       {
         "id": "C",
-        "text": "Several similar settings tried the plan, and each one measured missing-camera-footage reports the same way."
+        "text": "Results from several similar places were checked with the same measure of missing-camera-footage reports."
       },
       {
         "id": "D",
@@ -31781,7 +31781,7 @@
       },
       {
         "id": "D",
-        "text": "The study reported its sample size, comparison method, and results for phone calls asking ballot status."
+        "text": "The evidence states who was measured, how the comparison worked, and what changed in phone calls asking ballot status."
       }
     ],
     "answer": "D",
@@ -31803,7 +31803,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "A large, fair study measured vocabulary retention quiz scores before and after the change."
+        "text": "The evidence covers many cases and measures vocabulary retention quiz scores on both sides of the change."
       },
       {
         "id": "B",
@@ -31841,7 +31841,7 @@
       },
       {
         "id": "B",
-        "text": "A random test compared similar groups with and without the change, then measured new-member cancellations."
+        "text": "A fair random comparison measured new-member cancellations in both the plan group and the no-plan group."
       },
       {
         "id": "C",
@@ -31879,7 +31879,7 @@
       },
       {
         "id": "C",
-        "text": "Independent researchers used the same method to measure reported minor crashes before and after the plan."
+        "text": "People outside the project collected comparable before-and-after data on reported minor crashes."
       },
       {
         "id": "D",
@@ -31917,7 +31917,7 @@
       },
       {
         "id": "D",
-        "text": "Several similar settings tried the plan, and each one measured reader trust ratings the same way."
+        "text": "Comparable sites each tried the plan and used the same method to track reader trust ratings."
       }
     ],
     "answer": "D",
@@ -37287,7 +37287,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "B",
@@ -37324,7 +37324,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       },
       {
         "id": "C",
@@ -37361,7 +37361,7 @@
       },
       {
         "id": "C",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       },
       {
         "id": "D",
@@ -37398,7 +37398,7 @@
       },
       {
         "id": "D",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       }
     ],
     "answer": "D",
@@ -37419,7 +37419,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       },
       {
         "id": "B",
@@ -37456,7 +37456,7 @@
       },
       {
         "id": "B",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       },
       {
         "id": "C",
@@ -37493,7 +37493,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       },
       {
         "id": "D",
@@ -37530,7 +37530,7 @@
       },
       {
         "id": "D",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       }
     ],
     "answer": "D",
@@ -37559,7 +37559,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       },
       {
         "id": "D",
@@ -37596,7 +37596,7 @@
       },
       {
         "id": "D",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       }
     ],
     "answer": "D",
@@ -37621,7 +37621,7 @@
       },
       {
         "id": "B",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       },
       {
         "id": "C",
@@ -37662,7 +37662,7 @@
       },
       {
         "id": "D",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       }
     ],
     "answer": "D",
@@ -37687,7 +37687,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       },
       {
         "id": "C",
@@ -37716,7 +37716,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       },
       {
         "id": "B",
@@ -37761,7 +37761,7 @@
       },
       {
         "id": "D",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       }
     ],
     "answer": "D",
@@ -37790,7 +37790,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       },
       {
         "id": "D",
@@ -37819,7 +37819,7 @@
       },
       {
         "id": "B",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "C",
@@ -37848,7 +37848,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       },
       {
         "id": "B",
@@ -37893,7 +37893,7 @@
       },
       {
         "id": "D",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       }
     ],
     "answer": "D",
@@ -37918,7 +37918,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       },
       {
         "id": "C",
@@ -37947,7 +37947,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "B",
@@ -37988,7 +37988,7 @@
       },
       {
         "id": "C",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       },
       {
         "id": "D",
@@ -38021,7 +38021,7 @@
       },
       {
         "id": "C",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       },
       {
         "id": "D",
@@ -38058,7 +38058,7 @@
       },
       {
         "id": "D",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       }
     ],
     "answer": "D",
@@ -38087,7 +38087,7 @@
       },
       {
         "id": "C",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       },
       {
         "id": "D",
@@ -38124,7 +38124,7 @@
       },
       {
         "id": "D",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       }
     ],
     "answer": "D",
@@ -38145,7 +38145,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       },
       {
         "id": "B",
@@ -38182,7 +38182,7 @@
       },
       {
         "id": "B",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       },
       {
         "id": "C",
@@ -38219,7 +38219,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       },
       {
         "id": "D",
@@ -38244,7 +38244,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       },
       {
         "id": "B",
@@ -38281,7 +38281,7 @@
       },
       {
         "id": "B",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       },
       {
         "id": "C",
@@ -38310,7 +38310,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       },
       {
         "id": "B",
@@ -38355,7 +38355,7 @@
       },
       {
         "id": "D",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       }
     ],
     "answer": "D",
@@ -38384,7 +38384,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       },
       {
         "id": "D",
@@ -38413,7 +38413,7 @@
       },
       {
         "id": "B",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       },
       {
         "id": "C",
@@ -38442,7 +38442,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       },
       {
         "id": "B",
@@ -38487,7 +38487,7 @@
       },
       {
         "id": "D",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       }
     ],
     "answer": "D",
@@ -38516,7 +38516,7 @@
       },
       {
         "id": "C",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       },
       {
         "id": "D",
@@ -38545,7 +38545,7 @@
       },
       {
         "id": "B",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       },
       {
         "id": "C",
@@ -38574,7 +38574,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       },
       {
         "id": "B",
@@ -38619,7 +38619,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       }
     ],
     "answer": "D",
@@ -38648,7 +38648,7 @@
       },
       {
         "id": "C",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       },
       {
         "id": "D",
@@ -38673,7 +38673,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       },
       {
         "id": "B",
@@ -38710,7 +38710,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       },
       {
         "id": "C",
@@ -38747,7 +38747,7 @@
       },
       {
         "id": "C",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       },
       {
         "id": "D",
@@ -38784,7 +38784,7 @@
       },
       {
         "id": "D",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       }
     ],
     "answer": "D",
@@ -38805,7 +38805,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       },
       {
         "id": "B",
@@ -38842,7 +38842,7 @@
       },
       {
         "id": "B",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "C",
@@ -38879,7 +38879,7 @@
       },
       {
         "id": "C",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       },
       {
         "id": "D",
@@ -38916,7 +38916,7 @@
       },
       {
         "id": "D",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       }
     ],
     "answer": "D",
@@ -38937,7 +38937,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       },
       {
         "id": "B",
@@ -38974,7 +38974,7 @@
       },
       {
         "id": "B",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "C",
@@ -39015,7 +39015,7 @@
       },
       {
         "id": "D",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       }
     ],
     "answer": "D",
@@ -39044,7 +39044,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       },
       {
         "id": "D",
@@ -39073,7 +39073,7 @@
       },
       {
         "id": "B",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       },
       {
         "id": "C",
@@ -39102,7 +39102,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       },
       {
         "id": "B",
@@ -39147,7 +39147,7 @@
       },
       {
         "id": "D",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       }
     ],
     "answer": "D",
@@ -39176,7 +39176,7 @@
       },
       {
         "id": "C",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       },
       {
         "id": "D",
@@ -39205,7 +39205,7 @@
       },
       {
         "id": "B",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       },
       {
         "id": "C",
@@ -39234,7 +39234,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       },
       {
         "id": "B",
@@ -39279,7 +39279,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       }
     ],
     "answer": "D",
@@ -39308,7 +39308,7 @@
       },
       {
         "id": "C",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       },
       {
         "id": "D",
@@ -39333,7 +39333,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       },
       {
         "id": "B",
@@ -39370,7 +39370,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       },
       {
         "id": "C",
@@ -39407,7 +39407,7 @@
       },
       {
         "id": "C",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       },
       {
         "id": "D",
@@ -39432,7 +39432,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       },
       {
         "id": "B",
@@ -39473,7 +39473,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       },
       {
         "id": "D",
@@ -39498,7 +39498,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       },
       {
         "id": "B",
@@ -39531,7 +39531,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       },
       {
         "id": "B",
@@ -39572,7 +39572,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       },
       {
         "id": "D",
@@ -39609,7 +39609,7 @@
       },
       {
         "id": "D",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       }
     ],
     "answer": "D",
@@ -39638,7 +39638,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       },
       {
         "id": "D",
@@ -39663,7 +39663,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       },
       {
         "id": "B",
@@ -39700,7 +39700,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       },
       {
         "id": "C",
@@ -39733,7 +39733,7 @@
       },
       {
         "id": "B",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "C",
@@ -39762,7 +39762,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       },
       {
         "id": "B",
@@ -39807,7 +39807,7 @@
       },
       {
         "id": "D",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       }
     ],
     "answer": "D",
@@ -39836,7 +39836,7 @@
       },
       {
         "id": "C",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       },
       {
         "id": "D",
@@ -39865,7 +39865,7 @@
       },
       {
         "id": "B",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "C",
@@ -39894,7 +39894,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       },
       {
         "id": "B",
@@ -39939,7 +39939,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       }
     ],
     "answer": "D",
@@ -39968,7 +39968,7 @@
       },
       {
         "id": "C",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       },
       {
         "id": "D",
@@ -40005,7 +40005,7 @@
       },
       {
         "id": "D",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       }
     ],
     "answer": "D",
@@ -40034,7 +40034,7 @@
       },
       {
         "id": "C",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       },
       {
         "id": "D",
@@ -40059,7 +40059,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       },
       {
         "id": "B",
@@ -40096,7 +40096,7 @@
       },
       {
         "id": "B",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       },
       {
         "id": "C",
@@ -40137,7 +40137,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       }
     ],
     "answer": "D",
@@ -40162,7 +40162,7 @@
       },
       {
         "id": "B",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       },
       {
         "id": "C",
@@ -40203,7 +40203,7 @@
       },
       {
         "id": "D",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       }
     ],
     "answer": "D",
@@ -40228,7 +40228,7 @@
       },
       {
         "id": "B",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       },
       {
         "id": "C",
@@ -40257,7 +40257,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       },
       {
         "id": "B",
@@ -40302,7 +40302,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       }
     ],
     "answer": "D",
@@ -40327,7 +40327,7 @@
       },
       {
         "id": "B",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       },
       {
         "id": "C",
@@ -40368,7 +40368,7 @@
       },
       {
         "id": "D",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       }
     ],
     "answer": "D",
@@ -40393,7 +40393,7 @@
       },
       {
         "id": "B",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "C",
@@ -40430,7 +40430,7 @@
       },
       {
         "id": "C",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       },
       {
         "id": "D",
@@ -40467,7 +40467,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       }
     ],
     "answer": "D",
@@ -40496,7 +40496,7 @@
       },
       {
         "id": "C",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       },
       {
         "id": "D",
@@ -40525,7 +40525,7 @@
       },
       {
         "id": "B",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       },
       {
         "id": "C",
@@ -40554,7 +40554,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       },
       {
         "id": "B",
@@ -40599,7 +40599,7 @@
       },
       {
         "id": "D",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       }
     ],
     "answer": "D",
@@ -40628,7 +40628,7 @@
       },
       {
         "id": "C",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "D",
@@ -40657,7 +40657,7 @@
       },
       {
         "id": "B",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       },
       {
         "id": "C",
@@ -40686,7 +40686,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       },
       {
         "id": "B",
@@ -40723,7 +40723,7 @@
       },
       {
         "id": "B",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       },
       {
         "id": "C",
@@ -40752,7 +40752,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "B",
@@ -40785,7 +40785,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       },
       {
         "id": "B",
@@ -40822,7 +40822,7 @@
       },
       {
         "id": "B",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       },
       {
         "id": "C",
@@ -40859,7 +40859,7 @@
       },
       {
         "id": "C",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       },
       {
         "id": "D",
@@ -40896,7 +40896,7 @@
       },
       {
         "id": "D",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       }
     ],
     "answer": "D",
@@ -40917,7 +40917,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       },
       {
         "id": "B",
@@ -40954,7 +40954,7 @@
       },
       {
         "id": "B",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       },
       {
         "id": "C",
@@ -40991,7 +40991,7 @@
       },
       {
         "id": "C",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       },
       {
         "id": "D",
@@ -41028,7 +41028,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       }
     ],
     "answer": "D",
@@ -41057,7 +41057,7 @@
       },
       {
         "id": "C",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       },
       {
         "id": "D",
@@ -41094,7 +41094,7 @@
       },
       {
         "id": "D",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       }
     ],
     "answer": "D",
@@ -41127,7 +41127,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       }
     ],
     "answer": "D",
@@ -41156,7 +41156,7 @@
       },
       {
         "id": "C",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       },
       {
         "id": "D",
@@ -41185,7 +41185,7 @@
       },
       {
         "id": "B",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       },
       {
         "id": "C",
@@ -41214,7 +41214,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       },
       {
         "id": "B",
@@ -41259,7 +41259,7 @@
       },
       {
         "id": "D",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       }
     ],
     "answer": "D",
@@ -41288,7 +41288,7 @@
       },
       {
         "id": "C",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "D",
@@ -41313,7 +41313,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       },
       {
         "id": "B",
@@ -41354,7 +41354,7 @@
       },
       {
         "id": "C",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       },
       {
         "id": "D",
@@ -41383,7 +41383,7 @@
       },
       {
         "id": "B",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       },
       {
         "id": "C",
@@ -41412,7 +41412,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "B",
@@ -41457,7 +41457,7 @@
       },
       {
         "id": "D",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       }
     ],
     "answer": "D",
@@ -41482,7 +41482,7 @@
       },
       {
         "id": "B",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       },
       {
         "id": "C",
@@ -41519,7 +41519,7 @@
       },
       {
         "id": "C",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "D",
@@ -41556,7 +41556,7 @@
       },
       {
         "id": "D",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       }
     ],
     "answer": "D",
@@ -41577,7 +41577,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       },
       {
         "id": "B",
@@ -41614,7 +41614,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       },
       {
         "id": "C",
@@ -41651,7 +41651,7 @@
       },
       {
         "id": "C",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "D",
@@ -41688,7 +41688,7 @@
       },
       {
         "id": "D",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       }
     ],
     "answer": "D",
@@ -41709,7 +41709,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       },
       {
         "id": "B",
@@ -41746,7 +41746,7 @@
       },
       {
         "id": "B",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       },
       {
         "id": "C",
@@ -41775,7 +41775,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       },
       {
         "id": "B",
@@ -41812,7 +41812,7 @@
       },
       {
         "id": "B",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       },
       {
         "id": "C",
@@ -41853,7 +41853,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       }
     ],
     "answer": "D",
@@ -41878,7 +41878,7 @@
       },
       {
         "id": "B",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       },
       {
         "id": "C",
@@ -41919,7 +41919,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes the action caused the change just because the change came after it."
+        "text": "The action is assumed to be the cause just because the change came after it."
       }
     ],
     "answer": "D",
@@ -41948,7 +41948,7 @@
       },
       {
         "id": "C",
-        "text": "It jumps from liking the plan to proving the plan benefits every person affected."
+        "text": "Liking the plan is treated as proof that the plan benefits every person affected."
       },
       {
         "id": "D",
@@ -41985,7 +41985,7 @@
       },
       {
         "id": "D",
-        "text": "It jumps from an average improvement to the claim that everyone improved."
+        "text": "The reasoning stretches an average improvement into the claim that everyone improved."
       }
     ],
     "answer": "D",
@@ -42010,7 +42010,7 @@
       },
       {
         "id": "B",
-        "text": "It jumps from one group that improved to all similar settings without more evidence."
+        "text": "One group improved, but that does not show all similar settings will improve too."
       },
       {
         "id": "C",
@@ -42051,7 +42051,7 @@
       },
       {
         "id": "D",
-        "text": "It moves from sequence to cause without checking what else changed."
+        "text": "The reasoning moves from sequence to cause without checking what else changed."
       }
     ],
     "answer": "D",
@@ -42076,7 +42076,7 @@
       },
       {
         "id": "B",
-        "text": "It assumes a survey of most people is enough to show every person will benefit."
+        "text": "A survey of most people is assumed to show that every person will benefit."
       },
       {
         "id": "C",
@@ -42109,7 +42109,7 @@
       },
       {
         "id": "B",
-        "text": "It treats a group-level result as if it proves the same result for every person."
+        "text": "A group-level result is read as if it proves the same result for every person."
       },
       {
         "id": "C",
@@ -42138,7 +42138,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes one test is enough to show the plan will work in every setting."
+        "text": "One test is assumed to be enough to show the plan will work in every setting."
       },
       {
         "id": "B",
@@ -42179,7 +42179,7 @@
       },
       {
         "id": "C",
-        "text": "It treats timing as enough evidence even though another cause could explain the result."
+        "text": "Timing is counted as enough evidence even though another cause could explain the result."
       },
       {
         "id": "D",
@@ -42216,7 +42216,7 @@
       },
       {
         "id": "D",
-        "text": "It confuses people liking the plan with evidence that the plan helps everyone."
+        "text": "People liking the plan is confused with evidence that the plan helps everyone."
       }
     ],
     "answer": "D",
@@ -42237,7 +42237,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It ignores that an average can improve even when some people do not improve."
+        "text": "Some people may not improve even when the average does, and the argument misses that."
       },
       {
         "id": "B",
@@ -42274,7 +42274,7 @@
       },
       {
         "id": "B",
-        "text": "It moves from a single success to a much broader claim than the evidence supports."
+        "text": "A single success becomes a much broader claim than the evidence supports."
       },
       {
         "id": "C",
@@ -42303,7 +42303,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It assumes timing alone proves causation, without ruling out other causes."
+        "text": "Timing alone is treated as proof of causation, without ruling out other causes."
       },
       {
         "id": "B",
@@ -42344,7 +42344,7 @@
       },
       {
         "id": "C",
-        "text": "It moves from what most surveyed people liked to what everyone will benefit from."
+        "text": "The claim moves from what most surveyed people liked to what everyone will benefit from."
       },
       {
         "id": "D",
@@ -42369,7 +42369,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats an average change as proof that every individual changed the same way."
+        "text": "The average change is used as proof that every individual changed the same way."
       },
       {
         "id": "B",
@@ -42410,7 +42410,7 @@
       },
       {
         "id": "C",
-        "text": "It generalizes from one case to every case without enough support."
+        "text": "The argument generalizes from one case to every case without enough support."
       },
       {
         "id": "D",
@@ -42435,7 +42435,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats a before-and-after change as proof of cause without more evidence."
+        "text": "A before-and-after change is used as proof of cause without more evidence."
       },
       {
         "id": "B",
@@ -42476,7 +42476,7 @@
       },
       {
         "id": "C",
-        "text": "It treats most survey approval as proof that every affected person will be helped."
+        "text": "Most survey approval is used as proof that every affected person will be helped."
       },
       {
         "id": "D",
@@ -42513,7 +42513,7 @@
       },
       {
         "id": "D",
-        "text": "It assumes the group average tells what happened to each individual person."
+        "text": "The group average is assumed to show what happened to each individual person."
       }
     ],
     "answer": "D",
@@ -42542,7 +42542,7 @@
       },
       {
         "id": "C",
-        "text": "It treats one successful example as enough to prove the result will happen everywhere."
+        "text": "One successful example is used as if it proves the result will happen everywhere."
       },
       {
         "id": "D",
@@ -48011,7 +48011,7 @@
       },
       {
         "id": "B",
-        "text": "In many similar cases, the improvement would happen about 65 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 65 would be expected to improve."
       },
       {
         "id": "C",
@@ -48047,7 +48047,7 @@
       },
       {
         "id": "C",
-        "text": "If there were 100 similar forecasts, about 70 would be expected to improve."
+        "text": "A 70-out-of-100 chance means the result may happen, but it may not."
       },
       {
         "id": "D",
@@ -48083,7 +48083,7 @@
       },
       {
         "id": "D",
-        "text": "The forecast says improvement is possible but not guaranteed: about 75 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       }
     ],
     "answer": "D",
@@ -48111,7 +48111,7 @@
       },
       {
         "id": "C",
-        "text": "It leaves room for the result not to happen, because 80% is a chance rather than a promise."
+        "text": "About 80 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "D",
@@ -48147,7 +48147,7 @@
       },
       {
         "id": "D",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       }
     ],
     "answer": "D",
@@ -48339,7 +48339,7 @@
       },
       {
         "id": "D",
-        "text": "In many similar cases, the improvement would happen about 20 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 20 would be expected to improve."
       }
     ],
     "answer": "D",
@@ -48363,7 +48363,7 @@
       },
       {
         "id": "B",
-        "text": "If there were 100 similar forecasts, about 25 would be expected to improve."
+        "text": "A 25-out-of-100 chance means the result may happen, but it may not."
       },
       {
         "id": "C",
@@ -48403,7 +48403,7 @@
       },
       {
         "id": "D",
-        "text": "The forecast says improvement is possible but not guaranteed: about 30 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       }
     ],
     "answer": "D",
@@ -48435,7 +48435,7 @@
       },
       {
         "id": "D",
-        "text": "It leaves room for the result not to happen, because 40% is a chance rather than a promise."
+        "text": "About 40 of 100 similar situations would be expected to show the improvement."
       }
     ],
     "answer": "D",
@@ -48463,7 +48463,7 @@
       },
       {
         "id": "C",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       },
       {
         "id": "D",
@@ -48647,7 +48647,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "In many similar cases, the improvement would happen about 85 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 85 would be expected to improve."
       },
       {
         "id": "B",
@@ -48687,7 +48687,7 @@
       },
       {
         "id": "C",
-        "text": "If there were 100 similar forecasts, about 90 would be expected to improve."
+        "text": "A 90-out-of-100 chance means the result may happen, but it may not."
       },
       {
         "id": "D",
@@ -48711,7 +48711,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The forecast says improvement is possible but not guaranteed: about 15 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       },
       {
         "id": "B",
@@ -48751,7 +48751,7 @@
       },
       {
         "id": "C",
-        "text": "It leaves room for the result not to happen, because 35% is a chance rather than a promise."
+        "text": "About 35 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "D",
@@ -48775,7 +48775,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       },
       {
         "id": "B",
@@ -49011,7 +49011,7 @@
       },
       {
         "id": "D",
-        "text": "In many similar cases, the improvement would happen about 65 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 65 would be expected to improve."
       }
     ],
     "answer": "D",
@@ -49039,7 +49039,7 @@
       },
       {
         "id": "C",
-        "text": "If there were 100 similar forecasts, about 70 would be expected to improve."
+        "text": "A 70-out-of-100 chance means the result may happen, but it may not."
       },
       {
         "id": "D",
@@ -49067,7 +49067,7 @@
       },
       {
         "id": "B",
-        "text": "The forecast says improvement is possible but not guaranteed: about 75 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       },
       {
         "id": "C",
@@ -49095,7 +49095,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It leaves room for the result not to happen, because 80% is a chance rather than a promise."
+        "text": "About 80 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "B",
@@ -49131,7 +49131,7 @@
       },
       {
         "id": "B",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       },
       {
         "id": "C",
@@ -49327,7 +49327,7 @@
       },
       {
         "id": "C",
-        "text": "In many similar cases, the improvement would happen about 20 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 20 would be expected to improve."
       },
       {
         "id": "D",
@@ -49363,7 +49363,7 @@
       },
       {
         "id": "D",
-        "text": "If there were 100 similar forecasts, about 25 would be expected to improve."
+        "text": "A 25-out-of-100 chance means the result may happen, but it may not."
       }
     ],
     "answer": "D",
@@ -49383,7 +49383,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The forecast says improvement is possible but not guaranteed: about 30 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       },
       {
         "id": "B",
@@ -49419,7 +49419,7 @@
       },
       {
         "id": "B",
-        "text": "It leaves room for the result not to happen, because 40% is a chance rather than a promise."
+        "text": "About 40 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "C",
@@ -49455,7 +49455,7 @@
       },
       {
         "id": "C",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       },
       {
         "id": "D",
@@ -49643,7 +49643,7 @@
       },
       {
         "id": "B",
-        "text": "In many similar cases, the improvement would happen about 85 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 85 would be expected to improve."
       },
       {
         "id": "C",
@@ -49671,7 +49671,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "If there were 100 similar forecasts, about 90 would be expected to improve."
+        "text": "A 90-out-of-100 chance means the result may happen, but it may not."
       },
       {
         "id": "B",
@@ -49715,7 +49715,7 @@
       },
       {
         "id": "D",
-        "text": "The forecast says improvement is possible but not guaranteed: about 15 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       }
     ],
     "answer": "D",
@@ -49743,7 +49743,7 @@
       },
       {
         "id": "C",
-        "text": "It leaves room for the result not to happen, because 35% is a chance rather than a promise."
+        "text": "About 35 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "D",
@@ -49771,7 +49771,7 @@
       },
       {
         "id": "B",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       },
       {
         "id": "C",
@@ -49995,7 +49995,7 @@
       },
       {
         "id": "B",
-        "text": "In many similar cases, the improvement would happen about 65 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 65 would be expected to improve."
       },
       {
         "id": "C",
@@ -50031,7 +50031,7 @@
       },
       {
         "id": "C",
-        "text": "If there were 100 similar forecasts, about 70 would be expected to improve."
+        "text": "A 70-out-of-100 chance means the result may happen, but it may not."
       },
       {
         "id": "D",
@@ -50067,7 +50067,7 @@
       },
       {
         "id": "D",
-        "text": "The forecast says improvement is possible but not guaranteed: about 75 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       }
     ],
     "answer": "D",
@@ -50087,7 +50087,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It leaves room for the result not to happen, because 80% is a chance rather than a promise."
+        "text": "About 80 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "B",
@@ -50123,7 +50123,7 @@
       },
       {
         "id": "B",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       },
       {
         "id": "C",
@@ -50311,7 +50311,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "In many similar cases, the improvement would happen about 20 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 20 would be expected to improve."
       },
       {
         "id": "B",
@@ -50355,7 +50355,7 @@
       },
       {
         "id": "D",
-        "text": "If there were 100 similar forecasts, about 25 would be expected to improve."
+        "text": "A 25-out-of-100 chance means the result may happen, but it may not."
       }
     ],
     "answer": "D",
@@ -50383,7 +50383,7 @@
       },
       {
         "id": "C",
-        "text": "The forecast says improvement is possible but not guaranteed: about 30 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       },
       {
         "id": "D",
@@ -50411,7 +50411,7 @@
       },
       {
         "id": "B",
-        "text": "It leaves room for the result not to happen, because 40% is a chance rather than a promise."
+        "text": "About 40 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "C",
@@ -50439,7 +50439,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       },
       {
         "id": "B",
@@ -50643,7 +50643,7 @@
       },
       {
         "id": "D",
-        "text": "In many similar cases, the improvement would happen about 85 out of 100 times."
+        "text": "Out of 100 cases like this, roughly 85 would be expected to improve."
       }
     ],
     "answer": "D",
@@ -50663,7 +50663,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "If there were 100 similar forecasts, about 90 would be expected to improve."
+        "text": "A 90-out-of-100 chance means the result may happen, but it may not."
       },
       {
         "id": "B",
@@ -50699,7 +50699,7 @@
       },
       {
         "id": "B",
-        "text": "The forecast says improvement is possible but not guaranteed: about 15 chances in 100."
+        "text": "The percentage describes a chance across repeated similar cases, not a promise for this one."
       },
       {
         "id": "C",
@@ -50735,7 +50735,7 @@
       },
       {
         "id": "C",
-        "text": "It leaves room for the result not to happen, because 35% is a chance rather than a promise."
+        "text": "About 35 of 100 similar situations would be expected to show the improvement."
       },
       {
         "id": "D",
@@ -50771,7 +50771,7 @@
       },
       {
         "id": "D",
-        "text": "The number estimates how often this improvement would happen across many similar cases."
+        "text": "This is a likelihood estimate: the result is possible, not certain."
       }
     ],
     "answer": "D",
@@ -50995,7 +50995,7 @@
       },
       {
         "id": "D",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       }
     ],
     "answer": "D",
@@ -51051,7 +51051,7 @@
       },
       {
         "id": "B",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "C",
@@ -51151,7 +51151,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "D",
@@ -51207,7 +51207,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "B",
@@ -51303,7 +51303,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "B",
@@ -51367,7 +51367,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "B",
@@ -51471,7 +51471,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "D",
@@ -51535,7 +51535,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "D",
@@ -51635,7 +51635,7 @@
       },
       {
         "id": "D",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       }
     ],
     "answer": "D",
@@ -51699,7 +51699,7 @@
       },
       {
         "id": "D",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       }
     ],
     "answer": "D",
@@ -51787,7 +51787,7 @@
       },
       {
         "id": "B",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "C",
@@ -51855,7 +51855,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "D",
@@ -51979,7 +51979,7 @@
       },
       {
         "id": "B",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "C",
@@ -52051,7 +52051,7 @@
       },
       {
         "id": "D",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       }
     ],
     "answer": "D",
@@ -52143,7 +52143,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "D",
@@ -52207,7 +52207,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "D",
@@ -52307,7 +52307,7 @@
       },
       {
         "id": "D",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       }
     ],
     "answer": "D",
@@ -52359,7 +52359,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "B",
@@ -52459,7 +52459,7 @@
       },
       {
         "id": "B",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "C",
@@ -52531,7 +52531,7 @@
       },
       {
         "id": "D",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       }
     ],
     "answer": "D",
@@ -52623,7 +52623,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "D",
@@ -52691,7 +52691,7 @@
       },
       {
         "id": "D",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       }
     ],
     "answer": "D",
@@ -52775,7 +52775,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "B",
@@ -52847,7 +52847,7 @@
       },
       {
         "id": "C",
-        "text": "Treat the signal as evidence to investigate, while remembering that it is not certainty."
+        "text": "See the signal as evidence to investigate, while remembering that it is not certainty."
       },
       {
         "id": "D",
@@ -52935,7 +52935,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Treat the signal as a reason to check further, not as proof that the problem is there."
+        "text": "Use the signal as a reason to check further, not as proof that the problem is there."
       },
       {
         "id": "B",
@@ -73997,7 +73997,7 @@
       },
       {
         "id": "B",
-        "text": "It treats the benefit and the cost as parts of the same decision."
+        "text": "The benefit and the cost are counted as parts of the same decision."
       },
       {
         "id": "C",
@@ -74026,7 +74026,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It says the plan could help, but another need might get less attention."
+        "text": "The plan could help, but another need might get less attention."
       },
       {
         "id": "B",
@@ -74071,7 +74071,7 @@
       },
       {
         "id": "D",
-        "text": "It keeps both sides in view: possible improvement and limited resources."
+        "text": "Both sides stay in view: possible improvement and limited resources."
       }
     ],
     "answer": "D",
@@ -74265,7 +74265,7 @@
       },
       {
         "id": "C",
-        "text": "It shows the gain people hope for while also naming the cost of getting it."
+        "text": "The gain people hope for is named along with the cost of getting it."
       },
       {
         "id": "D",
@@ -74323,7 +74323,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It says the benefit matters, but the cost also has to be counted."
+        "text": "The benefit matters, but the cost also has to be counted."
       },
       {
         "id": "B",
@@ -74360,7 +74360,7 @@
       },
       {
         "id": "B",
-        "text": "It shows that one group or need may benefit while another waits longer."
+        "text": "One group or need may benefit while another waits longer."
       },
       {
         "id": "C",
@@ -74434,7 +74434,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the possible improvement and the required cost as part of one choice."
+        "text": "The possible improvement and the required cost are kept together."
       }
     ],
     "answer": "D",
@@ -74455,7 +74455,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It keeps the desired result and the required resources in the same decision."
+        "text": "The desired result and the required resources stay in the same decision."
       },
       {
         "id": "B",
@@ -74492,7 +74492,7 @@
       },
       {
         "id": "B",
-        "text": "It keeps the upside and the downside together instead of separating them."
+        "text": "The upside and the downside are kept together instead of separated."
       },
       {
         "id": "C",
@@ -74521,7 +74521,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the possible help as real, while also naming what may be delayed."
+        "text": "The possible help is real, but the answer also names what may be delayed."
       },
       {
         "id": "B",
@@ -74558,7 +74558,7 @@
       },
       {
         "id": "B",
-        "text": "It treats the upside and the resource limit as the two sides of the tradeoff."
+        "text": "The upside and the resource limit are shown as the two sides of the tradeoff."
       },
       {
         "id": "C",
@@ -74628,7 +74628,7 @@
       },
       {
         "id": "C",
-        "text": "It treats the plan's possible payoff and resource cost as connected."
+        "text": "The plan's possible payoff and resource cost are connected in the choice."
       },
       {
         "id": "D",
@@ -74818,7 +74818,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the benefit and the cost as parts of the same decision."
+        "text": "The benefit and the cost are counted as parts of the same decision."
       },
       {
         "id": "B",
@@ -74863,7 +74863,7 @@
       },
       {
         "id": "D",
-        "text": "It says the plan could help, but another need might get less attention."
+        "text": "The plan could help, but another need might get less attention."
       }
     ],
     "answer": "D",
@@ -74892,7 +74892,7 @@
       },
       {
         "id": "C",
-        "text": "It keeps both sides in view: possible improvement and limited resources."
+        "text": "Both sides stay in view: possible improvement and limited resources."
       },
       {
         "id": "D",
@@ -75189,7 +75189,7 @@
       },
       {
         "id": "C",
-        "text": "It says the benefit matters, but the cost also has to be counted."
+        "text": "The benefit matters, but the cost also has to be counted."
       },
       {
         "id": "D",
@@ -75214,7 +75214,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It shows that one group or need may benefit while another waits longer."
+        "text": "One group or need may benefit while another waits longer."
       },
       {
         "id": "B",
@@ -75292,7 +75292,7 @@
       },
       {
         "id": "D",
-        "text": "It shows the gain people hope for while also naming the cost of getting it."
+        "text": "The gain people hope for is named along with the cost of getting it."
       }
     ],
     "answer": "D",
@@ -75317,7 +75317,7 @@
       },
       {
         "id": "B",
-        "text": "It keeps the desired result and the required resources in the same decision."
+        "text": "The desired result and the required resources stay in the same decision."
       },
       {
         "id": "C",
@@ -75346,7 +75346,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It keeps the upside and the downside together instead of separating them."
+        "text": "The upside and the downside are kept together instead of separated."
       },
       {
         "id": "B",
@@ -75391,7 +75391,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the possible help as real, while also naming what may be delayed."
+        "text": "The possible help is real, but the answer also names what may be delayed."
       }
     ],
     "answer": "D",
@@ -75420,7 +75420,7 @@
       },
       {
         "id": "C",
-        "text": "It treats the upside and the resource limit as the two sides of the tradeoff."
+        "text": "The upside and the resource limit are shown as the two sides of the tradeoff."
       },
       {
         "id": "D",
@@ -75449,7 +75449,7 @@
       },
       {
         "id": "B",
-        "text": "It treats the possible improvement and the required cost as part of one choice."
+        "text": "The possible improvement and the required cost are kept together."
       },
       {
         "id": "C",
@@ -75490,7 +75490,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the plan's possible payoff and resource cost as connected."
+        "text": "The plan's possible payoff and resource cost are connected in the choice."
       }
     ],
     "answer": "D",
@@ -75684,7 +75684,7 @@
       },
       {
         "id": "C",
-        "text": "It treats the benefit and the cost as parts of the same decision."
+        "text": "The benefit and the cost are counted as parts of the same decision."
       },
       {
         "id": "D",
@@ -75717,7 +75717,7 @@
       },
       {
         "id": "C",
-        "text": "It says the plan could help, but another need might get less attention."
+        "text": "The plan could help, but another need might get less attention."
       },
       {
         "id": "D",
@@ -75754,7 +75754,7 @@
       },
       {
         "id": "D",
-        "text": "It keeps both sides in view: possible improvement and limited resources."
+        "text": "Both sides stay in view: possible improvement and limited resources."
       }
     ],
     "answer": "D",
@@ -76006,7 +76006,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It says the benefit matters, but the cost also has to be counted."
+        "text": "The benefit matters, but the cost also has to be counted."
       },
       {
         "id": "B",
@@ -76051,7 +76051,7 @@
       },
       {
         "id": "D",
-        "text": "It says the benefit matters, but the cost also has to be counted."
+        "text": "The benefit matters, but the cost also has to be counted."
       }
     ],
     "answer": "D",
@@ -76080,7 +76080,7 @@
       },
       {
         "id": "C",
-        "text": "It shows that one group or need may benefit while another waits longer."
+        "text": "One group or need may benefit while another waits longer."
       },
       {
         "id": "D",
@@ -76138,7 +76138,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It shows the gain people hope for while also naming the cost of getting it."
+        "text": "The gain people hope for is named along with the cost of getting it."
       },
       {
         "id": "B",
@@ -76212,7 +76212,7 @@
       },
       {
         "id": "C",
-        "text": "It keeps the upside and the downside together instead of separating them."
+        "text": "The upside and the downside are kept together instead of separated."
       },
       {
         "id": "D",
@@ -76241,7 +76241,7 @@
       },
       {
         "id": "B",
-        "text": "It treats the possible help as real, while also naming what may be delayed."
+        "text": "The possible help is real, but the answer also names what may be delayed."
       },
       {
         "id": "C",
@@ -76270,7 +76270,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the upside and the resource limit as the two sides of the tradeoff."
+        "text": "The upside and the resource limit are shown as the two sides of the tradeoff."
       },
       {
         "id": "B",
@@ -76315,7 +76315,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the possible improvement and the required cost as part of one choice."
+        "text": "The possible improvement and the required cost are kept together."
       }
     ],
     "answer": "D",
@@ -76344,7 +76344,7 @@
       },
       {
         "id": "C",
-        "text": "It keeps the desired result and the required resources in the same decision."
+        "text": "The desired result and the required resources stay in the same decision."
       },
       {
         "id": "D",
@@ -76501,7 +76501,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the plan's possible payoff and resource cost as connected."
+        "text": "The plan's possible payoff and resource cost are connected in the choice."
       },
       {
         "id": "B",
@@ -76538,7 +76538,7 @@
       },
       {
         "id": "B",
-        "text": "It treats the benefit and the cost as parts of the same decision."
+        "text": "The benefit and the cost are counted as parts of the same decision."
       },
       {
         "id": "C",
@@ -76575,7 +76575,7 @@
       },
       {
         "id": "C",
-        "text": "It says the plan could help, but another need might get less attention."
+        "text": "The plan could help, but another need might get less attention."
       },
       {
         "id": "D",
@@ -76612,7 +76612,7 @@
       },
       {
         "id": "D",
-        "text": "It keeps both sides in view: possible improvement and limited resources."
+        "text": "Both sides stay in view: possible improvement and limited resources."
       }
     ],
     "answer": "D",
@@ -76864,7 +76864,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It says the benefit matters, but the cost also has to be counted."
+        "text": "The benefit matters, but the cost also has to be counted."
       },
       {
         "id": "B",
@@ -76905,7 +76905,7 @@
       },
       {
         "id": "C",
-        "text": "It shows that one group or need may benefit while another waits longer."
+        "text": "One group or need may benefit while another waits longer."
       },
       {
         "id": "D",
@@ -76975,7 +76975,7 @@
       },
       {
         "id": "D",
-        "text": "It shows the gain people hope for while also naming the cost of getting it."
+        "text": "The gain people hope for is named along with the cost of getting it."
       }
     ],
     "answer": "D",
@@ -77033,7 +77033,7 @@
       },
       {
         "id": "B",
-        "text": "It keeps the upside and the downside together instead of separating them."
+        "text": "The upside and the downside are kept together instead of separated."
       },
       {
         "id": "C",
@@ -77074,7 +77074,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the possible help as real, while also naming what may be delayed."
+        "text": "The possible help is real, but the answer also names what may be delayed."
       }
     ],
     "answer": "D",
@@ -77103,7 +77103,7 @@
       },
       {
         "id": "C",
-        "text": "It treats the possible help as real, while also naming what may be delayed."
+        "text": "The possible help is real, but the answer also names what may be delayed."
       },
       {
         "id": "D",
@@ -77140,7 +77140,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the upside and the resource limit as the two sides of the tradeoff."
+        "text": "The upside and the resource limit are shown as the two sides of the tradeoff."
       }
     ],
     "answer": "D",
@@ -77161,7 +77161,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the possible improvement and the required cost as part of one choice."
+        "text": "The possible improvement and the required cost are kept together."
       },
       {
         "id": "B",
@@ -77198,7 +77198,7 @@
       },
       {
         "id": "B",
-        "text": "It keeps the desired result and the required resources in the same decision."
+        "text": "The desired result and the required resources stay in the same decision."
       },
       {
         "id": "C",
@@ -77235,7 +77235,7 @@
       },
       {
         "id": "C",
-        "text": "It keeps the upside and the downside together instead of separating them."
+        "text": "The upside and the downside are kept together instead of separated."
       },
       {
         "id": "D",
@@ -77367,7 +77367,7 @@
       },
       {
         "id": "C",
-        "text": "It treats the plan's possible payoff and resource cost as connected."
+        "text": "The plan's possible payoff and resource cost are connected in the choice."
       },
       {
         "id": "D",
@@ -77429,7 +77429,7 @@
       },
       {
         "id": "B",
-        "text": "It says the plan could help, but another need might get less attention."
+        "text": "The plan could help, but another need might get less attention."
       },
       {
         "id": "C",
@@ -77458,7 +77458,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It keeps both sides in view: possible improvement and limited resources."
+        "text": "Both sides stay in view: possible improvement and limited resources."
       },
       {
         "id": "B",
@@ -77561,7 +77561,7 @@
       },
       {
         "id": "B",
-        "text": "It treats the benefit and the cost as parts of the same decision."
+        "text": "The benefit and the cost are counted as parts of the same decision."
       },
       {
         "id": "C",
@@ -77763,7 +77763,7 @@
       },
       {
         "id": "C",
-        "text": "It shows that one group or need may benefit while another waits longer."
+        "text": "One group or need may benefit while another waits longer."
       },
       {
         "id": "D",
@@ -77821,7 +77821,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It shows the gain people hope for while also naming the cost of getting it."
+        "text": "The gain people hope for is named along with the cost of getting it."
       },
       {
         "id": "B",
@@ -77895,7 +77895,7 @@
       },
       {
         "id": "C",
-        "text": "It says the benefit matters, but the cost also has to be counted."
+        "text": "The benefit matters, but the cost also has to be counted."
       },
       {
         "id": "D",
@@ -77932,7 +77932,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the possible help as real, while also naming what may be delayed."
+        "text": "The possible help is real, but the answer also names what may be delayed."
       }
     ],
     "answer": "D",
@@ -77953,7 +77953,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the upside and the resource limit as the two sides of the tradeoff."
+        "text": "The upside and the resource limit are shown as the two sides of the tradeoff."
       },
       {
         "id": "B",
@@ -77990,7 +77990,7 @@
       },
       {
         "id": "B",
-        "text": "It treats the possible improvement and the required cost as part of one choice."
+        "text": "The possible improvement and the required cost are kept together."
       },
       {
         "id": "C",
@@ -78019,7 +78019,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It keeps the desired result and the required resources in the same decision."
+        "text": "The desired result and the required resources stay in the same decision."
       },
       {
         "id": "B",
@@ -78056,7 +78056,7 @@
       },
       {
         "id": "B",
-        "text": "It keeps the upside and the downside together instead of separating them."
+        "text": "The upside and the downside are kept together instead of separated."
       },
       {
         "id": "C",
@@ -78229,7 +78229,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the plan's possible payoff and resource cost as connected."
+        "text": "The plan's possible payoff and resource cost are connected in the choice."
       }
     ],
     "answer": "D",
@@ -78316,7 +78316,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It keeps both sides in view: possible improvement and limited resources."
+        "text": "Both sides stay in view: possible improvement and limited resources."
       },
       {
         "id": "B",
@@ -78427,7 +78427,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the benefit and the cost as parts of the same decision."
+        "text": "The benefit and the cost are counted as parts of the same decision."
       }
     ],
     "answer": "D",
@@ -78452,7 +78452,7 @@
       },
       {
         "id": "B",
-        "text": "It says the plan could help, but another need might get less attention."
+        "text": "The plan could help, but another need might get less attention."
       },
       {
         "id": "C",
@@ -78687,7 +78687,7 @@
       },
       {
         "id": "C",
-        "text": "It shows the gain people hope for while also naming the cost of getting it."
+        "text": "The gain people hope for is named along with the cost of getting it."
       },
       {
         "id": "D",
@@ -78753,7 +78753,7 @@
       },
       {
         "id": "C",
-        "text": "It says the benefit matters, but the cost also has to be counted."
+        "text": "The benefit matters, but the cost also has to be counted."
       },
       {
         "id": "D",
@@ -78790,7 +78790,7 @@
       },
       {
         "id": "D",
-        "text": "It shows that one group or need may benefit while another waits longer."
+        "text": "One group or need may benefit while another waits longer."
       }
     ],
     "answer": "D",
@@ -78819,7 +78819,7 @@
       },
       {
         "id": "C",
-        "text": "It treats the upside and the resource limit as the two sides of the tradeoff."
+        "text": "The upside and the resource limit are shown as the two sides of the tradeoff."
       },
       {
         "id": "D",
@@ -78844,7 +78844,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the possible improvement and the required cost as part of one choice."
+        "text": "The possible improvement and the required cost are kept together."
       },
       {
         "id": "B",
@@ -78881,7 +78881,7 @@
       },
       {
         "id": "B",
-        "text": "It keeps the desired result and the required resources in the same decision."
+        "text": "The desired result and the required resources stay in the same decision."
       },
       {
         "id": "C",
@@ -78910,7 +78910,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It keeps the upside and the downside together instead of separating them."
+        "text": "The upside and the downside are kept together instead of separated."
       },
       {
         "id": "B",
@@ -78955,7 +78955,7 @@
       },
       {
         "id": "D",
-        "text": "It treats the possible help as real, while also naming what may be delayed."
+        "text": "The possible help is real, but the answer also names what may be delayed."
       }
     ],
     "answer": "D",
@@ -79042,7 +79042,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It treats the plan's possible payoff and resource cost as connected."
+        "text": "The plan's possible payoff and resource cost are connected in the choice."
       },
       {
         "id": "B",
@@ -79141,7 +79141,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "It keeps both sides in view: possible improvement and limited resources."
+        "text": "Both sides stay in view: possible improvement and limited resources."
       },
       {
         "id": "B",
@@ -79385,7 +79385,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence upward a bit, because the test helps but does not settle the question."
+        "text": "Shift your confidence upward a bit, because the test helps but does not settle the question."
       },
       {
         "id": "D",
@@ -79445,7 +79445,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence down a bit, because the test counts against the claim but is small."
+        "text": "Shift your confidence downward a bit, because the test counts against the claim but is small."
       },
       {
         "id": "B",
@@ -79513,7 +79513,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Increase confidence slightly, since the result helps but the other change weakens the update."
+        "text": "Make only a slight upward update, since the result helps but the other change weakens the update."
       },
       {
         "id": "B",
@@ -79585,7 +79585,7 @@
       },
       {
         "id": "B",
-        "text": "Increase confidence strongly because the comparison makes the evidence much better."
+        "text": "Give the claim a strong boost because the comparison makes the evidence much better."
       },
       {
         "id": "C",
@@ -79691,7 +79691,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence up a bit, while taking the competing explanation seriously."
+        "text": "Adjust upward a bit, while taking the competing explanation seriously."
       },
       {
         "id": "D",
@@ -79751,7 +79751,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence up sharply, while leaving room for future evidence to matter."
+        "text": "Make a sharp upward update, while leaving room for future evidence to matter."
       },
       {
         "id": "B",
@@ -79899,7 +79899,7 @@
       },
       {
         "id": "D",
-        "text": "Increase confidence modestly because the result points the right way but is still small."
+        "text": "Make a modest upward update because the result points the right way but is still small."
       }
     ],
     "answer": "D",
@@ -80235,7 +80235,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence upward a bit, because the test helps but does not settle the question."
+        "text": "Shift your confidence upward a bit, because the test helps but does not settle the question."
       },
       {
         "id": "D",
@@ -80337,7 +80337,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence down a bit, because the test counts against the claim but is small."
+        "text": "Shift your confidence downward a bit, because the test counts against the claim but is small."
       },
       {
         "id": "D",
@@ -80397,7 +80397,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Increase confidence slightly, since the result helps but the other change weakens the update."
+        "text": "Make only a slight upward update, since the result helps but the other change weakens the update."
       },
       {
         "id": "B",
@@ -80443,7 +80443,7 @@
       },
       {
         "id": "D",
-        "text": "Move confidence upward a bit, because the test helps but does not settle the question."
+        "text": "Shift your confidence upward a bit, because the test helps but does not settle the question."
       }
     ],
     "answer": "D",
@@ -80473,7 +80473,7 @@
       },
       {
         "id": "C",
-        "text": "Increase confidence strongly because the comparison makes the evidence much better."
+        "text": "Give the claim a strong boost because the comparison makes the evidence much better."
       },
       {
         "id": "D",
@@ -80571,7 +80571,7 @@
       },
       {
         "id": "B",
-        "text": "Move confidence up a bit, while taking the competing explanation seriously."
+        "text": "Adjust upward a bit, while taking the competing explanation seriously."
       },
       {
         "id": "C",
@@ -80643,7 +80643,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence up sharply, while leaving room for future evidence to matter."
+        "text": "Make a sharp upward update, while leaving room for future evidence to matter."
       },
       {
         "id": "D",
@@ -80953,7 +80953,7 @@
       },
       {
         "id": "D",
-        "text": "Increase confidence modestly because the result points the right way but is still small."
+        "text": "Make a modest upward update because the result points the right way but is still small."
       }
     ],
     "answer": "D",
@@ -81191,7 +81191,7 @@
       },
       {
         "id": "D",
-        "text": "Move confidence down a bit, because the test counts against the claim but is small."
+        "text": "Shift your confidence downward a bit, because the test counts against the claim but is small."
       }
     ],
     "answer": "D",
@@ -81251,7 +81251,7 @@
       },
       {
         "id": "B",
-        "text": "Increase confidence slightly, since the result helps but the other change weakens the update."
+        "text": "Make only a slight upward update, since the result helps but the other change weakens the update."
       },
       {
         "id": "C",
@@ -81281,7 +81281,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence upward a bit, because the test helps but does not settle the question."
+        "text": "Shift your confidence upward a bit, because the test helps but does not settle the question."
       },
       {
         "id": "B",
@@ -81323,7 +81323,7 @@
       },
       {
         "id": "C",
-        "text": "Increase confidence strongly because the comparison makes the evidence much better."
+        "text": "Give the claim a strong boost because the comparison makes the evidence much better."
       },
       {
         "id": "D",
@@ -81463,7 +81463,7 @@
       },
       {
         "id": "D",
-        "text": "Move confidence up a bit, while taking the competing explanation seriously."
+        "text": "Adjust upward a bit, while taking the competing explanation seriously."
       }
     ],
     "answer": "D",
@@ -81523,7 +81523,7 @@
       },
       {
         "id": "B",
-        "text": "Increase confidence strongly because the comparison makes the evidence much better."
+        "text": "Give the claim a strong boost because the comparison makes the evidence much better."
       },
       {
         "id": "C",
@@ -81697,7 +81697,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence up sharply, while leaving room for future evidence to matter."
+        "text": "Make a sharp upward update, while leaving room for future evidence to matter."
       },
       {
         "id": "D",
@@ -81837,7 +81837,7 @@
       },
       {
         "id": "D",
-        "text": "Increase confidence modestly because the result points the right way but is still small."
+        "text": "Make a modest upward update because the result points the right way but is still small."
       }
     ],
     "answer": "D",
@@ -82067,7 +82067,7 @@
       },
       {
         "id": "B",
-        "text": "Move confidence down a bit, because the test counts against the claim but is small."
+        "text": "Shift your confidence downward a bit, because the test counts against the claim but is small."
       },
       {
         "id": "C",
@@ -82143,7 +82143,7 @@
       },
       {
         "id": "D",
-        "text": "Increase confidence slightly, since the result helps but the other change weakens the update."
+        "text": "Make only a slight upward update, since the result helps but the other change weakens the update."
       }
     ],
     "answer": "D",
@@ -82165,7 +82165,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence upward a bit, because the test helps but does not settle the question."
+        "text": "Shift your confidence upward a bit, because the test helps but does not settle the question."
       },
       {
         "id": "B",
@@ -82301,7 +82301,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence up a bit, while taking the competing explanation seriously."
+        "text": "Adjust upward a bit, while taking the competing explanation seriously."
       },
       {
         "id": "B",
@@ -82369,7 +82369,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Increase confidence strongly because the comparison makes the evidence much better."
+        "text": "Give the claim a strong boost because the comparison makes the evidence much better."
       },
       {
         "id": "B",
@@ -82573,7 +82573,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence up sharply, while leaving room for future evidence to matter."
+        "text": "Make a sharp upward update, while leaving room for future evidence to matter."
       },
       {
         "id": "B",
@@ -82709,7 +82709,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Increase confidence modestly because the result points the right way but is still small."
+        "text": "Make a modest upward update because the result points the right way but is still small."
       },
       {
         "id": "B",
@@ -83023,7 +83023,7 @@
       },
       {
         "id": "C",
-        "text": "Increase confidence slightly, since the result helps but the other change weakens the update."
+        "text": "Make only a slight upward update, since the result helps but the other change weakens the update."
       },
       {
         "id": "D",
@@ -83049,7 +83049,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence upward a bit, because the test helps but does not settle the question."
+        "text": "Shift your confidence upward a bit, because the test helps but does not settle the question."
       },
       {
         "id": "B",
@@ -83117,7 +83117,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence down a bit, because the test counts against the claim but is small."
+        "text": "Shift your confidence downward a bit, because the test counts against the claim but is small."
       },
       {
         "id": "B",
@@ -83197,7 +83197,7 @@
       },
       {
         "id": "D",
-        "text": "Move confidence up a bit, while taking the competing explanation seriously."
+        "text": "Adjust upward a bit, while taking the competing explanation seriously."
       }
     ],
     "answer": "D",
@@ -83253,7 +83253,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Increase confidence strongly because the comparison makes the evidence much better."
+        "text": "Give the claim a strong boost because the comparison makes the evidence much better."
       },
       {
         "id": "B",
@@ -83427,7 +83427,7 @@
       },
       {
         "id": "B",
-        "text": "Move confidence up sharply, while leaving room for future evidence to matter."
+        "text": "Make a sharp upward update, while leaving room for future evidence to matter."
       },
       {
         "id": "C",
@@ -83597,7 +83597,7 @@
       },
       {
         "id": "B",
-        "text": "Increase confidence modestly because the result points the right way but is still small."
+        "text": "Make a modest upward update because the result points the right way but is still small."
       },
       {
         "id": "C",
@@ -83903,7 +83903,7 @@
       },
       {
         "id": "B",
-        "text": "Increase confidence slightly, since the result helps but the other change weakens the update."
+        "text": "Make only a slight upward update, since the result helps but the other change weakens the update."
       },
       {
         "id": "C",
@@ -83945,7 +83945,7 @@
       },
       {
         "id": "D",
-        "text": "Move confidence upward a bit, because the test helps but does not settle the question."
+        "text": "Shift your confidence upward a bit, because the test helps but does not settle the question."
       }
     ],
     "answer": "D",
@@ -84001,7 +84001,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Move confidence down a bit, because the test counts against the claim but is small."
+        "text": "Shift your confidence downward a bit, because the test counts against the claim but is small."
       },
       {
         "id": "B",
@@ -84077,7 +84077,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence up a bit, while taking the competing explanation seriously."
+        "text": "Adjust upward a bit, while taking the competing explanation seriously."
       },
       {
         "id": "D",
@@ -84137,7 +84137,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Increase confidence strongly because the comparison makes the evidence much better."
+        "text": "Give the claim a strong boost because the comparison makes the evidence much better."
       },
       {
         "id": "B",
@@ -84315,7 +84315,7 @@
       },
       {
         "id": "C",
-        "text": "Move confidence up sharply, while leaving room for future evidence to matter."
+        "text": "Make a sharp upward update, while leaving room for future evidence to matter."
       },
       {
         "id": "D",
@@ -84443,7 +84443,7 @@
     "choices": [
       {
         "id": "A",
-        "text": "Increase confidence modestly because the result points the right way but is still small."
+        "text": "Make a modest upward update because the result points the right way but is still small."
       },
       {
         "id": "B",
