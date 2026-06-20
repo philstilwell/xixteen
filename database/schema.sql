@@ -30,6 +30,9 @@ CREATE TABLE IF NOT EXISTS choices (
   choice_key TEXT NOT NULL CHECK (choice_key IN ('A', 'B', 'C', 'D')),
   choice_text TEXT NOT NULL,
   choice_feedback TEXT NOT NULL DEFAULT '',
+  choice_resource_site TEXT NOT NULL DEFAULT '',
+  choice_resource_title TEXT NOT NULL DEFAULT '',
+  choice_resource_url TEXT NOT NULL DEFAULT '',
   is_correct INTEGER NOT NULL CHECK (is_correct IN (0, 1)),
   UNIQUE (item_id, choice_key)
 );

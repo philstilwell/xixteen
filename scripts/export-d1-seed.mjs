@@ -22,7 +22,8 @@ for (const item of items) {
   lines.push(`UPDATE choices SET is_correct = 0 WHERE item_id = ${sql(item.id)};`);
   for (const choice of item.choices) {
     const choiceId = `${item.id}-${choice.id.toLowerCase()}`;
-    lines.push(`INSERT INTO choices (id, item_id, choice_key, choice_text, choice_feedback, is_correct) VALUES (${sql(choiceId)}, ${sql(item.id)}, ${sql(choice.id)}, ${sql(choice.text)}, ${sql(item.feedback?.[choice.id] || "")}, ${choice.id === item.answer ? 1 : 0}) ON CONFLICT(id) DO UPDATE SET item_id = excluded.item_id, choice_key = excluded.choice_key, choice_text = excluded.choice_text, choice_feedback = excluded.choice_feedback, is_correct = excluded.is_correct;`);
+    const resource = item.resources?.[choice.id] || {};
+    lines.push(`INSERT INTO choices (id, item_id, choice_key, choice_text, choice_feedback, choice_resource_site, choice_resource_title, choice_resource_url, is_correct) VALUES (${sql(choiceId)}, ${sql(item.id)}, ${sql(choice.id)}, ${sql(choice.text)}, ${sql(item.feedback?.[choice.id] || "")}, ${sql(resource.site || "")}, ${sql(resource.title || "")}, ${sql(resource.url || "")}, ${choice.id === item.answer ? 1 : 0}) ON CONFLICT(id) DO UPDATE SET item_id = excluded.item_id, choice_key = excluded.choice_key, choice_text = excluded.choice_text, choice_feedback = excluded.choice_feedback, choice_resource_site = excluded.choice_resource_site, choice_resource_title = excluded.choice_resource_title, choice_resource_url = excluded.choice_resource_url, is_correct = excluded.is_correct;`);
   }
 }
 

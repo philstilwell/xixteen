@@ -761,6 +761,29 @@ main {
   margin: 0;
 }
 
+.feedback-resource-link {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 1px solid rgba(31, 138, 138, 0.28);
+  border-radius: 8px;
+  background: rgba(31, 138, 138, 0.08);
+  color: #155f61;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.feedback-resource-link:hover,
+.feedback-resource-link:focus-visible {
+  border-color: rgba(31, 138, 138, 0.55);
+  background: rgba(31, 138, 138, 0.14);
+  color: #104f51;
+}
+
 .feedback-next-step {
   color: var(--muted);
   line-height: 1.45;
@@ -1161,6 +1184,10 @@ main {
   padding: 0 12px 10px;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.review-list .feedback-resource-link {
+  margin: 0 12px 10px;
 }
 
 .teacher-section {

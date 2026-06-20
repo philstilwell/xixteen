@@ -326,6 +326,102 @@ const biasTypes = [
   }
 ];
 
+const FALLACY_RESOURCES = {
+  "Straw man": {
+    site: "LogFall",
+    title: "Straw man argument",
+    url: "https://logfall.com/fallacies/straw-man-argument/"
+  },
+  "False dilemma": {
+    site: "LogFall",
+    title: "False dilemma",
+    url: "https://logfall.com/fallacies/false-dilemma/"
+  },
+  "Ad hominem": {
+    site: "LogFall",
+    title: "Ad hominem",
+    url: "https://logfall.com/fallacies/ad-hominem/"
+  },
+  "Slippery slope": {
+    site: "LogFall",
+    title: "Slippery slope",
+    url: "https://logfall.com/fallacies/slippery-slope/"
+  },
+  "Appeal to popularity": {
+    site: "LogFall",
+    title: "Argumentum ad populum",
+    url: "https://logfall.com/fallacies/argumentum-ad-populum/"
+  },
+  "Circular reasoning": {
+    site: "LogFall",
+    title: "Begging the question",
+    url: "https://logfall.com/fallacies/begging-the-question/"
+  },
+  "Hasty generalization": {
+    site: "LogFall",
+    title: "Hasty generalization",
+    url: "https://logfall.com/fallacies/hasty-generalization/"
+  },
+  "Red herring": {
+    site: "LogFall",
+    title: "Red herring",
+    url: "https://logfall.com/fallacies/red-herring/"
+  },
+  "Appeal to tradition": {
+    site: "LogFall",
+    title: "Appeal to tradition",
+    url: "https://logfall.com/fallacies/appeal-to-tradition/"
+  },
+  "Post hoc": {
+    site: "LogFall",
+    title: "Post hoc ergo propter hoc",
+    url: "https://logfall.com/fallacies/post-hoc-ergo-propter-hoc/"
+  }
+};
+
+const BIAS_RESOURCES = {
+  "Confirmation bias": {
+    site: "CogBias",
+    title: "Confirmation bias",
+    url: "https://cogbias.site/biases/confirmation-bias/"
+  },
+  "Availability bias": {
+    site: "CogBias",
+    title: "Availability heuristic",
+    url: "https://cogbias.site/biases/availability-heuristic/"
+  },
+  "Anchoring": {
+    site: "CogBias",
+    title: "Anchoring effect",
+    url: "https://cogbias.site/biases/anchoring-effect/"
+  },
+  "Sunk cost bias": {
+    site: "CogBias",
+    title: "Sunk cost effect",
+    url: "https://cogbias.site/biases/sunk-cost-effect/"
+  },
+  "Overconfidence bias": {
+    site: "CogBias",
+    title: "Overconfidence effect",
+    url: "https://cogbias.site/biases/overconfidence-effect/"
+  },
+  "Status quo bias": {
+    site: "CogBias",
+    title: "Status quo bias",
+    url: "https://cogbias.site/biases/status-quo-bias/"
+  },
+  "Motivated reasoning": {
+    site: "CogBias",
+    title: "Motivated reasoning",
+    url: "https://cogbias.site/biases/motivated-reasoning/"
+  },
+  "Bandwagon effect": {
+    site: "CogBias",
+    title: "Bandwagon effect",
+    url: "https://cogbias.site/biases/bandwagon-effect/"
+  }
+};
+
 function topic(domain, actor, action, metric, outcome, alternative, irrelevant, group, field) {
   const outcomeAmount = outcome.replace(/^(fell|rose) by /, "");
   const testResult = `${metric} ${outcome} compared with the four weeks before the test`;
@@ -368,6 +464,16 @@ function fallacyChoice(name) {
     throw new Error(`Unknown fallacy: ${name}`);
   }
   return `${fallacy.name}: ${fallacy.choiceHint}`;
+}
+
+function resourceForChoice(skillId, choiceText) {
+  if (skillId === "fallacies") {
+    return FALLACY_RESOURCES[phrase(choiceText).split(":")[0]] || null;
+  }
+  if (skillId === "cognitive_biases") {
+    return BIAS_RESOURCES[phrase(choiceText)] || null;
+  }
+  return null;
 }
 
 function asSentence(text) {
@@ -453,6 +559,10 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
       tags
     })
   ]));
+  const resources = Object.fromEntries(arrangedChoices.map((choiceText, choiceIndex) => {
+    const resource = resourceForChoice(skillId, choiceText);
+    return resource ? [arrangedLabels[choiceIndex], { ...resource }] : null;
+  }).filter(Boolean));
   return {
     id,
     skill: skillId,
@@ -465,6 +575,7 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
     answer: LABELS[answerIndex],
     explanation,
     feedback,
+    resources,
     tags: uniqueTexts([skillId, ...tags])
   };
 }

@@ -34,6 +34,16 @@ const TAG_ANSWER_SKEW_IGNORED_TAGS = new Set([
   "confounder",
   "logic"
 ]);
+const RESOURCE_RULES_BY_SKILL = {
+  fallacies: {
+    site: "LogFall",
+    urlPrefix: "https://logfall.com/fallacies/"
+  },
+  cognitive_biases: {
+    site: "CogBias",
+    urlPrefix: "https://cogbias.site/biases/"
+  }
+};
 const CORRECT_START_TELL_PATTERNS = [
   ["confidence-update opening", /^(increase confidence|let confidence|move confidence)\b/i],
   ["logic-treats opening", /^it treats\b/i],
@@ -342,8 +352,36 @@ function checkCoherence(item, skill, issues, choiceTexts, answer) {
       }
     }
   }
+  checkChoiceResources(item, issues);
   if (/undefined|\bNaN\b/.test(item.prompt + item.explanation + Object.values(item.feedback || {}).join(" "))) {
     addIssue(issues, "coherence", "prompt or explanation contains a generated artifact");
+  }
+}
+
+function checkChoiceResources(item, issues) {
+  const rule = RESOURCE_RULES_BY_SKILL[item.skill];
+  if (!rule) {
+    return;
+  }
+  if (!item.resources || typeof item.resources !== "object" || Array.isArray(item.resources)) {
+    addIssue(issues, "pedagogy", `item is missing ${rule.site} choice resources`);
+    return;
+  }
+  for (const choice of item.choices || []) {
+    const resource = item.resources[choice.id];
+    if (!resource || typeof resource !== "object" || Array.isArray(resource)) {
+      addIssue(issues, "pedagogy", `choice ${choice.id} is missing a ${rule.site} resource link`);
+      continue;
+    }
+    if (resource.site !== rule.site) {
+      addIssue(issues, "coherence", `choice ${choice.id} resource site should be ${rule.site}`);
+    }
+    if (typeof resource.title !== "string" || resource.title.length < 3) {
+      addIssue(issues, "clarity", `choice ${choice.id} resource title is unclear`);
+    }
+    if (typeof resource.url !== "string" || !resource.url.startsWith(rule.urlPrefix)) {
+      addIssue(issues, "coherence", `choice ${choice.id} resource URL does not point to ${rule.urlPrefix}`);
+    }
   }
 }
 

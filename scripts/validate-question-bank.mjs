@@ -10,6 +10,16 @@ const MIN_CHOICE_FEEDBACK_CHARS = 70;
 const MAX_CHOICE_FEEDBACK_CHARS = 520;
 const LABEL_LIST = ["A", "B", "C", "D"];
 const LABELS = new Set(LABEL_LIST);
+const RESOURCE_RULES_BY_SKILL = {
+  fallacies: {
+    site: "LogFall",
+    urlPrefix: "https://logfall.com/fallacies/"
+  },
+  cognitive_biases: {
+    site: "CogBias",
+    urlPrefix: "https://cogbias.site/biases/"
+  }
+};
 const EXPECTED_PER_LABEL_PER_SKILL_DIFFICULTY = EXPECTED_PER_DIFFICULTY / LABEL_LIST.length;
 const EXPECTED_DAILY_PER_LABEL = EXPECTED_SKILLS / LABEL_LIST.length;
 const MAX_DAILY_SAME_ANSWER_RUN = 2;
@@ -142,6 +152,7 @@ for (const item of items) {
       }
     }
   }
+  validateChoiceResources(item, errors);
 
   bySkill.set(item.skill, (bySkill.get(item.skill) || 0) + 1);
   const skillDifficultyKey = `${item.skill}:${item.difficulty}`;
@@ -236,6 +247,33 @@ if (errors.length > 0) {
 }
 
 console.log(`Validated ${skills.length} skills, ${items.length} items, and ${quizzes.length} daily quizzes.`);
+
+function validateChoiceResources(item, errors) {
+  const rule = RESOURCE_RULES_BY_SKILL[item.skill];
+  if (!rule) {
+    return;
+  }
+  if (!item.resources || typeof item.resources !== "object" || Array.isArray(item.resources)) {
+    errors.push(`${item.id} needs ${rule.site} resources keyed by A-D.`);
+    return;
+  }
+  for (const label of LABEL_LIST) {
+    const resource = item.resources[label];
+    if (!resource || typeof resource !== "object" || Array.isArray(resource)) {
+      errors.push(`${item.id} is missing ${rule.site} resource for choice ${label}.`);
+      continue;
+    }
+    if (resource.site !== rule.site) {
+      errors.push(`${item.id} choice ${label} resource site should be ${rule.site}, found ${resource.site}.`);
+    }
+    if (typeof resource.title !== "string" || resource.title.length < 3) {
+      errors.push(`${item.id} choice ${label} resource needs a readable title.`);
+    }
+    if (typeof resource.url !== "string" || !resource.url.startsWith(rule.urlPrefix)) {
+      errors.push(`${item.id} choice ${label} resource URL should start with ${rule.urlPrefix}.`);
+    }
+  }
+}
 
 function hasBarePercentChange(text) {
   return PERCENT_CHANGE_PATTERN.test(text) && !PERCENT_COMPARISON_CUE_PATTERN.test(text);

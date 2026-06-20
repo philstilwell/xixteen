@@ -475,6 +475,7 @@ function renderChoiceFeedback(item, selectedChoiceId) {
                 <strong>${escapeHtml(roleLabel)}</strong>
               </div>
               <p>${escapeHtml(choiceFeedback(item, choice))}</p>
+              ${renderChoiceResource(item, choice)}
             </article>
           `;
         }).join("")}
@@ -490,6 +491,34 @@ function renderChoiceFeedback(item, selectedChoiceId) {
 
 function choiceFeedback(item, choice) {
   return item.feedback?.[choice.id] || fallbackChoiceFeedback(item, choice);
+}
+
+function renderChoiceResource(item, choice, extraClass = "") {
+  const resource = choiceResource(item, choice);
+  if (!resource) {
+    return "";
+  }
+  const label = `Read on ${resource.site}: ${resource.title}`;
+  const className = ["feedback-resource-link", extraClass].filter(Boolean).join(" ");
+  return `
+    <a class="${escapeAttribute(className)}" href="${escapeAttribute(resource.url)}" target="_blank" rel="noopener noreferrer">
+      ${escapeHtml(label)}
+    </a>
+  `;
+}
+
+function choiceResource(item, choice) {
+  const resource = item.resources?.[choice.id];
+  if (!resource || typeof resource !== "object") {
+    return null;
+  }
+  if (typeof resource.site !== "string" || typeof resource.title !== "string" || typeof resource.url !== "string") {
+    return null;
+  }
+  if (!/^https:\/\/(logfall\.com|cogbias\.site)\//.test(resource.url)) {
+    return null;
+  }
+  return resource;
 }
 
 function fallbackChoiceFeedback(item, choice) {
@@ -628,8 +657,14 @@ function renderResults(results, score, durationMs) {
                 <p><strong>Your answer:</strong> ${escapeHtml(selected?.text || "No answer")}</p>
                 <p><strong>Best answer:</strong> ${escapeHtml(correct?.text || result.item.answer)}</p>
                 <p>${escapeHtml(result.item.explanation)}</p>
-                ${selected ? `<p><strong>Why your answer missed:</strong> ${escapeHtml(choiceFeedback(result.item, selected))}</p>` : ""}
-                ${correct ? `<p><strong>Why the best answer works:</strong> ${escapeHtml(choiceFeedback(result.item, correct))}</p>` : ""}
+                ${selected ? `
+                  <p><strong>Why your answer missed:</strong> ${escapeHtml(choiceFeedback(result.item, selected))}</p>
+                  ${renderChoiceResource(result.item, selected, "is-review-link")}
+                ` : ""}
+                ${correct ? `
+                  <p><strong>Why the best answer works:</strong> ${escapeHtml(choiceFeedback(result.item, correct))}</p>
+                  ${renderChoiceResource(result.item, correct, "is-review-link")}
+                ` : ""}
               </details>
             `;
           }).join("")}
