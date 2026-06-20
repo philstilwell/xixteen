@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS choices (
   item_id TEXT NOT NULL REFERENCES items(id) ON DELETE CASCADE,
   choice_key TEXT NOT NULL CHECK (choice_key IN ('A', 'B', 'C', 'D')),
   choice_text TEXT NOT NULL,
+  choice_feedback TEXT NOT NULL DEFAULT '',
   is_correct INTEGER NOT NULL CHECK (is_correct IN (0, 1)),
   UNIQUE (item_id, choice_key)
 );

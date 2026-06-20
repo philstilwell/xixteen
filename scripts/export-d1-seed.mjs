@@ -22,7 +22,7 @@ for (const item of items) {
   lines.push(`UPDATE choices SET is_correct = 0 WHERE item_id = ${sql(item.id)};`);
   for (const choice of item.choices) {
     const choiceId = `${item.id}-${choice.id.toLowerCase()}`;
-    lines.push(`INSERT INTO choices (id, item_id, choice_key, choice_text, is_correct) VALUES (${sql(choiceId)}, ${sql(item.id)}, ${sql(choice.id)}, ${sql(choice.text)}, ${choice.id === item.answer ? 1 : 0}) ON CONFLICT(id) DO UPDATE SET item_id = excluded.item_id, choice_key = excluded.choice_key, choice_text = excluded.choice_text, is_correct = excluded.is_correct;`);
+    lines.push(`INSERT INTO choices (id, item_id, choice_key, choice_text, choice_feedback, is_correct) VALUES (${sql(choiceId)}, ${sql(item.id)}, ${sql(choice.id)}, ${sql(choice.text)}, ${sql(item.feedback?.[choice.id] || "")}, ${choice.id === item.answer ? 1 : 0}) ON CONFLICT(id) DO UPDATE SET item_id = excluded.item_id, choice_key = excluded.choice_key, choice_text = excluded.choice_text, choice_feedback = excluded.choice_feedback, is_correct = excluded.is_correct;`);
   }
 }
 

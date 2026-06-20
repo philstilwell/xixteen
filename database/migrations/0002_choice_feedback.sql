@@ -1,0 +1,1 @@
+ALTER TABLE choices ADD COLUMN choice_feedback TEXT NOT NULL DEFAULT '';

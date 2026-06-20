@@ -6,6 +6,8 @@ const EXPECTED_PER_SKILL = 160;
 const EXPECTED_PER_DIFFICULTY = 32;
 const MIN_PROMPT_CHARS = 120;
 const MAX_PROMPT_CHARS = 520;
+const MIN_CHOICE_FEEDBACK_CHARS = 70;
+const MAX_CHOICE_FEEDBACK_CHARS = 520;
 const LABEL_LIST = ["A", "B", "C", "D"];
 const LABELS = new Set(LABEL_LIST);
 const EXPECTED_PER_LABEL_PER_SKILL_DIFFICULTY = EXPECTED_PER_DIFFICULTY / LABEL_LIST.length;
@@ -111,6 +113,34 @@ for (const item of items) {
   }
   if (!item.explanation || item.explanation.length < 20) {
     errors.push(`${item.id} needs a fuller explanation.`);
+  }
+  if (!item.feedback || typeof item.feedback !== "object" || Array.isArray(item.feedback)) {
+    errors.push(`${item.id} needs choice-level feedback keyed by A-D.`);
+  } else {
+    for (const label of LABEL_LIST) {
+      const feedback = item.feedback[label];
+      if (typeof feedback !== "string") {
+        errors.push(`${item.id} is missing feedback for choice ${label}.`);
+        continue;
+      }
+      if (feedback.length < MIN_CHOICE_FEEDBACK_CHARS) {
+        errors.push(`${item.id} feedback for choice ${label} is too thin: ${feedback.length} chars.`);
+      }
+      if (feedback.length > MAX_CHOICE_FEEDBACK_CHARS) {
+        errors.push(`${item.id} feedback for choice ${label} is too long: ${feedback.length} chars.`);
+      }
+      if (/undefined|\bNaN\b/.test(feedback)) {
+        errors.push(`${item.id} feedback for choice ${label} contains a generated artifact.`);
+      }
+    }
+    if (!/^Correct\./.test(item.feedback[item.answer] || "")) {
+      errors.push(`${item.id} correct-answer feedback must clearly begin with "Correct.".`);
+    }
+    for (const label of LABEL_LIST.filter((choiceLabel) => choiceLabel !== item.answer)) {
+      if (!/^Not quite\./.test(item.feedback[label] || "")) {
+        errors.push(`${item.id} distractor feedback ${label} must clearly begin with "Not quite.".`);
+      }
+    }
   }
 
   bySkill.set(item.skill, (bySkill.get(item.skill) || 0) + 1);

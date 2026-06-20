@@ -441,13 +441,62 @@ function renderQuiz() {
     </div>
     <p class="question-text">${escapeHtml(item.prompt)}</p>
     <div class="choice-list">${choices}</div>
-    ${answered ? `<p class="feedback">${escapeHtml(item.explanation)}</p>` : ""}
+    ${answered ? renderChoiceFeedback(item, selected.choiceId) : ""}
     <div class="question-actions">
       <button class="next-button" type="button" data-next ${answered ? "" : "disabled"}>
         ${state.currentIndex === quiz.items.length - 1 ? "Finish" : "Next"}
       </button>
     </div>
   `;
+}
+
+function renderChoiceFeedback(item, selectedChoiceId) {
+  const selectedCorrect = selectedChoiceId === item.answer;
+  const correctChoice = item.choices.find((choice) => choice.id === item.answer);
+  return `
+    <section class="feedback-panel" aria-label="Answer feedback">
+      <div class="feedback-summary is-${selectedCorrect ? "correct" : "wrong"}">
+        <strong>${selectedCorrect ? "You found it." : "Review the reasoning."}</strong>
+        <span>${escapeHtml(item.explanation)}</span>
+      </div>
+      <div class="feedback-list">
+        ${item.choices.map((choice) => {
+          const isCorrect = choice.id === item.answer;
+          const isSelected = choice.id === selectedChoiceId;
+          const roleLabel = isCorrect
+            ? "Correct answer"
+            : isSelected
+              ? "Your choice"
+              : "Distractor";
+          return `
+            <article class="feedback-card ${isCorrect ? "is-correct" : "is-distractor"} ${isSelected ? "is-selected" : ""}">
+              <div class="feedback-card-heading">
+                <span class="choice-key">${choice.id}</span>
+                <strong>${escapeHtml(roleLabel)}</strong>
+              </div>
+              <p>${escapeHtml(choiceFeedback(item, choice))}</p>
+            </article>
+          `;
+        }).join("")}
+      </div>
+      ${!selectedCorrect && correctChoice ? `
+        <p class="feedback-next-step">
+          The best answer is <strong>${escapeHtml(correctChoice.id)}</strong>: ${escapeHtml(correctChoice.text)}
+        </p>
+      ` : ""}
+    </section>
+  `;
+}
+
+function choiceFeedback(item, choice) {
+  return item.feedback?.[choice.id] || fallbackChoiceFeedback(item, choice);
+}
+
+function fallbackChoiceFeedback(item, choice) {
+  if (choice.id === item.answer) {
+    return `Correct. ${item.explanation || "This choice best matches the question."}`;
+  }
+  return "Not quite. This choice does not answer the specific thinking task as well as the correct option.";
 }
 
 function chooseAnswer(choiceId) {
@@ -579,6 +628,8 @@ function renderResults(results, score, durationMs) {
                 <p><strong>Your answer:</strong> ${escapeHtml(selected?.text || "No answer")}</p>
                 <p><strong>Best answer:</strong> ${escapeHtml(correct?.text || result.item.answer)}</p>
                 <p>${escapeHtml(result.item.explanation)}</p>
+                ${selected ? `<p><strong>Why your answer missed:</strong> ${escapeHtml(choiceFeedback(result.item, selected))}</p>` : ""}
+                ${correct ? `<p><strong>Why the best answer works:</strong> ${escapeHtml(choiceFeedback(result.item, correct))}</p>` : ""}
               </details>
             `;
           }).join("")}

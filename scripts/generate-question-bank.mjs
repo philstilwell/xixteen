@@ -441,6 +441,18 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
       distractorIndex += 1;
     }
   }
+  const arrangedLabels = LABELS.slice(0, arrangedChoices.length);
+  const feedback = Object.fromEntries(arrangedChoices.map((choiceText, choiceIndex) => [
+    arrangedLabels[choiceIndex],
+    buildChoiceFeedback({
+      skillId,
+      choiceText,
+      correctText: correct,
+      isCorrect: choiceIndex === answerIndex,
+      explanation,
+      tags
+    })
+  ]));
   return {
     id,
     skill: skillId,
@@ -452,8 +464,321 @@ function makeItem(skillId, index, difficulty, prompt, correct, distractors, expl
     })),
     answer: LABELS[answerIndex],
     explanation,
+    feedback,
     tags: uniqueTexts([skillId, ...tags])
   };
+}
+
+function buildChoiceFeedback({ skillId, choiceText, correctText, isCorrect, explanation, tags }) {
+  const text = phrase(choiceText);
+  const tagSet = new Set(tags);
+  const normalize = (value) => value.replace(/\s+/g, " ").trim();
+
+  if (isCorrect) {
+    return normalize(correctFeedback(skillId, text, explanation, tagSet));
+  }
+
+  return normalize(incorrectFeedback(skillId, text, correctText, explanation, tagSet));
+}
+
+function correctFeedback(skillId, text, explanation, tagSet) {
+  switch (skillId) {
+    case "clarify_claim":
+      return "Correct. This is the recommendation the speaker wants people to accept. The test result is only a reason for that recommendation, and the side details do not state what should be done.";
+    case "define_terms":
+      return `Correct. ${text} is the word doing the unclear work. Until people define it, they cannot tell what standard the plan has to meet.`;
+    case "find_argument":
+      return "Correct. This sentence is the conclusion: the point being supported. The other sentences are evidence, background, or information about who the proposal is meant to help.";
+    case "hidden_assumptions":
+      return `Correct. This is the missing bridge the argument needs before the conclusion can follow. ${explanation}`;
+    case "relevance":
+      return "Correct. This fact speaks directly to the claim because it checks the same action, target group, or measured result instead of drifting to a side issue.";
+    case "evidence_quality":
+      return "Correct. This is the strongest evidence because it measures the claimed result in a fairer way, usually with a larger sample, a comparison, repeated settings, or a clear method.";
+    case "source_reliability":
+      return `Correct. This detail gives readers a concrete reason to trust the source less. ${explanation}`;
+    case "logical_gaps":
+      return `Correct. This names the step in the reasoning that does not follow from the evidence. ${explanation}`;
+    case "fallacies":
+      return `Correct. ${explanation} The wording of the choice names the same mistake shown in the debate.`;
+    case "probability":
+      return "Correct. This answer treats the number or signal as uncertain evidence. Probability gives a chance or reason to check further, not a guarantee.";
+    case "statistical_sense":
+      return `Correct. This answer reads the numbers with the right comparison. ${explanation}`;
+    case "causation":
+      return "Correct. This fact gives a live alternative cause, so the observed change cannot yet be credited to the plan alone.";
+    case "alternative_explanations":
+      return "Correct. This explanation fits the same facts without assuming the proposed plan caused the result.";
+    case "cognitive_biases":
+      return `Correct. ${explanation} The choice names the bias shown by the person's thinking.`;
+    case "tradeoffs":
+      return "Correct. This answer keeps both sides of the decision in view: what the plan might improve and what it would cost, delay, or risk.";
+    case "belief_update":
+      return `Correct. This is the right size and direction of belief change. ${explanation}`;
+    default:
+      return `Correct. ${explanation}`;
+  }
+}
+
+function incorrectFeedback(skillId, text, correctText, explanation, tagSet) {
+  switch (skillId) {
+    case "clarify_claim":
+      return claimDistractorFeedback(text);
+    case "define_terms":
+      return termDistractorFeedback(text);
+    case "find_argument":
+      return argumentDistractorFeedback(text);
+    case "hidden_assumptions":
+      return assumptionDistractorFeedback(text, explanation);
+    case "relevance":
+      return relevanceDistractorFeedback(text);
+    case "evidence_quality":
+      return evidenceDistractorFeedback(text);
+    case "source_reliability":
+      return sourceDistractorFeedback(text);
+    case "logical_gaps":
+      return logicDistractorFeedback(text, explanation);
+    case "fallacies":
+      return fallacyDistractorFeedback(text, correctText);
+    case "probability":
+      return probabilityDistractorFeedback(text);
+    case "statistical_sense":
+      return statsDistractorFeedback(text);
+    case "causation":
+      return causationDistractorFeedback(text);
+    case "alternative_explanations":
+      return alternativeDistractorFeedback(text);
+    case "cognitive_biases":
+      return biasDistractorFeedback(text, correctText);
+    case "tradeoffs":
+      return tradeoffDistractorFeedback(text);
+    case "belief_update":
+      return beliefDistractorFeedback(text, tagSet);
+    default:
+      return `Not quite. This choice does not answer the target question. ${explanation}`;
+  }
+}
+
+function claimDistractorFeedback(text) {
+  if (/\btest|four-week|found|rose|fell|compared\b/i.test(text)) {
+    return "Not quite. This is evidence from the test, so it helps support the speaker's point. It is not the claim the speaker is asking people to accept.";
+  }
+  if (/\bproven|everywhere|without needing more evidence\b/i.test(text)) {
+    return "Not quite. This overstates the argument. The speaker recommends the plan, but does not claim it has been proven to work everywhere.";
+  }
+  if (/\bonly\b|\bno other concern\b/i.test(text)) {
+    return "Not quite. This adds an extreme claim about who matters. The speaker's actual claim is the recommendation about the proposal.";
+  }
+  return "Not quite. This is a side detail from the setup. A main claim is the point the speaker wants accepted, not a visible or background detail.";
+}
+
+function termDistractorFeedback(text) {
+  if (/approve it/i.test(text)) {
+    return "Not quite. People know what approving a proposal means. The unclear part is the standard that decides when approval should happen.";
+  }
+  if (/the plan/i.test(text)) {
+    return "Not quite. The plan has already been named in the setup. The problem is the vague judging word attached to the plan.";
+  }
+  if (/weighing a proposal/i.test(text)) {
+    return "Not quite. This phrase describes the meeting context. It is not the slippery word people need to define.";
+  }
+  return "Not quite. This phrase identifies the group or proposal, but it does not set an unclear standard for judging the plan.";
+}
+
+function argumentDistractorFeedback(text) {
+  if (/\btest|found|rose|fell|compared\b/i.test(text)) {
+    return "Not quite. This sentence gives a reason or evidence. A conclusion is the point that reason is meant to support.";
+  }
+  if (/\bproposal is meant|group the proposal|meant mainly\b/i.test(text)) {
+    return "Not quite. This is background about the proposal's audience. It helps set the scene, but it is not the point being argued for.";
+  }
+  return "Not quite. This is a background detail. The conclusion is the sentence that follows from the reasons and says what should be accepted.";
+}
+
+function assumptionDistractorFeedback(text, explanation) {
+  if (/side detail/i.test(text)) {
+    return "Not quite. A side detail may be noticeable, but the argument does not need it to be true. A hidden assumption must connect the reason to the conclusion.";
+  }
+  if (/never be measured|cannot.*measured/i.test(text)) {
+    return "Not quite. This would actually weaken the argument by saying the result cannot be checked. The needed assumption helps the evidence count.";
+  }
+  if (/reject every alternative/i.test(text)) {
+    return "Not quite. Critical thinking does not require rejecting every alternative before looking at evidence. The needed assumption is narrower.";
+  }
+  return `Not quite. This does not supply the missing bridge in the argument. ${explanation}`;
+}
+
+function relevanceDistractorFeedback(text) {
+  if (/liked the idea|like the plan|sounds good|reactions/i.test(text)) {
+    return "Not quite. People's reactions may be interesting, but liking a plan is not the same as checking whether the claimed result happened.";
+  }
+  if (/story describes/i.test(text)) {
+    return "Not quite. A detailed story can feel convincing, but this one still does not measure the result named in the claim.";
+  }
+  return "Not quite. This fact is mostly a side detail. Relevant evidence should bear directly on the action, group, or result named in the claim.";
+}
+
+function evidenceDistractorFeedback(text) {
+  if (/friend says|feels promising/i.test(text)) {
+    return "Not quite. A friend's impression is weak evidence because it gives no measured result and no fair comparison.";
+  }
+  if (/brochure/i.test(text)) {
+    return "Not quite. A brochure can explain how a plan is supposed to work, but explanation is not the same as evidence that it did work.";
+  }
+  if (/social media|three people/i.test(text)) {
+    return "Not quite. A few reactions on social media are too thin and unmeasured to be strong evidence about the result.";
+  }
+  if (/after the change|what it was before/i.test(text)) {
+    return "Not quite. Measuring only after the change leaves out the baseline, so it is hard to tell whether anything improved.";
+  }
+  return "Not quite. This option lacks the fair measurement, comparison, or clear method that would make the evidence strong.";
+}
+
+function sourceDistractorFeedback(text) {
+  if (/names who collected/i.test(text)) {
+    return "Not quite. Naming who collected the data usually makes a report easier to check, so it is not a reason by itself to trust it less.";
+  }
+  if (/expert who has studied|author is/i.test(text)) {
+    return "Not quite. Relevant expertise usually makes a source more trustworthy, not less, unless there is another problem.";
+  }
+  if (/lists where the data came from|includes results that do not favor/i.test(text)) {
+    return "Not quite. Openness about data sources and unfavorable results is a trust-building sign, not a warning sign.";
+  }
+  return "Not quite. This detail does not create a clear source problem such as hidden methods, weak expertise, tilted sampling, or a strong motive to mislead.";
+}
+
+function logicDistractorFeedback(text, explanation) {
+  if (/definitions|word meaning/i.test(text)) {
+    return "Not quite. The issue is not that a word is vague. The problem is a jump in reasoning from the evidence to the conclusion.";
+  }
+  if (/source/i.test(text)) {
+    return "Not quite. The argument may have a source, but the question asks about the logic of the inference, not source reliability.";
+  }
+  if (/conclusion after the evidence/i.test(text)) {
+    return "Not quite. Putting a conclusion after evidence is normal argument structure. That is not a logical gap by itself.";
+  }
+  if (/includes a number/i.test(text)) {
+    return "Not quite. Numbers can be useful evidence. The issue is how the argument moves from the number to a stronger claim.";
+  }
+  return `Not quite. This does not identify the inference problem. ${explanation}`;
+}
+
+function fallacyDistractorFeedback(text, correctText) {
+  const chosenName = text.split(":")[0];
+  const correctName = correctText.split(":")[0];
+  const chosen = fallacyTypes.find((entry) => entry.name === chosenName);
+  const correct = fallacyTypes.find((entry) => entry.name === correctName);
+  if (chosen && correct) {
+    return `Not quite. ${chosen.name} would involve a different mistake: it ${chosen.choiceHint}. The debate instead matches ${correct.name.toLowerCase()}.`;
+  }
+  return "Not quite. This names a real bad-argument pattern, but it is not the pattern shown in the scenario.";
+}
+
+function probabilityDistractorFeedback(text) {
+  if (/exactly|last for/i.test(text)) {
+    return "Not quite. A probability does not say exactly how long a result will last in one case. It estimates chance across cases.";
+  }
+  if (/guaranteed|no uncertainty/i.test(text)) {
+    return "Not quite. A nonzero chance is not a guarantee. Probability is useful precisely because uncertainty remains.";
+  }
+  if (/impossible unless|100%/i.test(text)) {
+    return "Not quite. A result can be possible even when its chance is below 100%. Treating probability as all-or-nothing is the mistake.";
+  }
+  if (/Ignore the signal/i.test(text)) {
+    return "Not quite. False alarms mean the signal is not proof, but they do not mean the signal should be ignored.";
+  }
+  if (/definitely|no follow-up/i.test(text)) {
+    return "Not quite. A positive signal can be wrong, so it calls for follow-up rather than certainty.";
+  }
+  return "Not quite. This treats the signal too absolutely. Good probability thinking keeps both evidence and uncertainty in view.";
+}
+
+function statsDistractorFeedback(text) {
+  if (/raw count|smaller than|must be better/i.test(text)) {
+    return "Not quite. Raw counts can mislead when group sizes differ. The fair comparison is the rate.";
+  }
+  if (/larger.*higher rate|bigger group/i.test(text)) {
+    return "Not quite. A bigger group does not automatically have the higher rate. You still have to divide events by observations.";
+  }
+  if (/automatically equal/i.test(text)) {
+    return "Not quite. Being in the same comparison does not make the rates equal. The given counts and group sizes decide the rates.";
+  }
+  if (/no way to compare rates/i.test(text)) {
+    return "Not quite. Different group sizes are exactly when rates are useful; the counts and totals are enough to compare.";
+  }
+  if (/starting value does not matter/i.test(text)) {
+    return "Not quite. Percentage-point change and percent change are different, and percent change depends on the starting value.";
+  }
+  if (/ending value should be used/i.test(text)) {
+    return "Not quite. Percentage points are found by subtracting the starting rate from the ending rate, not by copying the ending value.";
+  }
+  if (/doubled|cut in half/i.test(text)) {
+    return "Not quite. A five-point change is not automatically doubling or halving. That depends on the starting number.";
+  }
+  return "Not quite. The needed information is already in the rates given; extra population facts are not required for this comparison.";
+}
+
+function causationDistractorFeedback(text) {
+  if (/includes a percentage/i.test(text)) {
+    return "Not quite. A percentage can describe a change, but it does not by itself show what caused the change.";
+  }
+  if (/never have more than one possible cause/i.test(text)) {
+    return "Not quite. Real outcomes can have more than one possible cause. That is exactly why a cause claim needs more support.";
+  }
+  return "Not quite. A visible side detail does not rule out other causes or show that the plan caused the result.";
+}
+
+function alternativeDistractorFeedback(text) {
+  if (/includes a percentage/i.test(text)) {
+    return "Not quite. A percentage describes the result, but it does not give another explanation for why the result happened.";
+  }
+  if (/cannot change|no explanation is needed/i.test(text)) {
+    return "Not quite. The setup says the result changed, so saying change is impossible clashes with the facts.";
+  }
+  return "Not quite. This jumps from a side detail to 'the only cause.' A good alternative explanation fits the facts without overclaiming.";
+}
+
+function biasDistractorFeedback(text, correctText) {
+  const chosen = biasTypes.find((entry) => entry.name === text);
+  const correct = biasTypes.find((entry) => entry.name === correctText);
+  if (chosen && correct) {
+    return `Not quite. ${chosen.name} is a real bias, but it points to a different pattern: ${lowerFirst(chosen.explanation)} This scenario shows ${correct.name.toLowerCase()}.`;
+  }
+  return "Not quite. This names a real bias, but it does not match the thinking pattern shown in the scenario.";
+}
+
+function tradeoffDistractorFeedback(text) {
+  if (/Costs never matter/i.test(text)) {
+    return "Not quite. Costs are part of the tradeoff. A benefit can be real and still need to be weighed against what it uses up.";
+  }
+  if (/unrelated detail/i.test(text)) {
+    return "Not quite. A random visible detail is not the tradeoff. The tradeoff is between the plan's possible benefit and its cost or risk.";
+  }
+  return "Not quite. A tradeoff does not require every option to be bad. It simply asks what is gained and what is given up.";
+}
+
+function beliefDistractorFeedback(text, tagSet) {
+  if (/final proof|certain|guaranteed/i.test(text)) {
+    return "Not quite. The evidence may matter, but this answer overreacts by treating limited evidence as certainty.";
+  }
+  if (/Ignore|Ignore the evidence|Ignore the result/i.test(text)) {
+    return "Not quite. Limited or mixed evidence may deserve only a small update, but ignoring relevant evidence throws away information.";
+  }
+  if (/Lower confidence|Decrease confidence|points the right way/i.test(text)) {
+    return "Not quite. This moves confidence in the wrong direction for evidence that supports the claim.";
+  }
+  if (/Raise confidence|upward|points the wrong way/i.test(text)) {
+    return "Not quite. This moves confidence in the wrong direction for evidence that counts against the claim.";
+  }
+  if (/opposite claim|opposite/i.test(text)) {
+    return "Not quite. This flips too far. Evidence may support, weaken, or fail to affect a claim without proving the opposite.";
+  }
+  if (/every new detail is useful|side detail weakens/i.test(text)) {
+    return "Not quite. Confidence should move because of relevant evidence, not just because a new detail appeared.";
+  }
+  return tagSet.has("irrelevant-detail")
+    ? "Not quite. The detail does not test the claim, so it should not move confidence much."
+    : "Not quite. This answer updates by the wrong amount or in the wrong direction for the evidence given.";
 }
 
 function answerIndexFor(skillId, index, difficulty) {

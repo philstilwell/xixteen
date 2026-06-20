@@ -692,6 +692,80 @@ main {
   line-height: 1.45;
 }
 
+.feedback-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.feedback-summary {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 12px 14px;
+  border-left: 4px solid var(--gold);
+  background: rgba(199, 154, 45, 0.12);
+  line-height: 1.45;
+}
+
+.feedback-summary.is-correct {
+  border-left-color: var(--green);
+  background: rgba(92, 127, 81, 0.12);
+}
+
+.feedback-summary.is-wrong {
+  border-left-color: var(--coral);
+  background: rgba(217, 93, 71, 0.1);
+}
+
+.feedback-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.feedback-card {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  line-height: 1.4;
+}
+
+.feedback-card.is-correct {
+  border-color: rgba(92, 127, 81, 0.65);
+  background: rgba(92, 127, 81, 0.1);
+}
+
+.feedback-card.is-selected:not(.is-correct) {
+  border-color: rgba(217, 93, 71, 0.7);
+  background: rgba(217, 93, 71, 0.08);
+}
+
+.feedback-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-card-heading strong {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.feedback-card p,
+.feedback-next-step {
+  margin: 0;
+}
+
+.feedback-next-step {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
 .question-actions {
   display: flex;
   justify-content: flex-end;
@@ -1433,7 +1507,8 @@ main {
 
   .score-summary,
   .diagnostic-summary,
-  .focus-list {
+  .focus-list,
+  .feedback-list {
     grid-template-columns: 1fr;
   }
 }

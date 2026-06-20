@@ -4,6 +4,8 @@ const DATA_DIR = new URL("../data/", import.meta.url);
 const MIN_PROMPT_CHARS = 120;
 const MAX_PROMPT_CHARS = 520;
 const MAX_CHOICE_CHARS = 190;
+const MIN_CHOICE_FEEDBACK_CHARS = 70;
+const MAX_CHOICE_FEEDBACK_CHARS = 520;
 const MAX_AVG_SENTENCE_WORDS = 34;
 const MAX_LONGEST_SENTENCE_WORDS = 58;
 const LONGEST_CHOICE_TELL_MARGIN = 6;
@@ -317,7 +319,30 @@ function checkCoherence(item, skill, issues, choiceTexts, answer) {
       addIssue(issues, "coherence", `choice ${choice.id} gives a percentage change without enough comparison context`);
     }
   }
-  if (/undefined|\bNaN\b/.test(item.prompt + item.explanation)) {
+  if (!item.feedback || typeof item.feedback !== "object" || Array.isArray(item.feedback)) {
+    addIssue(issues, "coherence", "item is missing choice-level feedback");
+  } else {
+    for (const choice of item.choices) {
+      const feedback = item.feedback[choice.id];
+      if (typeof feedback !== "string") {
+        addIssue(issues, "coherence", `choice ${choice.id} is missing feedback`);
+        continue;
+      }
+      if (feedback.length < MIN_CHOICE_FEEDBACK_CHARS) {
+        addIssue(issues, "pedagogy", `choice ${choice.id} feedback is too thin`);
+      }
+      if (feedback.length > MAX_CHOICE_FEEDBACK_CHARS) {
+        addIssue(issues, "clarity", `choice ${choice.id} feedback is too long`);
+      }
+      if (choice.id === item.answer && !/^Correct\./.test(feedback)) {
+        addIssue(issues, "pedagogy", `choice ${choice.id} feedback does not clearly mark the correct answer`);
+      }
+      if (choice.id !== item.answer && !/^Not quite\./.test(feedback)) {
+        addIssue(issues, "pedagogy", `choice ${choice.id} feedback does not clearly mark the distractor`);
+      }
+    }
+  }
+  if (/undefined|\bNaN\b/.test(item.prompt + item.explanation + Object.values(item.feedback || {}).join(" "))) {
     addIssue(issues, "coherence", "prompt or explanation contains a generated artifact");
   }
 }
