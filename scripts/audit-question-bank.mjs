@@ -85,7 +85,18 @@ const CLUNKY_CHOICE_PATTERNS = [
   ["generic same-action wording", /\bsame action\b/i],
   ["double p.m. punctuation", /\bp\.m\.\./i],
   ["overused money-motive tell", /\bwould make money\b/i],
-  ["overused profit-motive tell", /\bwould profit\b/i]
+  ["overused profit-motive tell", /\bwould profit\b/i],
+  ["old all-or-nothing cause distractor", /\bNo event can ever have more than one possible cause\b/i],
+  ["old impossible-change distractor", /\bcannot change under any circumstances\b/i],
+  ["old throwaway cost distractor", /\bCosts never matter\b/i],
+  ["old every-option-bad distractor", /\bevery option is equally bad\b/i],
+  ["old side-detail-decides distractor", /\bside detail decides the issue\b/i],
+  ["old reject-every-alternative distractor", /\breject every alternative\b/i],
+  ["old measurement-impossible distractor", /\bcan never be measured reliably\b/i],
+  ["old final-proof distractor", /\bTreat one small test as final proof\b/i],
+  ["old opposite-proof distractor", /\bproof that the opposite claim is true\b/i],
+  ["old certain-signal distractor", /\bdefinitely there, so no follow-up\b/i],
+  ["bad indefinite article before education", /\ba education expert\b/i]
 ];
 const PERCENT_CHANGE_PATTERN = /\b(rose|fell|increased|decreased|dropped|reduced|improved|cut|lowered|raised)\s+by\s+\d+%/i;
 const PERCENT_COMPARISON_CUE_PATTERN = /\b(compared with|compared to|before|after|starting number|percentage points|from\s+\d+%\s+to\s+\d+%|out of 100|chance)\b/i;
