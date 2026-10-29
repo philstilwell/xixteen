@@ -1,6 +1,7 @@
 const cards = [...document.querySelectorAll("[data-pack]")];
 const search = document.querySelector("#lesson-search");
 const duration = document.querySelector("#lesson-duration");
+const area = document.querySelector("#lesson-area");
 const count = document.querySelector("#resource-count");
 const empty = document.querySelector("#library-empty");
 function filterLessons() {
@@ -8,7 +9,8 @@ function filterLessons() {
   let visible = 0;
   for (const card of cards) {
     const matches = (!query || card.dataset.search.toLocaleLowerCase().includes(query)) &&
-      (duration.value === "all" || Number(card.dataset.minutes) <= Number(duration.value));
+      (duration.value === "all" || Number(card.dataset.minutes) <= Number(duration.value)) &&
+      (area.value === "all" || card.dataset.area === area.value);
     card.hidden = !matches;
     if (matches) visible++;
   }
@@ -17,9 +19,11 @@ function filterLessons() {
 }
 search.addEventListener("input", filterLessons);
 duration.addEventListener("change", filterLessons);
+area.addEventListener("change", filterLessons);
 document.querySelector("#reset-filters").addEventListener("click", () => {
   search.value = "";
   duration.value = "all";
+  area.value = "all";
   filterLessons();
   search.focus();
 });

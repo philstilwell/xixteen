@@ -15,16 +15,65 @@
       "audience": "Secondary and adult learners",
       "prerequisites": "None",
       "format": "Individual writing, pairs, and class discussion",
-      "objectives": ["Identify the main claim without strengthening it.", "Distinguish a claim from supporting evidence and background.", "Explain a sentence's role using its connection to the proposed action."],
-      "materials": ["One student handout per learner, or display the activities and use paper.", "Pens or pencils; no student devices required.", "Instructor guide with model answers, kept separate from the handout."],
-      "preparation": ["Read the three short scenarios and model answers.", "Print the three-page handout double-sided if convenient, or display one activity at a time.", "Tell learners that all scenarios are invented for reasoning practice; identifying a claim does not mean accepting it."],
-      "vocabulary": [{"term": "Claim", "definition": "A statement someone asks an audience to accept. In these activities, the main claim is a proposed action."}, {"term": "Evidence", "definition": "Information offered to support a claim."}, {"term": "Background", "definition": "Context that helps describe the situation but is not itself offered as the main support."}],
-      "timeline": [{"minutes": 3, "title": "Notice the proposed action", "instructions": "Read the warm-up aloud. Learners write the proposed action and its reason, then compare with a partner. Use the vocabulary to name the distinction."}, {"minutes": 6, "title": "Label the library argument", "instructions": "Learners complete the main activity individually, then compare labels in pairs. Ask them to explain the role of the visit count rather than vote on the library policy."}, {"minutes": 3, "title": "Discuss and check", "instructions": "Reveal the main model answer. Use the discussion prompts to distinguish identifying the proposal from evaluating it. Correct labels by asking which sentence the other facts are meant to support."}, {"minutes": 3, "title": "Check independent understanding", "instructions": "Learners complete the exit ticket without their partner. Check it against the three assessment criteria before revealing the answer."}],
+      "objectives": [
+        "Identify the main claim without strengthening it.",
+        "Distinguish a claim from supporting evidence and background.",
+        "Explain a sentence's role using its connection to the proposed action."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the three short scenarios and model answers.",
+        "Print the three-page handout double-sided if convenient, or display one activity at a time.",
+        "Tell learners that all scenarios are invented for reasoning practice; identifying a claim does not mean accepting it."
+      ],
+      "vocabulary": [
+        {
+          "term": "Claim",
+          "definition": "A statement someone asks an audience to accept. In these activities, the main claim is a proposed action."
+        },
+        {
+          "term": "Evidence",
+          "definition": "Information offered to support a claim."
+        },
+        {
+          "term": "Background",
+          "definition": "Context that helps describe the situation but is not itself offered as the main support."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 3,
+          "title": "Notice the proposed action",
+          "instructions": "Read the warm-up aloud. Learners write the proposed action and its reason, then compare with a partner. Use the vocabulary to name the distinction."
+        },
+        {
+          "minutes": 6,
+          "title": "Label the library argument",
+          "instructions": "Learners complete the main activity individually, then compare labels in pairs. Ask them to explain the role of the visit count rather than vote on the library policy."
+        },
+        {
+          "minutes": 3,
+          "title": "Discuss and check",
+          "instructions": "Reveal the main model answer. Use the discussion prompts to distinguish identifying the proposal from evaluating it. Correct labels by asking which sentence the other facts are meant to support."
+        },
+        {
+          "minutes": 3,
+          "title": "Check independent understanding",
+          "instructions": "Learners complete the exit ticket without their partner. Check it against the three assessment criteria before revealing the answer."
+        }
+      ],
       "warmup": {
         "title": "The bicycle rack proposal",
         "scenario": "Invented scenario: A student says, 'Six bicycles were left against classroom walls today because the rack was full. The school should add another bicycle rack.'",
         "output": "Write two labelled sentences: one for the proposed action and one for its supporting reason.",
-        "steps": ["Copy the action the student wants the school to take.", "Copy the fact offered to support that action."],
+        "steps": [
+          "Copy the action the student wants the school to take.",
+          "Copy the fact offered to support that action."
+        ],
         "check": "Does your proposed action say what the school should do, while your reason describes what happened?",
         "modelAnswer": "Proposed action: the school should add another bicycle rack. Supporting reason: six bicycles were left against classroom walls because the existing rack was full.",
         "whyAdequate": "The answer distinguishes a recommendation from the observation offered to support it. It does not claim that this is necessarily the best solution."
@@ -33,7 +82,11 @@
         "title": "The library's later closing time",
         "scenario": "Invented scenario: A student writes, 'Our library closes at 5 p.m. During a four-week trial of closing at 7 p.m., weekly visits rose from 400 to 460. The council should keep the later closing time.'",
         "output": "Write three labelled statements (claim, evidence, background) and one sentence explaining your labels.",
-        "steps": ["Copy the main claim: the proposal the writer wants the council to accept.", "Copy the supporting evidence and label the remaining sentence as background.", "Write one sentence explaining why the visit count is not itself the main claim."],
+        "steps": [
+          "Copy the main claim: the proposal the writer wants the council to accept.",
+          "Copy the supporting evidence and label the remaining sentence as background.",
+          "Write one sentence explaining why the visit count is not itself the main claim."
+        ],
         "check": "Have you separated the proposed action from the fact used to support it? Do not add 'always' or claim that the trial proves the policy works everywhere.",
         "modelAnswer": "Claim: the council should keep the later closing time. Evidence: weekly visits rose from 400 to 460 during the trial. Background: the library normally closes at 5 p.m. The count supports the proposal; it is not the proposed action.",
         "whyAdequate": "The answer names the roles of all three sentences without strengthening what the writer said. The rise in visits is relevant to the recommendation, but identifying its role does not establish that later closing caused the rise or outweighs the costs."
@@ -42,18 +95,63 @@
         "title": "The community garden proposal",
         "scenario": "Invented scenario: A resident writes, 'The community garden opened in 2019. All 20 planting plots are in use, and 12 residents are waiting for a plot. The council should create ten more plots.'",
         "output": "Write the claim, evidence, and background with labels; add one sentence explaining how the evidence relates to the claim.",
-        "steps": ["Copy the proposed action exactly, including the number of additional plots.", "Identify the fact offered in support and the fact supplying background.", "Explain why the demand for plots is evidence for the proposal rather than the proposal itself."],
+        "steps": [
+          "Copy the proposed action exactly, including the number of additional plots.",
+          "Identify the fact offered in support and the fact supplying background.",
+          "Explain why the demand for plots is evidence for the proposal rather than the proposal itself."
+        ],
         "check": "Have you kept the proposal at ten more plots and avoided adding a guarantee that everyone will receive one?",
         "modelAnswer": "Claim: the council should create ten more plots. Evidence: all 20 plots are in use and 12 residents are waiting. Background: the garden opened in 2019. The demand is offered as a reason to expand; it does not itself state what the council should do.",
         "whyAdequate": "The answer preserves the exact proposal, identifies the supporting observation, and explains its role. It does not turn identifying a claim into proving that the proposal is sufficient or affordable."
       },
-      "discussion": [{"prompt": "Could someone identify the library claim correctly and still disagree with it?", "guidance": "Yes. Identifying a recommendation and judging its merits are different tasks. Costs, staffing, or alternative explanations could matter when evaluating it, but they are not supplied here."}, {"prompt": "Why is the sentence with the most numbers not automatically the main claim?", "guidance": "A sentence's role depends on what it supports, not on its length, detail, or numerical content."}],
-      "misconceptions": [{"misconception": "A claim must be false or unsupported.", "response": "A claim is something proposed for acceptance. It may be true, false, well supported, or poorly supported."}, {"misconception": "Evidence can never itself be a claim.", "response": "An evidence statement can be a claim in another argument. Here we identify its role in supporting this main recommendation."}, {"misconception": "Finding the main claim proves the recommendation is good.", "response": "First identify what is being proposed; then evaluate the evidence and other relevant considerations."}],
-      "adaptations": [{"label": "More support", "instructions": "Read each scenario aloud and provide three labels to place beside the sentences: proposed action, supporting fact, background. Ask learners to explain one placement orally before writing."}, {"label": "More challenge", "instructions": "After the exit ticket, ask: 'Would changing the proposal from ten more plots to one hundred change the role of the demand figures, their strength as support, or both?' Expected response: their role stays evidence, but the stronger expansion proposal requires more justification."}],
-      "assessmentCriteria": ["The proposed action is identified accurately without exaggeration.", "Evidence and background are correctly distinguished.", "The explanation connects the supporting fact to the proposal rather than merely repeating both."],
+      "discussion": [
+        {
+          "prompt": "Could someone identify the library claim correctly and still disagree with it?",
+          "guidance": "Yes. Identifying a recommendation and judging its merits are different tasks. Costs, staffing, or alternative explanations could matter when evaluating it, but they are not supplied here."
+        },
+        {
+          "prompt": "Why is the sentence with the most numbers not automatically the main claim?",
+          "guidance": "A sentence's role depends on what it supports, not on its length, detail, or numerical content."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "A claim must be false or unsupported.",
+          "response": "A claim is something proposed for acceptance. It may be true, false, well supported, or poorly supported."
+        },
+        {
+          "misconception": "Evidence can never itself be a claim.",
+          "response": "An evidence statement can be a claim in another argument. Here we identify its role in supporting this main recommendation."
+        },
+        {
+          "misconception": "Finding the main claim proves the recommendation is good.",
+          "response": "First identify what is being proposed; then evaluate the evidence and other relevant considerations."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Read each scenario aloud and provide three labels to place beside the sentences: proposed action, supporting fact, background. Ask learners to explain one placement orally before writing."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "After the exit ticket, ask: 'Would changing the proposal from ten more plots to one hundred change the role of the demand figures, their strength as support, or both?' Expected response: their role stays evidence, but the stronger expansion proposal requires more justification."
+        }
+      ],
+      "assessmentCriteria": [
+        "The proposed action is identified accurately without exaggeration.",
+        "Evidence and background are correctly distinguished.",
+        "The explanation connects the supporting fact to the proposal rather than merely repeating both."
+      ],
       "practiceHref": "/learners/?practice=clarify_claim#workbench",
       "articleLinks": [],
-      "downloads": {"studentPdf": "/output/pdf/teaching-packs/identify-the-claim-student.pdf", "instructorPdf": "/output/pdf/teaching-packs/identify-the-claim-instructor.pdf", "studentMarkdown": "/output/teaching-packs/identify-the-claim-student.md", "instructorMarkdown": "/output/teaching-packs/identify-the-claim-instructor.md", "zip": "/output/teaching-packs/identify-the-claim.zip"}
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/identify-the-claim-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/identify-the-claim-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/identify-the-claim-student.md",
+        "instructorMarkdown": "/output/teaching-packs/identify-the-claim-instructor.md",
+        "zip": "/output/teaching-packs/identify-the-claim.zip"
+      }
     },
     {
       "slug": "define-your-terms",
@@ -68,16 +166,66 @@
       "audience": "Secondary and adult learners",
       "prerequisites": "None; learners compare simple counts and averages without doing arithmetic.",
       "format": "Individual writing, pairs, and class discussion",
-      "objectives": ["Identify an ambiguous term that affects a judgment.", "Define the term with a measure, direction, group, and comparison period.", "Apply two definitions to the same facts and explain why they yield different judgments."],
-      "materials": ["One student handout per learner, or display the activities and use paper.", "Pens or pencils; no calculator or student device required.", "Instructor guide with model answers, kept separate from the handout."],
-      "preparation": ["Read the scenarios and note that every before-and-after comparison uses the same stated group.", "Print the three-page handout or display each activity in turn.", "Explain that all figures are invented for practice, and that observing a change does not show what caused it."],
-      "vocabulary": [{"term": "Ambiguous term", "definition": "A word or phrase with more than one reasonable meaning in its context."}, {"term": "Measure", "definition": "An observable quantity used to judge a particular feature, such as weekly interruptions or average test scores."}, {"term": "Comparison period", "definition": "The times being compared, such as the four weeks before and after a rule."}],
-      "timeline": [{"minutes": 5, "title": "Spot the ambiguous word", "instructions": "Learners complete the warm-up and compare answers. Explain that a useful definition says what is measured, what change counts as improvement, and which group and periods are compared."}, {"minutes": 10, "title": "Apply two definitions", "instructions": "Pairs complete the phone-rule activity. Ask them to write definitions before stating whether either measure improves. Circulate and check that both periods and the same classes are named."}, {"minutes": 8, "title": "Discuss the choice of measure", "instructions": "Reveal and discuss the main model answer. Use both discussion prompts. Emphasize that a purpose should guide the choice of measure and that these figures do not isolate the rule's causal effect."}, {"minutes": 7, "title": "Transfer the skill", "instructions": "Learners complete the bus-service exit ticket independently. Use the criteria to check their two definitions and conclusions, then discuss the model answer."}],
+      "objectives": [
+        "Identify an ambiguous term that affects a judgment.",
+        "Define the term with a measure, direction, group, and comparison period.",
+        "Apply two definitions to the same facts and explain why they yield different judgments."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no calculator or student device required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the scenarios and note that every before-and-after comparison uses the same stated group.",
+        "Print the three-page handout or display each activity in turn.",
+        "Explain that all figures are invented for practice, and that observing a change does not show what caused it."
+      ],
+      "vocabulary": [
+        {
+          "term": "Ambiguous term",
+          "definition": "A word or phrase with more than one reasonable meaning in its context."
+        },
+        {
+          "term": "Measure",
+          "definition": "An observable quantity used to judge a particular feature, such as weekly interruptions or average test scores."
+        },
+        {
+          "term": "Comparison period",
+          "definition": "The times being compared, such as the four weeks before and after a rule."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Spot the ambiguous word",
+          "instructions": "Learners complete the warm-up and compare answers. Explain that a useful definition says what is measured, what change counts as improvement, and which group and periods are compared."
+        },
+        {
+          "minutes": 10,
+          "title": "Apply two definitions",
+          "instructions": "Pairs complete the phone-rule activity. Ask them to write definitions before stating whether either measure improves. Circulate and check that both periods and the same classes are named."
+        },
+        {
+          "minutes": 8,
+          "title": "Discuss the choice of measure",
+          "instructions": "Reveal and discuss the main model answer. Use both discussion prompts. Emphasize that a purpose should guide the choice of measure and that these figures do not isolate the rule's causal effect."
+        },
+        {
+          "minutes": 7,
+          "title": "Transfer the skill",
+          "instructions": "Learners complete the bus-service exit ticket independently. Use the criteria to check their two definitions and conclusions, then discuss the model answer."
+        }
+      ],
       "warmup": {
         "title": "A more successful reading club",
         "scenario": "Invented scenario: A club leader says, 'Our reading club became more successful this month.' Average attendance per meeting rose from 12 last month to 18 this month, but the average number of books finished per member stayed at one per month.",
         "output": "Write one ambiguous phrase, two possible meanings, and the result under each meaning.",
-        "steps": ["Identify the phrase that needs a clearer meaning.", "Give one meaning using attendance and one using books finished per member.", "State whether each meaning shows improvement in this month compared with last month."],
+        "steps": [
+          "Identify the phrase that needs a clearer meaning.",
+          "Give one meaning using attendance and one using books finished per member.",
+          "State whether each meaning shows improvement in this month compared with last month."
+        ],
         "check": "Do your two meanings refer to different outcomes, and does each conclusion match the figures?",
         "modelAnswer": "'More successful' needs clarification. If it means higher average attendance per meeting this month than last month, there is improvement from 12 to 18. If it means more books finished per member per month, there is no improvement: the average remains one.",
         "whyAdequate": "The answer makes two plausible interpretations explicit and applies the supplied values. It does not assume that attendance and reading volume are interchangeable."
@@ -86,7 +234,11 @@
         "title": "Does the phone rule make lessons better?",
         "scenario": "Invented scenario: A principal says a new phone rule makes lessons 'better'. In the same ten classes, weekly phone interruptions fell from 20 to 12, but average test scores stayed at 70 out of 100. Both figures compare the four weeks before the rule with the four weeks after it.",
         "output": "Write two definitions, two conclusions applying those definitions, and one sentence explaining how to choose a measure.",
-        "steps": ["Write two possible definitions of 'better': one using interruptions and one using test scores. For each, state the direction of improvement, the group, and the comparison period.", "Apply each definition to the supplied figures and say whether it shows an improvement.", "Finish with one sentence explaining why the school's purpose should guide its choice of measure before results are inspected."],
+        "steps": [
+          "Write two possible definitions of 'better': one using interruptions and one using test scores. For each, state the direction of improvement, the group, and the comparison period.",
+          "Apply each definition to the supplied figures and say whether it shows an improvement.",
+          "Finish with one sentence explaining why the school's purpose should guide its choice of measure before results are inspected."
+        ],
         "check": "Could a reader apply your two rules to the figures without guessing? Separate observing a change from claiming the rule caused it.",
         "modelAnswer": "Definition 1: fewer weekly phone interruptions across these ten classes in the four weeks after the rule than before it. This measure improves from 20 to 12. Definition 2: a higher average test score in the same classes and periods. This measure shows no improvement: 70 in both periods. The school should choose according to whether its purpose is reducing disruption or improving test performance, rather than picking whichever result looks best.",
         "whyAdequate": "Both definitions specify an observable measure, direction, group, and comparison. The conclusions follow from those definitions. The answer does not claim that the rule caused the observed reduction in interruptions."
@@ -95,18 +247,524 @@
         "title": "A better bus service?",
         "scenario": "Invented scenario: A town calls its revised bus service 'better'. On the same route, average passenger waiting time fell from 12 minutes in the month before the revision to 8 minutes in the month after it. The fare per journey rose from $2 to $3 over the same comparison. No other outcomes are supplied.",
         "output": "Write two clear definitions of 'better', apply each to the figures, and write one sentence about choosing between them.",
-        "steps": ["Define 'better' using waiting time, naming the direction of improvement, route, and periods.", "Define 'better' using fare per journey, again naming the direction of improvement and comparison.", "State what each definition shows and why the town should identify its priority before selecting a definition."],
+        "steps": [
+          "Define 'better' using waiting time, naming the direction of improvement, route, and periods.",
+          "Define 'better' using fare per journey, again naming the direction of improvement and comparison.",
+          "State what each definition shows and why the town should identify its priority before selecting a definition."
+        ],
         "check": "Have you distinguished an improvement in waiting time from a worsening in affordability, without claiming either captures every aspect of the service?",
         "modelAnswer": "Using time: better means a lower average waiting time on this route in the month after the revision than before it. This improves from 12 to 8 minutes. Using cost: better means a lower fare per journey on the same route over those periods. This worsens because the fare rises from $2 to $3. The town should state whether it prioritizes shorter waits, lower fares, or an explicit balance before choosing its standard.",
         "whyAdequate": "Both rules can be applied without guessing. They lead to different judgments about different features, so an overall verdict requires a stated priority or tradeoff rather than silently changing the definition."
       },
-      "discussion": [{"prompt": "Are both definitions of 'better lessons' legitimate?", "guidance": "Both can measure relevant educational aims, but neither captures every aim. A definition must fit the purpose; usefulness does not follow merely from being easy to count."}, {"prompt": "Why choose the measure before looking at the result?", "guidance": "Choosing only a favorable outcome afterward can conceal disappointing results. Stating the aim and measure first makes the evaluation more transparent."}],
-      "misconceptions": [{"misconception": "A precise definition is automatically the right definition.", "response": "A rule can be precise yet poorly matched to the purpose. Ask what the activity is supposed to achieve."}, {"misconception": "One improving measure proves the whole policy is successful.", "response": "State exactly which feature improved and consider other relevant aims before giving an overall verdict."}, {"misconception": "A before-and-after difference proves the rule caused it.", "response": "These exercises identify what changed under a definition. Other changes could explain the difference; no causal comparison is supplied."}],
-      "adaptations": [{"label": "More support", "instructions": "Use the sentence frame: 'Better means [higher/lower] [measure] for [group] in [later period] compared with [earlier period].' Let pairs explain their definitions orally before writing."}, {"label": "More challenge", "instructions": "Ask learners to describe an aim that the two phone-rule measures miss, such as student well-being, and a possible way to measure it. Accept it as a proposed measure; no conclusion about its result is justified without data."}],
-      "assessmentCriteria": ["Each definition names a measure, direction, group, and comparison period.", "The conclusions correctly apply the supplied figures to those definitions.", "The explanation links the choice of measure to an aim and avoids claiming that the figures prove causation."],
+      "discussion": [
+        {
+          "prompt": "Are both definitions of 'better lessons' legitimate?",
+          "guidance": "Both can measure relevant educational aims, but neither captures every aim. A definition must fit the purpose; usefulness does not follow merely from being easy to count."
+        },
+        {
+          "prompt": "Why choose the measure before looking at the result?",
+          "guidance": "Choosing only a favorable outcome afterward can conceal disappointing results. Stating the aim and measure first makes the evaluation more transparent."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "A precise definition is automatically the right definition.",
+          "response": "A rule can be precise yet poorly matched to the purpose. Ask what the activity is supposed to achieve."
+        },
+        {
+          "misconception": "One improving measure proves the whole policy is successful.",
+          "response": "State exactly which feature improved and consider other relevant aims before giving an overall verdict."
+        },
+        {
+          "misconception": "A before-and-after difference proves the rule caused it.",
+          "response": "These exercises identify what changed under a definition. Other changes could explain the difference; no causal comparison is supplied."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Use the sentence frame: 'Better means [higher/lower] [measure] for [group] in [later period] compared with [earlier period].' Let pairs explain their definitions orally before writing."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask learners to describe an aim that the two phone-rule measures miss, such as student well-being, and a possible way to measure it. Accept it as a proposed measure; no conclusion about its result is justified without data."
+        }
+      ],
+      "assessmentCriteria": [
+        "Each definition names a measure, direction, group, and comparison period.",
+        "The conclusions correctly apply the supplied figures to those definitions.",
+        "The explanation links the choice of measure to an aim and avoids claiming that the figures prove causation."
+      ],
       "practiceHref": "/learners/?practice=define_terms#workbench",
-      "articleLinks": [{"title": "Define Your Terms Before You Draw Conclusions", "href": "/articles/ai-advice-and-your-judgment/"}],
-      "downloads": {"studentPdf": "/output/pdf/teaching-packs/define-your-terms-student.pdf", "instructorPdf": "/output/pdf/teaching-packs/define-your-terms-instructor.pdf", "studentMarkdown": "/output/teaching-packs/define-your-terms-student.md", "instructorMarkdown": "/output/teaching-packs/define-your-terms-instructor.md", "zip": "/output/teaching-packs/define-your-terms.zip"}
+      "articleLinks": [
+        {
+          "title": "Define Your Terms Before You Draw Conclusions",
+          "href": "/articles/ai-advice-and-your-judgment/"
+        }
+      ],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/define-your-terms-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/define-your-terms-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/define-your-terms-student.md",
+        "instructorMarkdown": "/output/teaching-packs/define-your-terms-instructor.md",
+        "zip": "/output/teaching-packs/define-your-terms.zip"
+      }
+    },
+    {
+      "slug": "map-the-argument",
+      "title": "See how an argument fits together",
+      "subtitle": "Identify the reasons, conclusion, and background, then show what supports what.",
+      "skillId": "find_argument",
+      "skillCode": "03",
+      "skillLabel": "What's the Argument?",
+      "durationMinutes": 20,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Distinguish the conclusion from its supporting reasons and background.",
+        "Show the direction of support using an arrow or a written explanation.",
+        "Explain why a true detail need not be a reason for this conclusion."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Keep the instructor guide and model answers separate from student materials."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the student handout or display one activity at a time.",
+        "Explain that all scenarios are invented and students should use only the supplied facts."
+      ],
+      "vocabulary": [
+        {
+          "term": "Conclusion",
+          "definition": "The statement the argument gives reasons to accept."
+        },
+        {
+          "term": "Reason",
+          "definition": "A statement offered in support of the conclusion."
+        },
+        {
+          "term": "Background",
+          "definition": "Context that helps describe the situation without being offered as support."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 4,
+          "title": "Find two supporting reasons",
+          "instructions": "Read the gallery warm-up. Learners mark the two reasons and the conclusion, then compare arrows with a partner."
+        },
+        {
+          "minutes": 7,
+          "title": "Map the fundraising argument",
+          "instructions": "Learners label the main activity and draw its support arrow. Ask why the meeting day is background."
+        },
+        {
+          "minutes": 4,
+          "title": "Discuss sentence roles",
+          "instructions": "Reveal the model answer. Use the prompts to distinguish a statement's position from its role."
+        },
+        {
+          "minutes": 5,
+          "title": "Transfer the skill",
+          "instructions": "Learners complete the picnic exit ticket independently. Check their labels, arrow, and explanation before sharing the answer."
+        }
+      ],
+      "warmup": {
+        "title": "The closed gallery",
+        "scenario": "Invented scenario: A visitor says, 'The gallery is closed every Monday. Today is Monday. Therefore, the gallery is closed today.'",
+        "output": "Write the conclusion and the two reasons. Show how the reasons support the conclusion.",
+        "steps": [
+          "Copy the statement being supported.",
+          "Copy both supporting statements.",
+          "Draw arrows from the two reasons to the conclusion, or write how the reasons work together."
+        ],
+        "check": "Do both reasons lead toward the statement about today, rather than away from it?",
+        "modelAnswer": "Conclusion: the gallery is closed today. Reasons: it is closed every Monday, and today is Monday. The two reasons work together: today belongs to the set of days when the gallery is closed.",
+        "whyAdequate": "It names all three roles and shows how the rule and the fact about today jointly support the conclusion."
+      },
+      "activity": {
+        "title": "Compare two fundraisers",
+        "scenario": "Invented scenario: A club member writes: 'Our club meets on Tuesdays. Last month's bake sale earned $300 after costs, while the car wash earned $180. Therefore, we should hold another bake sale next month.'",
+        "output": "Label the three sentences, draw one support arrow, and write one explanatory sentence.",
+        "steps": [
+          "Label each sentence background, reason, or conclusion.",
+          "Draw an arrow from the reason to the conclusion, or write 'reason -> conclusion' using the actual sentences.",
+          "Explain in one sentence why the Tuesday meeting detail is not support for the fundraising recommendation."
+        ],
+        "check": "Does your arrow show which statement supports which? The most detailed sentence need not be the conclusion.",
+        "modelAnswer": "Tuesday meetings are background. The $300 versus $180 earnings comparison is the reason. Holding another bake sale is the conclusion. Draw the arrow from the earnings comparison to the recommendation. Meeting on Tuesday supplies no comparison of the two fundraising options.",
+        "whyAdequate": "The answer maps the argument's structure and explains why a true detail is not necessarily a reason."
+      },
+      "exitTicket": {
+        "title": "The picnic plan",
+        "scenario": "Invented scenario: A club member writes, 'Our club was founded in 2018. The forecast predicts heavy rain during tomorrow's picnic. We should move tomorrow's picnic indoors.'",
+        "output": "Label the three sentences and show the support relation; explain one label.",
+        "steps": [
+          "Label each sentence background, reason, or conclusion.",
+          "Draw an arrow from the supporting sentence to the conclusion, or write the relation in words.",
+          "Explain why the founding year does not support the proposed move."
+        ],
+        "check": "Have you identified what supports the recommendation without treating the weather forecast as a guarantee?",
+        "modelAnswer": "Background: the club was founded in 2018. Reason: heavy rain is forecast during the picnic. Conclusion: move tomorrow's picnic indoors. The forecast supports the proposed move; the founding year says nothing about tomorrow's weather or location.",
+        "whyAdequate": "The answer maps the argument without claiming that the forecast guarantees rain or that no other considerations matter."
+      },
+      "discussion": [
+        {
+          "prompt": "Must the conclusion be the last sentence?",
+          "guidance": "No. An argument can begin with its conclusion. Identify which statement the others support, rather than relying on sentence order."
+        },
+        {
+          "prompt": "Does finding a reason show that it is a good reason?",
+          "guidance": "No. Mapping identifies its intended role. Evaluating its accuracy, relevance, or strength is a further task."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "The most detailed sentence is the conclusion.",
+          "response": "Detail does not decide the role. In the fundraiser, the detailed earnings comparison supports the recommendation."
+        },
+        {
+          "misconception": "A true background fact must support the conclusion.",
+          "response": "Truth and a supporting connection are different. The meeting day can be true without favoring either fundraiser."
+        },
+        {
+          "misconception": "Every argument has exactly one reason.",
+          "response": "The gallery example needs two reasons working together. Other arguments can have more."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Supply the three role labels and let learners arrange them beside each sentence. Ask them to complete: \"This reason supports this conclusion because...\""
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask learners to put the fundraiser conclusion first while preserving its reason. Expected answer: \"We should hold another bake sale because it earned $300 after costs, compared with $180 for the car wash.\" The order changes; the support relation does not."
+        }
+      ],
+      "assessmentCriteria": [
+        "The conclusion and reason are correctly identified.",
+        "The arrow or explanation shows support flowing from reason to conclusion.",
+        "Background is distinguished by its lack of a supporting connection to this recommendation."
+      ],
+      "practiceHref": "/learners/?practice=find_argument#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/map-the-argument-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/map-the-argument-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/map-the-argument-student.md",
+        "instructorMarkdown": "/output/teaching-packs/map-the-argument-instructor.md",
+        "zip": "/output/teaching-packs/map-the-argument.zip"
+      }
+    },
+    {
+      "slug": "uncover-the-assumption",
+      "title": "Find the missing bridge",
+      "subtitle": "Identify what must carry over when someone extends a result to a new setting.",
+      "skillId": "hidden_assumptions",
+      "skillCode": "04",
+      "skillLabel": "What's Assumed?",
+      "durationMinutes": 20,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Separate an observed result from a prediction about a new setting.",
+        "State a relevant assumption connecting the two.",
+        "Describe a possible difference that would weaken that connection."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Keep the instructor guide and model answers separate from student materials."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the student handout or display one activity at a time.",
+        "Explain that all scenarios are invented and students should use only the supplied facts."
+      ],
+      "vocabulary": [
+        {
+          "term": "Assumption",
+          "definition": "An idea the reasoning relies on without stating or establishing it."
+        },
+        {
+          "term": "Prediction",
+          "definition": "A claim about what will happen or what an untested case will show."
+        },
+        {
+          "term": "Relevant difference",
+          "definition": "A difference that could affect whether a result carries over."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 4,
+          "title": "Notice the untested step",
+          "instructions": "Learners complete the bus-route warm-up. Name the gap between a result on one route and a prediction for another."
+        },
+        {
+          "minutes": 7,
+          "title": "Find the checkout assumption",
+          "instructions": "Pairs separate the observed result, prediction, and assumption in the main activity. Ask for one relevant possible weekday difference."
+        },
+        {
+          "minutes": 4,
+          "title": "Test the bridge",
+          "instructions": "Discuss the supplied prompts and reveal the main answer. Distinguish a possible weakening condition from an established fact."
+        },
+        {
+          "minutes": 5,
+          "title": "Check independent understanding",
+          "instructions": "Learners complete the practice-session exit ticket alone. Assess whether the assumption connects the specific settings."
+        }
+      ],
+      "warmup": {
+        "title": "A faster bus route",
+        "scenario": "Invented scenario: An express service reduces journeys on Route A by ten minutes. A planner says, 'The same express arrangement will save ten minutes on Route B.' Route B has not been tested.",
+        "output": "Write the observed result, one assumption, and one possible difference.",
+        "steps": [
+          "State what was observed on Route A.",
+          "Name a feature that would need to be similar enough for the same time saving on Route B.",
+          "Describe a possible Route B difference that could reduce the saving."
+        ],
+        "check": "Is your difference relevant to journey time, and clearly a possibility rather than a supplied fact?",
+        "modelAnswer": "Route A journeys became ten minutes shorter. The planner assumes relevant conditions, such as the stops that can be skipped, are similar enough on Route B. If Route B has fewer skippable stops, the saving could be smaller; that difference is only a possibility here.",
+        "whyAdequate": "The answer connects the observed result to the untested route without inventing information about Route B."
+      },
+      "activity": {
+        "title": "Will the checkout result carry over?",
+        "scenario": "Invented scenario: A store tests a checkout arrangement on Saturday and Sunday. Average waits fall from six minutes to four. The manager concludes, 'This arrangement will also reduce waits on weekdays.' No weekday test has been done.",
+        "output": "Write the observed result, prediction, assumption, and one possible weakening difference.",
+        "steps": [
+          "Copy the observed reason and the prediction separately.",
+          "Complete: 'The manager assumes that weekday conditions are similar enough in ___ for the weekend result to carry over.' Name a relevant feature such as customer volume or staffing.",
+          "Describe one possible weekday difference that would weaken that bridge. You are proposing a possibility, not claiming it happened."
+        ],
+        "check": "Does your assumption connect this weekend result to weekdays, rather than merely say that faster checkout is desirable?",
+        "modelAnswer": "Reason: weekend waits fell from six to four minutes. Prediction: weekday waits will fall too. The manager assumes weekday customer volume and staffing are similar enough for the arrangement to help. If weekdays have much less staff available, the arrangement might not work as it did in the trial.",
+        "whyAdequate": "It identifies the needed transfer from one setting to another and tests that assumption with a relevant possible difference."
+      },
+      "exitTicket": {
+        "title": "A practice session for another class",
+        "scenario": "Invented scenario: A teacher gives her morning class ten minutes of vocabulary practice each day. Its average score rises from 60 to 75 on a weekly vocabulary quiz. She predicts the same routine will raise the evening class's score by 15 points. The evening class has not tried it.",
+        "output": "Write the observed result and prediction, then an assumption and a possible weakening difference.",
+        "steps": [
+          "Separate the morning result from the evening prediction.",
+          "Name one learning condition that would need to be similar enough for the prediction.",
+          "Describe a possible difference that could make the evening class improve less."
+        ],
+        "check": "Does your assumption concern learning conditions, rather than just the desirability of higher scores?",
+        "modelAnswer": "Observed: the morning class average rose from 60 to 75. Prediction: the evening class will gain 15 points. The teacher assumes relevant conditions, such as starting vocabulary knowledge, are similar enough. If evening learners already know most of the practiced words, the same routine might produce a smaller gain. That condition is not established here.",
+        "whyAdequate": "The answer makes the transfer assumption explicit and marks the weakening difference as hypothetical. It does not claim that the before-and-after result proves practice caused the rise."
+      },
+      "discussion": [
+        {
+          "prompt": "Must the two settings be identical in every way?",
+          "guidance": "No. The assumption concerns similarities that matter for this result. Wall color need not matter to checkout waiting time; staffing might."
+        },
+        {
+          "prompt": "Does naming a possible difference refute the prediction?",
+          "guidance": "No. A possibility identifies something to investigate. It is not evidence that the difference actually exists or that the prediction is false."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "An assumption is always false.",
+          "response": "It may be reasonable or true, but the argument still needs it. Ask what evidence would support it."
+        },
+        {
+          "misconception": "Any difference defeats a comparison.",
+          "response": "Explain how the difference could affect this outcome. A difference with no such connection is insufficient."
+        },
+        {
+          "misconception": "The observed change establishes its cause.",
+          "response": "These before-and-after reports leave other explanations open. Finding a transfer assumption does not settle the causal question."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Use the frame: \"The result was observed in ___. The prediction concerns ___. The reason carries over only if ___ is similar enough.\" Accept one relevant condition."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask what evidence would check the weekday staffing assumption. Expected answer: compare weekend and weekday staffing and customer volume, then test the arrangement on weekdays; these are proposed checks, not completed studies."
+        }
+      ],
+      "assessmentCriteria": [
+        "The observed result and untested prediction are kept separate.",
+        "The assumption names a condition relevant to carrying the result over.",
+        "The possible difference is explained and not presented as an established fact."
+      ],
+      "practiceHref": "/learners/?practice=hidden_assumptions#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/uncover-the-assumption-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/uncover-the-assumption-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/uncover-the-assumption-student.md",
+        "instructorMarkdown": "/output/teaching-packs/uncover-the-assumption-instructor.md",
+        "zip": "/output/teaching-packs/uncover-the-assumption.zip"
+      }
+    },
+    {
+      "slug": "test-relevance",
+      "title": "Keep the evidence on the question",
+      "subtitle": "Explain whether a fact bears on the specific claim being judged.",
+      "skillId": "relevance",
+      "skillCode": "05",
+      "skillLabel": "Does That Matter?",
+      "durationMinutes": 20,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Identify the action and outcome in a claim.",
+        "Explain how a supplied fact bears on that claim.",
+        "Distinguish relevance from truth, vividness, and proof of cause."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Keep the instructor guide and model answers separate from student materials."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the student handout or display one activity at a time.",
+        "Explain that all scenarios are invented and students should use only the supplied facts."
+      ],
+      "vocabulary": [
+        {
+          "term": "Relevance",
+          "definition": "A connection between information and the particular question being judged."
+        },
+        {
+          "term": "Outcome",
+          "definition": "The result a claim says an action affects."
+        },
+        {
+          "term": "Comparison",
+          "definition": "Examining cases side by side using the same relevant measure."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 4,
+          "title": "Name the question",
+          "instructions": "Learners complete the cafeteria warm-up. Ask which outcome the claim concerns before discussing either fact."
+        },
+        {
+          "minutes": 7,
+          "title": "Check the hotel evidence",
+          "instructions": "Pairs identify the action and outcome, then explain why each hotel fact does or does not bear on the claim."
+        },
+        {
+          "minutes": 4,
+          "title": "Separate relevance from proof",
+          "instructions": "Reveal the model answer and use the discussion prompts. A relevant comparison can still leave causal questions unresolved."
+        },
+        {
+          "minutes": 5,
+          "title": "Apply the test independently",
+          "instructions": "Learners complete the library exit ticket. Assess their connection between the evidence and the exact outcome."
+        }
+      ],
+      "warmup": {
+        "title": "Shorter lunch queues",
+        "scenario": "Invented scenario: A cafeteria claims opening a second till shortens lunch queues. Fact A: average waits were four minutes with two tills open and seven with one, on comparable lunch days. Fact B: students liked the new wall mural.",
+        "output": "Name the claimed outcome and explain the relevance of each fact.",
+        "steps": [
+          "State what the extra till is claimed to change.",
+          "Choose the fact that directly compares that outcome.",
+          "Explain why the other fact does not answer this question."
+        ],
+        "check": "Are you judging queue waiting time rather than how pleasant the room looks?",
+        "modelAnswer": "The claimed outcome is shorter waits. Fact A directly compares waits with one and two tills. Liking a mural does not show whether the extra till shortens waits.",
+        "whyAdequate": "It links relevance to the exact action and outcome without declaring the comparison conclusive proof of cause."
+      },
+      "activity": {
+        "title": "Which hotel fact matters?",
+        "scenario": "Invented scenario: A hotel manager claims text reminders reduce hallway noise complaints. Fact A: comparable floors receiving reminders had four complaints per 100 occupied room-nights, versus seven on floors without reminders in the same month. Fact B: most guests liked the new lobby painting. A room-night means one occupied room for one night.",
+        "output": "Write the claim's action and outcome, then explain the relevance of Fact A and Fact B.",
+        "steps": [
+          "Name the action and the outcome in the claim.",
+          "Choose which fact bears directly on the claim and explain the connection.",
+          "Explain why the other fact does not answer this question, even if it is true."
+        ],
+        "check": "Have you linked the evidence to reminders and noise complaints, rather than to general guest satisfaction?",
+        "modelAnswer": "The action is sending text reminders; the outcome is hallway noise complaints. Fact A compares that outcome with and without reminders using the same unit. Fact B concerns a painting and does not show whether reminders affect noise complaints.",
+        "whyAdequate": "The answer explains relevance through the specific action and outcome. Relevance alone does not prove the comparison establishes cause."
+      },
+      "exitTicket": {
+        "title": "Returning library books on time",
+        "scenario": "Invented scenario: A librarian claims reminder emails reduce late book returns. Fact A: in the same month, comparable borrowers sent reminders returned 8 of every 100 books late; borrowers without reminders returned 13 of every 100 late. Fact B: the library website won a design award.",
+        "output": "Write the action and outcome, choose the relevant fact, and explain why the other fact does not answer the claim.",
+        "steps": [
+          "Name the action being assessed and the result it is meant to affect.",
+          "Explain how one fact compares that result with and without the action.",
+          "Explain why the other fact, even if true, does not test this claim."
+        ],
+        "check": "Have you kept late returns separate from the website's appearance or reputation?",
+        "modelAnswer": "Action: sending reminder emails. Outcome: late book returns. Fact A compares late-return rates with and without reminders in the same month. The design award does not show whether reminder emails change late returns.",
+        "whyAdequate": "The explanation identifies the connection that makes Fact A relevant. It does not assume the borrower comparison eliminates every alternative explanation."
+      },
+      "discussion": [
+        {
+          "prompt": "Could the painting or website award be relevant to a different question?",
+          "guidance": "Yes. They could bear on questions about guest preferences or website design. Relevance depends on the claim, not on a fact being useful in every context."
+        },
+        {
+          "prompt": "Does relevant evidence automatically prove a claim?",
+          "guidance": "No. Relevance is a first test. We must also ask whether the information is accurate and the comparison fairly isolates the action's effect."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "A positive fact supports any positive claim.",
+          "response": "Identify the exact connection. Satisfaction with a painting does not measure the effect of noise reminders."
+        },
+        {
+          "misconception": "An irrelevant fact must be false.",
+          "response": "A fact can be true and still fail to address this question."
+        },
+        {
+          "misconception": "Numbers are always more relevant than words.",
+          "response": "Numbers must measure something that bears on the claim. A numerical count of paintings would not test reminder effectiveness."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Have learners underline the action and circle the outcome. Use: \"This fact matters because it tells us about ___.\" Accept oral explanations before writing."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask for a question to which the hotel painting fact would be relevant. Expected example: \"Did guests like the new lobby painting?\" Explain that it still would not establish why noise complaints changed."
+        }
+      ],
+      "assessmentCriteria": [
+        "The action and outcome are accurately identified.",
+        "The relevant fact is connected to that specific outcome and comparison.",
+        "The other fact is rejected for lack of relevance, not simply called false or unimportant."
+      ],
+      "practiceHref": "/learners/?practice=relevance#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/test-relevance-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/test-relevance-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/test-relevance-student.md",
+        "instructorMarkdown": "/output/teaching-packs/test-relevance-instructor.md",
+        "zip": "/output/teaching-packs/test-relevance.zip"
+      }
     },
     {
       "slug": "weigh-the-evidence",
@@ -121,16 +779,70 @@
       "audience": "Secondary and adult learners",
       "prerequisites": "None; all research terms are explained and no calculations are required.",
       "format": "Individual writing, pairs, and class discussion",
-      "objectives": ["Compare evidence using participants, comparison groups, and outcome measures.", "Explain why a method strengthens support without treating it as a guarantee.", "State a relevant limit on transferring a result to another setting."],
-      "materials": ["One student handout per learner, or display the activities and use paper.", "Pens or pencils; no student devices or calculator required.", "Instructor guide with model answers, kept separate from the handout."],
-      "preparation": ["Read the vocabulary and the supplied report descriptions.", "Print the three-page handout or display the activities in turn.", "Explain that all reports and figures are invented. Learners should judge the described evidence, without inventing missing study details."],
-      "vocabulary": [{"term": "Testimonial", "definition": "A person's report of their own experience; it may be sincere without showing what caused the experience."}, {"term": "Comparison group", "definition": "A group used to judge what happens under a different condition, such as usual support instead of tutoring."}, {"term": "Random assignment", "definition": "Using chance to allocate participants to groups. It reduces systematic group differences on average; it does not guarantee perfectly identical groups."}, {"term": "Outcome measure", "definition": "The recorded result used to evaluate a claim, such as passing the same algebra exam."}],
-      "timeline": [{"minutes": 5, "title": "Separate experience from a comparison", "instructions": "Learners complete the flashcard warm-up. Introduce testimonial and comparison group, using the model answer to explain why a second group helps."}, {"minutes": 10, "title": "Compare the tutoring reports", "instructions": "Pairs complete the main activity. Explain random assignment and outcome measure. Ask them to connect every reason to a stated feature, not simply say the report is scientific."}, {"minutes": 8, "title": "Discuss strength and limits", "instructions": "Compare pair responses with the model. Use both discussion prompts and correct the idea that sample size alone establishes cause or that one favorable study applies everywhere."}, {"minutes": 7, "title": "Assess a new comparison", "instructions": "Learners complete the spelling exit ticket independently. Check their reasons and limitation against the assessment criteria, then reveal the answer."}],
+      "objectives": [
+        "Compare evidence using participants, comparison groups, and outcome measures.",
+        "Explain why a method strengthens support without treating it as a guarantee.",
+        "State a relevant limit on transferring a result to another setting."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices or calculator required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the vocabulary and the supplied report descriptions.",
+        "Print the three-page handout or display the activities in turn.",
+        "Explain that all reports and figures are invented. Learners should judge the described evidence, without inventing missing study details."
+      ],
+      "vocabulary": [
+        {
+          "term": "Testimonial",
+          "definition": "A person's report of their own experience; it may be sincere without showing what caused the experience."
+        },
+        {
+          "term": "Comparison group",
+          "definition": "A group used to judge what happens under a different condition, such as usual support instead of tutoring."
+        },
+        {
+          "term": "Random assignment",
+          "definition": "Using chance to allocate participants to groups. It reduces systematic group differences on average; it does not guarantee perfectly identical groups."
+        },
+        {
+          "term": "Outcome measure",
+          "definition": "The recorded result used to evaluate a claim, such as passing the same algebra exam."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Separate experience from a comparison",
+          "instructions": "Learners complete the flashcard warm-up. Introduce testimonial and comparison group, using the model answer to explain why a second group helps."
+        },
+        {
+          "minutes": 10,
+          "title": "Compare the tutoring reports",
+          "instructions": "Pairs complete the main activity. Explain random assignment and outcome measure. Ask them to connect every reason to a stated feature, not simply say the report is scientific."
+        },
+        {
+          "minutes": 8,
+          "title": "Discuss strength and limits",
+          "instructions": "Compare pair responses with the model. Use both discussion prompts and correct the idea that sample size alone establishes cause or that one favorable study applies everywhere."
+        },
+        {
+          "minutes": 7,
+          "title": "Assess a new comparison",
+          "instructions": "Learners complete the spelling exit ticket independently. Check their reasons and limitation against the assessment criteria, then reveal the answer."
+        }
+      ],
       "warmup": {
         "title": "Do flashcards help?",
         "scenario": "Invented scenario: A tutor claims flashcards improve vocabulary test scores. Report A quotes one learner: 'It really helped me.' Report B compares two groups of 20 learners with similar starting scores, but no random assignment: flashcards versus usual review sheets. Both groups review for the same time and take the same test. All scores are reported; the flashcard group has the higher average.",
         "output": "Write three sentences: choose a report, explain one strength in how its evidence was gathered, and name one remaining uncertainty.",
-        "steps": ["Choose which report gives stronger evidence for the tutor's claim.", "Explain how either its comparison group or common test helps assess the claim.", "State one reason the description does not establish the method's effect with certainty."],
+        "steps": [
+          "Choose which report gives stronger evidence for the tutor's claim.",
+          "Explain how either its comparison group or common test helps assess the claim.",
+          "State one reason the description does not establish the method's effect with certainty."
+        ],
         "check": "Can you explain your choice without treating a sincere testimonial as proof or treating a comparison as a guarantee?",
         "modelAnswer": "Report B gives stronger evidence. Its common test compares the claimed outcome after two review methods with equal review time. Because learners were not randomly assigned, differences such as motivation could still partly explain the higher average; the scenario does not tell us whether that happened.",
         "whyAdequate": "The answer identifies a relevant design advantage and distinguishes an untested possible explanation from an established fact. A testimonial may describe a real experience but does not supply the same comparison."
@@ -139,7 +851,11 @@
         "title": "Two reports about algebra tutoring",
         "scenario": "Invented scenario: A tutoring program claims it raises algebra pass rates. Report A quotes one volunteer saying tutoring helped. Report B follows 200 students randomly assigned to receive tutoring or usual support, uses the same exam, and reports all results: 70 of 100 tutored students pass, versus 55 of 100 others. Both reports are accurately described; use only these facts.",
         "output": "Write a choice, three reasons about the method, and one question about applying the result to another school.",
-        "steps": ["Choose the stronger evidence for the program's claim.", "Give three reasons using the number of students, the comparison groups, and the outcome measure.", "State one limit: what would you still want to know before assuming the result applies to another school?"],
+        "steps": [
+          "Choose the stronger evidence for the program's claim.",
+          "Give three reasons using the number of students, the comparison groups, and the outcome measure.",
+          "State one limit: what would you still want to know before assuming the result applies to another school?"
+        ],
         "check": "Explain the evidence's method rather than treating a confident testimonial or a large number alone as decisive.",
         "modelAnswer": "Report B is stronger: it includes 200 students rather than one selected volunteer, random assignment supplies a fairer comparison, and a common exam measures the stated outcome. I would check whether another school's students and tutoring program are similar before transferring the conclusion.",
         "whyAdequate": "The answer connects three stated design features to the claim and keeps a local result separate from a universal promise. Random assignment makes it easier to judge whether tutoring caused the difference, but the description does not justify certainty about every student or setting."
@@ -148,18 +864,1567 @@
         "title": "Testing a spelling program",
         "scenario": "Invented scenario: A school claims its new spelling program improves spelling test scores. Report A quotes one parent saying the program worked for their child. Report B records 80 pupils randomly assigned to the new program or usual spelling lessons for six weeks. Both groups receive equal lesson time and take the same final test; all results are reported. The new-program group's average is 16 out of 20, compared with 13 out of 20 for the usual-lessons group. No information about other schools is supplied.",
         "output": "Write the stronger report, three reasons tied to its method, and one question to ask before using the result in another school.",
-        "steps": ["Choose the stronger report for the stated claim.", "Explain how the participants, comparison groups, and common outcome measure affect the strength of the evidence.", "State a relevant detail you would check before assuming another school's pupils would benefit similarly."],
+        "steps": [
+          "Choose the stronger report for the stated claim.",
+          "Explain how the participants, comparison groups, and common outcome measure affect the strength of the evidence.",
+          "State a relevant detail you would check before assuming another school's pupils would benefit similarly."
+        ],
         "check": "Have you explained the method, kept your conclusion about the reported comparison, and avoided inventing a result for another school?",
         "modelAnswer": "Report B is stronger. It includes 80 pupils rather than a selected parent's single experience; chance assignment and equal lesson time make the new program and usual lessons a fairer comparison; and the same final test measures the claimed outcome. Before applying the result elsewhere, I would check whether pupils' starting spelling skills and the way the program is delivered are similar. The reported higher average does not show that every pupil improved or that every school would get the same result.",
         "whyAdequate": "The answer connects the described methods to the claim, identifies a relevant transfer question, and states limits without dismissing the evidence or pretending the limits have already been resolved."
       },
-      "discussion": [{"prompt": "Why is '200 students' not enough by itself to make the tutoring evidence strong?", "guidance": "A large group can still be badly selected or measured. The comparison, random assignment, common exam, and complete reporting also matter."}, {"prompt": "Does stronger evidence make the testimonial worthless or prove that every tutored student benefits?", "guidance": "No. A testimonial can suggest questions or report experience, but is weaker for estimating a program's effect. Group results also do not establish an identical effect on every individual."}],
-      "misconceptions": [{"misconception": "A bigger sample automatically proves cause.", "response": "Ask how the groups were formed and what was measured. More observations do not repair every weakness in a method."}, {"misconception": "Random assignment means participants were randomly chosen from everyone.", "response": "Assignment concerns allocation to groups after participation; recruitment concerns who enters the study. The scenario does not describe recruitment."}, {"misconception": "A higher group average means every learner improved.", "response": "An average summarizes a group. Individuals may have different outcomes; do not infer all individual changes from the mean."}],
-      "adaptations": [{"label": "More support", "instructions": "Use three headings for reasons: Who was included? What was compared? What was measured? Read each report aloud and have pairs locate the matching facts before explaining them."}, {"label": "More challenge", "instructions": "Ask: 'If both spelling groups used different final tests, what would become harder to interpret?' Expected response: the score difference could reflect test difficulty rather than the teaching method; scores would no longer provide the stated common measure."}],
-      "assessmentCriteria": ["The stronger report is chosen with three reasons tied to stated methods.", "The explanation goes beyond sample size and addresses comparison and measurement.", "A relevant question about transferring the result is supplied without claiming certainty, universal benefit, or invented facts."],
+      "discussion": [
+        {
+          "prompt": "Why is '200 students' not enough by itself to make the tutoring evidence strong?",
+          "guidance": "A large group can still be badly selected or measured. The comparison, random assignment, common exam, and complete reporting also matter."
+        },
+        {
+          "prompt": "Does stronger evidence make the testimonial worthless or prove that every tutored student benefits?",
+          "guidance": "No. A testimonial can suggest questions or report experience, but is weaker for estimating a program's effect. Group results also do not establish an identical effect on every individual."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "A bigger sample automatically proves cause.",
+          "response": "Ask how the groups were formed and what was measured. More observations do not repair every weakness in a method."
+        },
+        {
+          "misconception": "Random assignment means participants were randomly chosen from everyone.",
+          "response": "Assignment concerns allocation to groups after participation; recruitment concerns who enters the study. The scenario does not describe recruitment."
+        },
+        {
+          "misconception": "A higher group average means every learner improved.",
+          "response": "An average summarizes a group. Individuals may have different outcomes; do not infer all individual changes from the mean."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Use three headings for reasons: Who was included? What was compared? What was measured? Read each report aloud and have pairs locate the matching facts before explaining them."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask: 'If both spelling groups used different final tests, what would become harder to interpret?' Expected response: the score difference could reflect test difficulty rather than the teaching method; scores would no longer provide the stated common measure."
+        }
+      ],
+      "assessmentCriteria": [
+        "The stronger report is chosen with three reasons tied to stated methods.",
+        "The explanation goes beyond sample size and addresses comparison and measurement.",
+        "A relevant question about transferring the result is supplied without claiming certainty, universal benefit, or invented facts."
+      ],
       "practiceHref": "/learners/?practice=evidence_quality#workbench",
       "articleLinks": [],
-      "downloads": {"studentPdf": "/output/pdf/teaching-packs/weigh-the-evidence-student.pdf", "instructorPdf": "/output/pdf/teaching-packs/weigh-the-evidence-instructor.pdf", "studentMarkdown": "/output/teaching-packs/weigh-the-evidence-student.md", "instructorMarkdown": "/output/teaching-packs/weigh-the-evidence-instructor.md", "zip": "/output/teaching-packs/weigh-the-evidence.zip"}
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/weigh-the-evidence-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/weigh-the-evidence-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/weigh-the-evidence-student.md",
+        "instructorMarkdown": "/output/teaching-packs/weigh-the-evidence-instructor.md",
+        "zip": "/output/teaching-packs/weigh-the-evidence.zip"
+      }
+    },
+    {
+      "slug": "check-the-source",
+      "title": "Trust the method, not just the name",
+      "subtitle": "Compare what sources disclose before deciding how much their reports deserve trust.",
+      "skillId": "source_reliability",
+      "skillCode": "07",
+      "skillLabel": "Can We Trust the Source?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Compare sources using disclosed methods and interests.",
+        "Mark missing details instead of guessing them.",
+        "Explain why a prestigious name or financial interest cannot settle a claim by itself."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Keep the instructor guide and model answers separate from student materials."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the student handout or display one activity at a time.",
+        "Explain that all scenarios are invented and students should use only the supplied facts."
+      ],
+      "vocabulary": [
+        {
+          "term": "Method",
+          "definition": "How information was gathered and checked."
+        },
+        {
+          "term": "Financial interest",
+          "definition": "A way someone could gain money from acceptance of a claim."
+        },
+        {
+          "term": "Comparison group",
+          "definition": "A group used to help judge what difference an action makes."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Look for checkable details",
+          "instructions": "Learners compare the two bottle reports in the warm-up. Explain that an unsupported promise and a described test can be examined differently."
+        },
+        {
+          "minutes": 10,
+          "title": "Build a source comparison",
+          "instructions": "Pairs complete the app-source chart. Check that they distinguish participant recruitment from random assignment to groups."
+        },
+        {
+          "minutes": 8,
+          "title": "Discuss limits on trust",
+          "instructions": "Reveal the model answer. Discuss what methods and interests show, and why the missing results prevent a verdict about the app's benefit."
+        },
+        {
+          "minutes": 7,
+          "title": "Check a new pair of sources",
+          "instructions": "Learners complete the light-bulb exit ticket independently. Assess their method comparison, missing detail, and limited conclusion."
+        }
+      ],
+      "warmup": {
+        "title": "Two bottle reports",
+        "scenario": "Invented scenario: A bottle seller promises its bottle keeps water cold, with no test details. A consumer group publishes a timed test of that bottle and two rivals, using equal starting temperatures and room conditions. It does not disclose who funded the test. No temperature results are supplied.",
+        "output": "Write the easier-to-check report, one reason, and one missing detail.",
+        "steps": [
+          "Choose the report that describes more of its testing method.",
+          "Name a stated detail that makes its comparison easier to inspect.",
+          "Name the missing funding detail and explain why you cannot yet decide which bottle performs best."
+        ],
+        "check": "Have you used the stated method rather than the organization's name alone?",
+        "modelAnswer": "The consumer group's report is easier to check: it describes equal starting temperatures and room conditions. Its funding is not disclosed. We cannot decide which bottle performs best because no temperature results are supplied.",
+        "whyAdequate": "The answer identifies a useful disclosed method and a missing interest while keeping checkability separate from a performance verdict."
+      },
+      "activity": {
+        "title": "Compare the sleep-app sources",
+        "scenario": "Invented scenario: An app seller says its product improves sleep, citing 12 testimonials with no recruitment details or sleep measure. A university team studies the same app: 200 adults are randomly assigned to app or no-app groups, sleep is measured identically, and the complete results and funding are disclosed. No result figures are supplied here; you are judging how checkable the sources are.",
+        "output": "Make a two-row comparison chart and write two sentences evaluating how checkable the reports are.",
+        "steps": [
+          "Make a two-row chart, one row per source, with columns for participant selection, measurement, comparison group, and disclosed interests.",
+          "Write 'not supplied' wherever the scenario lacks a detail; do not invent it.",
+          "Write two sentences identifying which report is easier to check and why a seller's financial interest is a reason for scrutiny rather than automatic disproof."
+        ],
+        "check": "Did you compare reporting methods rather than trust the university's name or reject the seller's identity alone?",
+        "modelAnswer": "Seller: selection not supplied; sleep measure not supplied; no comparison group described; sells the app. University: recruitment details not supplied, but random group assignment stated; common sleep measure; app/no-app comparison; funding disclosed. The university report is easier to inspect because it describes methods and a comparison. The seller has an incentive to promote the product, but that incentive alone does not prove its claim false.",
+        "whyAdequate": "It distinguishes known details from missing ones and treats incentives and methods as evidence to examine, not shortcuts to a verdict."
+      },
+      "exitTicket": {
+        "title": "Checking a light-bulb claim",
+        "scenario": "Invented scenario: A bulb maker says its bulbs use less electricity, citing three customers without test details. A local school reports testing its bulbs and a rival model for equal hours at the same light output, publishes all electricity readings, and says the maker donated both sets of bulbs. The readings themselves are not supplied here.",
+        "output": "Compare the methods, identify a disclosed interest and a missing detail, and state what you can judge.",
+        "steps": [
+          "Identify which report gives more checkable testing details and name two of them.",
+          "State the school's disclosed support and one question you would ask about how bulbs were selected.",
+          "Explain why the school report is more checkable but these facts do not tell you which bulb uses less electricity."
+        ],
+        "check": "Have you treated donated equipment as something to examine, rather than automatic proof of a false claim?",
+        "modelAnswer": "The school describes equal test hours and equal light output, and makes all readings available. It discloses that the maker donated both sets. I would ask how the particular bulbs were selected. The described test is easier to inspect, but without the readings here we cannot decide which uses less electricity; the donation alone does not settle whether the result is sound.",
+        "whyAdequate": "The answer uses reported methods, records the disclosed support, and names an actual missing detail without assuming dishonesty or inventing performance results."
+      },
+      "discussion": [
+        {
+          "prompt": "Does a university name guarantee a sound report?",
+          "guidance": "No. Examine what its report says about selection, measurement, comparisons, and disclosure. Prestige cannot replace those checks."
+        },
+        {
+          "prompt": "Does a seller's financial interest make its claim false?",
+          "guidance": "No. It gives a reason to scrutinize the claim and seek checks. A source with an interest may still supply accurate evidence."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "Random assignment tells us how people were recruited.",
+          "response": "Recruitment selects who enters the study. Random assignment places those participants into groups. One does not supply the other."
+        },
+        {
+          "misconception": "Missing information proves a method was bad.",
+          "response": "Write \"not supplied\" and ask for it. A missing description is a limit on what we can assess."
+        },
+        {
+          "misconception": "A more checkable report guarantees a beneficial result.",
+          "response": "A transparent study might find no benefit or harm. Checkability is different from the direction of its results."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Draw the four-column chart first: participant selection, measurement, comparison group, disclosed interests. Read each source sentence and place only the stated information into its cells."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask which app-source details remain missing after random assignment is stated. Expected examples: how the 200 adults were recruited or the exact sleep measure. Learners should request these details rather than invent them."
+        }
+      ],
+      "assessmentCriteria": [
+        "The report comparison cites actual method details rather than reputation alone.",
+        "Known information is separated from missing details and disclosed interests.",
+        "The conclusion concerns checkability and does not invent a performance result or infer dishonesty from an interest."
+      ],
+      "practiceHref": "/learners/?practice=source_reliability#workbench",
+      "articleLinks": [
+        {
+          "title": "Who Deserves Your Trust? Ask What They Can Predict",
+          "href": "/articles/prediction-markets-and-earned-trust/"
+        }
+      ],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/check-the-source-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/check-the-source-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/check-the-source-student.md",
+        "instructorMarkdown": "/output/teaching-packs/check-the-source-instructor.md",
+        "zip": "/output/teaching-packs/check-the-source.zip"
+      }
+    },
+    {
+      "slug": "keep-the-conclusion-in-bounds",
+      "title": "Keep the conclusion within the evidence",
+      "subtitle": "Notice when a conclusion reaches beyond the people or results actually studied.",
+      "skillId": "logical_gaps",
+      "skillCode": "08",
+      "skillLabel": "Does the Logic Follow?",
+      "durationMinutes": 20,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None; learners compare a stated group with the group named in a conclusion.",
+      "format": "Individual writing, pairs, and class discussion",
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; the instructor guide stays separate from student materials."
+      ],
+      "preparation": [
+        "Read all three scenarios and their model answers.",
+        "Print the handout or display one activity at a time. Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "practiceHref": "/learners/?practice=logical_gaps#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/keep-the-conclusion-in-bounds-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/keep-the-conclusion-in-bounds-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/keep-the-conclusion-in-bounds-student.md",
+        "instructorMarkdown": "/output/teaching-packs/keep-the-conclusion-in-bounds-instructor.md",
+        "zip": "/output/teaching-packs/keep-the-conclusion-in-bounds.zip"
+      },
+      "objectives": [
+        "Identify a change from the group studied to a wider group.",
+        "Rewrite an overclaim without losing the result actually reported.",
+        "Name evidence that would address the missing step."
+      ],
+      "vocabulary": [
+        {
+          "term": "Conclusion",
+          "definition": "The statement an argument asks us to accept on the basis of its reasons."
+        },
+        {
+          "term": "Sample",
+          "definition": "The people or cases actually studied."
+        },
+        {
+          "term": "Representative sample",
+          "definition": "A group selected to reflect the wider population relevant to the question."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 3,
+          "title": "Compare the two groups",
+          "instructions": "Learners complete the club warm-up. Ask them to underline who was asked and who the leader makes a claim about."
+        },
+        {
+          "minutes": 7,
+          "title": "Repair the school-wide claim",
+          "instructions": "Pairs complete the grading-rubric task. Check that rewritten conclusions include both the art class and the reported split in answers."
+        },
+        {
+          "minutes": 5,
+          "title": "Discuss the missing step",
+          "instructions": "Reveal the main answer and use the discussion prompts. Distinguish an estimate about a wider group from a claim that every member agrees."
+        },
+        {
+          "minutes": 5,
+          "title": "Transfer the skill",
+          "instructions": "Learners complete the residents survey independently. Use the assessment criteria before showing the model answer."
+        }
+      ],
+      "warmup": {
+        "title": "A club speaks for everyone?",
+        "scenario": "Invented scenario: Nine of ten chess-club members asked say they want a lunchtime tournament. The club leader says, 'Every student in our school wants one.' No students outside the club were asked.",
+        "output": "Write one sentence identifying the jump and one narrower conclusion.",
+        "steps": [
+          "Name the group asked and the group covered by the leader's conclusion.",
+          "Write a conclusion that keeps both the surveyed group and the nine-of-ten result."
+        ],
+        "check": "Does your rewrite avoid both “all club members” and “all students”?",
+        "modelAnswer": "The survey covers ten chess-club members, but the conclusion covers every student. Nine of the ten club members asked wanted a lunchtime tournament.",
+        "whyAdequate": "It preserves the observed result without extending it to unasked students or treating nine as ten."
+      },
+      "activity": {
+        "title": "The grading-rubric survey",
+        "scenario": "Invented scenario: Eighteen of 24 students in one art class say they prefer a new grading rubric. The other six say they do not prefer it. The principal announces, 'Every student in our 600-student school prefers it.' No other students were asked.",
+        "output": "Write a scope comparison, a supported conclusion, and one further evidence need.",
+        "steps": [
+          "Complete: 'The evidence covers ___, but the conclusion covers ___.'",
+          "Rewrite the conclusion as one sentence that the survey actually supports.",
+          "Name one additional kind of evidence needed before estimating school-wide preferences."
+        ],
+        "check": "Does your rewrite retain the art-class sample and the six students who did not prefer the rubric?",
+        "modelAnswer": "The evidence covers 24 students in one art class; the conclusion covers all 600 students. A majority of the surveyed art class, 18 of 24 students, preferred the new rubric. Estimating school-wide preferences would need a representative sample across classes. Even that would not establish that every student agrees.",
+        "whyAdequate": "It narrows the conclusion to the evidence and distinguishes an estimate of wider preferences from a claim about every person."
+      },
+      "exitTicket": {
+        "title": "A survey of park volunteers",
+        "scenario": "Invented scenario: A town has 2,000 residents. Twelve of 15 residents at a park clean-up say they favor Sunday street closures. The mayor says, 'Most town residents favor the closures.' No other residents were asked.",
+        "output": "Write three sentences: the gap, a supported conclusion, and a better evidence plan.",
+        "steps": [
+          "Compare the residents actually asked with those covered by the mayor's conclusion.",
+          "Rewrite the result without extending it beyond those surveyed.",
+          "Describe who a new survey should include to estimate town-wide support."
+        ],
+        "check": "Have you noticed that even a claim about “most” can reach beyond an unrepresentative sample?",
+        "modelAnswer": "The survey covers 15 clean-up participants, not the town as a whole. Twelve of those 15 participants favored Sunday closures. A town-wide estimate should use a representative sample of residents, including people who do not volunteer at park clean-ups.",
+        "whyAdequate": "It does not assume volunteers reflect all residents, yet retains the information their answers actually supply."
+      },
+      "discussion": [
+        {
+          "prompt": "Does a narrow sample alone prove a wider conclusion false?",
+          "guidance": "No. A sample can fail to establish a conclusion without refuting it. In this art-class case, however, six students explicitly disagree, so the claim that every student prefers it is false."
+        },
+        {
+          "prompt": "Why would a larger sample from the same art class still leave a problem?",
+          "guidance": "Including more people does not by itself fix a mismatch between the group studied and the wider population."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "A majority in a sample means a majority everywhere.",
+          "response": "Ask how the sample was chosen and which population it can reasonably represent."
+        },
+        {
+          "misconception": "A gap makes the whole survey worthless.",
+          "response": "The survey still describes the people asked. Limit the conclusion to what it supports."
+        },
+        {
+          "misconception": "Representative sampling proves everyone agrees.",
+          "response": "It can support an estimate of a population pattern, with uncertainty, not a guarantee about every person."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Use two boxes: 'Who was asked?' and 'Who is the claim about?' For the main task, expect '24 art students' and 'all 600 students'. Then retain '18 of 24' in the rewrite."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask whether the art-class result refutes 'every student prefers it'. Expected answer: yes, the six surveyed students who did not prefer it already contradict that universal claim. This goes beyond merely noting that the sample is narrow."
+        }
+      ],
+      "assessmentCriteria": [
+        "The sample and wider claimed group are identified accurately.",
+        "The rewrite preserves the number, group, and limits of the reported result.",
+        "The proposed evidence addresses the wider population without promising certainty about everyone."
+      ]
+    },
+    {
+      "slug": "repair-the-reasoning",
+      "title": "Repair the reasoning, not the person",
+      "subtitle": "Explain a distracting move and return the discussion to the question that needs evidence.",
+      "skillId": "fallacies",
+      "skillCode": "09",
+      "skillLabel": "What's the Fallacy?",
+      "durationMinutes": 20,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None; learners identify what a question asks and whether a reply answers it.",
+      "format": "Individual writing, pairs, and class discussion",
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; the instructor guide stays separate from student materials."
+      ],
+      "preparation": [
+        "Read all three scenarios and their model answers.",
+        "Print the handout or display one activity at a time. Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "practiceHref": "/learners/?practice=fallacies#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/repair-the-reasoning-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/repair-the-reasoning-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/repair-the-reasoning-student.md",
+        "instructorMarkdown": "/output/teaching-packs/repair-the-reasoning-instructor.md",
+        "zip": "/output/teaching-packs/repair-the-reasoning.zip"
+      },
+      "objectives": [
+        "Identify the question a speaker needs to answer.",
+        "Explain how a reply avoids that question without relying on a label.",
+        "Replace a distracting reply with a relevant, honest response."
+      ],
+      "vocabulary": [
+        {
+          "term": "Fallacy",
+          "definition": "A recognizable mistake in how an argument supports its conclusion."
+        },
+        {
+          "term": "Personal attack",
+          "definition": "Dismissing a claim by attacking the person instead of addressing the relevant reasons."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 3,
+          "title": "Find the unanswered question",
+          "instructions": "Learners complete the menu warm-up. Compare the evidence requested with the reply actually given."
+        },
+        {
+          "minutes": 7,
+          "title": "Repair the timetable reply",
+          "instructions": "Pairs write the main response. Check that they acknowledge missing results and propose evidence rather than inventing success."
+        },
+        {
+          "minutes": 5,
+          "title": "Discuss the reasoning move",
+          "instructions": "Use the discussion prompts and reveal the model answer. Accept plain descriptions of the mistake before optional labels."
+        },
+        {
+          "minutes": 5,
+          "title": "Try a new conversation",
+          "instructions": "Learners complete the crossing exit ticket independently. Use the assessment criteria to review the replacement reply."
+        }
+      ],
+      "warmup": {
+        "title": "A question about the menu",
+        "scenario": "Invented scenario: Ari asks, 'Will the new lunch menu cost students more?' Bo replies, 'You complain about everything.' No prices for the old or new menu are provided.",
+        "output": "Write two sentences identifying what remains unanswered and why the reply does not answer it.",
+        "steps": [
+          "Name the information Ari requested.",
+          "Explain what Bo discusses instead and why that does not supply the requested information."
+        ],
+        "check": "Does your explanation return to prices rather than decide whether Ari is a pleasant person?",
+        "modelAnswer": "Ari wants to know whether students will pay more. Bo attacks Ari's behavior instead of comparing the old and new prices, so the cost question remains unanswered.",
+        "whyAdequate": "It identifies the missing information and explains the diversion without needing a fallacy label."
+      },
+      "activity": {
+        "title": "Does the timetable help attendance?",
+        "scenario": "Invented scenario: Maya asks, 'What evidence shows the new timetable improves attendance?' Lee replies, 'You just hate change and want our school to fail.' No attendance results have been supplied.",
+        "output": "Explain the unanswered question and the diversion, then write a two-sentence replacement reply.",
+        "steps": [
+          "State Maya's question in your own words.",
+          "Explain what Lee discusses instead and why that does not answer the question.",
+          "Rewrite Lee's reply: acknowledge the missing evidence and propose a relevant comparison. Do not invent a successful result."
+        ],
+        "check": "Have you addressed attendance rather than guessed Maya's motives? A label is optional; explain the error.",
+        "modelAnswer": "Maya asks whether the timetable improves attendance. Lee attacks her motives instead of supplying attendance evidence. Better reply: “We have not yet shown that attendance improves. We should compare attendance under the new and old schedules while checking other changes, such as transport availability.”",
+        "whyAdequate": "It identifies the diversion and proposes relevant evidence without pretending the comparison has already been done."
+      },
+      "exitTicket": {
+        "title": "A question about a crossing",
+        "scenario": "Invented scenario: Sam asks, 'Would a new pedestrian crossing reduce near-misses here?' Jo replies, 'Either you support this crossing or you do not care about safety.' No near-miss records or comparisons have been supplied.",
+        "output": "Write one explanation of the error and a two-sentence replacement reply.",
+        "steps": [
+          "State the safety question that needs evidence.",
+          "Explain why caring about safety does not require accepting this particular proposal.",
+          "Write a reply acknowledging the missing evidence and proposing a comparison that could assess the crossing."
+        ],
+        "check": "Do not confuse supporting an aim with accepting every proposal offered in its name.",
+        "modelAnswer": "The question is whether this crossing would reduce near-misses. A person can care about safety and still ask whether the proposal works; Jo presents an unfair choice. Better reply: “We do not yet have evidence that this crossing reduces near-misses. We should compare near-miss records at similar locations with and without such crossings, checking traffic and pedestrian numbers.”",
+        "whyAdequate": "It explains the false choice in ordinary language and returns to evidence relevant to the claimed safety benefit."
+      },
+      "discussion": [
+        {
+          "prompt": "If Maya really dislikes change, would that settle the attendance question?",
+          "guidance": "No. Her attitude does not show whether the timetable improves attendance. Examine the relevant results."
+        },
+        {
+          "prompt": "Does a bad argument prove its conclusion is false?",
+          "guidance": "No. A conclusion could be true for better reasons. Identify what the offered argument fails to establish."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "Naming a fallacy is enough.",
+          "response": "Explain which question went unanswered and how the reply departed from it."
+        },
+        {
+          "misconception": "Any comment about a source is a personal attack.",
+          "response": "Relevant expertise or access to evidence can matter. The error is using an irrelevant personal judgment in place of an answer."
+        },
+        {
+          "misconception": "Spotting a fallacy means the opposing policy must be wrong.",
+          "response": "The policy still needs evaluation with relevant evidence; an argumentative mistake does not settle its merits."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Give the frame: 'The question asks about ___. The reply talks about ___. We would need ___.' In the main task, expect attendance, Maya's motives, and relevant attendance comparisons."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask learners to repair Jo's reply without using the words 'fallacy' or 'false choice'. A successful reply allows concern for safety alongside uncertainty about the crossing and identifies needed evidence."
+        }
+      ],
+      "assessmentCriteria": [
+        "The original question and the distracting reply are distinguished.",
+        "The reasoning mistake is explained without treating a label or insult as proof.",
+        "The replacement reply acknowledges the evidence limit and proposes relevant information."
+      ]
+    },
+    {
+      "slug": "make-sense-of-chance",
+      "title": "Make sense of a chance forecast",
+      "subtitle": "Read a probability as a claim about a defined event, then judge a record rather than one outcome.",
+      "skillId": "probability",
+      "skillCode": "10",
+      "skillLabel": "How Likely Is It?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "Learners can read percentages as numbers out of 100.",
+      "format": "Individual writing, pairs, and class discussion",
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; the instructor guide stays separate from student materials.",
+        "A basic calculator is optional for the exit-ticket percentage."
+      ],
+      "preparation": [
+        "Read all three scenarios and their model answers.",
+        "Print the handout or display one activity at a time. Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "practiceHref": "/learners/?practice=probability#workbench",
+      "articleLinks": [
+        {
+          "title": "Who Deserves Your Trust? Ask What They Can Predict",
+          "href": "/articles/prediction-markets-and-earned-trust/"
+        }
+      ],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/make-sense-of-chance-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/make-sense-of-chance-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/make-sense-of-chance-student.md",
+        "instructorMarkdown": "/output/teaching-packs/make-sense-of-chance-instructor.md",
+        "zip": "/output/teaching-packs/make-sense-of-chance.zip"
+      },
+      "objectives": [
+        "Name the event and time covered by a forecast.",
+        "Translate a percentage into approximate outcomes across comparable cases.",
+        "Explain why one outcome does not settle whether a probability is well judged."
+      ],
+      "vocabulary": [
+        {
+          "term": "Probability",
+          "definition": "A stated chance that a defined event will occur."
+        },
+        {
+          "term": "Calibration",
+          "definition": "A match between stated chances and outcome frequencies across many comparable forecasts."
+        },
+        {
+          "term": "Comparable forecasts",
+          "definition": "Forecasts made for similar events, conditions, and time horizons."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Translate a percentage",
+          "instructions": "Learners complete the bus warm-up. Check that they interpret 25% as a chance of the defined late-arrival event."
+        },
+        {
+          "minutes": 10,
+          "title": "Read the rain forecast",
+          "instructions": "Pairs complete the main task. Ask them to name the rain threshold and time window before discussing expected counts."
+        },
+        {
+          "minutes": 8,
+          "title": "Judge the record",
+          "instructions": "Use the discussion prompts. Emphasize that calibration concerns many forecasts, and exact counts can vary."
+        },
+        {
+          "minutes": 7,
+          "title": "Check a delivery forecast",
+          "instructions": "Learners complete the delivery exit ticket independently. Compare their answer with the criteria and model answer."
+        }
+      ],
+      "warmup": {
+        "title": "A chance of arriving late",
+        "scenario": "Invented scenario: A travel app gives tomorrow's bus a 25% chance of reaching the terminal after 9 a.m. Imagine 100 comparable forecasts made one day ahead at 25% by a well-calibrated app: its chances match long-run frequencies.",
+        "output": "Write two approximate counts and one sentence about the chance of tomorrow being late.",
+        "steps": [
+          "State about how many of the 100 buses should arrive after 9 a.m. and how many should not.",
+          "Explain why a 25% forecast does not rule out a late bus tomorrow."
+        ],
+        "check": "Keep the event “after 9 a.m.” clear; do not turn “unlikely” into “impossible”.",
+        "modelAnswer": "About 25 buses should arrive after 9 a.m. and about 75 should not; exact counts can vary. A late bus tomorrow is possible because a 25% chance includes that outcome.",
+        "whyAdequate": "It translates the chance into an approximate frequency while preserving uncertainty about one journey."
+      },
+      "activity": {
+        "title": "What does 70% rain mean?",
+        "scenario": "Invented scenario: A weather app assigns a 70% chance of measurable rain tomorrow. Here, measurable rain means at least 1 mm at the town weather station during that calendar day. Imagine 100 comparable forecasts, each issued one day ahead at 70%, from a well-calibrated app: its stated chances match long-run frequencies.",
+        "output": "Write two approximate counts, an explanation of one dry day, and a plan for checking the forecast record.",
+        "steps": [
+          "Write approximately how many of those 100 days should have measurable rain and how many should not.",
+          "Explain why a dry tomorrow would not by itself refute a 70% forecast.",
+          "Describe the record you would inspect to judge whether the app's 70% forecasts are well calibrated."
+        ],
+        "check": "Do not treat 70% as a guarantee, 70% of the town, or 70% of the day.",
+        "modelAnswer": "About 70 days should have measurable rain and about 30 should not; exact counts can vary. A dry tomorrow is allowed by the 30% chance of no measurable rain. Inspect many comparable forecasts recorded in advance at 70%, include both wet and dry days, and compare their rain frequency with 70%.",
+        "whyAdequate": "It identifies the event and evaluates a chance claim across a complete record instead of treating one result as decisive."
+      },
+      "exitTicket": {
+        "title": "A delivery forecast record",
+        "scenario": "Invented scenario: A courier predicts an 80% chance that a parcel will arrive by 6 p.m. tomorrow. Its record contains 200 comparable one-day-ahead forecasts made at 80%; 160 parcels arrived by 6 p.m. and 40 did not.",
+        "output": "Write a frequency calculation and two sentences judging the record and a late parcel.",
+        "steps": [
+          "Calculate the on-time percentage: on-time parcels / all parcels x 100.",
+          "State whether this record matches the stated 80% chance, without claiming it guarantees future accuracy.",
+          "Explain why one late parcel would not by itself show an 80% forecast was wrong."
+        ],
+        "check": "Include all 200 forecasts and preserve the possibility of a late parcel.",
+        "modelAnswer": "160/200 x 100 = 80%. The recorded frequency matches the stated 80% chance in this set, but does not guarantee future calibration. One late parcel is compatible with the remaining 20% chance of missing the deadline.",
+        "whyAdequate": "It uses the complete record and separates agreement in this set from certainty about any particular future delivery."
+      },
+      "discussion": [
+        {
+          "prompt": "Can a well-judged forecast assign 70% and still be followed by a dry day?",
+          "guidance": "Yes. The forecast explicitly leaves a 30% chance of no measurable rain. A single outcome cannot show whether 70% was the right degree of confidence."
+        },
+        {
+          "prompt": "Why keep unsuccessful forecasts in the record?",
+          "guidance": "Selecting only forecasts followed by rain would distort the measured frequency. Record the prediction before the event and retain every relevant outcome."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "More likely means certain.",
+          "response": "A chance above 50% still allows the other outcome."
+        },
+        {
+          "misconception": "A good 70% forecast produces exactly 70 wet days in every set of 100.",
+          "response": "Calibration describes a long-run pattern. Finite sets can vary around that frequency."
+        },
+        {
+          "misconception": "Matching one percentage proves a system is useful for every forecast.",
+          "response": "Inspect other probability groups, conditions, and periods too. One matching group establishes only that limited agreement."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Use 100 boxes and shade 70 for measurable rain and 30 for no measurable rain. Ask whether choosing an unshaded box was ruled out. Expected answer: no; it represents an allowed outcome."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask what 120 on-time deliveries among the same 200 forecasts would imply. Expected calculation: 120/200 x 100 = 60%, below the predicted 80%. That mismatch warrants checking calibration; it does not prove deliberate dishonesty."
+        }
+      ],
+      "assessmentCriteria": [
+        "The forecast is tied to its stated event, threshold, and time period.",
+        "The frequency calculation includes all relevant cases and is correct.",
+        "The interpretation preserves uncertainty and distinguishes a record from a single result."
+      ]
+    },
+    {
+      "slug": "compare-counts-and-rates",
+      "title": "Compare counts with the right totals",
+      "subtitle": "Use the denominator to see whether a changing count really means a changing rate.",
+      "skillId": "statistical_sense",
+      "skillCode": "11",
+      "skillLabel": "What Do the Numbers Say?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "Learners divide whole numbers and multiply by 100; formulas are supplied.",
+      "format": "Individual writing, pairs, and class discussion",
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; the instructor guide stays separate from student materials.",
+        "A basic calculator is optional; learners should show the fraction and formula."
+      ],
+      "preparation": [
+        "Read all three scenarios and their model answers.",
+        "Print the handout or display one activity at a time. Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "practiceHref": "/learners/?practice=statistical_sense#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/compare-counts-and-rates-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/compare-counts-and-rates-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/compare-counts-and-rates-student.md",
+        "instructorMarkdown": "/output/teaching-packs/compare-counts-and-rates-instructor.md",
+        "zip": "/output/teaching-packs/compare-counts-and-rates.zip"
+      },
+      "objectives": [
+        "Identify the total that a count must be compared with.",
+        "Calculate and distinguish a count change and a percentage rate.",
+        "Write a conclusion that names the measure and stays within the figures."
+      ],
+      "vocabulary": [
+        {
+          "term": "Count",
+          "definition": "The number of cases, such as missed appointments."
+        },
+        {
+          "term": "Rate",
+          "definition": "The count divided by the relevant total; multiply by 100 to express it as a percentage."
+        },
+        {
+          "term": "Denominator",
+          "definition": "The number below the fraction bar: the total used as the comparison base."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Compare two delivery records",
+          "instructions": "Learners calculate the warm-up rates. Ask why the larger late count need not mean a larger late percentage."
+        },
+        {
+          "minutes": 10,
+          "title": "Test the clinic advertisement",
+          "instructions": "Pairs calculate the count change and both appointment rates. Require the total booked visits beside each calculation."
+        },
+        {
+          "minutes": 8,
+          "title": "Separate the two claims",
+          "instructions": "Reveal the answer and use the discussion prompts. Keep count, rate, and conclusions about individual people distinct."
+        },
+        {
+          "minutes": 7,
+          "title": "Apply the method again",
+          "instructions": "Learners calculate the assignment rates independently. Review their explanation using the assessment criteria."
+        }
+      ],
+      "warmup": {
+        "title": "More late parcels, a lower rate?",
+        "scenario": "Invented scenario: A depot delivered 40 parcels on Monday, of which 4 were late. On Tuesday it delivered 160 parcels, of which 8 were late. A parcel is late if it arrives after its promised deadline.",
+        "output": "Write two percentage calculations and one comparison sentence.",
+        "steps": [
+          "Calculate each day's late rate: late parcels / all delivered parcels x 100.",
+          "State whether the late count and late rate moved in the same direction."
+        ],
+        "check": "Use each day's own delivery total, not the same denominator for both days.",
+        "modelAnswer": "Monday: 4/40 x 100 = 10%. Tuesday: 8/160 x 100 = 5%. The late count rose from 4 to 8, but the late percentage fell from 10% to 5%.",
+        "whyAdequate": "It compares each count with the number of opportunities for lateness and names both changes accurately."
+      },
+      "activity": {
+        "title": "The missed-appointment claim",
+        "scenario": "Invented scenario: A clinic had 100 missed appointments out of 1,000 booked visits in March and 80 out of 800 in April. It advertises: 'Missed appointments fell by 20%, so patients became more reliable.'",
+        "output": "Show the percentage change in the count and both monthly rates, then write two sentences judging the advertisement.",
+        "steps": [
+          "Calculate the percentage change in the missed count: (new count - old count) / old count x 100. Use (80 - 100) / 100 x 100.",
+          "Calculate each month's missed rate: missed / booked x 100.",
+          "Separate the count change from the rate change and judge whether the reliability claim follows from these figures."
+        ],
+        "check": "Name the denominator for each month. A lower count need not mean a lower rate.",
+        "modelAnswer": "Count change: (80 - 100)/100 x 100 = -20%, a 20% fall. March: 100/1,000 x 100 = 10%; April: 80/800 x 100 = 10%. Fewer appointments were missed, but the missed proportion stayed the same. These figures do not support improved reliability measured by that rate, or show that any individual changed.",
+        "whyAdequate": "It verifies the true count claim while rejecting the unsupported move from a lower count to improved attendance per booked visit."
+      },
+      "exitTicket": {
+        "title": "More missing assignments?",
+        "scenario": "Invented scenario: A course recorded 18 missing assignments out of 120 assignments due in September, and 20 out of 200 due in October. The teacher says, 'More assignments were missing, so the missing-assignment rate got worse.'",
+        "output": "Write both rates and two sentences assessing the teacher's conclusion.",
+        "steps": [
+          "Calculate each month's missing rate: missing assignments / assignments due x 100.",
+          "State which month has the higher missing count and which has the higher missing rate.",
+          "Explain whether the claim about a worsening rate follows, without claiming that these figures identify a cause."
+        ],
+        "check": "Use assignments due as the denominator; do not divide by a number of students that was never supplied.",
+        "modelAnswer": "September: 18/120 x 100 = 15%. October: 20/200 x 100 = 10%. October has the higher missing count, but September has the higher missing rate. The claim about a worsening rate does not follow; the rate fell, and these figures alone do not explain why.",
+        "whyAdequate": "It uses the supplied totals, distinguishes count from rate, and avoids adding an unsupported causal explanation."
+      },
+      "discussion": [
+        {
+          "prompt": "Can the lower count still matter even when the rate stays the same?",
+          "guidance": "Yes. A count can matter for workload or capacity, while a rate answers a different question about the proportion of opportunities missed. Name the question before choosing a measure."
+        },
+        {
+          "prompt": "What would we need to say that particular patients became more reliable?",
+          "guidance": "We would need records comparing those individuals over time. Aggregate appointment totals do not identify who changed or why."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "A smaller count always means a smaller rate.",
+          "response": "The total can also shrink. Calculate count divided by its relevant total."
+        },
+        {
+          "misconception": "The denominator can be whichever total is easiest to find.",
+          "response": "It must match the claim. For a missed-appointment rate, use booked appointments for the same period."
+        },
+        {
+          "misconception": "A falling rate shows what caused the improvement.",
+          "response": "A rate describes a pattern. Explaining its cause needs additional evidence."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Give a three-column table headed count, relevant total, rate. For March, enter 100, 1,000, and 100/1,000 x 100 = 10%. Ask learners to complete the April row using 80 and 800."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask how to describe the exit-ticket rate change in percentage points. Define this as new percentage minus old percentage. Expected calculation: 10% - 15% = -5 percentage points, not a fall of 5% of the old rate."
+        }
+      ],
+      "assessmentCriteria": [
+        "Each calculation uses the relevant total for the same period.",
+        "The percentage calculations are correct and clearly labelled.",
+        "The conclusion distinguishes count from rate and avoids unsupported personal or causal claims."
+      ]
+    },
+    {
+      "slug": "separate-cause-from-coincidence",
+      "title": "Separate a change from its cause",
+      "subtitle": "Notice what changed, then ask what evidence would identify the cause.",
+      "skillId": "causation",
+      "skillCode": "12",
+      "skillLabel": "Cause or Coincidence?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Distinguish an observed change from a claim about its cause.",
+        "Identify a simultaneous change that could explain the result.",
+        "Propose a comparison that separates two possible causes."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the three-page handout or display one activity at a time.",
+        "Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "vocabulary": [
+        {
+          "term": "Cause",
+          "definition": "Something that helps produce an outcome."
+        },
+        {
+          "term": "Comparison group",
+          "definition": "A group used to judge what might happen without the change being tested."
+        },
+        {
+          "term": "Random assignment",
+          "definition": "Using chance to decide which groups receive a change, helping avoid systematic differences."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Spot the competing changes",
+          "instructions": "Learners complete the fruit-sales warm-up. Compare the observed outcome with the manager's explanation."
+        },
+        {
+          "minutes": 10,
+          "title": "Separate lighting from patrols",
+          "instructions": "Pairs complete the street-lighting activity. Check that their proposed comparison changes lighting while keeping patrol conditions comparable."
+        },
+        {
+          "minutes": 8,
+          "title": "Test the comparison",
+          "instructions": "Discuss the supplied prompts and model answer. Ask whether another change is still tied only to the treatment group."
+        },
+        {
+          "minutes": 7,
+          "title": "Transfer the method",
+          "instructions": "Learners complete the attendance exit ticket independently. Assess the observation, alternative cause, and proposed comparison."
+        }
+      ],
+      "practiceHref": "/learners/?practice=causation#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/separate-cause-from-coincidence-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/separate-cause-from-coincidence-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/separate-cause-from-coincidence-student.md",
+        "instructorMarkdown": "/output/teaching-packs/separate-cause-from-coincidence-instructor.md",
+        "zip": "/output/teaching-packs/separate-cause-from-coincidence.zip"
+      },
+      "warmup": {
+        "title": "Why did fruit sales rise?",
+        "scenario": "Invented scenario: A cafeteria sells more fruit in the week it displays healthy-eating posters. That week it also cuts fruit prices. The manager says the posters caused the rise.",
+        "output": "Write an observation, another possible cause, and one sentence explaining why the posters have not been isolated.",
+        "steps": [
+          "State what happened without naming its cause.",
+          "Name the other change and explain how it could affect sales.",
+          "Explain why these facts cannot establish the effect of posters alone."
+        ],
+        "check": "Have you kept an observed rise separate from an explanation for it?",
+        "modelAnswer": "Observation: fruit sales rose. Lower prices could encourage purchases. Because posters and prices changed together, the rise does not show how much, if any, came from the posters.",
+        "whyAdequate": "The answer identifies a relevant competing change without claiming to know which cause mattered."
+      },
+      "activity": {
+        "title": "Lighting, patrols, and theft reports",
+        "scenario": "Invented scenario: Reported thefts on a street fall from 50 in September to 35 in October. Brighter lights are installed at the start of October, and extra evening patrols begin that same day. The mayor says the lights caused the drop.",
+        "output": "Write the observation, a competing explanation, and a proposed comparison in three labelled parts.",
+        "steps": [
+          "State the observed change separately from the mayor's causal explanation.",
+          "Name the other change that could explain some or all of the drop.",
+          "Propose a comparison that would help separate the effects: describe which streets to compare and which other condition should be kept similar. Do not claim your proposed comparison has already been done."
+        ],
+        "check": "Does the comparison vary lighting without also giving only the newly lit streets extra patrols?",
+        "modelAnswer": "The observation is that reports fell from 50 to 35 after two changes. Extra patrols are a rival explanation. Compare similar streets over the same period, some receiving brighter lights and others retaining existing lights, while keeping patrol levels comparable; random assignment of lighting would make the test stronger where feasible.",
+        "whyAdequate": "It identifies the simultaneous change and proposes evidence that could distinguish explanations instead of treating 'after' as 'because of'."
+      },
+      "exitTicket": {
+        "title": "Why did absences fall?",
+        "scenario": "Invented scenario: Weekly absences in a school fall from 12 to 5 after text reminders and a new bus service begin on the same day. The principal credits the reminders alone.",
+        "output": "Write the observed change, another possible cause, and a comparison that could test reminders.",
+        "steps": [
+          "State the observed change without attributing a cause.",
+          "Name the other change and explain its possible effect.",
+          "Describe groups to compare and which other condition must stay comparable."
+        ],
+        "check": "Would your comparison give similar bus access to students with and without reminders?",
+        "modelAnswer": "Absences fell from 12 to 5. The bus service might make attendance easier. Compare similar student groups over the same period, with comparable bus access, giving reminders to one group and not the other; random assignment where feasible would strengthen the comparison.",
+        "whyAdequate": "The answer separates the outcome from its explanation and proposes varying reminders without tying them to better bus access."
+      },
+      "discussion": [
+        {
+          "prompt": "Does another possible cause prove the lights had no effect?",
+          "guidance": "No. It prevents assigning the drop to lights alone. Lighting, patrols, both, or other factors might matter."
+        },
+        {
+          "prompt": "Why compare streets during the same period?",
+          "guidance": "Shared timing helps reduce differences such as seasonal changes. It does not guarantee that the streets are otherwise comparable."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "After a change means because of that change.",
+          "response": "Timing can support a causal account, but simultaneous changes and missing comparisons must be considered."
+        },
+        {
+          "misconception": "Finding a rival explanation disproves the first one.",
+          "response": "A plausible rival shows uncertainty; further evidence is needed to separate their contributions."
+        },
+        {
+          "misconception": "Any two groups make a fair test.",
+          "response": "Groups should be comparable in relevant ways. Random assignment helps but does not excuse inconsistent measurement."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Use three headings: what changed, what else changed, what to compare. Let learners say their comparison aloud before writing it. Expected example: fruit sales rose; prices also fell; compare poster and no-poster settings with comparable prices."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask: If brighter-light streets also get more patrols in the proposed comparison, what remains unresolved? Expected response: the effects remain mixed, so a difference cannot be attributed to lighting alone."
+        }
+      ],
+      "assessmentCriteria": [
+        "The observed outcome is stated separately from its proposed cause.",
+        "A supplied competing change is linked plausibly to the outcome.",
+        "The proposed comparison varies the target factor while keeping the competing condition comparable."
+      ]
+    },
+    {
+      "slug": "consider-other-explanations",
+      "title": "Test another explanation",
+      "subtitle": "Generate plausible alternatives and ask what could distinguish them.",
+      "skillId": "alternative_explanations",
+      "skillCode": "13",
+      "skillLabel": "What Else Could Explain It?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Explain how more than one account could fit an observation.",
+        "Use supplied details to propose plausible alternatives.",
+        "Name evidence that could help distinguish two explanations."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the three-page handout or display one activity at a time.",
+        "Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "vocabulary": [
+        {
+          "term": "Alternative explanation",
+          "definition": "Another account that could fit the same observation."
+        },
+        {
+          "term": "Mechanism",
+          "definition": "A description of how a proposed cause could produce the outcome."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Offer a plausible alternative",
+          "instructions": "Use the cafe warm-up. Require a link between the new office and possible customers, not just a label."
+        },
+        {
+          "minutes": 10,
+          "title": "Explain three museum possibilities",
+          "instructions": "Pairs complete the museum activity, explaining how each supplied change could influence visits."
+        },
+        {
+          "minutes": 8,
+          "title": "Choose evidence that separates accounts",
+          "instructions": "Discuss model answers and prompts. Check that proposed comparisons vary the factor of interest rather than changing everything together."
+        },
+        {
+          "minutes": 7,
+          "title": "Test transfer independently",
+          "instructions": "Learners complete the library exit ticket. Assess whether their alternatives remain possibilities and their comparison is relevant."
+        }
+      ],
+      "practiceHref": "/learners/?practice=alternative_explanations#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/consider-other-explanations-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/consider-other-explanations-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/consider-other-explanations-student.md",
+        "instructorMarkdown": "/output/teaching-packs/consider-other-explanations-instructor.md",
+        "zip": "/output/teaching-packs/consider-other-explanations.zip"
+      },
+      "warmup": {
+        "title": "The cafe gets busier",
+        "scenario": "Invented scenario: A cafe's lunchtime visits rise during the week it introduces music. A large office opens next door that same week. The owner credits the music.",
+        "output": "Write one alternative explanation and one sentence stating what remains unknown.",
+        "steps": [
+          "Use the new office to give an alternative to the music explanation.",
+          "Explain how it could increase lunchtime visits.",
+          "State whether the facts show which explanation contributed more."
+        ],
+        "check": "Have you explained a connection while avoiding an unsupported verdict?",
+        "modelAnswer": "The new office could bring nearby workers looking for lunch. The facts do not show how much the music or the office contributed, and both could matter.",
+        "whyAdequate": "The answer supplies a plausible mechanism and preserves uncertainty between compatible explanations."
+      },
+      "activity": {
+        "title": "Why did museum visits rise?",
+        "scenario": "Invented scenario: A museum's family visits rise from 200 to 320 during the first weekend of free admission. That weekend also brings a new dinosaur exhibit, a school holiday, and unusually heavy rain. The museum credits free admission alone.",
+        "output": "Write three possible explanations with reasons, then one proposed comparison for a chosen rival.",
+        "steps": [
+          "List three rival explanations using the supplied details.",
+          "For each, write one sentence explaining how it could increase museum visits. Mark these as possibilities, not established causes.",
+          "Choose one rival and name a comparison that would help distinguish it from the effect of price."
+        ],
+        "check": "Have you explained a plausible connection for each rival instead of merely listing coinciding events?",
+        "modelAnswer": "The dinosaur exhibit might attract interested families; the holiday might give them more free time; rain might make indoor activities more attractive. To examine the exhibit explanation, compare similar weekends with the same exhibit but different admission prices while keeping holiday and weather conditions as comparable as possible. The supplied facts do not tell us which cause contributed how much.",
+        "whyAdequate": "It supplies mechanisms for three alternatives and a relevant follow-up comparison without presenting possibilities as findings."
+      },
+      "exitTicket": {
+        "title": "The library app launch",
+        "scenario": "Invented scenario: Library loans rise in the month a booking app launches. The library also extends opening hours and starts a popular reading challenge that month. The director credits the app alone.",
+        "output": "Write two alternative explanations and one comparison that could help test the app.",
+        "steps": [
+          "Explain how longer opening hours could increase loans.",
+          "Explain how the reading challenge could increase loans.",
+          "Describe a comparison with and without the app that keeps the other two changes comparable."
+        ],
+        "check": "Are your explanations possibilities, and would the comparison separate the app from the other changes?",
+        "modelAnswer": "Longer hours could let more people borrow; the challenge could motivate more borrowing. Compare similar branches over the same period, some with the app and some without, with comparable hours and the same challenge. These facts alone do not assign the increase to any one change.",
+        "whyAdequate": "The answer links each rival to borrowing and proposes a comparison that could provide more informative evidence."
+      },
+      "discussion": [
+        {
+          "prompt": "Must the rival explanations exclude one another?",
+          "guidance": "No. Free admission, an exhibit, holidays, and weather could all influence visits. Their separate contributions remain unknown."
+        },
+        {
+          "prompt": "Does imagining a possibility make it equally likely?",
+          "guidance": "No. A possibility needs a plausible connection and then evidence. Naming it does not establish its probability or importance."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "Any story is a useful alternative.",
+          "response": "A useful alternative fits the known facts and explains how the outcome could occur."
+        },
+        {
+          "misconception": "Listing a coincidence explains its effect.",
+          "response": "State the mechanism: why might the event influence the outcome?"
+        },
+        {
+          "misconception": "One plausible alternative settles the issue.",
+          "response": "It opens a question. Seek evidence that distinguishes accounts, and allow multiple factors to contribute."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Provide the frame: [change] might lead to [action], which could increase [outcome]. Use the museum facts to complete one example together. Expected example: the new office could supply more nearby lunchtime customers; this remains a possibility."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask whether a rainy weekend with free admission compared with a dry paid weekend isolates price. Expected response: no; both price and weather differ, so either could help explain the difference."
+        }
+      ],
+      "assessmentCriteria": [
+        "Alternatives use the supplied facts and fit the observed outcome.",
+        "Each alternative includes a plausible connection rather than a mere coincidence.",
+        "The proposed comparison could distinguish explanations without treating an untested possibility as a finding."
+      ]
+    },
+    {
+      "slug": "recognize-selective-thinking",
+      "title": "Check the evidence you prefer",
+      "subtitle": "Notice selective attention and build a check that could change your mind.",
+      "skillId": "cognitive_biases",
+      "skillCode": "14",
+      "skillLabel": "What Bias Is Showing?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Identify a stated pattern of selecting agreeable evidence.",
+        "Apply the same quality standards to supportive and critical evidence.",
+        "Propose a relevant outcome measure that can reveal a mistake."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the three-page handout or display one activity at a time.",
+        "Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "vocabulary": [
+        {
+          "term": "Confirmation bias",
+          "definition": "A tendency to favor information that fits what we already believe or want to believe."
+        },
+        {
+          "term": "Evidence standard",
+          "definition": "A rule for judging evidence quality, applied consistently to different conclusions."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Notice selective reading",
+          "instructions": "Learners complete the headline warm-up. Focus on the stated behavior; do not infer hidden motives or whether the underlying claim is true."
+        },
+        {
+          "minutes": 10,
+          "title": "Build a fair checking plan",
+          "instructions": "Pairs complete the study-app activity. Check that their plan includes critical reviews and a measure of learning."
+        },
+        {
+          "minutes": 8,
+          "title": "Discuss what a bias does not prove",
+          "instructions": "Use the discussion prompts and model answer to separate a flawed checking process from the truth of the claim."
+        },
+        {
+          "minutes": 7,
+          "title": "Apply the checking method",
+          "instructions": "Learners complete the planner exit ticket independently. Assess selection, consistent standards, and a relevant outcome measure."
+        }
+      ],
+      "practiceHref": "/learners/?practice=cognitive_biases#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/recognize-selective-thinking-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/recognize-selective-thinking-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/recognize-selective-thinking-student.md",
+        "instructorMarkdown": "/output/teaching-packs/recognize-selective-thinking-instructor.md",
+        "zip": "/output/teaching-packs/recognize-selective-thinking.zip"
+      },
+      "warmup": {
+        "title": "Only the helpful headlines",
+        "scenario": "Invented scenario: Mina believes morning classes help learning. She saves three headlines agreeing with her and ignores two disagreeing headlines because she says, 'I only want support for my view.' She has not read any study methods.",
+        "output": "Write the selection pattern and one fair next step.",
+        "steps": [
+          "Identify which evidence Mina accepts and avoids.",
+          "Explain how that choice favors her existing view.",
+          "Propose a next step that uses the same evidence standards for both sides."
+        ],
+        "check": "Have you identified the stated behavior without declaring her belief true or false?",
+        "modelAnswer": "Mina selects agreement and avoids disagreement, favoring her prior view. She should inspect the methods and learning measures behind all five reports using the same criteria, rather than judging by headline agreement.",
+        "whyAdequate": "The answer diagnoses selective attention from explicit facts and proposes a check; it does not decide the claim from the bias alone."
+      },
+      "activity": {
+        "title": "Does the study app help?",
+        "scenario": "Invented scenario: After buying a study app, Sam reads six glowing reviews and skips four detailed critical reviews because 'they will only make me doubt my choice'. Sam concludes the app must improve learning. No learning results have been collected.",
+        "output": "Write the selection pattern, a three-step checking plan, and a learning measure with an explanation.",
+        "steps": [
+          "Identify the evidence Sam selects and the evidence Sam avoids, and explain the direction of the preference.",
+          "Write a three-step checking plan: include both kinds of reviews, use the same quality criteria for them, and collect a learning measure rather than relying only on praise.",
+          "Name a specific learning measure, such as a delayed quiz on comparable material, and say why review popularity alone is insufficient."
+        ],
+        "check": "Does your plan make it possible to discover that the purchase was unhelpful, or only reassure Sam?",
+        "modelAnswer": "Sam favours praise that confirms the purchase and avoids criticism that could challenge it. Plan: read all ten reviews; assess each for relevant experience and checkable evidence using the same criteria; compare delayed-quiz performance on comparable material studied with and without the app under similar conditions. Positive reviews show approval, not necessarily better learning.",
+        "whyAdequate": "It describes the selective attention and turns a vague request to 'be unbiased' into concrete checks capable of revealing a mistake."
+      },
+      "exitTicket": {
+        "title": "Defending a new planner",
+        "scenario": "Invented scenario: After buying a planner app, Jo reads eight positive reviews and ignores three detailed complaints because 'I do not want to regret buying it'. Jo concludes the app reduces missed deadlines. No deadline records have been collected.",
+        "output": "Write the biased selection and a three-step checking plan with a relevant measure.",
+        "steps": [
+          "Identify the evidence Jo chooses and avoids, and the direction of the preference.",
+          "Plan to read both kinds of review and apply the same quality criteria.",
+          "Name a comparison using missed deadlines. You may compare rates: missed deadlines divided by total deadlines, using comparable workloads and periods. Explain why positive reviews alone do not answer the claim."
+        ],
+        "check": "Could the plan reveal that the app does not reduce missed deadlines?",
+        "modelAnswer": "Jo favors approval and avoids criticism of the purchase. Plan: read all eleven reviews; judge each for relevant experience and checkable evidence; compare missed-deadline rates with and without the app for similar workloads. A rate is missed deadlines divided by total deadlines. Praise measures approval, not necessarily fewer missed deadlines.",
+        "whyAdequate": "The plan treats both sides consistently and measures the claimed outcome. A fair comparison would still need attention to workload and other differences."
+      },
+      "discussion": [
+        {
+          "prompt": "Does finding bias show the app is ineffective?",
+          "guidance": "No. It shows a problem with how the claim was checked. Better evidence may support or undermine the claim."
+        },
+        {
+          "prompt": "Must positive and negative reviews receive equal weight?",
+          "guidance": "No. Apply equal standards, then weight the reviews according to their evidence quality. Equal numbers or equal conclusions are not required."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "Calling someone biased settles the factual question.",
+          "response": "Describe the behavior and inspect the evidence. A flawed process does not itself make a conclusion false."
+        },
+        {
+          "misconception": "Being fair means giving all reviews equal weight.",
+          "response": "Use the same criteria; more relevant, checkable evidence can deserve more weight."
+        },
+        {
+          "misconception": "Bias requires a hidden bad motive.",
+          "response": "These cases state the selective behavior directly. Do not claim access to thoughts or motives not supplied."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Use two columns, selected and avoided, before writing the plan. Offer review-quality questions: Is the experience relevant? Can the claim be checked? Expected example: read praise and criticism, check both for relevant experience and evidence, then compare a learning outcome."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask: If one negative review gives detailed learning results and six positive reviews only say \"great\", should their counts decide? Expected response: no; inspect methods and relevance, and do not assume either praise or criticism is reliable solely from its direction."
+        }
+      ],
+      "assessmentCriteria": [
+        "The stated selective behavior and its direction are identified accurately.",
+        "The plan applies the same quality criteria to supportive and critical evidence.",
+        "The proposed outcome measure addresses the claim and can reveal an unhelpful result."
+      ]
+    },
+    {
+      "slug": "weigh-the-tradeoffs",
+      "title": "Make the tradeoff visible",
+      "subtitle": "Compare gains, costs, and who bears them before recommending a choice.",
+      "skillId": "tradeoffs",
+      "skillCode": "15",
+      "skillLabel": "What Are the Tradeoffs?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "Identify a possible benefit, cost, and affected group.",
+        "Compare feasible allocations of a limited resource.",
+        "Explain how evidence and priorities can change a recommendation."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the three-page handout or display one activity at a time.",
+        "Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "vocabulary": [
+        {
+          "term": "Tradeoff",
+          "definition": "A gain in one respect accompanied by a cost or lost opportunity in another."
+        },
+        {
+          "term": "Opportunity cost",
+          "definition": "The benefit given up by using a limited resource for something else."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Name what is given up",
+          "instructions": "Use the lunchtime warm-up to distinguish time gained for one activity from time lost for another."
+        },
+        {
+          "minutes": 10,
+          "title": "Compare study-time allocations",
+          "instructions": "Pairs complete the school activity. Check that each allocation totals 60 minutes and that expected score gains remain unproven."
+        },
+        {
+          "minutes": 8,
+          "title": "Discuss priorities and evidence",
+          "instructions": "Compare the model answer and alternative feasible allocations. Ask learners to name who bears each cost."
+        },
+        {
+          "minutes": 7,
+          "title": "Explain an independent choice",
+          "instructions": "Learners complete the community-room exit ticket. Assess the budget, stated priority, tradeoff, and useful question rather than rewarding a particular preference."
+        }
+      ],
+      "practiceHref": "/learners/?practice=tradeoffs#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/weigh-the-tradeoffs-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/weigh-the-tradeoffs-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/weigh-the-tradeoffs-student.md",
+        "instructorMarkdown": "/output/teaching-packs/weigh-the-tradeoffs-instructor.md",
+        "zip": "/output/teaching-packs/weigh-the-tradeoffs.zip"
+      },
+      "warmup": {
+        "title": "A lunchtime choice",
+        "scenario": "Invented scenario: A class has a 40-minute lunch break. One proposal uses 10 minutes for quiet reading and leaves 30 minutes for eating and conversation. The current break allows all 40 minutes for eating and conversation.",
+        "output": "Write one gain, one lost opportunity, and one group that could value that loss.",
+        "steps": [
+          "Name the time gained for reading.",
+          "Name the time given up for another activity.",
+          "Identify students who could especially value the activity losing time."
+        ],
+        "check": "Have you described both sides without assuming everyone has the same priority?",
+        "modelAnswer": "The proposal adds 10 minutes of reading and removes 10 minutes available for eating or conversation. Students who need a longer eating break or value lunchtime social contact could especially value the lost time.",
+        "whyAdequate": "The answer identifies the fixed time budget and a possible affected group without deciding that one use is best for everyone."
+      },
+      "activity": {
+        "title": "How should study time be used?",
+        "scenario": "Invented scenario: A school has 60 minutes each week for optional study activities. It proposes moving 30 minutes from open reading to test preparation. Teachers expect more exam practice, but no evidence yet shows a score gain. Students who rely on school reading time would lose half that time.",
+        "output": "Write a benefit, cost, and affected group; propose a feasible allocation; add one question to guide the decision.",
+        "steps": [
+          "Make three labelled lines: possible benefit, cost, and affected group. Use the facts and distinguish an expected benefit from a demonstrated result.",
+          "Propose one alternative allocation of the 60 minutes and explain its tradeoff.",
+          "Write one question the school should answer before choosing a plan."
+        ],
+        "check": "Do all allocations total 60 minutes? Have you named who bears the cost rather than calling the proposal simply 'good' or 'bad'?",
+        "modelAnswer": "Possible benefit: more exam practice, with score improvement still unproven. Cost: 30 fewer minutes of open reading. Affected group: especially students dependent on school reading time. An alternative is 15 minutes of preparation and 45 of reading; it preserves more reading but provides less preparation. Ask whether a trial shows gains large enough to justify the lost reading opportunity.",
+        "whyAdequate": "It makes the limited resource explicit and compares benefits, costs, and affected students without inventing guaranteed gains."
+      },
+      "exitTicket": {
+        "title": "Sharing the community room",
+        "scenario": "Invented scenario: A community center has six evening room-hours to allocate each week. It currently offers six hours of homework help. A proposal would use two hours for art and four for homework help. Some students have no quiet study space at home. No results for the art program are available.",
+        "output": "Write a benefit, cost, and affected group; recommend a six-hour allocation with a reason; ask one useful question.",
+        "steps": [
+          "Identify a possible gain from art and the loss from reducing homework help, including who may be affected.",
+          "Choose hours for art and homework help totaling six, and explain your priority and its cost.",
+          "Name one question about outcomes or needs that could change your recommendation."
+        ],
+        "check": "Does your allocation total six, and have you acknowledged the cost of your preferred option?",
+        "modelAnswer": "Art offers an additional creative activity; reducing homework help removes two supported study hours, affecting students without quiet space. One defensible plan is one hour of art and five of homework help, prioritizing study access while allowing some art; it offers less art time than the proposal. Ask how many students depend on each homework-help hour and what benefits an art trial shows. Other feasible allocations can be justified with different priorities.",
+        "whyAdequate": "The answer makes the limited resource, affected students, and priority explicit without claiming a uniquely correct allocation or invented program results."
+      },
+      "discussion": [
+        {
+          "prompt": "Can two reasonable recommendations use the same facts?",
+          "guidance": "Yes. People may give different weight to study access, creativity, or other aims. Each should state its priority, acknowledge costs, and use the facts accurately."
+        },
+        {
+          "prompt": "What is known about the test-preparation benefit?",
+          "guidance": "More practice time is expected, but improved scores have not been demonstrated. Keep the immediate allocation separate from the hoped-for result."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "A benefit makes a proposal best overall.",
+          "response": "Compare the gain with costs, lost opportunities, and who is affected."
+        },
+        {
+          "misconception": "A prediction is already a demonstrated result.",
+          "response": "Label expected benefits as possibilities until suitable evidence supports them."
+        },
+        {
+          "misconception": "There must be one correct allocation.",
+          "response": "Different priorities may support different feasible plans. Evaluate the reasoning and evidence, not agreement with one preference."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Draw a 60-minute bar for the main task. Label preparation and reading, then use the headings gain, loss, affected group. Expected example: 15 minutes for preparation and 45 for reading preserves more reading but supplies less preparation than the proposal."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask whether dividing time equally is automatically fairest. Expected response: no; equal time is one rule, but needs, benefits, and access may justify another allocation. Any proposed rule should state its purpose and costs."
+        }
+      ],
+      "assessmentCriteria": [
+        "Benefits, costs, and an affected group are identified without inventing outcomes.",
+        "The proposed allocation fits the stated resource limit and explains its priority and cost.",
+        "The follow-up question could inform the decision while allowing different reasonable priorities."
+      ]
+    },
+    {
+      "slug": "update-beliefs-responsibly",
+      "title": "Change your mind in proportion",
+      "subtitle": "Revise confidence according to the relevance and strength of new evidence.",
+      "skillId": "belief_update",
+      "skillCode": "16",
+      "skillLabel": "How Should Belief Change?",
+      "durationMinutes": 30,
+      "prepMinutes": 5,
+      "level": "Introductory",
+      "audience": "Secondary and adult learners",
+      "prerequisites": "None",
+      "format": "Individual writing, pairs, and class discussion",
+      "objectives": [
+        "State whether new evidence should raise, lower, or barely change confidence.",
+        "Explain why stronger relevant evidence deserves a larger update.",
+        "Keep a conclusion qualified when important details are missing."
+      ],
+      "materials": [
+        "One student handout per learner, or display the activities and use paper.",
+        "Pens or pencils; no student devices required.",
+        "Instructor guide with model answers, kept separate from the handout."
+      ],
+      "preparation": [
+        "Read the three scenarios and their model answers.",
+        "Print the three-page handout or display one activity at a time.",
+        "Explain that all scenarios and figures are invented for reasoning practice."
+      ],
+      "vocabulary": [
+        {
+          "term": "Confidence",
+          "definition": "How strongly you believe a claim is true."
+        },
+        {
+          "term": "Relevant evidence",
+          "definition": "Information that bears on the particular claim being evaluated."
+        },
+        {
+          "term": "Random assignment",
+          "definition": "Using chance to decide which group receives a change, helping make groups comparable."
+        }
+      ],
+      "timeline": [
+        {
+          "minutes": 5,
+          "title": "Match evidence to the claim",
+          "instructions": "Learners complete the reading-app warm-up. Distinguish liking an app from learning more."
+        },
+        {
+          "minutes": 10,
+          "title": "Compare two lighting reports",
+          "instructions": "Pairs complete the lighting activity. Require a reason for both the direction and relative size of each update, without exact confidence percentages."
+        },
+        {
+          "minutes": 8,
+          "title": "Discuss strength and limits",
+          "instructions": "Use the model answer and prompts. Explain that stronger evidence can justify greater confidence while leaving questions about size and reliability."
+        },
+        {
+          "minutes": 7,
+          "title": "Revise a different belief",
+          "instructions": "Learners complete the reminder exit ticket independently. Assess evidence relevance, proportionate revision, and a useful missing detail."
+        }
+      ],
+      "practiceHref": "/learners/?practice=belief_update#workbench",
+      "articleLinks": [],
+      "downloads": {
+        "studentPdf": "/output/pdf/teaching-packs/update-beliefs-responsibly-student.pdf",
+        "instructorPdf": "/output/pdf/teaching-packs/update-beliefs-responsibly-instructor.pdf",
+        "studentMarkdown": "/output/teaching-packs/update-beliefs-responsibly-student.md",
+        "instructorMarkdown": "/output/teaching-packs/update-beliefs-responsibly-instructor.md",
+        "zip": "/output/teaching-packs/update-beliefs-responsibly.zip"
+      },
+      "warmup": {
+        "title": "Does liking an app prove learning?",
+        "scenario": "Invented scenario: You are unsure whether a reading app improves comprehension. A friend says its colors are attractive. A report then describes a fair comparison in which app users answer more comprehension questions correctly than a similar group using usual materials; no details about the size of the difference are supplied.",
+        "output": "Write how each report should affect confidence and one remaining question.",
+        "steps": [
+          "Explain whether the comment about colors bears on comprehension.",
+          "Say whether the comparison should raise or lower confidence, relative to starting unsure.",
+          "Name one missing detail needed before making a strong claim."
+        ],
+        "check": "Have you changed confidence for the learning result while keeping its limits visible?",
+        "modelAnswer": "The color comment should change confidence about comprehension very little. The stated fair comparison should raise confidence more because it measures comprehension directly. I would ask how large the difference was and how reliably it was measured before making a strong claim.",
+        "whyAdequate": "The answer gives more weight to relevant outcome evidence without inventing a precise effect or confidence number."
+      },
+      "activity": {
+        "title": "What should two studies change?",
+        "scenario": "Invented scenario: You begin unsure whether brighter streetlights reduce theft reports. Study A is one resident saying a street feels safer. Study B assigns 40 similar streets at random to brighter or unchanged lighting, keeps patrol policy the same, and records the same theft measure before and after: reports fall more in the brighter-light group. No exact effect size or uncertainty estimate is supplied.",
+        "output": "Write one update for each study, a comparison of their strength, and one missing detail you would seek.",
+        "steps": [
+          "For each study, say whether it should raise, lower, or leave your confidence roughly unchanged, and explain why.",
+          "Choose which should change confidence more, using the difference between personal impressions and a controlled comparison.",
+          "Name one missing detail you would seek before making a strong conclusion. Do not invent a precise percentage change in confidence."
+        ],
+        "check": "Have you updated more for the stronger relevant evidence while keeping uncertainty about the size and reliability of the effect?",
+        "modelAnswer": "Study A should change confidence about theft reports very little: feeling safer is a different outcome and one person's impression. Study B should raise confidence more because random assignment and consistent measurement provide a fairer comparison of the claimed outcome. I would request the size of the difference and its uncertainty before making a strong claim.",
+        "whyAdequate": "It ties the direction and strength of the update to evidence quality and acknowledges that the scenario cannot justify an exact confidence number."
+      },
+      "exitTicket": {
+        "title": "Do reminders prevent missed deadlines?",
+        "scenario": "Invented scenario: You tentatively believe reminder messages reduce missed deadlines. Report A says one user likes the messages. Report B randomly assigns 200 students to reminders or no reminders for the same four-week course, uses the same deadline rules, and reports nearly equal missed-deadline rates. Exact rates and uncertainty estimates are not supplied.",
+        "output": "Write how each report should change your confidence, which matters more, and one question still open.",
+        "steps": [
+          "Judge how much the approval report bears on missed deadlines.",
+          "State the direction of the update from the comparison and explain why it matters more.",
+          "Name a missing detail and explain why the report does not prove reminders can never help."
+        ],
+        "check": "Have you allowed contrary evidence to weaken the belief without turning one result into a universal verdict?",
+        "modelAnswer": "Report A should change confidence very little: liking messages is not fewer missed deadlines. Report B should lower confidence in a meaningful benefit for this setting because it compares the claimed outcome under random assignment. I would ask for the exact difference and its uncertainty. Nearly equal reported rates do not prove no possible benefit in any course or group.",
+        "whyAdequate": "The answer responds to contrary evidence, weights the controlled comparison more strongly, and limits the conclusion to what the incomplete report supports."
+      },
+      "discussion": [
+        {
+          "prompt": "Does stronger evidence require complete certainty?",
+          "guidance": "No. It can justify a larger change while leaving uncertainty about the size, reliability, or reach of the result."
+        },
+        {
+          "prompt": "Why avoid exact confidence percentages here?",
+          "guidance": "The scenarios do not supply enough information to calculate them. Explain the direction and relative strength of the change instead of pretending to numerical precision."
+        }
+      ],
+      "misconceptions": [
+        {
+          "misconception": "Changing a belief means admitting all earlier reasoning was worthless.",
+          "response": "A reasonable starting view can change when relevant evidence improves. Revision can be a sign of careful thinking."
+        },
+        {
+          "misconception": "One strong report settles every setting.",
+          "response": "Check the outcome, groups, methods, and missing details before extending the conclusion."
+        },
+        {
+          "misconception": "Fairness requires keeping the same confidence.",
+          "response": "Relevant evidence should matter. Avoid both ignoring it and overreacting beyond what it shows."
+        }
+      ],
+      "adaptations": [
+        {
+          "label": "More support",
+          "instructions": "Offer three direction labels: raise, lower, very little change. Require one reason naming the measured outcome before comparing the size of the updates. Expected example: the color comment changes confidence very little; the fair comprehension comparison raises it, with questions about effect size remaining."
+        },
+        {
+          "label": "More challenge",
+          "instructions": "Ask: If five news stories repeat the same study, are they five independent confirmations? Expected response: no; they share one underlying result. Separate repetition from new evidence before increasing confidence further."
+        }
+      ],
+      "assessmentCriteria": [
+        "The direction of each update matches the evidence and the starting belief.",
+        "The stronger update is justified by relevance and method rather than confidence of presentation.",
+        "The conclusion names a meaningful uncertainty and avoids invented precision or universal certainty."
+      ]
     }
   ]
 }
