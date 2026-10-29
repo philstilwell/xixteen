@@ -13,7 +13,7 @@
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
     <meta name="theme-color" content="#1f2a2e" />
     <link rel="stylesheet" href="../../src/styles.css" />
-    <link rel="stylesheet" href="../../src/articles.css?v=7609b79778c3" />
+    <link rel="stylesheet" href="../../src/articles.css?v=5fac7c22c5b4" />
   </head>
   <body class="articles-page">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -37,7 +37,7 @@
           <h1>Define Your Terms Before You Draw Conclusions</h1>
           <p class="article-deck">What does “productivity” mean? A lesson in how rigorous definitions keep correct calculations from answering the wrong question.</p>
           <p class="article-meta">A XiXteen critical thinking lesson · <time datetime="2026-10-29">October 29, 2026</time></p>
-          <p class="article-source-note">A teaching article drawing on <a href="https://www.anthropic.com/research/agents-judgment-calls">Anthropic's research report</a> and full paper. Research findings are attributed; the worked example, definition checklist, and quiz are original XiXteen teaching material.</p>
+          <p class="article-source-note">A teaching article drawing on <a href="https://www.anthropic.com/research/agents-judgment-calls">Anthropic's research report</a> and full paper. Research findings are attributed; the worked example, definition checklist, rewriting exercise, and quiz are original XiXteen teaching material.</p>
         </header>
         <div class="article-layout">
           <nav class="article-contents" aria-label="In this article">
@@ -48,6 +48,7 @@
               <li><a href="#worked-example">Same farm, different verdicts</a></li>
               <li><a href="#read-carefully">What the findings establish</a></li>
               <li><a href="#thinking-tools">Make a definition rigorous</a></li>
+              <li><a href="#rewrite-claims">Practise rewriting vague claims</a></li>
               <li><a href="#key-insights">All 20 key insights</a></li>
               <li><a href="#sources">Sources</a></li>
               <li><a href="#try-it">Five-question quiz</a></li>
@@ -171,8 +172,48 @@
               <p class="lesson-teacher-note"><strong>For teachers:</strong> Have pairs defend different measures using the same farm figures. Ask them to distinguish a disagreement about arithmetic from a disagreement about the purpose of the decision. This connects especially to XiXteen skills 02, 04, 08, 11, 12, and 15 in the <a href="../../teachers/">teacher resources</a>.</p>
             </section>
 
+            <section id="rewrite-claims" aria-labelledby="rewrite-title">
+              <p class="eyebrow">06 · Put the skill to work</p>
+              <h2 id="rewrite-title">Turn a vague claim into a testable one</h2>
+              <p>Rewrite each claim using the supplied facts. Name <strong>what is measured, per what, for whom, and over which period</strong>. Then reveal the model answer. These are invented teaching scenarios; the answers are examples, not the only acceptable wording. Your writing is not submitted or scored.</p>
+              <div class="lesson-exercise">
+                <h3>1. “The farm became 4% more productive.”</h3>
+                <p id="rewrite-1-facts"><strong>Facts:</strong> The same farm harvested 100 tonnes of wheat in 2025 and 104 tonnes in 2026, using 10 cultivated hectares in each annual harvest.</p>
+                <label class="definition-response-label" for="rewrite-1">Your rewrite for claim 1</label>
+                <textarea class="definition-response" id="rewrite-1" rows="3" aria-describedby="rewrite-1-facts"></textarea>
+                <details>
+                  <summary>Model answer and explanation for claim 1</summary>
+                  <p><strong>Model answer:</strong> “Between the 2025 and 2026 harvests, this farm's wheat output per cultivated hectare rose from 10 to 10.4 tonnes per hectare, an increase of 4%.”</p>
+                  <p><strong>Why it is adequate:</strong> It identifies the crop, farm, unit, denominator, and comparison period. The percentage is tied to a specific ratio. It makes no unsupported claim about costs or the cause of the increase.</p>
+                </details>
+              </div>
+              <div class="lesson-exercise">
+                <h3>2. “We used money more productively.”</h3>
+                <p id="rewrite-2-facts"><strong>Facts:</strong> For that farm, spending on seed, fertiliser, paid labour, fuel, and advice rose from $10,000 to $10,800. Both totals are expressed in 2025 dollars to remove the effect of inflation. Use the wheat figures above.</p>
+                <label class="definition-response-label" for="rewrite-2">Your rewrite for claim 2</label>
+                <textarea class="definition-response" id="rewrite-2" rows="3" aria-describedby="rewrite-2-facts rewrite-1-facts"></textarea>
+                <details>
+                  <summary>Model answer and explanation for claim 2</summary>
+                  <p><strong>Model answer:</strong> “For this farm, wheat output per $1,000 spent on seed, fertiliser, paid labour, fuel, and advice, measured in 2025 dollars, fell from 10 tonnes in 2025 to about 9.63 tonnes in 2026—a decline of about 3.7%.”</p>
+                  <p><strong>Why it is adequate:</strong> It defines which spending counts and uses comparable dollars. It also corrects the original claim: output per dollar fell. Making a claim precise may reveal that it is false; rewriting should not preserve a conclusion the facts contradict.</p>
+                </details>
+              </div>
+              <div class="lesson-exercise">
+                <h3>3. “The program made the cooperative more productive.”</h3>
+                <p id="rewrite-3-facts"><strong>Facts:</strong> Across the same 20 member farms, total wheat output rose from 2,000 tonnes in the 2025 harvest to 2,100 tonnes in 2026. Total cultivated area stayed at 1,000 hectares. There is no comparison showing what would have happened without the program.</p>
+                <label class="definition-response-label" for="rewrite-3">Your rewrite for claim 3</label>
+                <textarea class="definition-response" id="rewrite-3" rows="3" aria-describedby="rewrite-3-facts"></textarea>
+                <details>
+                  <summary>Model answer and explanation for claim 3</summary>
+                  <p><strong>Model answer:</strong> “Across the same 20 member farms, total wheat output divided by total cultivated hectares rose from 2 to 2.1 tonnes per hectare between the 2025 and 2026 harvests, an increase of 5%. These figures alone do not establish that the program caused the increase.”</p>
+                  <p><strong>Why it is adequate:</strong> It fixes the group, period, and calculation: divide the combined output by the combined land area. It does not imply that every farm improved by 5%, and it removes the unsupported causal claim.</p>
+                </details>
+              </div>
+              <p><strong>Check your rewrite:</strong> Could another reader use your stated rule and the same figures to reproduce the result? Does the conclusion keep the same meaning and stay within the evidence?</p>
+            </section>
+
             <section id="key-insights" class="key-insights" aria-labelledby="insights-title">
-              <p class="eyebrow">06 · Keep these ideas</p>
+              <p class="eyebrow">07 · Keep these ideas</p>
               <h2 id="insights-title">All 20 key insights from this lesson</h2>
               <ol>
                 <li><strong>Rigorously define the important terms first.</strong> Make their meaning clear enough to apply and inspect.</li>
@@ -200,7 +241,7 @@
 
             <section id="sources" class="article-sources" aria-labelledby="sources-title">
               <h2 id="sources-title">Sources and teaching notes</h2>
-              <p>The study is by Amaç Herdağdelen, Hailey Joren, and Alex Tamkin. The paper's study design, main analysis, limitations, and Appendix A.5 inform this lesson. The definition checklist, numerical farm example, and quiz are XiXteen teaching material. The three visuals were generated with ImageGen and checked against their stated figures.</p>
+              <p>The study is by Amaç Herdağdelen, Hailey Joren, and Alex Tamkin. The paper's study design, main analysis, limitations, and Appendix A.5 inform this lesson. The definition checklist, rewriting exercise, numerical farm example, and quiz are XiXteen teaching material. The three visuals were generated with ImageGen and checked against their stated figures.</p>
               <ul>
                 <li><a href="https://www.anthropic.com/research/agents-judgment-calls">How AI agents shape experts' judgment calls</a> — Anthropic, October 27, 2026.</li>
                 <li><a href="https://www-cdn.anthropic.com/519c17a5d23a794e8b6d50a854048d0b61e0d73a.pdf">Who's Aligned to Whom? How AI Agents Shape Experts' Research Judgment Calls</a> — full research paper (PDF).</li>
@@ -208,7 +249,7 @@
             </section>
 
             <section id="try-it" aria-labelledby="practice-title">
-              <p class="eyebrow">07 · Check your understanding</p>
+              <p class="eyebrow">08 · Check your understanding</p>
               <h2 id="practice-title">A five-question quiz</h2>
               <p>Choose one answer for each question, then select <strong>Check my answers</strong>. You will see why every option is right or wrong. This is practice; your answers stay on this page.</p>
               <noscript><p>Enable JavaScript to check your answers and reveal the explanations.</p></noscript>
@@ -216,101 +257,111 @@
                 <p class="lesson-quiz-result" data-quiz-result role="status" aria-live="polite" aria-atomic="true" tabindex="-1"></p>
                 <button class="secondary-action" type="button" data-quiz-retry hidden>Try again</button>
                 <p class="lesson-quiz-progress" data-quiz-progress>0 of 5 questions answered</p>
-                <fieldset class="lesson-quiz-question" data-quiz-question>
-                  <legend>1. A board requires a 4% improvement in “productivity.” Which missing detail must be settled to make that rule usable?</legend>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-1-a"><input id="quiz-1-a" type="radio" name="question-1" value="A" /><span><strong>A.</strong> How many decimal places the percentage should display.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-1-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Extra decimal places make a result look more exact; they do not say which quantity the percentage describes.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="true">
-                    <label for="quiz-1-b"><input id="quiz-1-b" type="radio" name="question-1" value="B" /><span><strong>B.</strong> Which quantity counts as productivity and how it is calculated.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-1-b-feedback" class="lesson-quiz-feedback" hidden>Correct. The rule needs a metric, such as crop output per hectare or per dollar, before its cutoff can be applied meaningfully.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-1-c"><input id="quiz-1-c" type="radio" name="question-1" value="C" /><span><strong>C.</strong> A guarantee that every farm will improve by exactly 4%.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-1-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. A cutoff is not a guarantee of results. How gains are distributed is a separate issue from defining productivity.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-1-d"><input id="quiz-1-d" type="radio" name="question-1" value="D" /><span><strong>D.</strong> A rule that the largest farms must always count most.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-1-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Weighting farms is another choice to justify. It does not define whether productivity means output per land or per cost.</p>
-                  </div>
-                </fieldset>
-                <fieldset class="lesson-quiz-question" data-quiz-question>
-                  <legend>2. In our invented example, output rises from 100 to 104 tonnes, land stays at 10 hectares, and cost rises from $10,000 to $10,800. Which result reaches the example’s 4% cutoff?</legend>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-2-a"><input id="quiz-2-a" type="radio" name="question-2" value="A" /><span><strong>A.</strong> Both output per hectare and output per dollar.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-2-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Output rises 4%, but cost rises 8%. Output per dollar falls, even though output per hectare rises.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-2-b"><input id="quiz-2-b" type="radio" name="question-2" value="B" /><span><strong>B.</strong> Neither measure, because operating cost has increased.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-2-b-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Rising cost affects output per dollar. It does not cancel the 4% increase in output per hectare when land area stays the same.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="true">
-                    <label for="quiz-2-c"><input id="quiz-2-c" type="radio" name="question-2" value="C" /><span><strong>C.</strong> Output per hectare only.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-2-c-feedback" class="lesson-quiz-feedback" hidden>Correct. Output per hectare rises from 10 to 10.4 tonnes, a 4% gain. Output per $1,000 falls from 10 to about 9.63 tonnes, a decline of about 3.7%.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-2-d"><input id="quiz-2-d" type="radio" name="question-2" value="D" /><span><strong>D.</strong> Output per dollar only.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-2-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. This reverses the results. Spending grows faster than crop output, so each dollar buys less output; land-based productivity rises.</p>
-                  </div>
-                </fieldset>
-                <fieldset class="lesson-quiz-question" data-quiz-question>
-                  <legend>3. How could an AI influence the recommendation without falsifying any figures?</legend>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-3-a"><input id="quiz-3-a" type="radio" name="question-3" value="A" /><span><strong>A.</strong> It could make correct arithmetic mean whatever it wants.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-3-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Arithmetic remains constrained by the figures. The room for influence lies in choosing the definition and analysis, not making a sum arbitrary.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-3-b"><input id="quiz-3-b" type="radio" name="question-3" value="B" /><span><strong>B.</strong> It could influence only the final yes-or-no answer, never the earlier analysis.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-3-b-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Earlier choices determine which result is compared with the cutoff. The final recommendation can inherit their influence.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-3-c"><input id="quiz-3-c" type="radio" name="question-3" value="C" /><span><strong>C.</strong> It could rely on the fact that every defensible definition gives the same result.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-3-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Our example shows that defensible definitions can produce different results. Their agreement cannot be assumed.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="true">
-                    <label for="quiz-3-d"><input id="quiz-3-d" type="radio" name="question-3" value="D" /><span><strong>D.</strong> It could argue for a defensible definition that makes one result central to the decision.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-3-d-feedback" class="lesson-quiz-feedback" hidden>Correct. Selecting output per land or per cost changes what gets tested. An honest case for one definition can therefore shape the recommendation.</p>
-                  </div>
-                </fieldset>
-                <fieldset class="lesson-quiz-question" data-quiz-question>
-                  <legend>4. Which approach best addresses the missing definition before the analysis begins?</legend>
-                  <div class="lesson-quiz-choice" data-correct="true">
-                    <label for="quiz-4-a"><input id="quiz-4-a" type="radio" name="question-4" value="A" /><span><strong>A.</strong> Explain the goal, specify the main measure and comparison, and agree to show reasonable alternatives.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-4-a-feedback" class="lesson-quiz-feedback" hidden>Correct. This makes the rule explicit and connects it to a purpose. Showing alternatives also reveals whether the recommendation depends on that rule.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-4-b"><input id="quiz-4-b" type="radio" name="question-4" value="B" /><span><strong>B.</strong> Try several measures, then report only the one with the largest gain.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-4-b-feedback" class="lesson-quiz-feedback" hidden>Incorrect. This selects the most favourable result without explaining why its measure suits the goal. It hides a choice the board needs to see.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-4-c"><input id="quiz-4-c" type="radio" name="question-4" value="C" /><span><strong>C.</strong> Use whichever definition the assistant presents most confidently.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-4-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Confidence of presentation does not establish that a definition fits the board’s purpose.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-4-d"><input id="quiz-4-d" type="radio" name="question-4" value="D" /><span><strong>D.</strong> Keep productivity undefined so that all choices remain equally acceptable.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-4-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Several measures may be reasonable, but a decision still needs an explicit, justified rule. An open choice does not make every choice equally good.</p>
-                  </div>
-                </fieldset>
-                <fieldset class="lesson-quiz-question" data-quiz-question>
-                  <legend>5. A report defines “productivity” as output per hectare, then uses its increase to conclude that money was used more efficiently. What is the main problem?</legend>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-5-a"><input id="quiz-5-a" type="radio" name="question-5" value="A" /><span><strong>A.</strong> The percentages need more decimal places.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-5-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Rounding is not the issue. Even perfectly exact land-based figures do not, by themselves, establish greater efficiency in spending.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="true">
-                    <label for="quiz-5-b"><input id="quiz-5-b" type="radio" name="question-5" value="B" /><span><strong>B.</strong> The argument shifts from productivity per unit of land to productivity per unit of money without supporting that shift.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-5-b-feedback" class="lesson-quiz-feedback" hidden>Correct. This is equivocation: the key term changes meaning between the evidence and the conclusion. A claim about money requires a cost-based calculation or another justified link.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-5-c"><input id="quiz-5-c" type="radio" name="question-5" value="C" /><span><strong>C.</strong> An increase in output per hectare is mathematically impossible.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-5-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Output per hectare can increase. Our worked example shows this while output per dollar falls; the ratios answer different questions.</p>
-                  </div>
-                  <div class="lesson-quiz-choice" data-correct="false">
-                    <label for="quiz-5-d"><input id="quiz-5-d" type="radio" name="question-5" value="D" /><span><strong>D.</strong> A definition must never be revised for any reason.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
-                    <p id="quiz-5-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. A definition may be revised for a stated, defensible reason. The problem is silently changing it while treating the earlier evidence as if it still supports the new claim.</p>
-                  </div>
-                </fieldset>
+                <div class="lesson-quiz-card">
+                  <fieldset class="lesson-quiz-question" data-quiz-question>
+                    <legend>1. A board requires a 4% improvement in “productivity.” Which missing detail must be settled to make that rule usable?</legend>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-1-a"><input id="quiz-1-a" type="radio" name="question-1" value="A" /><span><strong>A.</strong> How many decimal places the percentage should display.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-1-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Extra decimal places make a result look more exact; they do not say which quantity the percentage describes.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="true">
+                      <label for="quiz-1-b"><input id="quiz-1-b" type="radio" name="question-1" value="B" /><span><strong>B.</strong> Which quantity counts as productivity and how it is calculated.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-1-b-feedback" class="lesson-quiz-feedback" hidden>Correct. The rule needs a metric, such as crop output per hectare or per dollar, before its cutoff can be applied meaningfully.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-1-c"><input id="quiz-1-c" type="radio" name="question-1" value="C" /><span><strong>C.</strong> A guarantee that every farm will improve by exactly 4%.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-1-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. A cutoff is not a guarantee of results. How gains are distributed is a separate issue from defining productivity.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-1-d"><input id="quiz-1-d" type="radio" name="question-1" value="D" /><span><strong>D.</strong> A rule that the largest farms must always count most.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-1-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Weighting farms is another choice to justify. It does not define whether productivity means output per land or per cost.</p>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="lesson-quiz-card">
+                  <fieldset class="lesson-quiz-question" data-quiz-question>
+                    <legend>2. In our invented example, output rises from 100 to 104 tonnes, land stays at 10 hectares, and cost rises from $10,000 to $10,800. Which result reaches the example’s 4% cutoff?</legend>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-2-a"><input id="quiz-2-a" type="radio" name="question-2" value="A" /><span><strong>A.</strong> Both output per hectare and output per dollar.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-2-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Output rises 4%, but cost rises 8%. Output per dollar falls, even though output per hectare rises.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-2-b"><input id="quiz-2-b" type="radio" name="question-2" value="B" /><span><strong>B.</strong> Neither measure, because operating cost has increased.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-2-b-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Rising cost affects output per dollar. It does not cancel the 4% increase in output per hectare when land area stays the same.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="true">
+                      <label for="quiz-2-c"><input id="quiz-2-c" type="radio" name="question-2" value="C" /><span><strong>C.</strong> Output per hectare only.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-2-c-feedback" class="lesson-quiz-feedback" hidden>Correct. Output per hectare rises from 10 to 10.4 tonnes, a 4% gain. Output per $1,000 falls from 10 to about 9.63 tonnes, a decline of about 3.7%.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-2-d"><input id="quiz-2-d" type="radio" name="question-2" value="D" /><span><strong>D.</strong> Output per dollar only.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-2-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. This reverses the results. Spending grows faster than crop output, so each dollar buys less output; land-based productivity rises.</p>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="lesson-quiz-card">
+                  <fieldset class="lesson-quiz-question" data-quiz-question>
+                    <legend>3. How could an AI influence the recommendation without falsifying any figures?</legend>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-3-a"><input id="quiz-3-a" type="radio" name="question-3" value="A" /><span><strong>A.</strong> It could make correct arithmetic mean whatever it wants.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-3-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Arithmetic remains constrained by the figures. The room for influence lies in choosing the definition and analysis, not making a sum arbitrary.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-3-b"><input id="quiz-3-b" type="radio" name="question-3" value="B" /><span><strong>B.</strong> It could influence only the final yes-or-no answer, never the earlier analysis.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-3-b-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Earlier choices determine which result is compared with the cutoff. The final recommendation can inherit their influence.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-3-c"><input id="quiz-3-c" type="radio" name="question-3" value="C" /><span><strong>C.</strong> It could rely on the fact that every defensible definition gives the same result.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-3-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Our example shows that defensible definitions can produce different results. Their agreement cannot be assumed.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="true">
+                      <label for="quiz-3-d"><input id="quiz-3-d" type="radio" name="question-3" value="D" /><span><strong>D.</strong> It could argue for a defensible definition that makes one result central to the decision.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-3-d-feedback" class="lesson-quiz-feedback" hidden>Correct. Selecting output per land or per cost changes what gets tested. An honest case for one definition can therefore shape the recommendation.</p>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="lesson-quiz-card">
+                  <fieldset class="lesson-quiz-question" data-quiz-question>
+                    <legend>4. Which approach best addresses the missing definition before the analysis begins?</legend>
+                    <div class="lesson-quiz-choice" data-correct="true">
+                      <label for="quiz-4-a"><input id="quiz-4-a" type="radio" name="question-4" value="A" /><span><strong>A.</strong> Explain the goal, specify the main measure and comparison, and agree to show reasonable alternatives.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-4-a-feedback" class="lesson-quiz-feedback" hidden>Correct. This makes the rule explicit and connects it to a purpose. Showing alternatives also reveals whether the recommendation depends on that rule.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-4-b"><input id="quiz-4-b" type="radio" name="question-4" value="B" /><span><strong>B.</strong> Try several measures, then report only the one with the largest gain.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-4-b-feedback" class="lesson-quiz-feedback" hidden>Incorrect. This selects the most favourable result without explaining why its measure suits the goal. It hides a choice the board needs to see.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-4-c"><input id="quiz-4-c" type="radio" name="question-4" value="C" /><span><strong>C.</strong> Use whichever definition the assistant presents most confidently.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-4-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Confidence of presentation does not establish that a definition fits the board’s purpose.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-4-d"><input id="quiz-4-d" type="radio" name="question-4" value="D" /><span><strong>D.</strong> Keep productivity undefined so that all choices remain equally acceptable.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-4-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Several measures may be reasonable, but a decision still needs an explicit, justified rule. An open choice does not make every choice equally good.</p>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="lesson-quiz-card">
+                  <fieldset class="lesson-quiz-question" data-quiz-question>
+                    <legend>5. A report defines “productivity” as output per hectare, then uses its increase to conclude that money was used more efficiently. What is the main problem?</legend>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-5-a"><input id="quiz-5-a" type="radio" name="question-5" value="A" /><span><strong>A.</strong> The percentages need more decimal places.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-5-a-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Rounding is not the issue. Even perfectly exact land-based figures do not, by themselves, establish greater efficiency in spending.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="true">
+                      <label for="quiz-5-b"><input id="quiz-5-b" type="radio" name="question-5" value="B" /><span><strong>B.</strong> The argument shifts from productivity per unit of land to productivity per unit of money without supporting that shift.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-5-b-feedback" class="lesson-quiz-feedback" hidden>Correct. This is equivocation: the key term changes meaning between the evidence and the conclusion. A claim about money requires a cost-based calculation or another justified link.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-5-c"><input id="quiz-5-c" type="radio" name="question-5" value="C" /><span><strong>C.</strong> An increase in output per hectare is mathematically impossible.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-5-c-feedback" class="lesson-quiz-feedback" hidden>Incorrect. Output per hectare can increase. Our worked example shows this while output per dollar falls; the ratios answer different questions.</p>
+                    </div>
+                    <div class="lesson-quiz-choice" data-correct="false">
+                      <label for="quiz-5-d"><input id="quiz-5-d" type="radio" name="question-5" value="D" /><span><strong>D.</strong> A definition must never be revised for any reason.</span><span class="quiz-your-answer" hidden>Your answer</span></label>
+                      <p id="quiz-5-d-feedback" class="lesson-quiz-feedback" hidden>Incorrect. A definition may be revised for a stated, defensible reason. The problem is silently changing it while treating the earlier evidence as if it still supports the new claim.</p>
+                    </div>
+                  </fieldset>
+                </div>
                 <div class="lesson-quiz-actions">
                   <button class="primary-action" type="submit" disabled>Check my answers</button>
                 </div>

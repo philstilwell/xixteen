@@ -10,6 +10,7 @@
 .articles-page summary:focus-visible,
 .articles-page button:focus-visible,
 .articles-page input:focus-visible,
+.articles-page textarea:focus-visible,
 .lesson-quiz-result:focus-visible {
   outline: 3px solid var(--teal);
   outline-offset: 4px;
@@ -392,6 +393,29 @@
   margin-bottom: 12px;
 }
 
+.definition-response-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.definition-response {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 110px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
 .article-body .reasoning-chain {
   border-left: 3px solid var(--teal);
   background: var(--panel);
@@ -402,7 +426,7 @@
   display: none !important;
 }
 
-.lesson-quiz-question {
+.lesson-quiz-card {
   min-width: 0;
   margin: 28px 0;
   padding: 20px;
@@ -411,8 +435,17 @@
   background: var(--panel);
 }
 
+.lesson-quiz-question {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 .lesson-quiz-question legend {
-  padding: 0 8px;
+  max-width: 100%;
+  padding: 0 0 8px;
+  overflow-wrap: anywhere;
   font-weight: 800;
   font-size: 18px;
   line-height: 1.5;
@@ -585,7 +618,7 @@
 
   .lesson-callout,
   .lesson-exercise,
-  .lesson-quiz-question {
+  .lesson-quiz-card {
     padding: 18px;
   }
 }
