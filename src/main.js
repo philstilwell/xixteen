@@ -343,6 +343,7 @@ function renderPracticeStart() {
   els.quizPanel.innerHTML = `
     <div class="practice-start">
       <h3>Choose a practice set.</h3>
+      <p>Practice draws from ${state.items.length.toLocaleString("en-US")} questions across ${state.skills.length} categories.</p>
       <p>Use the controls above to practice one skill, pick a level, or let XiXteen build an adaptive mix from your weakest areas.</p>
     </div>
   `;

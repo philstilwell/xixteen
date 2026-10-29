@@ -1,5 +1,7 @@
 # XiXteen Content Model
 
+The current bank contains **2,560 unique questions across 16 categories**: 160 per skill, with 32 at each of five difficulty levels. The daily board draws one question per category; practice uses the same bank.
+
 Every quiz item is built to have one clearly best answer:
 
 - the prompt starts with a concrete scenario;

@@ -2,11 +2,13 @@
 
 XiXteen is a daily thinking quiz built around 16 clear reasoning skills.
 
-The first corpus target is intentionally large:
+The current question bank contains **2,560 unique questions**:
 
 ```text
-16 skills x 160 unique items = 2,560 items
+16 skills x 160 questions = 2,560 questions
 ```
+
+Each skill has 32 questions at each of five difficulty levels. These counts come from `data/question-bank.json` and are checked by `npm run validate`.
 
 Daily competition uses one fixed item from each skill for a given date. Practice mode can use the wider bank without affecting the public leaderboard.
 
