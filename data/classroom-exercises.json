@@ -1,0 +1,114 @@
+{
+  "clarify_claim": {
+    "scenario": "A student writes: 'Our library closes at 5 p.m. During a four-week trial of closing at 7 p.m., weekly visits rose from 400 to 460. The council should keep the later closing time.'",
+    "steps": ["Copy the main claim: the proposal the writer wants the council to accept.", "Copy the supporting evidence and label the remaining sentence as background.", "Write one sentence explaining why the visit count is not itself the main claim."],
+    "check": "Have you separated the proposed action from the fact used to support it? Do not add 'always' or claim that the trial proves the policy works everywhere.",
+    "modelAnswer": "Claim: the council should keep the later closing time. Evidence: weekly visits rose from 400 to 460 during the trial. Background: the library normally closes at 5 p.m. The count supports the proposal; it is not the proposed action.",
+    "whyAdequate": "The answer names the roles of all three sentences without strengthening what the writer said."
+  },
+  "define_terms": {
+    "scenario": "A principal says a new phone rule makes lessons 'better'. In the same ten classes, weekly phone interruptions fell from 20 to 12, but average test scores stayed at 70 out of 100. Both figures compare the four weeks before the rule with the four weeks after it.",
+    "steps": ["Write two possible definitions of 'better': one using interruptions and one using test scores. For each, state the direction of improvement and the comparison period.", "Apply each definition to the supplied figures and say whether it shows an improvement.", "Finish with one sentence explaining why the school's purpose should guide its choice of measure before results are inspected."],
+    "check": "Could a reader apply your two rules to the figures without guessing? Separate observing a change from claiming the rule caused it.",
+    "modelAnswer": "Definition 1: fewer weekly phone interruptions across these ten classes in the four weeks after the rule than before it. This measure improves from 20 to 12. Definition 2: a higher average test score in the same classes and periods. This measure shows no improvement: 70 in both periods. The school should choose according to whether its purpose is reducing disruption or improving test performance, rather than picking whichever result looks best.",
+    "whyAdequate": "Both definitions specify an observable measure, direction, group, and comparison; the answer shows how the conclusion depends on the definition."
+  },
+  "find_argument": {
+    "scenario": "A club member writes: 'Our club meets on Tuesdays. Last month's bake sale earned $300 after costs, while the car wash earned $180. Therefore, we should hold another bake sale next month.'",
+    "steps": ["Label each sentence background, reason, or conclusion.", "Draw an arrow from the reason to the conclusion, or write 'reason -> conclusion' using the actual sentences.", "Explain in one sentence why the Tuesday meeting detail is not support for the fundraising recommendation."],
+    "check": "Does your arrow show which statement supports which? The most detailed sentence need not be the conclusion.",
+    "modelAnswer": "Tuesday meetings are background. The $300 versus $180 earnings comparison is the reason. Holding another bake sale is the conclusion. Draw the arrow from the earnings comparison to the recommendation. Meeting on Tuesday supplies no comparison of the two fundraising options.",
+    "whyAdequate": "The answer maps the argument's structure and explains why a true detail is not necessarily a reason."
+  },
+  "hidden_assumptions": {
+    "scenario": "A store tests a checkout arrangement on Saturday and Sunday. Average waits fall from six minutes to four. The manager concludes, 'This arrangement will also reduce waits on weekdays.' No weekday test has been done.",
+    "steps": ["Copy the observed reason and the prediction separately.", "Complete: 'The manager assumes that weekday conditions are similar enough in ___ for the weekend result to carry over.' Name a relevant feature such as customer volume or staffing.", "Describe one possible weekday difference that would weaken that bridge. You are proposing a possibility, not claiming it happened."],
+    "check": "Does your assumption connect this weekend result to weekdays, rather than merely say that faster checkout is desirable?",
+    "modelAnswer": "Reason: weekend waits fell from six to four minutes. Prediction: weekday waits will fall too. The manager assumes weekday customer volume and staffing are similar enough for the arrangement to help. If weekdays have much less staff available, the arrangement might not work as it did in the trial.",
+    "whyAdequate": "It identifies the needed transfer from one setting to another and tests that assumption with a relevant possible difference."
+  },
+  "relevance": {
+    "scenario": "A hotel manager claims text reminders reduce hallway noise complaints. Fact A: comparable floors receiving reminders had four complaints per 100 occupied room-nights, versus seven on floors without reminders in the same month. Fact B: most guests liked the new lobby painting. A room-night means one occupied room for one night.",
+    "steps": ["Name the action and the outcome in the claim.", "Choose which fact bears directly on the claim and explain the connection.", "Explain why the other fact does not answer this question, even if it is true."],
+    "check": "Have you linked the evidence to reminders and noise complaints, rather than to general guest satisfaction?",
+    "modelAnswer": "The action is sending text reminders; the outcome is hallway noise complaints. Fact A compares that outcome with and without reminders using the same unit. Fact B concerns a painting and does not show whether reminders affect noise complaints.",
+    "whyAdequate": "The answer explains relevance through the specific action and outcome. Relevance alone does not prove the comparison establishes cause."
+  },
+  "evidence_quality": {
+    "scenario": "A tutoring program claims it raises algebra pass rates. Report A quotes one volunteer saying tutoring helped. Report B follows 200 students randomly assigned to receive tutoring or usual support, uses the same exam, and reports all results: 70 of 100 tutored students pass, versus 55 of 100 others. Both reports are accurately described; use only these facts.",
+    "steps": ["Choose the stronger evidence for the program's claim.", "Give three reasons using the number of students, the comparison groups, and the outcome measure.", "State one limit: what would you still want to know before assuming the result applies to another school?"],
+    "check": "Explain the evidence's method rather than treating a confident testimonial or a large number alone as decisive.",
+    "modelAnswer": "Report B is stronger: it includes 200 students rather than one selected volunteer, random assignment supplies a fairer comparison, and a common exam measures the stated outcome. I would check whether another school's students and tutoring program are similar before transferring the conclusion.",
+    "whyAdequate": "It connects three stated design features to the claim and keeps a local result separate from a universal promise."
+  },
+  "source_reliability": {
+    "scenario": "An app seller says its product improves sleep, citing 12 testimonials with no recruitment details or sleep measure. A university team studies the same app: 200 adults are randomly assigned to app or no-app groups, sleep is measured identically, and the complete results and funding are disclosed. No result figures are supplied here; you are judging how checkable the sources are.",
+    "steps": ["Make a two-row chart, one row per source, with columns for participant selection, measurement, comparison group, and disclosed interests.", "Write 'not supplied' wherever the scenario lacks a detail; do not invent it.", "Write two sentences identifying which report is easier to check and why a seller's financial interest is a reason for scrutiny rather than automatic disproof."],
+    "check": "Did you compare reporting methods rather than trust the university's name or reject the seller's identity alone?",
+    "modelAnswer": "Seller: selection not supplied; sleep measure not supplied; no comparison group described; sells the app. University: recruitment details not supplied, but random group assignment stated; common sleep measure; app/no-app comparison; funding disclosed. The university report is easier to inspect because it describes methods and a comparison. The seller has an incentive to promote the product, but that incentive alone does not prove its claim false.",
+    "whyAdequate": "It distinguishes known details from missing ones and treats incentives and methods as evidence to examine, not shortcuts to a verdict."
+  },
+  "logical_gaps": {
+    "scenario": "Eighteen of 24 students in one art class say they prefer a new grading rubric. The principal announces, 'Every student in our 600-student school prefers it.' No other students were asked.",
+    "steps": ["Complete: 'The evidence covers ___, but the conclusion covers ___.'", "Rewrite the conclusion as one sentence that the survey actually supports.", "Name one additional kind of evidence needed before making a claim about school-wide preferences."],
+    "check": "Does your rewrite preserve both the actual sample and the fact that six surveyed students did not prefer the rubric?",
+    "modelAnswer": "The evidence covers 24 students in one art class, but the conclusion covers all 600 students. A majority of the surveyed art class, 18 of 24 students, preferred the new rubric. A school-wide estimate would need a representative sample across classes; even that would not justify saying every student agrees.",
+    "whyAdequate": "It narrows the claim to the evidence and separates a statement about a majority from a statement about everyone."
+  },
+  "fallacies": {
+    "scenario": "Maya asks, 'What evidence shows the new timetable improves attendance?' Lee replies, 'You just hate change and want our school to fail.' No attendance results have been supplied.",
+    "steps": ["State Maya's question in your own words.", "Explain what Lee discusses instead and why that does not answer the question.", "Rewrite Lee's reply in two sentences: acknowledge the missing evidence and propose a relevant comparison. Do not invent a successful result."],
+    "check": "Have you addressed attendance rather than guessed Maya's motives? A label such as 'personal attack' is optional; explain the error.",
+    "modelAnswer": "Maya asks whether the timetable improves attendance. Lee attacks her motives instead of supplying attendance evidence. Better reply: 'We have not yet shown that attendance improves. We should compare attendance under the new and old schedules while checking other changes, such as transport availability.'",
+    "whyAdequate": "It identifies the diversion and replaces it with a relevant, honest response rather than an invented justification."
+  },
+  "probability": {
+    "scenario": "A weather app assigns a 70% chance of measurable rain tomorrow. For this exercise, measurable rain means at least 1 mm at the town weather station during that calendar day. Imagine 100 comparable forecasts, each issued a day ahead at 70%, from a well-calibrated app: its stated probabilities match long-run frequencies.",
+    "steps": ["Write approximately how many of those 100 days should have measurable rain and how many should not.", "Explain why a dry tomorrow would not by itself refute a 70% forecast.", "Write what record you would inspect to judge whether the app's 70% forecasts are well calibrated."],
+    "check": "Do not treat 70% as a guarantee, a claim about 70% of the town, or a claim that rain lasts 70% of the day.",
+    "modelAnswer": "About 70 days should have measurable rain and about 30 should not; exact counts can vary. A dry tomorrow is allowed by the 30% chance of no rain. I would inspect many comparable forecasts recorded in advance at 70%, keeping dry days as well as wet ones, and compare their rain frequency with 70%.",
+    "whyAdequate": "It identifies the event and reference group and evaluates a probabilistic claim across a record rather than a single outcome."
+  },
+  "statistical_sense": {
+    "scenario": "A clinic had 100 missed appointments out of 1,000 booked visits in March and 80 out of 800 in April. It advertises: 'Missed appointments fell by 20%, so patients became more reliable.'",
+    "steps": ["Calculate the percentage change in the number missed: (80 - 100) / 100 x 100.", "Calculate each month's missed-appointment rate: missed / booked x 100.", "Write two sentences separating what changed in the count from what changed in the rate, and judge whether the reliability claim follows from these figures."],
+    "check": "Did you name the denominator for each month? A lower count does not necessarily mean a lower rate.",
+    "modelAnswer": "The missed count fell by 20%. March's rate is 100/1,000 = 10%; April's is 80/800 = 10%. Fewer appointments were missed, but the proportion missed stayed the same. These figures do not support an improvement in reliability measured by that rate.",
+    "whyAdequate": "It calculates both quantities and prevents a true statement about a count from becoming an unsupported statement about a rate."
+  },
+  "causation": {
+    "scenario": "Reported thefts on a street fall from 50 in September to 35 in October. Brighter lights are installed at the start of October, and extra evening patrols begin that same day. The mayor says the lights caused the drop.",
+    "steps": ["State the observed change separately from the mayor's causal explanation.", "Name the other change that could explain some or all of the drop.", "Propose a comparison that would help separate the effects: describe which streets to compare and which other condition should be kept similar. Do not claim your proposed comparison has already been done."],
+    "check": "Does the comparison vary lighting without also giving only the newly lit streets extra patrols?",
+    "modelAnswer": "The observation is that reports fell from 50 to 35 after two changes. Extra patrols are a rival explanation. Compare similar streets over the same period, some receiving brighter lights and others retaining existing lights, while keeping patrol levels comparable; random assignment of lighting would make the test stronger where feasible.",
+    "whyAdequate": "It identifies the simultaneous change and proposes evidence that could distinguish explanations instead of treating 'after' as 'because of'."
+  },
+  "alternative_explanations": {
+    "scenario": "A museum's family visits rise from 200 to 320 during the first weekend of free admission. That weekend also brings a new dinosaur exhibit, a school holiday, and unusually heavy rain. The museum credits free admission alone.",
+    "steps": ["List three rival explanations using the supplied details.", "For each, write one sentence explaining how it could increase museum visits. Mark these as possibilities, not established causes.", "Choose one rival and name a comparison that would help distinguish it from the effect of price."],
+    "check": "Have you explained a plausible connection for each rival instead of merely listing coinciding events?",
+    "modelAnswer": "The dinosaur exhibit might attract interested families; the holiday might give them more free time; rain might make indoor activities more attractive. To examine the exhibit explanation, compare similar weekends with the same exhibit but different admission prices while keeping holiday and weather conditions as comparable as possible. The supplied facts do not tell us which cause contributed how much.",
+    "whyAdequate": "It supplies mechanisms for three alternatives and a relevant follow-up comparison without presenting possibilities as findings."
+  },
+  "cognitive_biases": {
+    "scenario": "After buying a study app, Sam reads six glowing reviews and skips four detailed critical reviews because 'they will only make me doubt my choice'. Sam concludes the app must improve learning. No learning results have been collected.",
+    "steps": ["Identify the evidence Sam selects and the evidence Sam avoids, and explain the direction of the preference.", "Write a three-step checking plan: include both kinds of reviews, use the same quality criteria for them, and collect a learning measure rather than relying only on praise.", "Name a specific learning measure, such as a delayed quiz on comparable material, and say why review popularity alone is insufficient."],
+    "check": "Does your plan make it possible to discover that the purchase was unhelpful, or only reassure Sam?",
+    "modelAnswer": "Sam favours praise that confirms the purchase and avoids criticism that could challenge it. Plan: read all ten reviews; assess each for relevant experience and checkable evidence using the same criteria; compare delayed-quiz performance on comparable material studied with and without the app under similar conditions. Positive reviews show approval, not necessarily better learning.",
+    "whyAdequate": "It describes the selective attention and turns a vague request to 'be unbiased' into concrete checks capable of revealing a mistake."
+  },
+  "tradeoffs": {
+    "scenario": "A school has 60 minutes each week for optional study activities. It proposes moving 30 minutes from open reading to test preparation. Teachers expect more exam practice, but no evidence yet shows a score gain. Students who rely on school reading time would lose half that time.",
+    "steps": ["Make three labelled lines: possible benefit, cost, and affected group. Use the facts and distinguish an expected benefit from a demonstrated result.", "Propose one alternative allocation of the 60 minutes and explain its tradeoff.", "Write one question the school should answer before choosing a plan."],
+    "check": "Do all allocations total 60 minutes? Have you named who bears the cost rather than calling the proposal simply 'good' or 'bad'?",
+    "modelAnswer": "Possible benefit: more exam practice, with score improvement still unproven. Cost: 30 fewer minutes of open reading. Affected group: especially students dependent on school reading time. An alternative is 15 minutes of preparation and 45 of reading; it preserves more reading but provides less preparation. Ask whether a trial shows gains large enough to justify the lost reading opportunity.",
+    "whyAdequate": "It makes the limited resource explicit and compares benefits, costs, and affected students without inventing guaranteed gains."
+  },
+  "belief_update": {
+    "scenario": "You begin unsure whether brighter streetlights reduce theft reports. Study A is one resident saying a street feels safer. Study B assigns 40 similar streets at random to brighter or unchanged lighting, keeps patrol policy the same, and records the same theft measure before and after: reports fall more in the brighter-light group. No exact effect size or uncertainty estimate is supplied.",
+    "steps": ["For each study, say whether it should raise, lower, or leave your confidence roughly unchanged, and explain why.", "Choose which should change confidence more, using the difference between personal impressions and a controlled comparison.", "Name one missing detail you would seek before making a strong conclusion. Do not invent a precise percentage change in confidence."],
+    "check": "Have you updated more for the stronger relevant evidence while keeping uncertainty about the size and reliability of the effect?",
+    "modelAnswer": "Study A should change confidence about theft reports very little: feeling safer is a different outcome and one person's impression. Study B should raise confidence more because random assignment and consistent measurement provide a fairer comparison of the claimed outcome. I would request the size of the difference and its uncertainty before making a strong claim.",
+    "whyAdequate": "It ties the direction and strength of the update to evidence quality and acknowledges that the scenario cannot justify an exact confidence number."
+  }
+}

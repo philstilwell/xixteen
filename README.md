@@ -25,6 +25,7 @@ This regenerates the skill file, the question bank, and daily quiz schedule, the
 - `data/skills.json` is the canonical numbered skill list.
 - `data/question-bank.json` contains objective multiple-choice items.
 - `data/daily-quizzes.json` contains the shared daily quiz schedule.
+- `data/classroom-exercises.json` contains one guided written activity per skill for the curriculum PDFs. After editing it, run `npm run pdf:curriculum` and review the rendered pages. The builder embeds its bundled TrueType fonts.
 - `database/schema.sql` is designed for Cloudflare D1 or SQLite-compatible review.
 - `npm run export:d1` writes `database/seed.sql` for D1 import.
 - `npm run audit` reports clarity coverage and prompt-depth stats by skill.
@@ -59,7 +60,7 @@ Follow [the article conventions](articles/AGENTS.md) for each new lesson:
 1. Verify sources, identify the main reasoning lesson, and write clear teaching examples with appropriate evidence limits.
 2. Add supportive **ImageGen illustrations** as part of authoring, usually two complementary visuals. Check their accuracy, add accessible descriptions and captions, and save their exact prompts with the image assets. This is a standard publication step unless the user requests otherwise.
 3. Register the lesson's grid categories, generate their practice links, and include the shared section-highlighting menu. Practice links must preserve the return route to the article.
-4. Include exercises, model answers, key insights, and a quiz with explanatory feedback where appropriate to the lesson.
+4. Include exercises, model answers, key insights, and a quiz with explanatory feedback where appropriate to the lesson. Every exercise needs its own scenario and facts, a defined student output, numbered steps, a visible success check, and a model answer that explains the assigned reasoning. Follow the exercise conventions in `articles/AGENTS.md`.
 5. Check sources, images, links, interactions, and desktop/phone layouts, then run `npm run articles:check` before committing, pushing, and publishing.
 
 ## Operations

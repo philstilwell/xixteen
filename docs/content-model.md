@@ -38,3 +38,9 @@ Daily quizzes use the same 16 item IDs for every visitor on the same date. Pract
 ## Fairness Rule
 
 Public competition should use `daily_quizzes`. Random or adaptive pulls should be limited to practice and personal learning.
+
+## Written exercises and classroom activities
+
+Article exercises and the 16 printable activities use the same teaching standard: a self-contained scenario, all required facts, a clearly stated student output, numbered steps, any needed formula or term explanation, and a visible check before the model answer. The answer must follow those steps and explain its adequacy without adding requirements the student was never given.
+
+Printable activities are stored in `data/classroom-exercises.json`, keyed by the canonical skill IDs. `scripts/build-curriculum-pdf.py` includes each activity in its skill packet and the complete curriculum. The existing multiple-choice bank remains the source for daily and focused practice.

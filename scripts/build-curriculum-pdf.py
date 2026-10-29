@@ -10,6 +10,10 @@ from datetime import date
 from html import escape
 from pathlib import Path
 
+import reportlab
+from reportlab import rl_config
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import letter
@@ -38,6 +42,24 @@ OUTPUT_FILE = OUTPUT_DIR / "xixteen-critical-thinking-curriculum.pdf"
 SYNTHESIS_FILE = OUTPUT_DIR / "xixteen-critical-thinking-synthesis.pdf"
 SKILL_OUTPUT_DIR = OUTPUT_DIR / "skills"
 TEACHER_RESOURCE_FILE = DATA_DIR / "teacher-resources.json"
+CLASSROOM_EXERCISES = json.loads((DATA_DIR / "classroom-exercises.json").read_text())
+
+# ReportLab ships these redistributable TrueType fonts. Embed all four styles
+# so the published handouts render consistently without local font substitutes.
+FONT_DIR = Path(reportlab.__file__).parent / "fonts"
+for font_name, filename in [
+    ("XiXteenSans", "Vera.ttf"), ("XiXteenSans-Bold", "VeraBd.ttf"),
+    ("XiXteenSans-Italic", "VeraIt.ttf"), ("XiXteenSans-BoldItalic", "VeraBI.ttf"),
+]:
+    pdfmetrics.registerFont(TTFont(font_name, str(FONT_DIR / filename)))
+pdfmetrics.registerFontFamily(
+    "XiXteenSans", normal="XiXteenSans", bold="XiXteenSans-Bold",
+    italic="XiXteenSans-Italic", boldItalic="XiXteenSans-BoldItalic",
+)
+rl_config.canvas_basefontname = "XiXteenSans"
+# Tables can select their default font even when every cell is a Paragraph.
+# Embed that fallback too, rather than leaving a standard unembedded font.
+pdfmetrics.registerFont(TTFont("Helvetica", str(FONT_DIR / "Vera.ttf")))
 
 PAGE_WIDTH, PAGE_HEIGHT = letter
 MARGIN_X = 0.62 * inch
@@ -210,7 +232,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "The main claim is the point being defended, not the measurement used to defend it."
         },
         "assessment": "A good answer names the exact point being supported and rejects answers that are merely supporting facts, side details, or overclaims.",
-        "extension": "Ask students to bring in a short editorial or ad and highlight the main claim in one color and the support in another."
     },
     "define_terms": {
         "essential_question": "Which word or phrase must be made clearer before the argument can be fairly judged?",
@@ -237,7 +258,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "The key term is the one that hides the standard for success."
         },
         "assessment": "A good answer selects the vague or standard-setting phrase and can explain what kind of definition would make the claim testable.",
-        "extension": "Have students rewrite a vague claim twice with two different definitions and discuss how the evidence needed would change."
     },
     "find_argument": {
         "essential_question": "What role does each sentence play in the argument?",
@@ -264,7 +284,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "The conclusion is the supported point; the reason is the support."
         },
         "assessment": "A good answer identifies the conclusion, reason, or other requested role without being pulled toward the most interesting sentence.",
-        "extension": "Give students a short passage and ask them to diagram it with arrows from reasons to conclusion."
     },
     "hidden_assumptions": {
         "essential_question": "What unstated idea must be true for the reason to support the conclusion?",
@@ -291,7 +310,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Assumptions connect the evidence to the conclusion without adding more than the argument needs."
         },
         "assessment": "A good answer supplies a necessary bridge and avoids choices that are mere background, evidence, or overconfident guarantees.",
-        "extension": "Have students write because-therefore sentences and insert the missing assumption between the reason and conclusion."
     },
     "relevance": {
         "essential_question": "Which fact actually helps us judge the claim?",
@@ -318,7 +336,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Relevant evidence touches the exact claim, not just the general topic."
         },
         "assessment": "A good answer identifies the fact that bears most directly on the claim's action, target group, and outcome.",
-        "extension": "Ask students to create one relevant and one irrelevant fact for the same claim, then trade with a partner."
     },
     "evidence_quality": {
         "essential_question": "How strong is the evidence for this claim?",
@@ -345,7 +362,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Strong evidence is relevant evidence with better design."
         },
         "assessment": "A good answer selects the option with better direct measurement, comparison, sample, and transparency.",
-        "extension": "Have students rank four evidence types and justify the ranking using the same four criteria every time."
     },
     "source_reliability": {
         "essential_question": "How much trust should we place in this source, and why?",
@@ -372,7 +388,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Reliability grows when expertise, method, and openness are visible."
         },
         "assessment": "A good answer names the reliability issue precisely: expertise, method, sampling, independence, transparency, or track record.",
-        "extension": "Ask students to compare two sources on the same claim using a five-column reliability chart."
     },
     "logical_gaps": {
         "essential_question": "Does the conclusion really follow from the evidence?",
@@ -399,7 +414,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "True evidence can still be too narrow for the conclusion."
         },
         "assessment": "A good answer identifies the precise leap from evidence to conclusion rather than attacking the topic generally.",
-        "extension": "Have students rewrite weak conclusions so they match the evidence more modestly."
     },
     "fallacies": {
         "essential_question": "What recognizable bad move does this argument make?",
@@ -426,7 +440,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Name the pattern only after you can describe the bad reasoning move."
         },
         "assessment": "A good answer selects the fallacy whose structure matches the scenario and rejects labels that are only topically related.",
-        "extension": "Have students revise a fallacious argument into a stronger version that addresses the actual issue.",
         "resource_note": "The quiz feedback links fallacy items to corresponding LogFall articles when a direct article match is available."
     },
     "probability": {
@@ -454,7 +467,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Probability guides expectations while leaving room for uncertainty."
         },
         "assessment": "A good answer uses the probability as evidence without turning it into certainty or dismissing it as useless.",
-        "extension": "Ask students to rewrite probabilistic claims as frequencies and identify what group of cases the frequency refers to."
     },
     "statistical_sense": {
         "essential_question": "What does this number mean in context?",
@@ -481,7 +493,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Numbers become meaningful when the comparison and denominator are visible."
         },
         "assessment": "A good answer identifies the missing or correct numerical context: baseline, denominator, comparison group, unit, or time period.",
-        "extension": "Have students convert every statistic in a news paragraph into a sentence that names the denominator and comparison."
     },
     "causation": {
         "essential_question": "Has the argument shown that one thing caused another?",
@@ -508,7 +519,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "A causal claim gets stronger when rival causes are ruled out."
         },
         "assessment": "A good answer explains why the cause is not yet proven or identifies evidence that would better test the causal link.",
-        "extension": "Ask students to list three rival causes for a before-after result before they discuss the original cause."
     },
     "alternative_explanations": {
         "essential_question": "What else could explain the same facts?",
@@ -535,7 +545,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "An alternative explanation does not have to be proven; it has to plausibly fit the same evidence."
         },
         "assessment": "A good answer names a plausible alternative that matches the observed facts and avoids unsupported contradictions.",
-        "extension": "Have students practice the sentence frame: The result could be due to __, but it could also be due to __."
     },
     "cognitive_biases": {
         "essential_question": "What mental pull is shaping this judgment?",
@@ -562,7 +571,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Bias labels should point to a specific mental pull."
         },
         "assessment": "A good answer identifies the bias pattern shown by the person's thinking and distinguishes it from nearby labels.",
-        "extension": "Ask students to design a small debiasing checklist for one decision they actually face.",
         "resource_note": "The quiz feedback links bias items to corresponding CogBias articles when a direct article match is available."
     },
     "tradeoffs": {
@@ -590,7 +598,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "A tradeoff names both the gain and what is spent or risked to get it."
         },
         "assessment": "A good answer shows the competing benefit and cost, risk, delay, or opportunity cost in the same decision.",
-        "extension": "Ask students to map one school policy as a triangle of benefits, costs, and affected groups."
     },
     "belief_update": {
         "essential_question": "How much should new evidence change confidence?",
@@ -617,7 +624,6 @@ PEDAGOGY_EXPANSIONS = {
             "takeaway": "Responsible updating changes belief in proportion to evidence strength."
         },
         "assessment": "A good answer names both the direction and size of the confidence change while preserving remaining uncertainty.",
-        "extension": "Ask students to practice a confidence scale from 0 to 100 and explain what would move them 5 points versus 30 points."
     },
 }
 
@@ -828,10 +834,10 @@ def draw_page_frame(canvas, doc):
         canvas.setStrokeColor(LINE)
         canvas.setLineWidth(0.4)
         canvas.line(MARGIN_X, PAGE_HEIGHT - 0.42 * inch, PAGE_WIDTH - MARGIN_X, PAGE_HEIGHT - 0.42 * inch)
-        canvas.setFont("Helvetica-Bold", 8)
+        canvas.setFont("XiXteenSans-Bold", 8)
         canvas.setFillColor(MUTED)
         canvas.drawString(MARGIN_X, PAGE_HEIGHT - 0.30 * inch, getattr(doc, "running_title", "XiXteen Critical Thinking Curriculum"))
-        canvas.setFont("Helvetica", 8)
+        canvas.setFont("XiXteenSans", 8)
         canvas.drawRightString(PAGE_WIDTH - MARGIN_X, 0.34 * inch, str(page_num))
         canvas.setStrokeColor(LINE)
         canvas.line(MARGIN_X, 0.50 * inch, PAGE_WIDTH - MARGIN_X, 0.50 * inch)
@@ -844,7 +850,7 @@ def build_styles():
         "CoverTitle": ParagraphStyle(
             "CoverTitle",
             parent=base["Title"],
-            fontName="Helvetica-Bold",
+            fontName="XiXteenSans-Bold",
             fontSize=34,
             leading=38,
             textColor=INK,
@@ -854,7 +860,7 @@ def build_styles():
         "CoverSub": ParagraphStyle(
             "CoverSub",
             parent=base["BodyText"],
-            fontName="Helvetica",
+            fontName="XiXteenSans",
             fontSize=13,
             leading=18,
             textColor=MUTED,
@@ -864,7 +870,7 @@ def build_styles():
         "H1": ParagraphStyle(
             "H1",
             parent=base["Heading1"],
-            fontName="Helvetica-Bold",
+            fontName="XiXteenSans-Bold",
             fontSize=22,
             leading=27,
             textColor=INK,
@@ -874,7 +880,7 @@ def build_styles():
         "H2": ParagraphStyle(
             "H2",
             parent=base["Heading2"],
-            fontName="Helvetica-Bold",
+            fontName="XiXteenSans-Bold",
             fontSize=14,
             leading=18,
             textColor=INK,
@@ -884,7 +890,7 @@ def build_styles():
         "Body": ParagraphStyle(
             "Body",
             parent=base["BodyText"],
-            fontName="Helvetica",
+            fontName="XiXteenSans",
             fontSize=9.4,
             leading=12.7,
             textColor=INK,
@@ -893,7 +899,7 @@ def build_styles():
         "BodySmall": ParagraphStyle(
             "BodySmall",
             parent=base["BodyText"],
-            fontName="Helvetica",
+            fontName="XiXteenSans",
             fontSize=8.2,
             leading=10.8,
             textColor=INK,
@@ -902,7 +908,7 @@ def build_styles():
         "Muted": ParagraphStyle(
             "Muted",
             parent=base["BodyText"],
-            fontName="Helvetica",
+            fontName="XiXteenSans",
             fontSize=8.1,
             leading=10.6,
             textColor=MUTED,
@@ -911,7 +917,7 @@ def build_styles():
         "ChapterKicker": ParagraphStyle(
             "ChapterKicker",
             parent=base["BodyText"],
-            fontName="Helvetica-Bold",
+            fontName="XiXteenSans-Bold",
             fontSize=10,
             leading=13,
             textColor=MUTED,
@@ -920,7 +926,7 @@ def build_styles():
         "ChapterTitle": ParagraphStyle(
             "ChapterTitle",
             parent=base["Heading1"],
-            fontName="Helvetica-Bold",
+            fontName="XiXteenSans-Bold",
             fontSize=26,
             leading=30,
             textColor=INK,
@@ -929,7 +935,7 @@ def build_styles():
         "ChapterPublic": ParagraphStyle(
             "ChapterPublic",
             parent=base["BodyText"],
-            fontName="Helvetica-Bold",
+            fontName="XiXteenSans-Bold",
             fontSize=13,
             leading=17,
             textColor=TEAL,
@@ -938,7 +944,7 @@ def build_styles():
         "ItemTitle": ParagraphStyle(
             "ItemTitle",
             parent=base["BodyText"],
-            fontName="Helvetica-Bold",
+            fontName="XiXteenSans-Bold",
             fontSize=9.0,
             leading=11.4,
             textColor=INK,
@@ -948,7 +954,7 @@ def build_styles():
         "Prompt": ParagraphStyle(
             "Prompt",
             parent=base["BodyText"],
-            fontName="Helvetica",
+            fontName="XiXteenSans",
             fontSize=8.8,
             leading=11.5,
             textColor=INK,
@@ -957,7 +963,7 @@ def build_styles():
         "Choice": ParagraphStyle(
             "Choice",
             parent=base["BodyText"],
-            fontName="Helvetica",
+            fontName="XiXteenSans",
             fontSize=7.8,
             leading=9.8,
             textColor=INK,
@@ -965,7 +971,7 @@ def build_styles():
         "Feedback": ParagraphStyle(
             "Feedback",
             parent=base["BodyText"],
-            fontName="Helvetica",
+            fontName="XiXteenSans",
             fontSize=7.7,
             leading=9.7,
             textColor=INK,
@@ -1076,6 +1082,25 @@ def worked_example_table(skill, styles):
     return table
 
 
+def classroom_exercise(skill, styles):
+    exercise = CLASSROOM_EXERCISES[skill["id"]]
+    flowables = [
+        CondPageBreak(2.4 * inch),
+        Paragraph("Guided Classroom Exercise", styles["H2"]),
+        Paragraph("Invented case. Use only the facts below; write on paper. Try the steps and check your work before reading the model answer. Different wording can be equally adequate.", styles["BodySmall"]),
+        Paragraph(f"<b>Situation.</b> {p(exercise['scenario'])}", styles["BodySmall"]),
+    ]
+    flowables.extend(numbered_paragraphs("What To Do", exercise["steps"], styles))
+    flowables.extend([
+        Paragraph(f"<b>Check before reading the answer.</b> {p(exercise['check'])}", styles["BodySmall"]),
+        CondPageBreak(1.6 * inch),
+        Paragraph("Model Answer", styles["H2"]),
+        Paragraph(p(exercise["modelAnswer"]), styles["BodySmall"]),
+        Paragraph(f"<b>Why it is adequate.</b> {p(exercise['whyAdequate'])}", styles["BodySmall"]),
+    ])
+    return flowables
+
+
 def pedagogy_deep_dive(skill, styles):
     expansion = PEDAGOGY_EXPANSIONS[skill["id"]]
     flowables = [
@@ -1090,7 +1115,7 @@ def pedagogy_deep_dive(skill, styles):
         Paragraph("Worked Example", styles["H2"]),
         worked_example_table(skill, styles),
         Spacer(1, 0.08 * inch),
-        Paragraph(f"<b>Classroom extension.</b> {p(expansion['extension'])}", styles["BodySmall"]),
+        *classroom_exercise(skill, styles),
     ])
     return flowables
 

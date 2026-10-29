@@ -23,3 +23,14 @@ Adding supportive ImageGen illustrations is a required step for every new articl
 5. Copy final images into a dedicated `assets/articles/` folder. Save the exact prompts, generation method, date, relevant sources, and whether figures are invented in that folder's `image-prompts.md`. Keep the generated originals intact.
 6. Embed each image next to the explanation it supports, using `.lesson-figure`. Supply descriptive alt text, a teaching caption, explicit width and height, and a link to the full-size image. Credit ImageGen and distinguish illustrative scenarios from empirical results. The essential lesson must also remain available in text.
 7. Before publishing, inspect the figures on desktop and phone widths, check image loading and enlargement links, and ensure the added height does not break the active-section menu. Include the images and prompts in the normal commit, push, and publication.
+
+## Exercises students can start without guessing
+
+- Supply a concrete, clearly labelled scenario and every fact needed for the task inside each exercise. Do not rely on “the figures above” or require students to invent the missing case.
+- State what students should produce (for example, two calculations and two sentences), then give a short numbered sequence of actions. Explain unfamiliar terms and give required formulas, units, rounding rules, and assumptions.
+- Give enough guidance to teach the reasoning move without reducing the task to copying an answer. A vague request to “rewrite fairly”, “discuss”, or “design a test” is not sufficient on its own.
+- Show a brief success check before the model answer. The model must address the assigned steps, show calculations where needed, explain why the reasoning is adequate, and introduce no hidden requirements or unsupported facts.
+- For a demonstration or slider, assign settings to compare, specify what to record, ask a focused interpretation question, and supply a worked explanation. Keep a usable text alternative.
+- Use visible labels for response boxes and connect the scenario and steps with `aria-describedby`. Tell students that writing is not submitted or saved. Keep model answers keyboard-accessible.
+- Apply the same standard to teacher activities and downloadable resources. The 16 curriculum activities live in `data/classroom-exercises.json`; regenerate the PDFs when those activities change and verify embedded fonts and page layout.
+- Review questions on their own: students should know how to begin without opening the model answer or hunting through earlier sections for missing figures.
