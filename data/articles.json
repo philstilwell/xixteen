@@ -1,0 +1,15 @@
+[
+  {
+    "slug": "ai-advice-and-your-judgment",
+    "primarySkill": "define_terms",
+    "relatedSkills": [
+      "clarify_claim",
+      "hidden_assumptions",
+      "logical_gaps",
+      "fallacies",
+      "statistical_sense",
+      "causation",
+      "tradeoffs"
+    ]
+  }
+]

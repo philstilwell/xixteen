@@ -11,6 +11,8 @@
     "db:seed": "node scripts/export-d1-seed.mjs",
     "pdf:curriculum": "python3 scripts/build-curriculum-pdf.py",
     "dev:pages": "npx wrangler pages dev . --compatibility-date=2026-06-18",
-    "check": "npm run generate && npm run validate && npm run audit"
+    "articles:build": "node scripts/build-article-categories.mjs",
+    "articles:check": "node scripts/build-article-categories.mjs --check",
+    "check": "npm run generate && npm run validate && npm run audit && npm run articles:check"
   }
 }
