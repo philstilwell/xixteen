@@ -16,8 +16,8 @@ function escapeHtml(value) {
   return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
-function practiceLink(skill, homePath) {
-  return `<a class="article-category-link" data-skill="${skill.id}" href="${homePath}?practice=${encodeURIComponent(skill.id)}#workbench" aria-label="Practice ${skill.code}: ${escapeHtml(skill.publicLabel)}"><span class="category-code">${skill.code}</span> <span>${escapeHtml(skill.publicLabel)}</span></a>`;
+function practiceLink(skill, homePath, article) {
+  return `<a class="article-category-link" data-skill="${skill.id}" href="${homePath}?practice=${encodeURIComponent(skill.id)}&amp;article=${encodeURIComponent(article.slug)}#workbench" aria-label="Practice ${skill.code}: ${escapeHtml(skill.publicLabel)}"><span class="category-code">${skill.code}</span> <span>${escapeHtml(skill.publicLabel)}</span></a>`;
 }
 
 function categoryMarkup(article, homePath) {
@@ -28,12 +28,12 @@ function categoryMarkup(article, homePath) {
     '  <p class="article-category-heading">Categories from the 4×4 grid</p>',
     '  <p class="article-category-instruction">Select a category to practise that skill.</p>',
     '  <p class="article-category-primary"><span class="category-role">Primary focus</span>',
-    `    ${practiceLink(primary, homePath)}</p>`,
+    `    ${practiceLink(primary, homePath, article)}</p>`,
   ];
   if (related.length) {
     lines.push('  <p class="article-category-related">Also addresses</p>', '  <ul class="article-category-list" aria-label="Additional grid categories">');
     for (const skill of related) {
-      lines.push(`    <li>${practiceLink(skill, homePath)}</li>`);
+      lines.push(`    <li>${practiceLink(skill, homePath, article)}</li>`);
     }
     lines.push("  </ul>");
   }

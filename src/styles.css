@@ -559,6 +559,18 @@ main {
   box-shadow: var(--shadow);
 }
 
+.practice-article-return {
+  margin: 0 0 20px;
+}
+
+.practice-article-return a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .quiz-shell {
   grid-area: quiz;
   min-height: 520px;

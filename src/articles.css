@@ -451,6 +451,96 @@
   background: #e4f0ec;
 }
 
+.scenario-table tr > :first-child {
+  width: 40%;
+}
+
+.article-feature + .article-feature {
+  margin-top: 28px;
+}
+
+.outcome-chart {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: clamp(14px, 3vw, 24px);
+  background: var(--panel);
+}
+
+.chart-heading {
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.chart-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 14px 0 22px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.chart-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
+.unhedged {
+  background: #b06b3a;
+}
+
+.hedged {
+  background: #216964;
+}
+
+.chart-group + .chart-group {
+  margin-top: 22px;
+}
+
+.chart-group > strong {
+  font-size: 15px;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 65px;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.chart-row b {
+  text-align: right;
+}
+
+.chart-track {
+  height: 22px;
+  background: #e8e4da;
+}
+
+.chart-bar {
+  height: 100%;
+}
+
+.forecast-lab input[type="range"] {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  accent-color: #216964;
+}
+
+.forecast-score output {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 5px;
+  background: #e4f0ec;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
 .lesson-table tbody th {
   font-weight: 500;
 }

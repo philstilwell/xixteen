@@ -42,6 +42,7 @@ const els = {
   practiceSkill: document.querySelector("#practice-skill"),
   practiceDifficulty: document.querySelector("#practice-difficulty"),
   practiceCount: document.querySelector("#practice-count"),
+  articleReturn: document.querySelector("#practice-article-return"),
   startCustomPractice: document.querySelector("#start-custom-practice")
 };
 
@@ -51,11 +52,12 @@ init().catch((error) => {
 });
 
 async function init() {
-  const [skills, items, dailyQuizzes, assets] = await Promise.all([
+  const [skills, items, dailyQuizzes, assets, articles] = await Promise.all([
     fetchJson("data/skills.json"),
     fetchJson("data/question-bank.json"),
     fetchJson("data/daily-quizzes.json"),
-    fetchJson("assets/skills/prompts.json")
+    fetchJson("assets/skills/prompts.json"),
+    fetchJson("data/articles.json", { cache: "no-cache" }).catch(() => [])
   ]);
 
   state.skills = skills;
@@ -73,8 +75,14 @@ async function init() {
   await renderLeaderboard();
   await syncServerProfile();
   renderProfile();
-  const linkedSkill = new URLSearchParams(window.location.search).get("practice");
+  const params = new URLSearchParams(window.location.search);
+  const linkedSkill = params.get("practice");
   if (state.skillById.has(linkedSkill)) {
+    const article = articles.find((entry) => entry.slug === params.get("article"));
+    if (article) {
+      els.articleReturn.querySelector("a").href = `articles/${encodeURIComponent(article.slug)}/`;
+      els.articleReturn.hidden = false;
+    }
     els.practiceSkill.value = linkedSkill;
     els.practiceCount.value = "8";
     startSkillPractice(linkedSkill, { count: 8 });
@@ -83,8 +91,8 @@ async function init() {
   }
 }
 
-async function fetchJson(path) {
-  const response = await fetch(path);
+async function fetchJson(path, options) {
+  const response = await fetch(path, options);
   if (!response.ok) {
     throw new Error(`Failed to load ${path}`);
   }

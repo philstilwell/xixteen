@@ -11,5 +11,19 @@
       "causation",
       "tradeoffs"
     ]
+  },
+  {
+    "slug": "prediction-markets-and-earned-trust",
+    "primarySkill": "source_reliability",
+    "relatedSkills": [
+      "define_terms",
+      "evidence_quality",
+      "logical_gaps",
+      "probability",
+      "statistical_sense",
+      "alternative_explanations",
+      "tradeoffs",
+      "belief_update"
+    ]
   }
 ]
