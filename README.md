@@ -52,6 +52,16 @@ npx wrangler d1 execute xixteen --file=database/seed.sql
 
 Then paste the D1 database ID from `npx wrangler d1 create` into `wrangler.toml`. GitHub Pages cannot run the Functions API; public boards require hosting the same static files through Cloudflare Pages or another backend that exposes compatible `/api/*` routes.
 
+## New articles
+
+Follow [the article conventions](articles/AGENTS.md) for each new lesson:
+
+1. Verify sources, identify the main reasoning lesson, and write clear teaching examples with appropriate evidence limits.
+2. Add supportive **ImageGen illustrations** as part of authoring, usually two complementary visuals. Check their accuracy, add accessible descriptions and captions, and save their exact prompts with the image assets. This is a standard publication step unless the user requests otherwise.
+3. Register the lesson's grid categories, generate their practice links, and include the shared section-highlighting menu. Practice links must preserve the return route to the article.
+4. Include exercises, model answers, key insights, and a quiz with explanatory feedback where appropriate to the lesson.
+5. Check sources, images, links, interactions, and desktop/phone layouts, then run `npm run articles:check` before committing, pushing, and publishing.
+
 ## Operations
 
 - [GitHub Pages DNS runbook](docs/github-pages-dns-runbook.md) covers the Namecheap/GitHub Pages custom-domain fix for `xixteen.com`.
