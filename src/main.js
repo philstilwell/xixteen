@@ -73,7 +73,14 @@ async function init() {
   await renderLeaderboard();
   await syncServerProfile();
   renderProfile();
-  startDaily({ scroll: false });
+  const linkedSkill = new URLSearchParams(window.location.search).get("practice");
+  if (state.skillById.has(linkedSkill)) {
+    els.practiceSkill.value = linkedSkill;
+    els.practiceCount.value = "8";
+    startSkillPractice(linkedSkill, { count: 8 });
+  } else {
+    startDaily({ scroll: false });
+  }
 }
 
 async function fetchJson(path) {

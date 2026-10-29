@@ -16,19 +16,24 @@ function escapeHtml(value) {
   return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 
+function practiceLink(skill, homePath) {
+  return `<a class="article-category-link" data-skill="${skill.id}" href="${homePath}?practice=${encodeURIComponent(skill.id)}#workbench" aria-label="Practice ${skill.code}: ${escapeHtml(skill.publicLabel)}"><span class="category-code">${skill.code}</span> <span>${escapeHtml(skill.publicLabel)}</span></a>`;
+}
+
 function categoryMarkup(article, homePath) {
   const primary = skillById.get(article.primarySkill);
   const related = article.relatedSkills.map((id) => skillById.get(id)).sort((a, b) => a.ordinal - b.ordinal);
   const lines = [
     '<div class="article-category-map" role="group" aria-label="Categories from the 4×4 grid">',
     '  <p class="article-category-heading">Categories from the 4×4 grid</p>',
+    '  <p class="article-category-instruction">Select a category to practise that skill.</p>',
     '  <p class="article-category-primary"><span class="category-role">Primary focus</span>',
-    `    <strong data-skill="${primary.id}"><span class="category-code">${primary.code}</span> ${escapeHtml(primary.publicLabel)}</strong></p>`,
+    `    ${practiceLink(primary, homePath)}</p>`,
   ];
   if (related.length) {
     lines.push('  <p class="article-category-related">Also addresses</p>', '  <ul class="article-category-list" aria-label="Additional grid categories">');
     for (const skill of related) {
-      lines.push(`    <li data-skill="${skill.id}"><span class="category-code">${skill.code}</span><span>${escapeHtml(skill.publicLabel)}</span></li>`);
+      lines.push(`    <li>${practiceLink(skill, homePath)}</li>`);
     }
     lines.push("  </ul>");
   }
