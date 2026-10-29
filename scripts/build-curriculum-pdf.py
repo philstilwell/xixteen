@@ -950,6 +950,17 @@ def build_styles():
             textColor=INK,
             spaceBefore=5,
             spaceAfter=4,
+            keepWithNext=True,
+        ),
+        "ItemLevel": ParagraphStyle(
+            "ItemLevel",
+            parent=base["BodyText"],
+            fontName="XiXteenSans",
+            fontSize=8.1,
+            leading=10.6,
+            textColor=MUTED,
+            spaceAfter=5,
+            keepWithNext=True,
         ),
         "Prompt": ParagraphStyle(
             "Prompt",
@@ -1257,17 +1268,15 @@ def item_process_note(skill, item):
     template = PROCESS_TEMPLATES[skill["id"]]
     return template.format(
         answer_label=correct["id"],
-        answer_text=correct["text"],
+        answer_text=correct["text"].rstrip("."),
     )
 
 
 def make_choices_table(item, styles):
     cells = []
-    correct = item["answer"]
     for choice in item["choices"]:
         label = choice["id"]
-        marker = "correct" if label == correct else "choice"
-        cells.append(Paragraph(f"<b>{p(label)}.</b> {p(choice['text'])}<br/><font color='#637176'>{marker}</font>", styles["Choice"]))
+        cells.append(Paragraph(f"<b>{p(label)}.</b> {p(choice['text'])}", styles["Choice"]))
     rows = list(chunked(cells, 2))
     table = Table(rows, colWidths=[CONTENT_WIDTH / 2 - 0.03 * inch, CONTENT_WIDTH / 2 - 0.03 * inch])
     table.setStyle(TableStyle([
@@ -1286,31 +1295,29 @@ def make_feedback(item, styles):
     blocks = []
     for label in LABELS:
         choice = next(choice for choice in item["choices"] if choice["id"] == label)
-        status = "Correct" if label == item["answer"] else "Distractor"
+        status = "Correct" if label == item["answer"] else "Not correct"
         resource = item.get("resources", {}).get(label)
-        text = f"<b>{p(label)} feedback ({status}):</b> {p(item['feedback'].get(label, ''))}"
+        feedback = re.sub(r"^(?:Correct|Incorrect|Not quite)\.\s*", "", item["feedback"].get(label, ""))
+        text = f"<b>{p(label)}. {status}.</b> {p(feedback)}"
         if resource:
             text += f"<br/><font color='#637176'>Study link: {p(resource['site'])} - <a href='{p(resource['url'])}'>{p(resource['title'])}</a></font>"
         blocks.append(Paragraph(text, styles["Feedback"]))
     return blocks
 
 
-def make_item_flowables(skill, item, styles):
-    accent = skill_accent(skill)
+def make_item_flowables(skill, item, question_number, styles):
     answer = item["answer"]
     flowables = [
         CondPageBreak(2.45 * inch),
         HRFlowable(width="100%", thickness=0.55, color=LINE, spaceBefore=5, spaceAfter=5),
-        Paragraph(f"{p(item['id'])} | Level {item['difficulty']} | Answer {p(answer)}", styles["ItemTitle"]),
-        Paragraph(f"<b>Prompt.</b> {p(item['prompt'])}", styles["Prompt"]),
+        Paragraph(f"Question {question_number}", styles["ItemTitle"]),
+        Paragraph(f"Level {item['difficulty']}", styles["ItemLevel"]),
+        Paragraph(p(item['prompt']), styles["Prompt"]),
         make_choices_table(item, styles),
         Spacer(1, 0.05 * inch),
-        Paragraph(f"<b>Core explanation.</b> {p(item['explanation'])}", styles["BodySmall"]),
-        Paragraph(f"<b>Process commentary.</b> {p(item_process_note(skill, item))}", styles["BodySmall"]),
+        Paragraph(f"<b>Answer: {p(answer)}.</b> {p(item['explanation'])}", styles["BodySmall"]),
+        Paragraph(f"<b>How to work it out.</b> {p(item_process_note(skill, item))}", styles["BodySmall"]),
     ]
-    if item.get("tags"):
-        useful_tags = [tag for tag in item["tags"] if not tag.startswith("variant-")]
-        flowables.append(Paragraph(f"<font color='#637176'>Tags: {p(', '.join(useful_tags))}</font>", styles["Muted"]))
     flowables.extend(make_feedback(item, styles))
     flowables.append(Spacer(1, 0.04 * inch))
     return flowables
@@ -1367,11 +1374,11 @@ def make_skill_cover(skill, items, styles):
 
 def append_item_bank(story, skill, items, styles):
     current_level = None
-    for item in items:
+    for question_number, item in enumerate(items, start=1):
         if item["difficulty"] != current_level:
             current_level = item["difficulty"]
             story.extend(level_heading(current_level, skill, styles))
-        story.extend(make_item_flowables(skill, item, styles))
+        story.extend(make_item_flowables(skill, item, question_number, styles))
 
 
 def make_synthesis_cover(styles):

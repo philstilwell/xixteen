@@ -44,3 +44,7 @@ Public competition should use `daily_quizzes`. Random or adaptive pulls should b
 Article exercises and the 16 printable activities use the same teaching standard: a self-contained scenario, all required facts, a clearly stated student output, numbered steps, any needed formula or term explanation, and a visible check before the model answer. The answer must follow those steps and explain its adequacy without adding requirements the student was never given.
 
 Printable activities are stored in `data/classroom-exercises.json`, keyed by the canonical skill IDs. `scripts/build-curriculum-pdf.py` includes each activity in its skill packet and the complete curriculum. The existing multiple-choice bank remains the source for daily and focused practice.
+
+## Labels students see
+
+Internal question IDs and raw data tags are for storage and scoring, not reader-facing headings. In the teaching PDFs, number questions 1–160 within each skill, using the same order in the focused packet and complete curriculum. Use “Question 23” with the level in smaller supporting text. Put the answer with the explanation below the choices. Use the canonical public skill labels wherever a category name is shown.
