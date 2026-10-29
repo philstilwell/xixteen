@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Learners | XiXteen</title>
+    <link rel="canonical" href="https://xixteen.com/learners/" />
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <meta name="theme-color" content="#1f2a2e" />
+    <meta name="description" content="Build your reasoning skills with XiXteen's 2,560 questions across 16 critical thinking categories. Try the daily 16-question board or focused practice." />
+    <link rel="stylesheet" href="../src/styles.css?v=b4202a964011" />
+  </head>
+  <body class="learners-page">
+    <a class="skip-link" href="#skills">Skip to learning activities</a>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <p class="eyebrow">For learners</p>
+        <h1><a href="../" class="learner-brand">XiXteen</a></h1>
+      </div>
+      <nav class="topbar-actions" aria-label="Main navigation">
+        <a class="secondary-link" href="../articles/">Lessons &amp; Case Studies</a>
+        <a class="secondary-link" href="../instructors/">For Instructors</a>
+        <span class="mode-help">
+          <button id="start-daily" class="primary-action" type="button" aria-describedby="topbar-daily-help">Today's Board</button>
+          <span id="topbar-daily-help" class="mode-popover" role="tooltip">
+            <strong>Daily board</strong>
+            <span>Answer one question from each of the 16 skills. It fills the grid, creates a daily score, and can place you on the leaderboard.</span>
+          </span>
+        </span>
+        <span class="mode-help">
+          <button id="start-practice" class="secondary-action" type="button" aria-describedby="topbar-practice-help">Practice</button>
+          <span id="topbar-practice-help" class="mode-popover" role="tooltip">
+            <strong>Practice mode</strong>
+            <span>Choose a skill, level, and set length. Use it to train weak spots without replacing today's board score.</span>
+          </span>
+        </span>
+      </nav>
+    </header>
+
+    <main>
+      <section id="skills" class="gallery-shell" aria-labelledby="gallery-title">
+        <div class="gallery-copy promo-panel">
+          <p class="eyebrow">The daily board</p>
+          <h2 id="gallery-title">Clear all 16 thinking tiles.</h2>
+          <p class="promo-lede">Answer one objective question from each square. Tiles fill as you go, then XiXteen shows your score, strengths, and best next practice.</p>
+          <p class="promo-lede">Drawn from a bank of <strong>2,560 questions</strong>: 160 in each of the 16 categories, across five difficulty levels.</p>
+
+          <div id="board-status" class="board-status" role="status" aria-live="polite"></div>
+
+          <div class="board-actions">
+            <button class="primary-action" type="button" data-promo-daily>Start Today's Board</button>
+            <button class="secondary-action" type="button" data-sample-question>Try One Sample</button>
+          </div>
+        </div>
+
+        <div id="skill-gallery" class="skill-gallery" aria-label="Daily critical thinking board"></div>
+
+        <div class="gallery-support">
+          <div class="audience-notes" aria-label="Who XiXteen is for">
+            <p><strong>Make thinking a habit:</strong> get a quick read on claims, evidence, numbers, causes, bias, and tradeoffs.</p>
+            <p><strong>Follow your curiosity:</strong> explore a lesson, try a focused skill, or take on the daily challenge.</p>
+          </div>
+
+          <nav class="promo-links" aria-label="XiXteen sections">
+            <a href="#workbench" data-promo-daily>Daily Board</a>
+            <a href="#workbench" data-promo-practice>Practice</a>
+            <a href="#profile-title">Skill Map</a>
+            <a href="#leaderboard-title">Leaderboard</a>
+            <a href="../instructors/">For Instructors</a>
+            <a href="../articles/">Lessons &amp; Case Studies</a>
+          </nav>
+        </div>
+      </section>
+
+      <section id="workbench" class="workbench" aria-label="Quiz workbench">
+        <section class="quiz-shell" aria-labelledby="quiz-title">
+          <p id="practice-article-return" class="practice-article-return" hidden><a class="secondary-link" href="../articles/">← Back to the article</a></p>
+          <div class="section-head">
+            <div>
+              <p class="eyebrow" id="quiz-date"></p>
+              <h2 id="quiz-title">Today's XiXteen</h2>
+            </div>
+            <div class="mode-switch" role="group" aria-label="Quiz mode">
+              <span class="mode-help">
+                <button class="mode-button is-active" data-mode="daily" type="button" aria-describedby="workbench-daily-help">Daily</button>
+                <span id="workbench-daily-help" class="mode-popover" role="tooltip">
+                  <strong>Daily board</strong>
+                  <span>The full 16-skill challenge for today. Everyone gets the same daily board, so scores are comparable.</span>
+                </span>
+              </span>
+              <span class="mode-help">
+                <button class="mode-button" data-mode="practice" type="button" aria-describedby="workbench-practice-help">Practice</button>
+                <span id="workbench-practice-help" class="mode-popover" role="tooltip">
+                  <strong>Practice mode</strong>
+                  <span>Build a focused set or adaptive mix. Best after the board shows which skills need more reps.</span>
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <div class="progress-wrap" aria-hidden="true">
+            <div id="quiz-progress" class="progress-bar"></div>
+          </div>
+
+          <div class="practice-dock" aria-label="Practice builder">
+            <label class="control-field" for="practice-skill">
+              <span>Skill</span>
+              <select id="practice-skill"></select>
+            </label>
+            <label class="control-field" for="practice-difficulty">
+              <span>Level</span>
+              <select id="practice-difficulty">
+                <option value="auto">Auto</option>
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+              </select>
+            </label>
+            <label class="control-field" for="practice-count">
+              <span>Items</span>
+              <select id="practice-count">
+                <option value="8">8</option>
+                <option value="16" selected>16</option>
+                <option value="24">24</option>
+              </select>
+            </label>
+            <button id="start-custom-practice" class="secondary-action" type="button">Start Practice</button>
+          </div>
+
+          <div id="quiz-panel" class="quiz-panel"></div>
+        </section>
+
+        <aside class="profile-panel" aria-labelledby="profile-title">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Profile</p>
+              <h2 id="profile-title">Skill Map</h2>
+            </div>
+            <button id="reset-stats" class="icon-button" type="button" title="Reset local stats" aria-label="Reset local stats">Reset</button>
+          </div>
+          <div id="profile-summary" class="summary-grid"></div>
+          <div id="skill-list" class="skill-list"></div>
+        </aside>
+
+        <section class="leaderboard-panel" aria-labelledby="leaderboard-title">
+          <div class="section-head compact">
+            <div>
+              <p class="eyebrow">Leaderboard</p>
+              <h2 id="leaderboard-title">Daily Board</h2>
+            </div>
+            <div class="leaderboard-tabs" role="tablist" aria-label="Leaderboard range">
+              <button class="leaderboard-tab is-active" data-leaderboard-range="daily" type="button">Daily</button>
+              <button class="leaderboard-tab" data-leaderboard-range="weekly" type="button">Weekly</button>
+            </div>
+          </div>
+          <p id="leaderboard-note" class="leaderboard-note"></p>
+          <ol id="leaderboard-list" class="leaderboard-list"></ol>
+        </section>
+      </section>
+
+      <section id="teachers" class="teacher-section" aria-labelledby="teacher-title">
+        <div class="teacher-intro">
+          <p class="eyebrow">Keep exploring</p>
+          <h2 id="teacher-title">Build your own thinking routine.</h2>
+          <p>Start with a daily challenge, focus on a skill you want to strengthen, or explore a longer lesson. Feedback explains the reasoning behind every choice so you can learn as you go.</p>
+        </div>
+        <div class="teacher-grid">
+          <article>
+            <strong>A daily habit</strong>
+            <p>Try one question from each skill and reflect on the explanations.</p>
+            <button class="secondary-action" type="button" data-teacher-daily>Start Daily</button>
+          </article>
+          <article>
+            <strong>Targeted practice</strong>
+            <p>Choose a skill and level to focus your next practice session.</p>
+            <button class="secondary-action" type="button" data-teacher-practice>Build Practice</button>
+          </article>
+          <article>
+            <strong>Progress check</strong>
+            <p>Use your skill map to see where more practice could help.</p>
+            <a class="secondary-link" href="#profile-title">View Skill Map</a>
+          </article>
+          <article>
+            <strong>Explore an idea</strong>
+            <p>Read a case study, work through an example, and test your understanding.</p>
+            <a class="secondary-link" href="../articles/">Explore Lessons</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="../src/main.js?v=c9c6b9768e02"></script>
+  </body>
+</html>

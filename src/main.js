@@ -80,7 +80,7 @@ async function init() {
   if (state.skillById.has(linkedSkill)) {
     const article = articles.find((entry) => entry.slug === params.get("article"));
     if (article) {
-      els.articleReturn.querySelector("a").href = `articles/${encodeURIComponent(article.slug)}/`;
+      els.articleReturn.querySelector("a").href = `/articles/${encodeURIComponent(article.slug)}/`;
       els.articleReturn.hidden = false;
     }
     els.practiceSkill.value = linkedSkill;
@@ -92,7 +92,7 @@ async function init() {
 }
 
 async function fetchJson(path, options) {
-  const response = await fetch(path, options);
+  const response = await fetch(new URL(`../${path}`, import.meta.url), options);
   if (!response.ok) {
     throw new Error(`Failed to load ${path}`);
   }
@@ -204,7 +204,7 @@ function renderGallery() {
   els.gallery.innerHTML = state.skills.map((skill, index) => {
     const asset = assetBySkill.get(skill.id);
     const accent = COLORS[index % COLORS.length];
-    const image = asset?.ready ? asset.file : "";
+    const image = asset?.ready ? new URL(`../${asset.file}`, import.meta.url).href : "";
     const tile = board.tiles.get(skill.id) || {
       status: board.mode === "practice" ? "ready" : "upcoming",
       statusLabel: "Ready",
@@ -1265,7 +1265,7 @@ function weakestSkillLabel() {
 }
 
 function resultMessage(score, total) {
-  if (score === total) return "Perfect run. You got all sixteen.";
+  if (score === total) return total === 1 ? "You got the question right." : `Perfect run. You got all ${total} questions right.`;
   if (score >= Math.ceil(total * 0.8)) return "Strong run. The misses show what to practice next.";
   if (score >= Math.ceil(total * 0.55)) return "Solid work. Your skill map is starting to show useful patterns.";
   return "Good baseline. The next practice set will focus on the rough spots.";

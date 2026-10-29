@@ -1,6 +1,23 @@
 # XiXteen
 
-XiXteen is a daily thinking quiz built around 16 clear reasoning skills.
+XiXteen supports learners and critical thinking instructors through 16 clear reasoning skills.
+
+## Site sections
+
+- `/` is the illustrated gateway with a choice between learners and instructors.
+- `/learners/` contains the daily board, focused practice, skill map, and leaderboard.
+- `/instructors/` contains three complete teaching packs, the 16 skill reference packets, and curriculum downloads.
+- `/instructors/lessons/<slug>/` uses one shared lesson template; its `student/` page contains only student-facing activities, with no model answers.
+- `/articles/` contains the longer lessons and case studies. Their focused-practice links preserve the return route to the article.
+- Old root practice links and quiz anchors forward to `/learners/`; `/teachers/` forwards to `/instructors/`.
+
+### Teaching pack authoring
+
+`data/teaching-packs.json` is the shared source for lesson pages, student views, PDFs, and editable Markdown downloads. Follow `docs/lesson-template.md` for the required teaching structure.
+
+After content changes, run `npm run instructors:build` and `npm run pdf:teaching-packs`. Review the generated pages and PDFs, then run `npm run check`. The PDF builder embeds its fonts. Complete ZIP packs contain the student handout, instructor guide, and editable text versions. Suggested lesson timings are planning estimates, not classroom-validated measurements.
+
+Gateway illustrations and their exact ImageGen prompts are in `assets/gateway/`. Preserve the original PNGs; the site serves compressed WebP copies.
 
 The current question bank contains **2,560 unique questions**:
 

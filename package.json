@@ -13,6 +13,10 @@
     "dev:pages": "npx wrangler pages dev . --compatibility-date=2026-06-18",
     "articles:build": "node scripts/build-article-categories.mjs",
     "articles:check": "node scripts/build-article-categories.mjs --check",
-    "check": "npm run generate && npm run validate && npm run audit && npm run articles:check"
+    "check": "npm run generate && npm run validate && npm run audit && npm run articles:check && npm run instructors:check && npm run site:check",
+    "instructors:build": "node scripts/build-instructor-pages.mjs",
+    "instructors:check": "node scripts/build-instructor-pages.mjs --check",
+    "pdf:teaching-packs": "python3 scripts/build-teaching-pack-pdfs.py",
+    "site:check": "node scripts/check-site.mjs"
   }
 }

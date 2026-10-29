@@ -68,8 +68,8 @@ for (const article of articles) {
   const path = join(root, "articles", article.slug, "index.html");
   const html = readFileSync(path, "utf8");
   if (!html.includes("src/article-navigation.js")) throw new Error(`${article.slug}: include the shared article navigation script.`);
-  pages.set(path, replaceCategoryBlock(html, article, "../../", path));
-  pages.set(indexPath, replaceCategoryBlock(pages.get(indexPath), article, "../", indexPath));
+  pages.set(path, replaceCategoryBlock(html, article, "/learners/", path));
+  pages.set(indexPath, replaceCategoryBlock(pages.get(indexPath), article, "/learners/", indexPath));
 }
 
 for (const entry of readdirSync(join(root, "articles"), { withFileTypes: true })) {
