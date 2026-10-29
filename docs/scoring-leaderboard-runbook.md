@@ -9,6 +9,18 @@ XiXteen can run as a static site, but public score recording needs a backend. Th
 
 The frontend automatically falls back to local-only mode when `/api/leaderboard` or `/api/score` is unavailable.
 
+## Publishing the live site
+
+As verified on October 29, 2026, `xixteen.com` and `www.xixteen.com` are attached to the Cloudflare Pages project `xixteen` (`xixteen.pages.dev`). That project has no Git integration. The GitHub Pages workflow still runs on a push to `main`, but it does not update the live Cloudflare site.
+
+After committing, pushing, and completing the checks, deploy the same checkout from the repository root:
+
+```bash
+npx wrangler pages deploy . --project-name xixteen --branch main
+```
+
+This includes the existing Functions API and the `DB` binding in `wrangler.toml`. Page-layout or teaching-pack changes do not require database creation, migration, or re-seeding. Verify the deployment's success and the live domain before reporting publication complete.
+
 ## API Endpoints
 
 - `POST /api/score`

@@ -82,5 +82,6 @@ Follow [the article conventions](articles/AGENTS.md) for each new lesson:
 
 ## Operations
 
+- The live domain is served by the Cloudflare Pages project `xixteen`, which currently needs a direct deployment after pushing. Follow [Publishing the live site](docs/scoring-leaderboard-runbook.md#publishing-the-live-site); a successful GitHub Pages run alone does not update it.
 - [GitHub Pages DNS runbook](docs/github-pages-dns-runbook.md) covers the Namecheap/GitHub Pages custom-domain fix for `xixteen.com`.
 - [Scoring and leaderboard runbook](docs/scoring-leaderboard-runbook.md) covers the public-score deployment path.
