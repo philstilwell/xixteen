@@ -19,6 +19,8 @@ After content changes, run `npm run instructors:build` and `npm run pdf:teaching
 
 Gateway illustrations and their exact ImageGen prompts are in `assets/gateway/`. Preserve the original PNGs; the site serves compressed WebP copies.
 
+The instructor homepage also offers `output/teaching-packs/xixteen-all-16-teaching-packs.zip`: one numbered folder per skill, all student and instructor files, a collection index, and the reusable lesson template. The PDF build refreshes this collection automatically. To bundle existing exports without rebuilding PDFs, run `npm run teaching-packs:bundle`. The export check also verifies the complete collection against every individual pack.
+
 The current question bank contains **2,560 unique questions**:
 
 ```text

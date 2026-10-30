@@ -27,6 +27,7 @@ def embedded(font):
 
 
 pages = 0
+collection_expected = {'lesson-template.md': (ROOT / 'docs/lesson-template.md').read_bytes()}
 for pack in data['packs']:
     expected = {}
     for role, count in [('student', 3), ('instructor', 5)]:
@@ -69,4 +70,15 @@ for pack in data['packs']:
         assert archive.testzip() is None, archive_path.name
         for name, content in expected.items():
             assert archive.read(name) == content, f'{archive_path.name}: stale {name}'
-print(f'Verified 16 complete packs: 32 PDFs, {pages} pages, all fonts embedded, 32 editable files, and 16 matching ZIPs.')
+        for name in archive.namelist():
+            collection_expected[f"{pack['skillCode']}-{pack['slug']}/{name}"] = archive.read(name)
+with ZipFile(ROOT / 'output/teaching-packs/xixteen-all-16-teaching-packs.zip') as collection:
+    assert set(collection.namelist()) == set(collection_expected) | {'READ-ME.txt'}, 'Incomplete collection'
+    assert len(collection.namelist()) == len(set(collection.namelist())), 'Duplicate collection entries'
+    assert collection.testzip() is None, 'Damaged collection ZIP'
+    for name, content in collection_expected.items():
+        assert collection.read(name) == content, f'Collection contains stale {name}'
+    index = collection.read('READ-ME.txt').decode('utf-8')
+    for pack in data['packs']:
+        assert pack['title'] in index and f"{pack['skillCode']}-{pack['slug']}" in index, 'Incomplete collection index'
+print(f'Verified 16 complete packs: 32 PDFs, {pages} pages, all fonts embedded, 32 editable files, 16 individual ZIPs, and the complete collection ZIP.')

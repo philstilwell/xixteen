@@ -312,15 +312,60 @@ def deterministic_zip(path, entries, date):
             archive.writestr(info, data)
 
 
+def build_collection(data):
+    packs = sorted(data["packs"], key=lambda pack: int(pack["skillCode"]))
+    skills = json.loads((ROOT / "data/skills.json").read_text())
+    if len(packs) != 16 or {pack["skillId"] for pack in packs} != {skill["id"] for skill in skills}:
+        raise ValueError("The complete collection must contain all 16 skills exactly once.")
+    readme = ["XiXteen - All 16 teaching packs", "",
+              "Unzip once. Each numbered folder contains one complete teaching pack:",
+              "- Student handout (PDF and editable Markdown)",
+              "- Instructor guide with model answers (PDF and editable Markdown)",
+              "- A short READ-ME with lesson details and its online link", "",
+              "Start with the instructor guide. Give students only the student handout.",
+              "Markdown (.md) files are editable plain text. All PDF fonts are embedded.",
+              "The reusable lesson template is included at the top level.",
+              "All scenarios are invented for reasoning practice. Lesson times are suggested,",
+              "not classroom-tested completion times.", "",
+              "Collection: https://xixteen.com/instructors/", "", "Contents:"]
+    entries = []
+    for pack in packs:
+        folder = f"{pack['skillCode']}-{pack['slug']}"
+        archive_path = ROOT / pack["downloads"]["zip"].lstrip("/")
+        expected = {Path(path).name: ROOT / path.lstrip("/")
+                    for key, path in pack["downloads"].items() if key != "zip"}
+        with ZipFile(archive_path) as archive:
+            if set(archive.namelist()) != set(expected) | {"READ-ME.txt"}:
+                raise ValueError(f"{archive_path.name}: incomplete pack")
+            for name in archive.namelist():
+                content = archive.read(name)
+                if name in expected and content != expected[name].read_bytes():
+                    raise ValueError(f"{archive_path.name}: stale {name}; rebuild teaching packs first")
+                entries.append((f"{folder}/{name}", content))
+        readme.append(f"{pack['skillCode']}. {pack['title']} ({pack['durationMinutes']} minutes suggested)")
+        readme.append(f"    Folder: {folder}")
+    entries.insert(0, ("READ-ME.txt", ("\n".join(readme) + "\n").encode("utf-8")))
+    entries.insert(1, ("lesson-template.md", (ROOT / "docs/lesson-template.md").read_bytes()))
+    target = EDITABLE_DIR / "xixteen-all-16-teaching-packs.zip"
+    deterministic_zip(target, entries, data["updated"])
+    print(f"Built {target.name}: 16 numbered folders, 32 PDFs, 32 editable files, and the lesson template.")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--validate-only", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--validate-only", action="store_true")
+    mode.add_argument("--collection-only", action="store_true",
+                      help="Bundle the existing verified pack files without rebuilding PDFs")
     args = parser.parse_args()
     data = json.loads(SOURCE.read_text())
     for pack in data["packs"]:
         validate(pack)
     if args.validate_only:
         print(f"Validated {len(data['packs'])} teaching packs and their timings.")
+        return
+    if args.collection_only:
+        build_collection(data)
         return
     PDF_DIR.mkdir(parents=True, exist_ok=True)
     EDITABLE_DIR.mkdir(parents=True, exist_ok=True)
@@ -351,6 +396,7 @@ def main():
         entries = [(file.name, file.read_bytes()) for file in files] + [("READ-ME.txt", readme.encode())]
         deterministic_zip(EDITABLE_DIR / (pack["slug"] + ".zip"), entries, data["updated"])
         print(f"Built {pack['slug']}: student PDF, instructor PDF, two editable sources, complete ZIP.")
+    build_collection(data)
 
 
 if __name__ == "__main__":
