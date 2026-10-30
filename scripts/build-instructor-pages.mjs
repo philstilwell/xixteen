@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join, dirname } from 'node:path';
+import { renderNavigation } from './site-navigation.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const check = process.argv.includes('--check');
@@ -24,13 +25,13 @@ if (packs.length !== skills.length || new Set(packs.map(pack => pack.skillId)).s
 }
 packs.sort((a, b) => Number(a.skillCode) - Number(b.skillCode));
 
-function page(title, description, path, content, { student = false, scripts = [] } = {}) {
+function page(title, description, path, content, { student = false, pack, scripts = [] } = {}) {
   return `<!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)} | XiXteen</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#f7f3ea"><link rel="canonical" href="https://xixteen.com${path}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/src/education.css?v=2">${scripts.map(src => `<script src="${src}" type="module"></script>`).join('')}</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)} | XiXteen</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#f7f3ea"><link rel="canonical" href="https://xixteen.com${path}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/src/education.css?v=2"><link rel="stylesheet" href="/src/site-navigation.css?v=1"><script src="/src/site-navigation.js?v=1" type="module"></script>${scripts.map(src => `<script src="${src}" type="module"></script>`).join('')}</head>
 <body${student ? ' class="student-view"' : ''}>
 <a class="skip-link" href="#main-content">Skip to ${student ? 'activities' : 'content'}</a>
-<header class="edu-header"><a class="wordmark" href="/">XiXteen<span>${student ? 'Think it through' : 'For instructors'}</span></a><nav class="edu-nav" aria-label="Main navigation">${student ? '<a href="/learners/">Learner home</a>' : '<a href="/instructors/#teaching-packs">Teaching packs</a><a href="/instructors/#skills">The 16 skills</a><a href="/instructors/#resources">Resources</a><a class="audience-switch" href="/learners/">For Learners ↗</a>'}</nav></header>
+${renderNavigation(student ? 'student' : 'instructors', { pack, resources })}
 ${content}
 <footer class="edu-footer"><p>XiXteen · Sixteen skills for clearer thinking.</p><a href="/">Choose your path</a>${student ? '' : '<a href="/articles/">Lessons &amp; case studies</a>'}</footer>
 </body></html>
@@ -61,11 +62,11 @@ ${activity(pack.exitTicket, 'exit-ticket', {step: '03 / Check understanding'})}
 <section id="assessment"><h2>Look for these signs of understanding</h2>${list(pack.assessmentCriteria)}<h3>Adapt to your class</h3><ul class="guidance-list">${pack.adaptations.map(a => `<li><strong>${esc(a.label)}</strong>${esc(a.instructions)}</li>`).join('')}</ul></section>
 <section id="next-steps"><h2>Keep the skill growing</h2><p><a href="${esc(pack.practiceHref)}">Open eight practice questions for this skill →</a></p>${pack.articleLinks.map(a => `<p><a href="${esc(a.href)}">${esc(a.title)} →</a></p>`).join('')}<p class="source-note">The main activity is adapted from XiXteen's existing ${esc(pack.skillLabel)} classroom exercise. The starter and exit ticket extend the same reasoning move.</p><p class="lesson-template-link"><a href="/docs/lesson-template.md" download>Download the reusable lesson template (Markdown)</a></p></section>
 </div><aside class="lesson-sidebar"><h2>Ready to teach</h2><p>Separate student materials, full instructor guidance, and editable text files.</p><a class="button primary" href="${esc(pack.downloads.zip)}" download>Download complete pack ↓</a><a class="button" href="${esc(pack.downloads.studentPdf)}" download>Student handout · PDF</a><a class="button" href="${esc(pack.downloads.instructorPdf)}" download>Instructor guide · PDF</a><p><a href="${esc(pack.downloads.studentMarkdown)}" download>Editable student text</a> · <a href="${esc(pack.downloads.instructorMarkdown)}" download>Editable guide</a></p><a class="button" id="student-view-link" href="${studentHref(pack)}">Open student view ↗</a><button class="button" type="button" data-copy-student-link>Copy student link</button><p id="share-status" role="status" aria-live="polite">The student view contains activities without model answers.</p><nav aria-label="On this page"><a href="#overview">Learning goals &amp; prep</a><a href="#teaching-plan">Teaching plan</a><a href="#warm-up">Warm-up</a><a href="#main-activity">Main activity</a><a href="#discussion">Discussion</a><a href="#exit-ticket">Exit ticket</a><a href="#assessment">Assessment &amp; adaptations</a></nav></aside></div>
-</main>`, { scripts: ['/src/lesson.js'] });
+</main>`, { pack, scripts: ['/src/lesson.js'] });
 }
 
 function student(pack) {
-  return page(`${pack.title} — Student activity`, pack.subtitle, studentHref(pack), `<main id="main-content" class="lesson-main"><section class="lesson-hero"><p class="eyebrow">Student activity · ${esc(pack.skillCode)} ${esc(pack.skillLabel)}</p><h1>${esc(pack.title)}</h1><p class="lede">${esc(pack.subtitle)}</p><p class="student-only-note">All scenarios are invented for reasoning practice. Work through each task using only the supplied facts. You can write on paper or use the response boxes. Responses are not saved or submitted.</p><div class="action-row"><a class="button" href="${esc(pack.downloads.studentPdf)}" download>Download handout · PDF</a><button class="button print-button" type="button" data-print>Print this page</button></div></section><div class="lesson-layout"><div class="lesson-content"><section><h2>Words to use</h2>${list(pack.vocabulary.map(v => `${v.term}: ${v.definition}`))}</section>${activity(pack.warmup, 'warm-up', {student: true, step: '01 / Warm-up'})}${activity(pack.activity, 'main-activity', {student: true, step: '02 / Main activity'})}${activity(pack.exitTicket, 'exit-ticket', {student: true, step: '03 / Check your understanding'})}<section><h2>Before you finish</h2>${list(pack.assessmentCriteria)}<p>Follow your instructor's directions for sharing your answers.</p></section></div></div></main>`, {student: true, scripts: ['/src/lesson.js']});
+  return page(`${pack.title} — Student activity`, pack.subtitle, studentHref(pack), `<main id="main-content" class="lesson-main"><section class="lesson-hero"><p class="eyebrow">Student activity · ${esc(pack.skillCode)} ${esc(pack.skillLabel)}</p><h1>${esc(pack.title)}</h1><p class="lede">${esc(pack.subtitle)}</p><p class="student-only-note">All scenarios are invented for reasoning practice. Work through each task using only the supplied facts. You can write on paper or use the response boxes. Responses are not saved or submitted.</p><div class="action-row"><a class="button" href="${esc(pack.downloads.studentPdf)}" download>Download handout · PDF</a><button class="button print-button" type="button" data-print>Print this page</button></div></section><div class="lesson-layout"><div class="lesson-content"><section><h2>Words to use</h2>${list(pack.vocabulary.map(v => `${v.term}: ${v.definition}`))}</section>${activity(pack.warmup, 'warm-up', {student: true, step: '01 / Warm-up'})}${activity(pack.activity, 'main-activity', {student: true, step: '02 / Main activity'})}${activity(pack.exitTicket, 'exit-ticket', {student: true, step: '03 / Check your understanding'})}<section><h2>Before you finish</h2>${list(pack.assessmentCriteria)}<p>Follow your instructor's directions for sharing your answers.</p></section></div></div></main>`, {student: true, pack, scripts: ['/src/lesson.js']});
 }
 
 function card(pack) {
@@ -86,6 +87,11 @@ for (const pack of packs) {
   output.set(`instructors/lessons/${pack.slug}/index.html`, lesson(pack));
   output.set(`instructors/lessons/${pack.slug}/student/index.html`, student(pack));
 }
+// The learner page remains hand-authored except for its shared navigation.
+const learnerSource = readFileSync(join(root, 'learners/index.html'), 'utf8');
+const navigationSlot = /<!-- site-navigation:start -->[\s\S]*?<!-- site-navigation:end -->/;
+if (!navigationSlot.test(learnerSource)) throw new Error('Learner navigation slot is missing');
+output.set('learners/index.html', learnerSource.replace(navigationSlot, `<!-- site-navigation:start -->\n    ${renderNavigation('learners')}\n    <!-- site-navigation:end -->`));
 for (const [path, content] of output) {
   const target = join(root, path);
   if (check) {

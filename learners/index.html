@@ -8,40 +8,21 @@
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <meta name="theme-color" content="#1f2a2e" />
     <meta name="description" content="Build your reasoning skills with XiXteen's 2,560 questions across 16 critical thinking categories. Try the daily 16-question board or focused practice." />
-    <link rel="stylesheet" href="../src/styles.css?v=b4202a964011" />
+    <link rel="stylesheet" href="../src/styles.css?v=b4202a964011-nav1" />
+    <link rel="stylesheet" href="/src/site-navigation.css?v=1" />
+    <script src="/src/site-navigation.js?v=1" type="module"></script>
   </head>
   <body class="learners-page">
     <a class="skip-link" href="#skills">Skip to learning activities</a>
-    <header class="topbar">
-      <div class="brand-lockup">
-        <p class="eyebrow">For learners</p>
-        <h1><a href="../" class="learner-brand">XiXteen</a></h1>
-      </div>
-      <nav class="topbar-actions" aria-label="Main navigation">
-        <a class="secondary-link" href="../articles/">Lessons &amp; Case Studies</a>
-        <a class="secondary-link" href="../instructors/">For Instructors</a>
-        <span class="mode-help">
-          <button id="start-daily" class="primary-action" type="button" aria-describedby="topbar-daily-help">Today's Board</button>
-          <span id="topbar-daily-help" class="mode-popover" role="tooltip">
-            <strong>Daily board</strong>
-            <span>Answer one question from each of the 16 skills. It fills the grid, creates a daily score, and can place you on the leaderboard.</span>
-          </span>
-        </span>
-        <span class="mode-help">
-          <button id="start-practice" class="secondary-action" type="button" aria-describedby="topbar-practice-help">Practice</button>
-          <span id="topbar-practice-help" class="mode-popover" role="tooltip">
-            <strong>Practice mode</strong>
-            <span>Choose a skill, level, and set length. Use it to train weak spots without replacing today's board score.</span>
-          </span>
-        </span>
-      </nav>
-    </header>
+    <!-- site-navigation:start -->
+    <header class="site-header"><div class="site-header-bar"><a class="site-brand" href="/" aria-label="XiXteen home">XiXteen<span>For learners</span></a><button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" hidden>Menu<span class="site-menu-icon" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="For learners navigation"><button class="site-nav-primary" id="start-daily" type="button">Today’s board</button><button id="start-practice" type="button">Practice</button><details class="site-nav-group"><summary>Explore</summary><ul><li><a href="#skill-gallery">The 16 thinking skills</a></li><li><a href="/articles/">Lessons &amp; case studies</a></li></ul></details><details class="site-nav-group"><summary>Your progress</summary><ul><li><a href="#profile-title">Your skill map</a></li><li><a href="#leaderboard-title">Leaderboard</a></li></ul></details><a class="site-nav-switch" href="/instructors/">For Instructors ↗</a></nav></div></header>
+    <!-- site-navigation:end -->
 
     <main>
       <section id="skills" class="gallery-shell" aria-labelledby="gallery-title">
         <div class="gallery-copy promo-panel">
           <p class="eyebrow">The daily board</p>
-          <h2 id="gallery-title">Clear all 16 thinking tiles.</h2>
+          <h1 id="gallery-title">Clear all 16 thinking tiles.</h1>
           <p class="promo-lede">Answer one objective question from each square. Tiles fill as you go, then XiXteen shows your score, strengths, and best next practice.</p>
           <p class="promo-lede">Drawn from a bank of <strong>2,560 questions</strong>: 160 in each of the 16 categories, across five difficulty levels.</p>
 

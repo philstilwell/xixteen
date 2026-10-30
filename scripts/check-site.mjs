@@ -49,7 +49,8 @@ for (const [href,expected] of [
 const {packs} = JSON.parse(readFileSync(join(root,'data/teaching-packs.json'),'utf8'));
 for (const pack of packs) {
   const html = readFileSync(join(root,`instructors/lessons/${pack.slug}/student/index.html`),'utf8');
-  assert(!html.includes('<details'),`${pack.slug}: student page contains answer reveal`);
+  const studentMain = html.match(/<main\b[\s\S]*?<\/main>/)?.[0];
+  assert(studentMain && !studentMain.includes('<details'),`${pack.slug}: student activity contains answer reveal`);
   assert(!html.includes('instructor.pdf'),`${pack.slug}: student page links to instructor answers`);
   assert.equal((html.match(/<textarea /g)||[]).length,3,`${pack.slug}: missing response fields`);
   for (const href of Object.values(pack.downloads)) assert(existsSync(join(root,href)),`Missing download: ${href}`);

@@ -53,7 +53,7 @@ button {
 }
 
 .brand-lockup h1,
-.gallery-copy h2,
+.gallery-copy :is(h1, h2),
 .section-head h2 {
   margin: 0;
   letter-spacing: 0;
@@ -231,7 +231,7 @@ main {
   padding: 6px 2px;
 }
 
-.gallery-copy h2 {
+.gallery-copy :is(h1, h2) {
   max-width: 430px;
   font-size: 34px;
   line-height: 1.08;

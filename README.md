@@ -11,6 +11,8 @@ XiXteen supports learners and critical thinking instructors through 16 clear rea
 - `/articles/` contains the longer lessons and case studies. Their focused-practice links preserve the return route to the article.
 - Old root practice links and quiz anchors forward to `/learners/`; `/teachers/` forwards to `/instructors/`.
 
+Learner, instructor, and student activity pages share the persistent navigation in `scripts/site-navigation.mjs`, `src/site-navigation.css`, and `src/site-navigation.js`. Run `npm run instructors:build` after changing the menu markup; it also refreshes the marked navigation block in the learner homepage. The mobile menu supports keyboard dismissal, and anchor jumps leave room for the header.
+
 ### Teaching pack authoring
 
 `data/teaching-packs.json` is the shared source for lesson pages, student views, PDFs, and editable Markdown downloads. Follow `docs/lesson-template.md` for the required teaching structure.
