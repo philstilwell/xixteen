@@ -17,6 +17,12 @@
 .learner-brand { color: inherit; text-decoration: none; }
 .skip-link { position: absolute; top: -100px; left: 16px; z-index: 100; padding: 14px; color: #fff; background: #1f2a2e; }
 .skip-link:focus { top: 16px; }
+[hidden] { display: none !important; }
+.quiz-panel [tabindex="-1"]:focus-visible { outline: 3px solid #185e5b; outline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
 
 * {
   box-sizing: border-box;

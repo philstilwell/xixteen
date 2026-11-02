@@ -15,13 +15,16 @@ export async function onRequestPost({ request, env }) {
   } catch {
     return json({ error: "Invalid JSON body." }, 400);
   }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return json({ error: "The request body must be a JSON object." }, 400);
+  }
 
   const participantId = cleanId(body.participantId);
   const displayName = cleanDisplayName(body.displayName);
   const displayKey = displayName ? displayNameKey(displayName) : null;
   const quizDate = cleanDate(body.quizDate);
   const durationMs = cleanDuration(body.durationMs, MAX_DAILY_DURATION_MS);
-  const answers = body.answers && typeof body.answers === "object" ? body.answers : null;
+  const answers = body.answers && typeof body.answers === "object" && !Array.isArray(body.answers) ? body.answers : null;
 
   if (!participantId || !displayName || !displayKey || !quizDate || !answers) {
     return json({ error: "participantId, displayName, quizDate, and answers are required." }, 400);
@@ -252,7 +255,9 @@ function displayNameKey(value) {
 
 function cleanDate(value) {
   const text = String(value || "").trim();
-  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return null;
+  const date = new Date(`${text}T00:00:00Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === text ? text : null;
 }
 
 function cleanChoiceKey(value) {

@@ -21,8 +21,10 @@ const state = {
   startedAt: 0,
   itemStartedAt: 0,
   leaderboardRange: "daily",
+  leaderboardRequest: 0,
   lastScoreSubmission: null,
-  apiAvailable: null
+  apiAvailable: null,
+  storageAvailable: true
 };
 
 const els = {
@@ -48,7 +50,7 @@ const els = {
 
 init().catch((error) => {
   console.error(error);
-  els.quizPanel.innerHTML = `<p class="empty-state">XiXteen could not load its question bank.</p>`;
+  els.quizPanel.innerHTML = `<p class="empty-state" role="alert">XiXteen could not load its questions. Check your connection and <a href="">reload this page</a>.</p>`;
 });
 
 async function init() {
@@ -72,8 +74,6 @@ async function init() {
   bindEvents();
   renderGallery();
   renderPracticeBuilder();
-  await renderLeaderboard();
-  await syncServerProfile();
   renderProfile();
   const params = new URLSearchParams(window.location.search);
   const linkedSkill = params.get("practice");
@@ -89,6 +89,10 @@ async function init() {
   } else {
     startDaily({ scroll: false });
   }
+  // Questions must be usable even while the optional public board is slow.
+  await renderLeaderboard();
+  await syncServerProfile();
+  renderProfile();
 }
 
 async function fetchJson(path, options) {
@@ -120,6 +124,7 @@ function bindEvents() {
   document.querySelector("[data-teacher-practice]").addEventListener("click", () => focusPracticeBuilder());
   els.startCustomPractice.addEventListener("click", () => startPracticeFromBuilder());
   document.querySelector("#reset-stats").addEventListener("click", () => {
+    if (!window.confirm("Reset your name and progress on this device? This cannot be undone. Scores already shared publicly will remain.")) return;
     state.profile = createProfile();
     saveProfile();
     renderProfile();
@@ -158,7 +163,7 @@ function bindEvents() {
 
     const scrollButton = event.target.closest("[data-scroll-grid]");
     if (scrollButton) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      startDaily();
     }
   });
 }
@@ -208,7 +213,7 @@ function renderGallery() {
     const tile = board.tiles.get(skill.id) || {
       status: board.mode === "practice" ? "ready" : "upcoming",
       statusLabel: "Ready",
-      actionLabel: board.mode === "daily" ? "Go to the daily board" : "Start the daily board"
+      actionLabel: board.total === 0 ? "Practice this skill" : board.mode === "daily" ? "Go to the daily board" : "Start the daily board"
     };
     return `
       <button class="skill-card is-${tile.status}" type="button" data-skill="${skill.id}" style="--accent: ${accent}" aria-label="${escapeAttribute(`${skillCode(skill)} ${skill.publicLabel}. ${tile.statusLabel}. ${tile.actionLabel}.`)}">
@@ -238,9 +243,13 @@ function renderGallery() {
 }
 
 function handleBoardTileClick(skillId) {
+  if (state.quiz?.mode === "practice" && state.quiz.items.some(item => item.skill === skillId)) {
+    scrollToWorkbench();
+    return;
+  }
   const board = boardSnapshot();
   if (state.quiz?.mode === "daily" && board.answered < board.total) {
-    els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToWorkbench();
     return;
   }
   if (state.quiz?.mode === "daily" && board.answered === board.total) {
@@ -264,7 +273,9 @@ function boardSnapshot() {
       const tile = {
         status,
         statusLabel: boardStatusLabel(status, index),
-        actionLabel: quiz.mode === "daily" ? "Go to the current question" : "Return to practice"
+        actionLabel: quiz.mode === "daily"
+          ? state.answers.size === quiz.items.length ? "Practice this skill" : "Go to the current question"
+          : "Return to practice"
       };
       const existing = tiles.get(item.skill);
       tiles.set(item.skill, mergeTileStatus(existing, tile));
@@ -310,6 +321,10 @@ function renderBoardStatus(board) {
   if (!els.boardStatus) {
     return;
   }
+  if (board.total === 0) {
+    els.boardStatus.innerHTML = `<p><strong>Daily board unavailable.</strong> <span>Choose a tile to practise that skill, or use the Practice controls.</span></p>`;
+    return;
+  }
   const isPractice = board.mode === "practice";
   const complete = board.answered >= board.total && board.total > 0;
   const countLabel = `${board.answered}/${board.total}`;
@@ -347,8 +362,13 @@ function renderPracticeBuilder() {
 function focusPracticeBuilder() {
   setMode("practice");
   renderPracticeStart();
-  els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
+  scrollToWorkbench();
   els.practiceSkill.focus({ preventScroll: true });
+}
+
+function scrollToWorkbench() {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  els.workbench.scrollIntoView({ behavior: reducedMotion ? "instant" : "smooth", block: "start" });
 }
 
 function renderPracticeStart() {
@@ -367,7 +387,14 @@ function renderPracticeStart() {
 function startDaily(options = {}) {
   setMode("daily");
   const date = todayIso();
-  const scheduled = state.dailyQuizzes.find((quiz) => quiz.date === date) || state.dailyQuizzes[0];
+  const scheduled = state.dailyQuizzes.find((quiz) => quiz.date === date);
+  if (!scheduled) {
+    startQuiz({ mode: "daily", title: "Daily board unavailable", date, items: [] }, options);
+    els.quizTitle.textContent = "Daily board unavailable";
+    els.quizDate.textContent = formatDate(date);
+    els.quizPanel.innerHTML = `<p class="empty-state">Today's board is not available yet. Choose Practice above to keep learning.</p>`;
+    return;
+  }
   const items = scheduled.items.map((entry) => state.itemById.get(entry.itemId)).filter(Boolean);
   startQuiz({
     mode: "daily",
@@ -412,16 +439,18 @@ function startSkillPractice(skillId, options = {}) {
     return;
   }
   const count = options.count || 8;
+  const usedIds = new Set();
   const items = Array.from({ length: count }, (_, index) => choosePracticeItem(skillId, index, {
     focused: true,
-    difficultyOverride: options.difficultyOverride
+    difficultyOverride: options.difficultyOverride,
+    usedIds
   })).filter(Boolean);
   startQuiz({
     mode: "practice",
     title: skill.publicLabel,
     date: "Skill Practice",
     items
-  });
+  }, options);
 }
 
 function startQuiz(quiz, options = {}) {
@@ -434,13 +463,15 @@ function startQuiz(quiz, options = {}) {
   renderGallery();
   renderQuiz();
   if (options.scroll !== false) {
-    els.workbench.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToWorkbench();
+    focusQuizContent(".question-text");
   }
 }
 
 function setMode(mode) {
   document.querySelectorAll(".mode-button").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.mode === mode);
+    button.setAttribute("aria-pressed", String(button.dataset.mode === mode));
   });
   els.practiceDock.classList.toggle("is-visible", mode === "practice");
 }
@@ -485,12 +516,12 @@ function renderQuiz() {
   }).join("");
 
   els.quizPanel.innerHTML = `
-    <div class="question-meta">
+    <div class="question-meta" id="question-meta">
       <span class="pill">${state.currentIndex + 1} of ${quiz.items.length}</span>
       <span class="pill">${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</span>
       <span class="pill">Level ${item.difficulty}</span>
     </div>
-    <p class="question-text">${escapeHtml(item.prompt)}</p>
+    <p class="question-text" tabindex="-1" aria-describedby="question-meta">${escapeHtml(item.prompt)}</p>
     <div class="choice-list">${choices}</div>
     ${answered ? renderChoiceFeedback(item, selected.choiceId) : ""}
     <div class="question-actions">
@@ -506,7 +537,7 @@ function renderChoiceFeedback(item, selectedChoiceId) {
   const correctChoice = item.choices.find((choice) => choice.id === item.answer);
   return `
     <section class="feedback-panel" aria-label="Answer feedback">
-      <div class="feedback-summary is-${selectedCorrect ? "correct" : "wrong"}">
+      <div class="feedback-summary is-${selectedCorrect ? "correct" : "wrong"}" tabindex="-1">
         <strong>${selectedCorrect ? "You found it." : "Review the reasoning."}</strong>
         <span>${escapeHtml(item.explanation)}</span>
       </div>
@@ -589,6 +620,14 @@ function chooseAnswer(choiceId) {
     responseMs: Math.round(performance.now() - state.itemStartedAt)
   });
   renderQuiz();
+  focusQuizContent(".feedback-summary");
+}
+
+function focusQuizContent(selector) {
+  const target = els.quizPanel.querySelector(selector);
+  if (!target) return;
+  target.focus({ preventScroll: true });
+  target.scrollIntoView({ behavior: "instant", block: "nearest" });
 }
 
 function goNext() {
@@ -600,12 +639,16 @@ function goNext() {
     state.currentIndex += 1;
     state.itemStartedAt = performance.now();
     renderQuiz();
+    focusQuizContent(".question-text");
     return;
   }
   finishQuiz();
 }
 
 async function finishQuiz() {
+  const quiz = state.quiz;
+  if (quiz.completed) return;
+  quiz.completed = true;
   const durationMs = Math.round(performance.now() - state.startedAt);
   const results = state.quiz.items.map((item) => {
     const answer = state.answers.get(item.id);
@@ -617,15 +660,21 @@ async function finishQuiz() {
   });
   const score = results.filter((result) => result.correct).length;
   recordResults(results, durationMs);
+  state.lastScoreSubmission = quiz.mode === "daily" ? scoreSubmissionPreflight() : null;
   renderResults(results, score, durationMs);
+  focusQuizContent(".score-summary");
   renderProfile();
-  if (state.quiz.mode === "daily") {
-    state.lastScoreSubmission = scoreSubmissionPreflight();
-    renderResults(results, score, durationMs);
+  if (quiz.mode === "daily") {
     if (state.lastScoreSubmission.state === "submitting") {
-      state.lastScoreSubmission = await submitScore(results, score, durationMs);
+      const submission = await submitScore(results, score, durationMs);
+      if (state.quiz !== quiz) return;
+      state.lastScoreSubmission = submission;
+      const status = els.quizPanel.querySelector("#submission-status");
+      if (status) {
+        status.textContent = submission.message;
+        status.className = `submission-note is-${submission.state}`;
+      }
     }
-    renderResults(results, score, durationMs);
     await renderLeaderboard();
     await syncServerProfile();
     renderProfile();
@@ -648,7 +697,7 @@ function renderResults(results, score, durationMs) {
   }));
   const summary = diagnosticSummary(diagnostics);
   els.quizPanel.innerHTML = `
-    <div class="score-summary">
+    <div class="score-summary" role="group" tabindex="-1" aria-label="Quiz results: ${score} out of ${total}">
       <div class="score-card">
         <span>Score</span>
         <strong>${score}/${total}</strong>
@@ -663,7 +712,7 @@ function renderResults(results, score, durationMs) {
       </div>
     </div>
     <p class="question-text">${resultMessage(score, total)}</p>
-    ${submission ? `<p class="submission-note is-${escapeAttribute(submission.state)}">${escapeHtml(submission.message)}</p>` : ""}
+    ${submission ? `<p id="submission-status" role="status" class="submission-note is-${escapeAttribute(submission.state)}">${escapeHtml(submission.message)}</p>` : ""}
     <div class="diagnostic-summary" aria-label="Skill diagnosis summary">
       <span><strong>${summary.strong}</strong> strong</span>
       <span><strong>${summary.shaky}</strong> shaky</span>
@@ -860,6 +909,7 @@ function renderProfile() {
 }
 
 async function renderLeaderboard() {
+  const requestId = ++state.leaderboardRequest;
   const date = todayIso();
   const range = state.leaderboardRange === "weekly" ? "weekly" : "daily";
   let entries = [];
@@ -867,21 +917,25 @@ async function renderLeaderboard() {
 
   document.querySelectorAll("[data-leaderboard-range]").forEach((button) => {
     button.classList.toggle("is-active", button.dataset.leaderboardRange === range);
+    button.setAttribute("aria-pressed", String(button.dataset.leaderboardRange === range));
   });
   els.leaderboardNote.textContent = "";
 
   if (apiEnabled() && state.apiAvailable !== false) {
     try {
-      const response = await fetch(`/api/leaderboard?date=${encodeURIComponent(date)}&range=${range}`);
+      const response = await fetch(`/api/leaderboard?date=${encodeURIComponent(date)}&range=${range}`, { signal: AbortSignal.timeout(8000) });
       if (response.ok) {
         const payload = await response.json();
+        if (requestId !== state.leaderboardRequest) return;
         entries = payload.entries || [];
         meta = payload;
         state.apiAvailable = true;
-      } else if (response.status === 404 || response.status === 501) {
+      } else {
+        if (requestId !== state.leaderboardRequest) return;
         state.apiAvailable = false;
       }
     } catch {
+      if (requestId !== state.leaderboardRequest) return;
       state.apiAvailable = false;
       entries = [];
     }
@@ -907,7 +961,7 @@ async function renderLeaderboard() {
   }
 
   if (meta.source === "local" || state.apiAvailable === false) {
-    els.leaderboardNote.textContent = "Local board on this device. Public winners require the Cloudflare Pages API and D1 database.";
+    els.leaderboardNote.textContent = "These scores are from this device only; they are not public rankings.";
   } else if (range === "weekly" && meta.start && meta.end) {
     els.leaderboardNote.textContent = `${formatShortDate(meta.start)} to ${formatShortDate(meta.end)}`;
   } else {
@@ -927,16 +981,17 @@ async function renderLeaderboard() {
 }
 
 async function submitScore(results, score, durationMs) {
+  const profile = state.profile;
   if (!publicBoardsAvailable()) {
     return {
       state: "local",
-      message: "Saved on this device. Public boards are not connected on this host yet."
+      message: `${localSaveMessage()} Public score sharing is unavailable right now.`
     };
   }
   if (!state.profile.publicLeaderboard) {
     return {
       state: "local",
-      message: "Saved on this device. Turn on score sharing to appear on daily and weekly boards."
+      message: `${localSaveMessage()} Turn on score sharing before finishing a daily board to share its score.`
     };
   }
   const answers = {};
@@ -950,6 +1005,7 @@ async function submitScore(results, score, durationMs) {
     const response = await fetch("/api/score", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      signal: AbortSignal.timeout(8000),
       body: JSON.stringify({
         participantId: state.profile.participantId,
         displayName: state.profile.displayName,
@@ -963,13 +1019,15 @@ async function submitScore(results, score, durationMs) {
       state.apiAvailable = response.status === 404 || response.status === 501 ? false : state.apiAvailable;
       return {
         state: "local",
-        message: "Saved on this device. The public leaderboard API is not available yet."
+        message: `${localSaveMessage()} Public score sharing is unavailable right now.`
       };
     }
     const payload = await response.json();
     state.apiAvailable = true;
-    mergeSubmittedDailyScore(payload);
-    saveProfile();
+    if (state.profile === profile) {
+      mergeSubmittedDailyScore(payload);
+      saveProfile();
+    }
     if (payload.accepted) {
       if (payload.includedInLeaderboard === false) {
         return {
@@ -1002,22 +1060,24 @@ async function submitScore(results, score, durationMs) {
     state.apiAvailable = false;
     return {
       state: "local",
-      message: "Saved on this device. The public leaderboard API could not be reached."
+      message: `${localSaveMessage()} The public scoreboard could not be reached.`
     };
   }
 }
 
 async function syncServerProfile() {
+  const profile = state.profile;
   if (!publicBoardsAvailable()) {
     return;
   }
   try {
-    const response = await fetch(`/api/profile?participantId=${encodeURIComponent(state.profile.participantId)}`);
+    const response = await fetch(`/api/profile?participantId=${encodeURIComponent(state.profile.participantId)}`, { signal: AbortSignal.timeout(8000) });
     if (!response.ok) {
       state.apiAvailable = response.status === 404 || response.status === 501 ? false : state.apiAvailable;
       return;
     }
     const payload = await response.json();
+    if (state.profile !== profile) return;
     state.apiAvailable = true;
     if (payload.dailyScores && typeof payload.dailyScores === "object") {
       state.profile.dailyScores = {
@@ -1051,19 +1111,23 @@ function scoreSubmissionPreflight() {
   if (!publicBoardsAvailable()) {
     return {
       state: "local",
-      message: "Saved on this device. Public boards are not connected on this host yet."
+      message: `${localSaveMessage()} Public score sharing is unavailable right now.`
     };
   }
   if (!state.profile.publicLeaderboard) {
     return {
       state: "local",
-      message: "Saved on this device. Turn on score sharing to appear on daily and weekly boards."
+      message: `${localSaveMessage()} Turn on score sharing before finishing a daily board to share its score.`
     };
   }
   return {
     state: "submitting",
     message: "Submitting your daily score..."
   };
+}
+
+function localSaveMessage() {
+  return state.storageAvailable ? "Saved on this device." : "These results are available only while this page stays open.";
 }
 
 function emptyLeaderboardMessage(range) {
@@ -1156,11 +1220,13 @@ function recommendedPracticeSkills(results) {
 
 function buildAdaptivePracticeItems(count, difficultyOverride = null) {
   const rankedSkills = [...state.skills].sort((a, b) => masteryScore(a.id) - masteryScore(b.id));
+  const usedIds = new Set();
   return Array.from({ length: count }, (_, index) => {
     const skill = rankedSkills[index % rankedSkills.length];
     return choosePracticeItem(skill.id, index, {
       focused: true,
-      difficultyOverride
+      difficultyOverride,
+      usedIds
     });
   }).filter(Boolean);
 }
@@ -1172,7 +1238,7 @@ function choosePracticeItem(skillId, salt, options = {}) {
     : options.focused
       ? clamp(baseDifficulty + Math.floor(salt / 4) - 1, 1, 5)
       : baseDifficulty;
-  const pool = (state.itemsBySkill.get(skillId) || []).filter((item) => item.difficulty === difficulty);
+  const pool = (state.itemsBySkill.get(skillId) || []).filter((item) => item.difficulty === difficulty && !options.usedIds?.has(item.id));
   const recent = new Set((state.profile.seenItems || []).slice(-120));
   const freshPool = pool.filter((item) => !recent.has(item.id));
   const source = freshPool.length > 0 ? freshPool : pool;
@@ -1181,7 +1247,9 @@ function choosePracticeItem(skillId, salt, options = {}) {
   }
   const attempts = state.profile.skillStats?.[skillId]?.attempts || 0;
   const index = hashString(`${skillId}:${salt}:${attempts}:${Date.now()}`) % source.length;
-  return source[index];
+  const selected = source[index];
+  options.usedIds?.add(selected.id);
+  return selected;
 }
 
 function skillDiagnostic(result) {
@@ -1314,7 +1382,14 @@ function normalizeProfile(profile) {
 }
 
 function saveProfile() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.profile));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.profile));
+    state.storageAvailable = true;
+  } catch {
+    state.storageAvailable = false;
+  }
+  const status = document.querySelector("#storage-status");
+  if (status) status.hidden = state.storageAvailable;
 }
 
 function groupBy(values, getKey) {

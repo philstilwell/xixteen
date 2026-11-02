@@ -41,6 +41,8 @@ npm run check
 
 This regenerates the skill file, the question bank, and daily quiz schedule, then validates and audits the corpus. The audit checks every item for clarity, coherence, and pedagogical value, including enough detail, a direct question, readable length, skill-specific feedback, and no clunky boilerplate.
 
+It also runs `npm run runtime:check`, which checks distinct practice questions, fallback behavior when fresh questions or browser storage are unavailable, missing daily schedules, and invalid scoring/leaderboard inputs. These automated rules do not replace classroom review. The [November 2026 site audit](docs/site-audit-2026-11-01.md) records additional browser checks and recommended improvements.
+
 ## Data Model
 
 - `data/skills.json` is the canonical numbered skill list.

@@ -1,10 +1,12 @@
 export async function onRequestGet({ request, env }) {
   if (!env.DB) {
-    return json({ entries: [] });
+    return json({ error: "Public scores are temporarily unavailable." }, 501);
   }
 
   const url = new URL(request.url);
-  const date = cleanDate(url.searchParams.get("date")) || todayIso();
+  const requestedDate = url.searchParams.get("date");
+  const date = requestedDate === null ? todayIso() : cleanDate(requestedDate);
+  if (!date) return json({ error: "Use a valid calendar date in YYYY-MM-DD format." }, 400);
   const range = url.searchParams.get("range") === "weekly" ? "weekly" : "daily";
 
   if (range === "weekly") {
@@ -54,7 +56,9 @@ export async function onRequestGet({ request, env }) {
 
 function cleanDate(value) {
   const text = String(value || "").trim();
-  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return null;
+  const date = new Date(`${text}T00:00:00Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === text ? text : null;
 }
 
 function todayIso() {

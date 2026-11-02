@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
     <meta name="theme-color" content="#1f2a2e" />
     <meta name="description" content="Build your reasoning skills with XiXteen's 2,560 questions across 16 critical thinking categories. Try the daily 16-question board or focused practice." />
-    <link rel="stylesheet" href="../src/styles.css?v=b4202a964011-nav1" />
+    <link rel="stylesheet" href="../src/styles.css?v=20261101-audit" />
     <link rel="stylesheet" href="/src/site-navigation.css?v=1" />
     <script src="/src/site-navigation.js?v=1" type="module"></script>
   </head>
@@ -110,7 +110,8 @@
             <button id="start-custom-practice" class="secondary-action" type="button">Start Practice</button>
           </div>
 
-          <div id="quiz-panel" class="quiz-panel"></div>
+          <div id="quiz-panel" class="quiz-panel"><p class="empty-state" role="status">Loading your questions…</p></div>
+          <noscript><p class="empty-state">The quiz needs JavaScript enabled in your browser. You can also use the <a href="/instructors/">printable lessons and handouts</a>.</p></noscript>
         </section>
 
         <aside class="profile-panel" aria-labelledby="profile-title">
@@ -122,6 +123,7 @@
             <button id="reset-stats" class="icon-button" type="button" title="Reset local stats" aria-label="Reset local stats">Reset</button>
           </div>
           <div id="profile-summary" class="summary-grid"></div>
+          <p id="storage-status" class="leaderboard-note" role="status" hidden>Your browser cannot save progress on this device. You can keep practising, but these results may be lost when you leave.</p>
           <div id="skill-list" class="skill-list"></div>
         </aside>
 
@@ -131,7 +133,7 @@
               <p class="eyebrow">Leaderboard</p>
               <h2 id="leaderboard-title">Daily Board</h2>
             </div>
-            <div class="leaderboard-tabs" role="tablist" aria-label="Leaderboard range">
+            <div class="leaderboard-tabs" role="group" aria-label="Leaderboard range">
               <button class="leaderboard-tab is-active" data-leaderboard-range="daily" type="button">Daily</button>
               <button class="leaderboard-tab" data-leaderboard-range="weekly" type="button">Weekly</button>
             </div>
@@ -172,6 +174,6 @@
       </section>
     </main>
 
-    <script type="module" src="../src/main.js?v=c9c6b9768e02"></script>
+    <script type="module" src="../src/main.js?v=20261101-audit"></script>
   </body>
 </html>
