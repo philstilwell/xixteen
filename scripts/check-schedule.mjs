@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+const read = path => JSON.parse(readFileSync(new URL(path, import.meta.url),'utf8'));
+const config=read('../data/daily-schedule.json');
+const quizzes=read('../data/daily-quizzes.json');
+assert.equal(quizzes[0].date,config.startDate);
+assert.equal(quizzes.at(-1).date,config.endDate);
+for(let i=1;i<quizzes.length;i++) assert.equal(Date.parse(quizzes[i].date)-Date.parse(quizzes[i-1].date),86400000,'Daily schedule has a gap');
+const remaining=Math.floor((Date.parse(config.endDate)-Date.now())/86400000);
+assert(remaining>=180,`Only ${remaining} days of boards remain. Extend data/daily-schedule.json before publishing.`);
+console.log(`Daily schedule reaches ${config.endDate}, with ${remaining} days of future coverage.`);

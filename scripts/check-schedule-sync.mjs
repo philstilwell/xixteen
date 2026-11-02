@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { planScheduleSync, scheduleSQL } from './sync-daily-schedule.mjs';
+const quizzes=JSON.parse(readFileSync(new URL('../data/daily-quizzes.json',import.meta.url),'utf8'));
+const first=quizzes[0];
+const rows=first.items.map(item=>({id:first.id,date:first.date,status:'published',itemId:item.itemId,position:item.position}));
+assert.equal(planScheduleSync(quizzes,rows).length,quizzes.length-1);
+assert.throws(()=>planScheduleSync(quizzes,[...rows.slice(0,-1),{...rows.at(-1),itemId:'changed'}]));
+assert.throws(()=>planScheduleSync(quizzes,rows.slice(0,-1)));
+assert.throws(()=>planScheduleSync(quizzes,rows.map(row=>({...row,status:'draft'}))));
+assert.equal(planScheduleSync([first],rows).length,0,'An already synchronized board needs no write');
+const sql=scheduleSQL([first]);
+assert(!/DELETE|UPDATE|REPLACE|score_submissions|participants|attempts|user_skill_stats/.test(sql));
+assert.equal(sql.split('\n').filter(line=>line.startsWith('INSERT')).length,17);
+console.log('Checked append-only schedule updates and refusal to change existing boards.');

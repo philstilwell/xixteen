@@ -11,7 +11,7 @@ XiXteen supports learners and critical thinking instructors through 16 clear rea
 - `/articles/` contains the longer lessons and case studies. Their focused-practice links preserve the return route to the article.
 - Old root practice links and quiz anchors forward to `/learners/`; `/teachers/` forwards to `/instructors/`.
 
-Learner, instructor, and student activity pages share the persistent navigation in `scripts/site-navigation.mjs`, `src/site-navigation.css`, and `src/site-navigation.js`. Run `npm run instructors:build` after changing the menu markup; it also refreshes the marked navigation block in the learner homepage. The mobile menu supports keyboard dismissal, and anchor jumps leave room for the header.
+Learner, instructor, student activity, article, and information pages share the persistent navigation in `scripts/site-navigation.mjs`, `src/site-navigation.css`, and `src/site-navigation.js`. Run `npm run site:build` after changing menu or page templates; it refreshes shared navigation, information pages, social previews, and the sitemap. The mobile menu supports keyboard dismissal, and anchor jumps leave room for the header.
 
 ### Teaching pack authoring
 
@@ -88,6 +88,12 @@ Follow [the article conventions](articles/AGENTS.md) for each new lesson:
 
 ## Operations
 
-- The live domain is served by the Cloudflare Pages project `xixteen`, which currently needs a direct deployment after pushing. Follow [Publishing the live site](docs/scoring-leaderboard-runbook.md#publishing-the-live-site); a successful GitHub Pages run alone does not update it.
+- The live domain is served by Cloudflare Pages. After committing and pushing, `npm run site:publish` checks, synchronizes future daily boards, publishes, and verifies the live files. Follow [Publishing the live site](docs/scoring-leaderboard-runbook.md#publishing-the-live-site); GitHub runs verification only and does not publish a separate site.
 - [GitHub Pages DNS runbook](docs/github-pages-dns-runbook.md) covers the Namecheap/GitHub Pages custom-domain fix for `xixteen.com`.
 - [Scoring and leaderboard runbook](docs/scoring-leaderboard-runbook.md) covers the public-score deployment path.
+
+## Saved sessions and classroom information
+
+The learner profile keeps separate daily and practice sessions, including question IDs, answers, current position, active elapsed time, and article return links. Answers and navigation save immediately; active sessions also save every 15 seconds and when the page is hidden or left. Time pauses away from the quiz. Completed sessions restore for review without recording results or submitting a score again. A daily session from another date is not resumed. `src/quiz-session.js` validates stored data before use.
+
+Phone layouts use two columns with full skill labels and visible status text. The site's About, classroom-use, privacy, and pilot pages are built from `scripts/build-site-pages.mjs`. Classroom reuse is free with credit; commercial resale is not permitted. The pilot guide and feedback form support collecting evidence; they do not imply a completed classroom validation study.

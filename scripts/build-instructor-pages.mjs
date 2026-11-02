@@ -1,7 +1,8 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join, dirname } from 'node:path';
-import { renderNavigation } from './site-navigation.mjs';
+import { renderNavigation, renderFooter } from './site-navigation.mjs';
+import { socialMetadata } from './site-meta.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const check = process.argv.includes('--check');
@@ -28,12 +29,12 @@ packs.sort((a, b) => Number(a.skillCode) - Number(b.skillCode));
 function page(title, description, path, content, { student = false, pack, scripts = [] } = {}) {
   return `<!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)} | XiXteen</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#f7f3ea"><link rel="canonical" href="https://xixteen.com${path}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/src/education.css?v=2"><link rel="stylesheet" href="/src/site-navigation.css?v=1"><script src="/src/site-navigation.js?v=1" type="module"></script>${scripts.map(src => `<script src="${src}" type="module"></script>`).join('')}</head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)} | XiXteen</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#f7f3ea"><link rel="canonical" href="https://xixteen.com${path}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/src/education.css?v=2"><link rel="stylesheet" href="/src/site-navigation.css?v=2"><script src="/src/site-navigation.js?v=1" type="module"></script>${scripts.map(src => `<script src="${src}" type="module"></script>`).join('')}${socialMetadata(`${title} | XiXteen`, description, path)}</head>
 <body${student ? ' class="student-view"' : ''}>
 <a class="skip-link" href="#main-content">Skip to ${student ? 'activities' : 'content'}</a>
 ${renderNavigation(student ? 'student' : 'instructors', { pack, resources })}
 ${content}
-<footer class="edu-footer"><p>XiXteen · Sixteen skills for clearer thinking.</p><a href="/">Choose your path</a>${student ? '' : '<a href="/articles/">Lessons &amp; case studies</a>'}</footer>
+${renderFooter()}
 </body></html>
 `;
 }

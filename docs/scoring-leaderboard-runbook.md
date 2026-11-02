@@ -11,15 +11,21 @@ The frontend automatically falls back to local-only mode when `/api/leaderboard`
 
 ## Publishing the live site
 
-As verified on October 29, 2026, `xixteen.com` and `www.xixteen.com` are attached to the Cloudflare Pages project `xixteen` (`xixteen.pages.dev`). That project has no Git integration. The GitHub Pages workflow still runs on a push to `main`, but it does not update the live Cloudflare site.
+The custom domains `xixteen.com` and `www.xixteen.com` are served by the Cloudflare Pages project `xixteen`. GitHub now runs verification only; it no longer reports a second, unrelated GitHub Pages publication.
 
-After committing, pushing, and completing the checks, deploy the same checkout from the repository root:
+1. Run `npm run site:build` after changing page/navigation templates and `npm run check` before committing.
+2. Commit and push to `origin/main`.
+3. With authenticated Wrangler available, run `npm run site:publish`.
 
-```bash
-npx wrangler pages deploy . --project-name xixteen --branch main
-```
+The release command reruns checks, requires a clean checkout matching the pushed commit, compares the question bank and schedule with the live site, publishes the Functions and site, and compares the live domain's files with the checked source. If the question bank or schedule has changed, it first verifies database answer keys and existing daily placements, then appends missing boards. It refuses to overwrite existing boards. A failed step stops publication; if database dates were added but deployment failed, repeating the command is safe.
 
-This includes the existing Functions API and the `DB` binding in `wrangler.toml`. Page-layout or teaching-pack changes do not require database creation, migration, or re-seeding. Verify the deployment's success and the live domain before reporting publication complete.
+Wrangler needs the existing Pages permissions. Changes to the question bank or schedule also require D1 read/write permission (`d1:write`); a page-only release with byte-identical live data does not need database access. Use an authenticated `wrangler` on PATH, or set `XIXTEEN_WRANGLER_BIN` to the installed `wrangler.js` entry file. Do not put access tokens in source files. GitHub has no Cloudflare deployment credentials configured; publication uses the existing local sign-in.
+
+### Extending the daily schedule
+
+`data/daily-schedule.json` defines the start and end dates. Extend `endDate`, run `npm run generate`, and commit the updated configuration and generated schedule. The generator preserves all existing boards. Checks require at least 180 days of remaining coverage. `npm run site:publish` adds the same new dates to the scoring database before publishing the site.
+
+The current schedule reaches June 18, 2027. The extension through December 31, 2028 is prepared but awaits database access; set `endDate` to `2028-12-31` when that access is available, regenerate, and publish with the checked command. No participant, attempt, score, or skill-stat tables are changed by schedule extension. Do not use the full corpus seed just to add dates: the targeted release path avoids replacing daily placements.
 
 ## API Endpoints
 

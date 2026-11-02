@@ -1,0 +1,34 @@
+name: Site or classroom feedback
+description: Report a problem, share anonymous classroom observations, or ask about reuse.
+title: "[Feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping improve XiXteen. This report will be public. Do not include student names, private work, contact details, or device identifiers."
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Feedback topic
+      options:
+        - Website problem
+        - Question or explanation
+        - Classroom pilot
+        - Classroom reuse request
+        - General question
+    validations:
+      required: true
+  - type: input
+    id: resource
+    attributes:
+      label: Page address, skill number, or question ID
+  - type: textarea
+    id: observations
+    attributes:
+      label: What did you notice?
+      description: "For classroom feedback, give a broad age band, group size, actual timings, and anonymous patterns. For a site problem, describe the steps and your browser/device."
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What would improve it?

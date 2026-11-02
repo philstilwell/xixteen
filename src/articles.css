@@ -277,8 +277,10 @@
 
 .article-contents {
   position: sticky;
-  top: 28px;
+  top: calc(var(--site-header-height, 78px) + 20px);
   padding-right: 16px;
+  max-height: calc(100dvh - var(--site-header-height, 78px) - 40px);
+  overflow-y: auto;
 }
 
 .article-contents ol {
@@ -753,6 +755,8 @@
 
   .article-contents {
     position: static;
+    max-height: none;
+    overflow: visible;
     padding: 0 0 20px;
     border-bottom: 1px solid var(--line);
   }

@@ -1,8 +1,9 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 const DATA_DIR = new URL("../data/", import.meta.url);
-const DEFAULT_START_DATE = "2026-06-18";
-const DEFAULT_DAYS = 366;
+const schedule = JSON.parse(await readFile(new URL('daily-schedule.json', DATA_DIR), 'utf8'));
+const DEFAULT_START_DATE = schedule.startDate;
+const DEFAULT_DAYS = Math.round((Date.parse(schedule.endDate) - Date.parse(schedule.startDate)) / 86400000) + 1;
 const LABELS = ["A", "B", "C", "D"];
 const MAX_SAME_ANSWER_RUN = 2;
 const MIN_DISTINCT_ANSWERS_PER_ROW = 3;
@@ -75,6 +76,12 @@ for (let offset = 0; offset < days; offset += 1) {
   });
 }
 
+if (!process.argv[2]) {
+  const previous = JSON.parse(await readFile(new URL('daily-quizzes.json', DATA_DIR), 'utf8'));
+  if (previous.length > quizzes.length || previous.some((quiz, index) => JSON.stringify(quiz) !== JSON.stringify(quizzes[index]))) {
+    throw new Error('A schedule extension must preserve every existing board. Review the question bank and schedule before changing published dates.');
+  }
+}
 await writeFile(new URL("daily-quizzes.json", DATA_DIR), `${JSON.stringify(quizzes, null, 2)}\n`);
 console.log(`Generated ${quizzes.length} daily quizzes starting ${startDate}.`);
 

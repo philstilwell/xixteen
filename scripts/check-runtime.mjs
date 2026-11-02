@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readQuizSession } from '../src/quiz-session.js';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { onRequestPost as score } from '../functions/api/score.js';
@@ -6,7 +7,7 @@ import { onRequestGet as leaderboard } from '../functions/api/leaderboard.js';
 
 // Exercise the actual browser functions without starting the page or its network requests.
 const read = path => readFileSync(new URL(path, import.meta.url), 'utf8');
-const source = read('../src/main.js');
+const source = read('../src/main.js').replace(/^import .*quiz-session.*;\n/m, '');
 const withoutBoot = source.slice(0, source.indexOf('init().catch')) + source.slice(source.indexOf('async function init()'));
 const storageStatus = { hidden: true };
 const fixedTime = 1793588400000;
@@ -16,6 +17,8 @@ const harness = runInNewContext(`${withoutBoot.replaceAll('import.meta.url', JSO
   startQuiz = quiz => { state.quiz = quiz; };
   ({ state, startDaily, startSkillPractice, buildAdaptivePracticeItems, choosePracticeItem, saveProfile, localSaveMessage });
 `, {
+  readQuizSession,
+  performance: { now: () => 1000 },
   document: { querySelector: () => storageStatus },
   Date: FixedDate,
   localStorage: { setItem() { throw new Error('Storage denied'); } }

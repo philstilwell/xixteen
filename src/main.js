@@ -1,3 +1,5 @@
+import { readQuizSession } from "./quiz-session.js?v=1";
+
 const STORAGE_KEY = "xixteen-profile-v1";
 const COLORS = [
   "#1f8a8a", "#d95d47", "#c79a2d", "#4b6f9f",
@@ -18,13 +20,18 @@ const state = {
   quiz: null,
   currentIndex: 0,
   answers: new Map(),
-  startedAt: 0,
-  itemStartedAt: 0,
+  elapsedMs: 0,
+  itemElapsedMs: 0,
+  clockStartedAt: null,
+  practiceBuilderOpen: false,
+  articleSlugs: new Set(),
   leaderboardRange: "daily",
   leaderboardRequest: 0,
   lastScoreSubmission: null,
   apiAvailable: null,
-  storageAvailable: true
+  storageAvailable: true,
+  lastStoredProfile: null,
+  storageConflict: false
 };
 
 const els = {
@@ -66,6 +73,7 @@ async function init() {
   state.items = items;
   state.dailyQuizzes = dailyQuizzes;
   state.assets = assets;
+  state.articleSlugs = new Set(articles.map(article => article.slug));
   state.profile = loadProfile();
   state.itemById = new Map(items.map((item) => [item.id, item]));
   state.skillById = new Map(skills.map((skill) => [skill.id, skill]));
@@ -85,8 +93,15 @@ async function init() {
     }
     els.practiceSkill.value = linkedSkill;
     els.practiceCount.value = "8";
-    startSkillPractice(linkedSkill, { count: 8 });
-  } else {
+    const saved = getSavedSession("practice");
+    if (saved && saved.quiz.items.every(item => item.skill === linkedSkill)) {
+      resumeSession("practice", { articleSlug: article?.slug });
+    } else if (saved && !saved.quiz.completed && saved.answers.size) {
+      focusPracticeBuilder();
+    } else {
+      startSkillPractice(linkedSkill, { count: 8, articleSlug: article?.slug });
+    }
+  } else if (!resumeSession(state.profile.sessions?.activeMode, { scroll: false })) {
     startDaily({ scroll: false });
   }
   // Questions must be usable even while the optional public board is slow.
@@ -106,7 +121,7 @@ async function fetchJson(path, options) {
 function bindEvents() {
   bindModeHelp();
   document.querySelector("#start-daily").addEventListener("click", () => startDaily());
-  document.querySelector("#start-practice").addEventListener("click", () => focusPracticeBuilder());
+  document.querySelector("#start-practice").addEventListener("click", () => openPractice());
   document.querySelectorAll("[data-promo-daily]").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
@@ -116,17 +131,19 @@ function bindEvents() {
   document.querySelectorAll("[data-promo-practice]").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
-      focusPracticeBuilder();
+      openPractice();
     });
   });
   document.querySelector("[data-sample-question]").addEventListener("click", () => startAdaptivePractice({ count: 1 }));
   document.querySelector("[data-teacher-daily]").addEventListener("click", () => startDaily());
-  document.querySelector("[data-teacher-practice]").addEventListener("click", () => focusPracticeBuilder());
+  document.querySelector("[data-teacher-practice]").addEventListener("click", () => openPractice());
   els.startCustomPractice.addEventListener("click", () => startPracticeFromBuilder());
   document.querySelector("#reset-stats").addEventListener("click", () => {
     if (!window.confirm("Reset your name and progress on this device? This cannot be undone. Scores already shared publicly will remain.")) return;
+    state.quiz = null;
     state.profile = createProfile();
     saveProfile();
+    startDaily({ scroll: false });
     renderProfile();
     renderLeaderboard();
   });
@@ -143,12 +160,23 @@ function bindEvents() {
       if (button.dataset.mode === "daily") {
         startDaily();
       } else {
-        focusPracticeBuilder();
+        openPractice();
       }
     });
   });
 
+  document.querySelector("#restart-session").addEventListener("click", restartSession);
+  document.querySelector("#choose-practice").addEventListener("click", focusPracticeBuilder);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) pauseQuizClock(); else resumeQuizClock();
+    persistSession();
+  });
+  window.addEventListener("pagehide", () => { pauseQuizClock(); persistSession(); });
+  window.addEventListener("pageshow", resumeQuizClock);
+  setInterval(() => { if (state.clockStartedAt !== null) persistSession(); }, 15000);
+
   els.quizPanel.addEventListener("click", (event) => {
+    if (event.target.closest("[data-resume-practice]")) { resumeSession("practice"); return; }
     const choiceButton = event.target.closest("[data-choice]");
     if (choiceButton) {
       chooseAnswer(choiceButton.dataset.choice);
@@ -359,7 +387,14 @@ function renderPracticeBuilder() {
   `;
 }
 
+function openPractice() {
+  if (!resumeSession("practice")) focusPracticeBuilder();
+}
+
 function focusPracticeBuilder() {
+  pauseQuizClock();
+  persistSession();
+  state.practiceBuilderOpen = true;
   setMode("practice");
   renderPracticeStart();
   scrollToWorkbench();
@@ -372,11 +407,14 @@ function scrollToWorkbench() {
 }
 
 function renderPracticeStart() {
+  const saved = getSavedSession("practice");
+  document.querySelector("#session-actions").hidden = true;
   els.quizTitle.textContent = "Build Practice";
   els.quizDate.textContent = "Practice";
   els.quizProgress.style.width = "0%";
   els.quizPanel.innerHTML = `
     <div class="practice-start">
+      ${saved ? `<div class="saved-practice"><strong>${escapeHtml(saved.quiz.title)}</strong><p>${saved.answers.size} of ${saved.quiz.items.length} answered${saved.quiz.completed ? " · Completed" : " · Saved on this device"}</p><button class="secondary-action" type="button" data-resume-practice>${saved.quiz.completed ? "Review last practice" : "Resume saved practice"}</button></div>` : ""}
       <h3>Choose a practice set.</h3>
       <p>Practice draws from ${state.items.length.toLocaleString("en-US")} questions across ${state.skills.length} categories.</p>
       <p>Use the controls above to practice one skill, pick a level, or let XiXteen build an adaptive mix from your weakest areas.</p>
@@ -385,7 +423,7 @@ function renderPracticeStart() {
 }
 
 function startDaily(options = {}) {
-  setMode("daily");
+  if (!options.restart && resumeSession("daily", options)) return;
   const date = todayIso();
   const scheduled = state.dailyQuizzes.find((quiz) => quiz.date === date);
   if (!scheduled) {
@@ -405,7 +443,6 @@ function startDaily(options = {}) {
 }
 
 function startAdaptivePractice(options = {}) {
-  setMode("practice");
   const count = options.count || 16;
   const items = buildAdaptivePracticeItems(count, options.difficultyOverride);
   startQuiz({
@@ -432,7 +469,6 @@ function startPracticeFromBuilder() {
 }
 
 function startSkillPractice(skillId, options = {}) {
-  setMode("practice");
   const skill = state.skillById.get(skillId);
   if (!skill) {
     startAdaptivePractice(options);
@@ -454,18 +490,128 @@ function startSkillPractice(skillId, options = {}) {
 }
 
 function startQuiz(quiz, options = {}) {
+  pauseQuizClock();
+  persistSession();
+  const saved = getSavedSession(quiz.mode);
+  if (quiz.mode === "practice" && !options.replace && saved && !saved.quiz.completed && saved.answers.size && !window.confirm("Start a new practice set? This replaces the unfinished practice saved on this device. Your daily board is kept separately.")) {
+    resumeSession("practice", { scroll: false });
+    return;
+  }
+  state.practiceBuilderOpen = false;
+  quiz.articleSlug = options.articleSlug || null;
   state.quiz = quiz;
+  setMode(quiz.mode);
   state.currentIndex = 0;
   state.answers = new Map();
-  state.startedAt = performance.now();
-  state.itemStartedAt = performance.now();
+  state.elapsedMs = 0;
+  state.itemElapsedMs = 0;
+  state.clockStartedAt = null;
+  resumeQuizClock();
   state.lastScoreSubmission = null;
+  updateArticleReturn();
+  persistSession();
+  renderSessionStatus();
   renderGallery();
   renderQuiz();
   if (options.scroll !== false) {
     scrollToWorkbench();
     focusQuizContent(".question-text");
   }
+}
+
+function runningTime() {
+  return state.clockStartedAt === null ? 0 : Math.max(0, performance.now() - state.clockStartedAt);
+}
+
+function pauseQuizClock() {
+  const elapsed = runningTime();
+  state.elapsedMs += elapsed;
+  state.itemElapsedMs += elapsed;
+  state.clockStartedAt = null;
+}
+
+function resumeQuizClock() {
+  if (state.quiz?.items.length && !state.quiz.completed && !state.practiceBuilderOpen && !document.hidden && state.clockStartedAt === null) state.clockStartedAt = performance.now();
+}
+
+function persistSession({ save = true } = {}) {
+  const quiz = state.quiz;
+  if (!quiz?.items.length || !state.profile) return;
+  state.profile.sessions ||= {};
+  const elapsed = runningTime();
+  state.profile.sessions[quiz.mode] = {
+    version: 1, mode: quiz.mode, title: quiz.title, date: quiz.date,
+    itemIds: quiz.items.map(item => item.id), answers: [...state.answers],
+    currentIndex: state.currentIndex, elapsedMs: Math.round(state.elapsedMs + elapsed),
+    itemElapsedMs: Math.round(state.itemElapsedMs + elapsed), completed: quiz.completed === true,
+    articleSlug: quiz.articleSlug || null
+  };
+  state.profile.sessions.activeMode = quiz.mode;
+  if (save) saveProfile();
+  renderSessionStatus();
+}
+
+function getSavedSession(mode) {
+  if (!['daily', 'practice'].includes(mode)) return null;
+  return readQuizSession(state.profile.sessions?.[mode], {
+    itemById: state.itemById, dailyQuizzes: state.dailyQuizzes, today: todayIso(), articleSlugs: state.articleSlugs
+  });
+}
+
+function resumeSession(mode, options = {}) {
+  if (!['daily', 'practice'].includes(mode)) return false;
+  pauseQuizClock();
+  persistSession();
+  const saved = getSavedSession(mode);
+  if (!saved) { resumeQuizClock(); return false; }
+  state.quiz = saved.quiz;
+  if (state.articleSlugs.has(options.articleSlug)) state.quiz.articleSlug = options.articleSlug;
+  state.currentIndex = saved.currentIndex;
+  state.answers = saved.answers;
+  state.elapsedMs = saved.elapsedMs;
+  state.itemElapsedMs = saved.itemElapsedMs;
+  state.clockStartedAt = null;
+  state.practiceBuilderOpen = false;
+  state.lastScoreSubmission = null;
+  setMode(mode);
+  updateArticleReturn();
+  els.quizTitle.textContent = saved.quiz.title;
+  els.quizDate.textContent = mode === 'daily' ? formatDate(saved.quiz.date) : 'Practice';
+  if (saved.quiz.completed) {
+    const results = saved.quiz.items.map(item => ({ item, answer: state.answers.get(item.id), correct: state.answers.get(item.id)?.choiceId === item.answer }));
+    state.lastScoreSubmission = { state: 'local', message: 'Completed session restored. Reviewing it does not record or submit another score.' };
+    renderResults(results, results.filter(result => result.correct).length, state.elapsedMs);
+  } else renderQuiz();
+  resumeQuizClock();
+  persistSession();
+  if (options.scroll !== false) {
+    scrollToWorkbench();
+    focusQuizContent(saved.quiz.completed ? '.score-summary' : '.question-text');
+  }
+  return true;
+}
+
+function restartSession() {
+  if (!state.quiz?.items.length || !window.confirm('Restart this session from the first question? Its saved answers will be cleared. Your other session and completed progress are kept.')) return;
+  if (state.quiz.mode === 'daily' && state.quiz.date !== todayIso()) { startDaily(); return; }
+  const quiz = { ...state.quiz, completed: false };
+  startQuiz(quiz, { replace: true, articleSlug: quiz.articleSlug });
+}
+
+function updateArticleReturn() {
+  const slug = state.quiz?.articleSlug;
+  els.articleReturn.hidden = !state.articleSlugs.has(slug);
+  if (!els.articleReturn.hidden) els.articleReturn.querySelector('a').href = `/articles/${encodeURIComponent(slug)}/`;
+}
+
+function renderSessionStatus() {
+  const actions = document.querySelector('#session-actions');
+  const status = document.querySelector('#session-status');
+  if (!actions || !status) return;
+  actions.hidden = !state.quiz?.items.length || state.practiceBuilderOpen;
+  status.textContent = state.storageAvailable
+    ? `${state.quiz?.completed ? 'Completed session' : 'Answers and your place'} saved on this device. Daily and practice sessions are kept separately.`
+    : 'This browser cannot save your session. Keep this page open to continue.';
 }
 
 function setMode(mode) {
@@ -617,8 +763,9 @@ function chooseAnswer(choiceId) {
   }
   state.answers.set(item.id, {
     choiceId,
-    responseMs: Math.round(performance.now() - state.itemStartedAt)
+    responseMs: Math.round(state.itemElapsedMs + runningTime())
   });
+  persistSession();
   renderQuiz();
   focusQuizContent(".feedback-summary");
 }
@@ -636,8 +783,11 @@ function goNext() {
     return;
   }
   if (state.currentIndex < state.quiz.items.length - 1) {
+    pauseQuizClock();
     state.currentIndex += 1;
-    state.itemStartedAt = performance.now();
+    state.itemElapsedMs = 0;
+    resumeQuizClock();
+    persistSession();
     renderQuiz();
     focusQuizContent(".question-text");
     return;
@@ -648,8 +798,10 @@ function goNext() {
 async function finishQuiz() {
   const quiz = state.quiz;
   if (quiz.completed) return;
+  pauseQuizClock();
   quiz.completed = true;
-  const durationMs = Math.round(performance.now() - state.startedAt);
+  const durationMs = Math.round(state.elapsedMs);
+  persistSession({ save: false });
   const results = state.quiz.items.map((item) => {
     const answer = state.answers.get(item.id);
     return {
@@ -695,7 +847,6 @@ function renderResults(results, score, durationMs) {
     skill: state.skillById.get(result.item.skill),
     diagnosis: skillDiagnostic(result)
   }));
-  const summary = diagnosticSummary(diagnostics);
   els.quizPanel.innerHTML = `
     <div class="score-summary" role="group" tabindex="-1" aria-label="Quiz results: ${score} out of ${total}">
       <div class="score-card">
@@ -713,11 +864,12 @@ function renderResults(results, score, durationMs) {
     </div>
     <p class="question-text">${resultMessage(score, total)}</p>
     ${submission ? `<p id="submission-status" role="status" class="submission-note is-${escapeAttribute(submission.state)}">${escapeHtml(submission.message)}</p>` : ""}
-    <div class="diagnostic-summary" aria-label="Skill diagnosis summary">
-      <span><strong>${summary.strong}</strong> strong</span>
-      <span><strong>${summary.shaky}</strong> shaky</span>
-      <span><strong>${summary.needsWork}</strong> need work</span>
+    <div class="diagnostic-summary" aria-label="Results in this set">
+      <span><strong>${score}</strong> correct</span>
+      <span><strong>${missed.length}</strong> to review</span>
+      <span><strong>${total}</strong> questions</span>
     </div>
+    <p class="leaderboard-note">These results describe this set. A few answers do not establish mastery of a skill.</p>
     ${focusSkills.length > 0 ? `
       <div class="focus-panel">
         <h3>Practice next</h3>
@@ -732,7 +884,7 @@ function renderResults(results, score, durationMs) {
       </div>
     ` : ""}
     <div class="diagnostic-panel">
-      <h3>Skill breakdown</h3>
+      <h3>Answers by skill</h3>
       <div class="results-grid">
         ${diagnostics.map(({ result, skill, diagnosis }) => `
             <div class="result-cell is-${diagnosis.key}">
@@ -900,7 +1052,7 @@ function renderProfile() {
       <div class="skill-row" style="--accent: ${accent}">
         <div>
           <strong>${skillCode(skill)} ${escapeHtml(skill.publicLabel)}</strong>
-          <span>${accuracyText} / ${level}</span>
+          <span>${accuracyText} / ${level} · ${attempts} ${attempts === 1 ? 'answer' : 'answers'}</span>
         </div>
         <span class="mastery-dot" aria-hidden="true"></span>
       </div>
@@ -1254,6 +1406,7 @@ function choosePracticeItem(skillId, salt, options = {}) {
 
 function skillDiagnostic(result) {
   const stat = state.profile.skillStats?.[result.item.skill];
+  if (!stat || stat.attempts < 8) return { key: 'early', label: result.correct ? 'Correct · early evidence' : 'Missed · early evidence' };
   const accuracy = stat?.attempts ? stat.correct / stat.attempts : result.correct ? 1 : 0;
   if (result.correct && accuracy >= 0.75) {
     return { key: "strong", label: "Strong" };
@@ -1262,15 +1415,6 @@ function skillDiagnostic(result) {
     return { key: "needs-work", label: "Needs work" };
   }
   return { key: "shaky", label: "Shaky" };
-}
-
-function diagnosticSummary(diagnostics) {
-  return diagnostics.reduce((counts, entry) => {
-    if (entry.diagnosis.key === "strong") counts.strong += 1;
-    if (entry.diagnosis.key === "shaky") counts.shaky += 1;
-    if (entry.diagnosis.key === "needs-work") counts.needsWork += 1;
-    return counts;
-  }, { strong: 0, shaky: 0, needsWork: 0 });
 }
 
 function difficultyForSkill(skillId) {
@@ -1297,7 +1441,8 @@ function masteryScore(skillId) {
 
 function masteryLabel(skillId) {
   const stat = state.profile.skillStats?.[skillId];
-  if (!stat || stat.attempts < 4) return "New";
+  if (!stat || stat.attempts === 0) return "New";
+  if (stat.attempts < 8) return "Early evidence";
   const score = recentAccuracy(stat);
   if (score >= 0.85) return "Strong";
   if (score >= 0.7) return "Solid";
@@ -1345,7 +1490,8 @@ function skillCode(skill) {
 
 function loadProfile() {
   try {
-    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    state.lastStoredProfile = localStorage.getItem(STORAGE_KEY);
+    const parsed = JSON.parse(state.lastStoredProfile);
     if (parsed?.participantId) {
       return normalizeProfile(parsed);
     }
@@ -1364,7 +1510,8 @@ function createProfile() {
     skillStats: {},
     dailyScores: {},
     seenItems: [],
-    lastResults: []
+    lastResults: [],
+    sessions: {}
   };
 }
 
@@ -1377,19 +1524,31 @@ function normalizeProfile(profile) {
     skillStats: profile.skillStats || {},
     dailyScores: profile.dailyScores || {},
     seenItems: Array.isArray(profile.seenItems) ? profile.seenItems : [],
-    lastResults: Array.isArray(profile.lastResults) ? profile.lastResults : []
+    lastResults: Array.isArray(profile.lastResults) ? profile.lastResults : [],
+    sessions: profile.sessions && typeof profile.sessions === "object" && !Array.isArray(profile.sessions) ? profile.sessions : {}
   };
 }
 
 function saveProfile() {
+  if (state.storageConflict) return;
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.profile));
+    if (localStorage.getItem(STORAGE_KEY) !== state.lastStoredProfile) {
+      state.storageConflict = true;
+      throw new Error('The profile changed in another tab.');
+    }
+    const serialized = JSON.stringify(state.profile);
+    localStorage.setItem(STORAGE_KEY, serialized);
+    state.lastStoredProfile = serialized;
     state.storageAvailable = true;
   } catch {
     state.storageAvailable = false;
   }
   const status = document.querySelector("#storage-status");
-  if (status) status.hidden = state.storageAvailable;
+  if (status) {
+    status.hidden = state.storageAvailable;
+    if (state.storageConflict) status.innerHTML = 'Progress changed in another tab. This page has stopped saving to protect that progress. <a href="">Reload this page to continue with the latest saved session.</a>';
+  }
+  renderSessionStatus();
 }
 
 function groupBy(values, getKey) {

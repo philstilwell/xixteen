@@ -10,7 +10,7 @@ export function renderNavigation(audience, { pack, resources } = {}) {
     items = [
       '<button class="site-nav-primary" id="start-daily" type="button">Today’s board</button>',
       '<button id="start-practice" type="button">Practice</button>',
-      group('Explore', [link('The 16 thinking skills', '#skill-gallery'), link('Lessons & case studies', '/articles/')]),
+      group('Explore', [link('The 16 thinking skills', '#skill-gallery'), link('Lessons & case studies', '/articles/'), link('About & contact', '/about/')]),
       group('Your progress', [link('Your skill map', '#profile-title'), link('Leaderboard', '#leaderboard-title')]),
       link('For Instructors ↗', '/instructors/', { className: 'site-nav-switch' })
     ];
@@ -20,6 +20,9 @@ export function renderNavigation(audience, { pack, resources } = {}) {
       link('Warm-up', '#warm-up'), link('Main activity', '#main-activity'), link('Exit ticket', '#exit-ticket'),
       group('Keep learning', [link('Student handout · PDF', pack.downloads.studentPdf, { download: true }), link('Practice this skill', pack.practiceHref), link('Learner home', '/learners/')])
     ];
+  } else if (audience === 'general' || audience === 'articles') {
+    label = audience === 'articles' ? 'Lessons & case studies' : 'Clearer thinking';
+    items = [link('For Learners', '/learners/', {className:'site-nav-primary'}), link('For Instructors', '/instructors/'), link('Lessons', '/articles/'), group('About', [link('About & contact', '/about/'), link('Classroom use', '/classroom-use/'), link('Privacy & saved progress', '/privacy/'), link('Help test a lesson', '/pilot/')])];
   } else {
     label = 'For instructors';
     items = [link('Teaching packs', '/instructors/#teaching-packs', { className: 'site-nav-primary' })];
@@ -29,7 +32,7 @@ export function renderNavigation(audience, { pack, resources } = {}) {
       link('Exit ticket', '#exit-ticket'), link('Assessment & adaptations', '#assessment')
     ]));
     items.push(
-      group('Explore', [link('The 16 thinking skills', '/instructors/#skills'), link('Lessons & case studies', '/articles/'), link('Curriculum & planning', '/instructors/#resources')]),
+      group('Explore', [link('The 16 thinking skills', '/instructors/#skills'), link('Lessons & case studies', '/articles/'), link('Curriculum & planning', '/instructors/#resources'), link('Help test a lesson', '/pilot/'), link('About & contact', '/about/')]),
       group('Downloads', [
         ...(pack ? [link('This teaching pack · ZIP', pack.downloads.zip, { download: true })] : []),
         link('All 16 teaching packs · ZIP', '/output/teaching-packs/xixteen-all-16-teaching-packs.zip', { download: true }),
@@ -41,4 +44,8 @@ export function renderNavigation(audience, { pack, resources } = {}) {
     );
   }
   return `<header class="site-header"><div class="site-header-bar"><a class="site-brand" href="/" aria-label="XiXteen home">XiXteen<span>${label}</span></a><button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" hidden>Menu<span class="site-menu-icon" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="${label} navigation">${items.join('')}</nav></div></header>`;
+}
+
+export function renderFooter() {
+  return `<footer class="site-footer"><p>XiXteen · Sixteen skills for clearer thinking.</p><nav aria-label="Site information"><a href="/about/">About &amp; contact</a><a href="/classroom-use/">Classroom use</a><a href="/privacy/">Privacy &amp; saved progress</a><a href="/pilot/">Help test a lesson</a></nav></footer>`;
 }
